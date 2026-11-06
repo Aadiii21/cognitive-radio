@@ -1,0 +1,138 @@
+/usr/lib/python3.14/site-packages/numpy/_core/fromnumeric.py:3862: RuntimeWarning: Mean of empty slice
+  return _methods._mean(a, axis=axis, dtype=dtype,
+/usr/lib/python3.14/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+===========================================================================
+REFINED EQUAL-POWER MODULATION CALIBRATION
+===========================================================================
+Seeds: 40–69
+Total trials: 930
+
+===========================================================================
+MODULATION: BPSK
+Original power: 1.000000
+Normalized power: 1.000000
+===========================================================================
+Noise=0.250 | PDR=nan% | SER=nan | BER=nan | Progress=30/930
+Noise=0.255 | PDR=nan% | SER=nan | BER=nan | Progress=60/930
+Noise=0.260 | PDR=nan% | SER=nan | BER=nan | Progress=90/930
+Noise=0.265 | PDR=nan% | SER=nan | BER=nan | Progress=120/930
+Noise=0.270 | PDR=nan% | SER=nan | BER=nan | Progress=150/930
+Noise=0.275 | PDR=nan% | SER=nan | BER=nan | Progress=180/930
+Noise=0.280 | PDR=nan% | SER=nan | BER=nan | Progress=210/930
+Noise=0.285 | PDR=nan% | SER=nan | BER=nan | Progress=240/930
+Noise=0.290 | PDR=nan% | SER=nan | BER=nan | Progress=270/930
+Noise=0.295 | PDR=nan% | SER=nan | BER=nan | Progress=300/930
+Noise=0.300 | PDR=nan% | SER=nan | BER=nan | Progress=330/930
+
+===========================================================================
+MODULATION: QPSK
+Original power: 4.000000
+Normalized power: 1.000000
+===========================================================================
+Noise=0.160 | PDR=nan% | SER=nan | BER=nan | Progress=360/930
+Noise=0.165 | PDR=nan% | SER=nan | BER=nan | Progress=390/930
+Noise=0.170 | PDR=nan% | SER=nan | BER=nan | Progress=420/930
+Noise=0.175 | PDR=nan% | SER=nan | BER=nan | Progress=450/930
+Noise=0.180 | PDR=nan% | SER=nan | BER=nan | Progress=480/930
+Noise=0.185 | PDR=nan% | SER=nan | BER=nan | Progress=510/930
+Noise=0.190 | PDR=nan% | SER=nan | BER=nan | Progress=540/930
+Noise=0.195 | PDR=nan% | SER=nan | BER=nan | Progress=570/930
+Noise=0.200 | PDR=nan% | SER=nan | BER=nan | Progress=600/930
+
+===========================================================================
+MODULATION: 16-QAM
+Original power: 1.000000
+Normalized power: 1.000000
+===========================================================================
+Noise=0.065 | PDR=nan% | SER=nan | BER=nan | Progress=630/930
+Noise=0.067 | PDR=nan% | SER=nan | BER=nan | Progress=660/930
+Noise=0.069 | PDR=nan% | SER=nan | BER=nan | Progress=690/930
+Noise=0.071 | PDR=nan% | SER=nan | BER=nan | Progress=720/930
+Noise=0.073 | PDR=nan% | SER=nan | BER=nan | Progress=750/930
+Noise=0.075 | PDR=nan% | SER=nan | BER=nan | Progress=780/930
+Noise=0.077 | PDR=nan% | SER=nan | BER=nan | Progress=810/930
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -1.509 deg | Amplitude: 1.01207 | Residual RMS: 0.16009 | Errors: 0/16
+Chunk 2 | Phase:   +1.323 deg | Amplitude: 1.00147 | Residual RMS: 0.14364 | Errors: 0/16
+Chunk 3 | Phase:   -0.643 deg | Amplitude: 1.00018 | Residual RMS: 0.18581 | Errors: 0/16
+Chunk 4 | Phase:   +0.874 deg | Amplitude: 0.97931 | Residual RMS: 0.15230 | Errors: 0/16
+Chunk 5 | Phase:   -0.704 deg | Amplitude: 0.97211 | Residual RMS: 0.16140 | Errors: 0/16
+Chunk 6 | Phase:   +1.854 deg | Amplitude: 0.97861 | Residual RMS: 0.16439 | Errors: 1/16
+Chunk 7 | Phase:   -1.118 deg | Amplitude: 0.99645 | Residual RMS: 0.15467 | Errors: 0/16
+Chunk 8 | Phase:   -0.837 deg | Amplitude: 0.97140 | Residual RMS: 0.14413 | Errors: 0/16
+Seed 68 | RECEIVER FAILURE: Incomplete data block at offset 304: expected 128, received 77
+Noise=0.079 | PDR=6.7% | SER=nan | BER=nan | Progress=840/930
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -1.689 deg | Amplitude: 1.01196 | Residual RMS: 0.16344 | Errors: 0/16
+Chunk 2 | Phase:   +1.185 deg | Amplitude: 1.00059 | Residual RMS: 0.14684 | Errors: 0/16
+Chunk 3 | Phase:   -0.777 deg | Amplitude: 0.99880 | Residual RMS: 0.18929 | Errors: 0/16
+Chunk 4 | Phase:   +0.393 deg | Amplitude: 0.97671 | Residual RMS: 0.15651 | Errors: 0/16
+Chunk 5 | Phase:   -0.757 deg | Amplitude: 0.96767 | Residual RMS: 0.17186 | Errors: 0/16
+Chunk 6 | Phase:   +3.054 deg | Amplitude: 0.97482 | Residual RMS: 0.16945 | Errors: 1/16
+Chunk 7 | Phase:   -2.416 deg | Amplitude: 0.99169 | Residual RMS: 0.16472 | Errors: 1/16
+Chunk 8 | Phase:   -0.207 deg | Amplitude: 0.96788 | Residual RMS: 0.13898 | Errors: 0/16
+Seed 68 | RECEIVER FAILURE: Incomplete data block at offset 304: expected 128, received 77
+Noise=0.081 | PDR=3.3% | SER=nan | BER=nan | Progress=870/930
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -1.699 deg | Amplitude: 1.01213 | Residual RMS: 0.16754 | Errors: 0/16
+Chunk 2 | Phase:   +1.184 deg | Amplitude: 1.00057 | Residual RMS: 0.15052 | Errors: 0/16
+Chunk 3 | Phase:   -0.828 deg | Amplitude: 0.99872 | Residual RMS: 0.19373 | Errors: 0/16
+Chunk 4 | Phase:   +1.411 deg | Amplitude: 0.97526 | Residual RMS: 0.16478 | Errors: 1/16
+Chunk 5 | Phase:   -0.059 deg | Amplitude: 0.96663 | Residual RMS: 0.17656 | Errors: 0/16
+Chunk 6 | Phase:   +2.987 deg | Amplitude: 0.97413 | Residual RMS: 0.17360 | Errors: 1/16
+Chunk 7 | Phase:   -1.812 deg | Amplitude: 0.99144 | Residual RMS: 0.16825 | Errors: 1/16
+Chunk 8 | Phase:   +0.051 deg | Amplitude: 0.96699 | Residual RMS: 0.14210 | Errors: 0/16
+Noise=0.083 | PDR=3.3% | SER=0.051750 | BER=0.027517 | Progress=900/930
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -2.342 deg | Amplitude: 1.01291 | Residual RMS: 0.17010 | Errors: 0/16
+Chunk 2 | Phase:   +1.002 deg | Amplitude: 1.00083 | Residual RMS: 0.15449 | Errors: 0/16
+Chunk 3 | Phase:   -1.529 deg | Amplitude: 0.99873 | Residual RMS: 0.19904 | Errors: 1/16
+Chunk 4 | Phase:   +1.453 deg | Amplitude: 0.97470 | Residual RMS: 0.16951 | Errors: 1/16
+Chunk 5 | Phase:   -0.003 deg | Amplitude: 0.96595 | Residual RMS: 0.18028 | Errors: 0/16
+Chunk 6 | Phase:   +2.756 deg | Amplitude: 0.97353 | Residual RMS: 0.17794 | Errors: 1/16
+Chunk 7 | Phase:   -1.891 deg | Amplitude: 0.99087 | Residual RMS: 0.17396 | Errors: 1/16
+Chunk 8 | Phase:   -0.050 deg | Amplitude: 0.96609 | Residual RMS: 0.14559 | Errors: 0/16
+Noise=0.085 | PDR=3.3% | SER=0.043950 | BER=0.023562 | Progress=930/930
+
+===========================================================================
+REFINEMENT COMPLETE
+===========================================================================
+Modulation      Noise      PDR          SER          BER
+BPSK            0.250   96.7%     0.002517     0.002517
+BPSK            0.255   90.0%     0.003150     0.003150
+BPSK            0.260   86.7%     0.003617     0.003617
+BPSK            0.265   80.0%     0.004200     0.004200
+BPSK            0.270   63.3%     0.004817     0.004817
+BPSK            0.275   43.3%     0.005767     0.005767
+BPSK            0.280   33.3%     0.006583     0.006583
+BPSK            0.285   16.7%     0.007367     0.007367
+BPSK            0.290    3.3%     0.008350     0.008350
+BPSK            0.295    0.0%     0.009317     0.009317
+BPSK            0.300    0.0%     0.010283     0.010283
+QPSK            0.160  100.0%     0.002767     0.001383
+QPSK            0.165  100.0%     0.003650     0.001825
+QPSK            0.170  100.0%     0.004933     0.002467
+QPSK            0.175   96.7%     0.006200     0.003100
+QPSK            0.180   86.7%     0.007850     0.003925
+QPSK            0.185   50.0%     0.010000     0.005017
+QPSK            0.190   30.0%     0.012083     0.006058
+QPSK            0.195    6.7%     0.014800     0.007417
+QPSK            0.200    0.0%     0.017617     0.008842
+16-QAM          0.065   96.7%     0.002633     0.001463
+16-QAM          0.067   96.7%     0.003567     0.001992
+16-QAM          0.069   90.0%     0.017300     0.008958
+16-QAM          0.071   93.3%     0.018217     0.009542
+16-QAM          0.073   86.7%     0.019533     0.010288
+16-QAM          0.075   70.0%     0.021200     0.011271
+16-QAM          0.077   23.3%     0.023017     0.012333
+16-QAM          0.079    6.7%          nan          nan
+16-QAM          0.081    3.3%          nan          nan
+16-QAM          0.083    3.3%     0.051750     0.027517
+16-QAM          0.085    3.3%     0.043950     0.023562
+
+Saved: results/refined_equal_power_calibration.csv

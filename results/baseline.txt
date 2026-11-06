@@ -1,0 +1,12 @@
+
+Simulation duration: 5000 time steps
+Switch interruption: 2 steps per switch
+
+PERFORMANCE RESULTS
+---------------------------------------------------------------------------------------------------------
+Strategy                       PDR    Throughput  Availability   Switches    Packets
+---------------------------------------------------------------------------------------------------------
+fixed                      94.4%         1.889       100.0%          0       5000
+adaptive_modulation        85.0%         2.611       100.0%          0       5000
+channel_switching          97.8%         1.852        94.7%        133       4734
+hybrid                     86.5%         2.542        94.7%        133       4734

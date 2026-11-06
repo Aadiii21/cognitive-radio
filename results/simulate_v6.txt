@@ -1,0 +1,30 @@
+
+============================================================================
+Environment: Low | {'volatility': 0.5, 'burst_probability': 0.03}
+============================================================================
+Strategy                       PDR   Throughput  Availability  Switches
+fixed                        1.000        1.999         1.000         0
+adaptive_modulation          0.833        3.042         1.000         0
+channel_switching            1.000        1.999         1.000         0
+hybrid                       0.833        3.042         1.000         0
+reliability_constrained      0.997        2.096         1.000         0
+
+============================================================================
+Environment: Medium | {'volatility': 1.5, 'burst_probability': 0.08}
+============================================================================
+Strategy                       PDR   Throughput  Availability  Switches
+fixed                        0.944        1.889         1.000         0
+adaptive_modulation          0.850        2.612         1.000         0
+channel_switching            0.988        1.834         0.928       179
+hybrid                       0.867        2.524         0.928       179
+reliability_constrained      0.994        1.878         0.925       188
+
+============================================================================
+Environment: High | {'volatility': 3.0, 'burst_probability': 0.15}
+============================================================================
+Strategy                       PDR   Throughput  Availability  Switches
+fixed                        0.676        1.352         1.000         0
+adaptive_modulation          0.700        1.852         1.000         0
+channel_switching            0.896        1.446         0.806       484
+hybrid                       0.864        1.875         0.806       484
+reliability_constrained      0.964        1.454         0.814       465

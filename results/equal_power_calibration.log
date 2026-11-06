@@ -1,0 +1,820 @@
+
+===========================================================================
+CALIBRATING BPSK
+===========================================================================
+Original symbol power:   1.000000
+Normalized symbol power: 1.000000
+Constellation size:      2
+
+Noise voltage: 0.045
+Seed 40 | SER=0.00000 | BER=0.00000 | PASS
+Seed 41 | SER=0.00000 | BER=0.00000 | PASS
+Seed 42 | SER=0.00000 | BER=0.00000 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.064 deg | Amplitude: 1.00189 | Residual RMS: 0.08646 | Errors: 0/16
+Chunk 2 | Phase:   -0.088 deg | Amplitude: 0.99189 | Residual RMS: 0.09039 | Errors: 0/16
+Chunk 3 | Phase:   +0.195 deg | Amplitude: 1.01316 | Residual RMS: 0.10601 | Errors: 0/16
+Chunk 4 | Phase:   -0.027 deg | Amplitude: 1.01321 | Residual RMS: 0.09723 | Errors: 0/16
+Chunk 5 | Phase:   +0.216 deg | Amplitude: 1.00151 | Residual RMS: 0.09568 | Errors: 0/16
+Chunk 6 | Phase:   -0.574 deg | Amplitude: 0.98643 | Residual RMS: 0.10277 | Errors: 0/16
+Chunk 7 | Phase:   +0.919 deg | Amplitude: 1.00454 | Residual RMS: 0.09233 | Errors: 0/16
+Chunk 8 | Phase:   -0.764 deg | Amplitude: 1.01770 | Residual RMS: 0.08134 | Errors: 0/16
+Seed 43 | SER=0.00000 | BER=0.00000 | PASS
+Seed 44 | SER=0.00000 | BER=0.00000 | PASS
+Seed 45 | SER=0.00000 | BER=0.00000 | PASS
+Seed 46 | SER=0.00000 | BER=0.00000 | PASS
+Seed 47 | SER=0.00000 | BER=0.00000 | PASS
+Seed 48 | SER=0.00000 | BER=0.00000 | PASS
+Seed 49 | SER=0.00000 | BER=0.00000 | PASS
+PDR=100.0% | Mean SER=0.000000 | Mean BER=0.000000
+
+Noise voltage: 0.055
+Seed 40 | SER=0.00000 | BER=0.00000 | PASS
+Seed 41 | SER=0.00000 | BER=0.00000 | PASS
+Seed 42 | SER=0.00000 | BER=0.00000 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.304 deg | Amplitude: 1.00236 | Residual RMS: 0.10639 | Errors: 0/16
+Chunk 2 | Phase:   -0.355 deg | Amplitude: 0.99038 | Residual RMS: 0.11050 | Errors: 0/16
+Chunk 3 | Phase:   +0.085 deg | Amplitude: 1.01417 | Residual RMS: 0.12817 | Errors: 0/16
+Chunk 4 | Phase:   -0.028 deg | Amplitude: 1.01433 | Residual RMS: 0.11790 | Errors: 0/16
+Chunk 5 | Phase:   +0.256 deg | Amplitude: 0.99879 | Residual RMS: 0.11557 | Errors: 0/16
+Chunk 6 | Phase:   -0.810 deg | Amplitude: 0.98055 | Residual RMS: 0.12231 | Errors: 0/16
+Chunk 7 | Phase:   +0.910 deg | Amplitude: 1.00331 | Residual RMS: 0.11316 | Errors: 0/16
+Chunk 8 | Phase:   -0.991 deg | Amplitude: 1.01934 | Residual RMS: 0.09797 | Errors: 0/16
+Seed 43 | SER=0.00000 | BER=0.00000 | PASS
+Seed 44 | SER=0.00000 | BER=0.00000 | PASS
+Seed 45 | SER=0.00000 | BER=0.00000 | PASS
+Seed 46 | SER=0.00000 | BER=0.00000 | PASS
+Seed 47 | SER=0.00000 | BER=0.00000 | PASS
+Seed 48 | SER=0.00000 | BER=0.00000 | PASS
+Seed 49 | SER=0.00000 | BER=0.00000 | PASS
+PDR=100.0% | Mean SER=0.000000 | Mean BER=0.000000
+
+Noise voltage: 0.065
+Seed 40 | SER=0.00000 | BER=0.00000 | PASS
+Seed 41 | SER=0.00000 | BER=0.00000 | PASS
+Seed 42 | SER=0.00000 | BER=0.00000 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.030 deg | Amplitude: 1.00255 | Residual RMS: 0.12871 | Errors: 0/16
+Chunk 2 | Phase:   -0.123 deg | Amplitude: 0.98836 | Residual RMS: 0.12849 | Errors: 0/16
+Chunk 3 | Phase:   -0.271 deg | Amplitude: 1.01638 | Residual RMS: 0.15095 | Errors: 0/16
+Chunk 4 | Phase:   -0.270 deg | Amplitude: 1.01708 | Residual RMS: 0.13827 | Errors: 0/16
+Chunk 5 | Phase:   +0.538 deg | Amplitude: 0.99771 | Residual RMS: 0.13743 | Errors: 0/16
+Chunk 6 | Phase:   -0.583 deg | Amplitude: 0.97678 | Residual RMS: 0.14285 | Errors: 0/16
+Chunk 7 | Phase:   +1.140 deg | Amplitude: 1.00344 | Residual RMS: 0.13194 | Errors: 0/16
+Chunk 8 | Phase:   -0.976 deg | Amplitude: 1.02263 | Residual RMS: 0.11618 | Errors: 0/16
+Seed 43 | SER=0.00000 | BER=0.00000 | PASS
+Seed 44 | SER=0.00000 | BER=0.00000 | PASS
+Seed 45 | SER=0.00000 | BER=0.00000 | PASS
+Seed 46 | SER=0.00000 | BER=0.00000 | PASS
+Seed 47 | SER=0.00000 | BER=0.00000 | PASS
+Seed 48 | SER=0.00000 | BER=0.00000 | PASS
+Seed 49 | SER=0.00000 | BER=0.00000 | PASS
+PDR=100.0% | Mean SER=0.000000 | Mean BER=0.000000
+
+Noise voltage: 0.075
+Seed 40 | SER=0.00000 | BER=0.00000 | PASS
+Seed 41 | SER=0.00000 | BER=0.00000 | PASS
+Seed 42 | SER=0.00000 | BER=0.00000 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.260 deg | Amplitude: 1.00331 | Residual RMS: 0.14910 | Errors: 0/16
+Chunk 2 | Phase:   -0.385 deg | Amplitude: 0.98699 | Residual RMS: 0.14740 | Errors: 0/16
+Chunk 3 | Phase:   +0.131 deg | Amplitude: 1.01989 | Residual RMS: 0.17326 | Errors: 0/16
+Chunk 4 | Phase:   +0.496 deg | Amplitude: 1.02141 | Residual RMS: 0.15900 | Errors: 0/16
+Chunk 5 | Phase:   +0.834 deg | Amplitude: 0.99869 | Residual RMS: 0.15830 | Errors: 0/16
+Chunk 6 | Phase:   -0.829 deg | Amplitude: 0.97362 | Residual RMS: 0.16720 | Errors: 0/16
+Chunk 7 | Phase:   +1.150 deg | Amplitude: 1.00275 | Residual RMS: 0.15462 | Errors: 0/16
+Chunk 8 | Phase:   -0.677 deg | Amplitude: 1.02842 | Residual RMS: 0.13645 | Errors: 0/16
+Seed 43 | SER=0.00000 | BER=0.00000 | PASS
+Seed 44 | SER=0.00000 | BER=0.00000 | PASS
+Seed 45 | SER=0.00000 | BER=0.00000 | PASS
+Seed 46 | SER=0.00000 | BER=0.00000 | PASS
+Seed 47 | SER=0.00000 | BER=0.00000 | PASS
+Seed 48 | SER=0.00000 | BER=0.00000 | PASS
+Seed 49 | SER=0.00000 | BER=0.00000 | PASS
+PDR=100.0% | Mean SER=0.000000 | Mean BER=0.000000
+
+Noise voltage: 0.085
+Seed 40 | SER=0.00000 | BER=0.00000 | PASS
+Seed 41 | SER=0.00000 | BER=0.00000 | PASS
+Seed 42 | SER=0.00000 | BER=0.00000 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.489 deg | Amplitude: 1.00333 | Residual RMS: 0.16938 | Errors: 0/16
+Chunk 2 | Phase:   -0.389 deg | Amplitude: 0.98397 | Residual RMS: 0.16695 | Errors: 0/16
+Chunk 3 | Phase:   +0.025 deg | Amplitude: 1.02096 | Residual RMS: 0.19805 | Errors: 0/16
+Chunk 4 | Phase:   +0.291 deg | Amplitude: 1.02103 | Residual RMS: 0.18149 | Errors: 0/16
+Chunk 5 | Phase:   +0.894 deg | Amplitude: 0.99572 | Residual RMS: 0.17956 | Errors: 0/16
+Chunk 6 | Phase:   -1.060 deg | Amplitude: 0.96969 | Residual RMS: 0.18804 | Errors: 0/16
+Chunk 7 | Phase:   +1.649 deg | Amplitude: 1.00262 | Residual RMS: 0.17461 | Errors: 0/16
+Chunk 8 | Phase:   -0.880 deg | Amplitude: 1.02851 | Residual RMS: 0.15256 | Errors: 0/16
+Seed 43 | SER=0.00000 | BER=0.00000 | PASS
+Seed 44 | SER=0.00000 | BER=0.00000 | PASS
+Seed 45 | SER=0.00000 | BER=0.00000 | PASS
+Seed 46 | SER=0.00000 | BER=0.00000 | PASS
+Seed 47 | SER=0.00000 | BER=0.00000 | PASS
+Seed 48 | SER=0.00000 | BER=0.00000 | PASS
+Seed 49 | SER=0.00000 | BER=0.00000 | PASS
+PDR=100.0% | Mean SER=0.000000 | Mean BER=0.000000
+
+Noise voltage: 0.100
+Seed 40 | SER=0.00000 | BER=0.00000 | PASS
+Seed 41 | SER=0.00000 | BER=0.00000 | PASS
+Seed 42 | SER=0.00000 | BER=0.00000 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.355 deg | Amplitude: 1.00333 | Residual RMS: 0.19455 | Errors: 0/16
+Chunk 2 | Phase:   -0.080 deg | Amplitude: 0.98118 | Residual RMS: 0.19641 | Errors: 0/16
+Chunk 3 | Phase:   +0.211 deg | Amplitude: 1.02450 | Residual RMS: 0.23136 | Errors: 0/16
+Chunk 4 | Phase:   +0.153 deg | Amplitude: 1.02527 | Residual RMS: 0.21256 | Errors: 0/16
+Chunk 5 | Phase:   +0.952 deg | Amplitude: 0.99453 | Residual RMS: 0.20973 | Errors: 0/16
+Chunk 6 | Phase:   -1.408 deg | Amplitude: 0.96455 | Residual RMS: 0.21781 | Errors: 0/16
+Chunk 7 | Phase:   +1.914 deg | Amplitude: 1.00205 | Residual RMS: 0.20323 | Errors: 0/16
+Chunk 8 | Phase:   -1.196 deg | Amplitude: 1.03402 | Residual RMS: 0.17832 | Errors: 0/16
+Seed 43 | SER=0.00000 | BER=0.00000 | PASS
+Seed 44 | SER=0.00000 | BER=0.00000 | PASS
+Seed 45 | SER=0.00000 | BER=0.00000 | PASS
+Seed 46 | SER=0.00000 | BER=0.00000 | PASS
+Seed 47 | SER=0.00000 | BER=0.00000 | PASS
+Seed 48 | SER=0.00000 | BER=0.00000 | PASS
+Seed 49 | SER=0.00000 | BER=0.00000 | PASS
+PDR=100.0% | Mean SER=0.000000 | Mean BER=0.000000
+
+Noise voltage: 0.125
+Seed 40 | SER=0.00000 | BER=0.00000 | PASS
+Seed 41 | SER=0.00000 | BER=0.00000 | PASS
+Seed 42 | SER=0.00000 | BER=0.00000 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.413 deg | Amplitude: 1.00408 | Residual RMS: 0.24402 | Errors: 0/16
+Chunk 2 | Phase:   -0.837 deg | Amplitude: 0.97644 | Residual RMS: 0.24530 | Errors: 0/16
+Chunk 3 | Phase:   -0.026 deg | Amplitude: 1.03074 | Residual RMS: 0.28912 | Errors: 0/16
+Chunk 4 | Phase:   +0.284 deg | Amplitude: 1.03073 | Residual RMS: 0.26668 | Errors: 0/16
+Chunk 5 | Phase:   +0.525 deg | Amplitude: 0.99134 | Residual RMS: 0.26343 | Errors: 0/16
+Chunk 6 | Phase:   -1.563 deg | Amplitude: 0.95520 | Residual RMS: 0.27346 | Errors: 0/16
+Chunk 7 | Phase:   +2.362 deg | Amplitude: 1.00229 | Residual RMS: 0.25345 | Errors: 0/16
+Chunk 8 | Phase:   -1.450 deg | Amplitude: 1.04079 | Residual RMS: 0.22395 | Errors: 0/16
+Seed 43 | SER=0.00000 | BER=0.00000 | PASS
+Seed 44 | SER=0.00000 | BER=0.00000 | PASS
+Seed 45 | SER=0.00000 | BER=0.00000 | PASS
+Seed 46 | SER=0.00000 | BER=0.00000 | PASS
+Seed 47 | SER=0.00000 | BER=0.00000 | PASS
+Seed 48 | SER=0.00000 | BER=0.00000 | PASS
+Seed 49 | SER=0.00000 | BER=0.00000 | PASS
+PDR=100.0% | Mean SER=0.000000 | Mean BER=0.000000
+
+Noise voltage: 0.160
+Seed 40 | SER=0.00000 | BER=0.00000 | PASS
+Seed 41 | SER=0.00000 | BER=0.00000 | PASS
+Seed 42 | SER=0.00000 | BER=0.00000 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.430 deg | Amplitude: 1.00321 | Residual RMS: 0.31217 | Errors: 0/16
+Chunk 2 | Phase:   -0.910 deg | Amplitude: 0.96729 | Residual RMS: 0.31169 | Errors: 0/16
+Chunk 3 | Phase:   -0.403 deg | Amplitude: 1.03759 | Residual RMS: 0.36974 | Errors: 0/16
+Chunk 4 | Phase:   +0.196 deg | Amplitude: 1.03829 | Residual RMS: 0.34094 | Errors: 0/16
+Chunk 5 | Phase:   +0.684 deg | Amplitude: 0.98722 | Residual RMS: 0.33469 | Errors: 0/16
+Chunk 6 | Phase:   -1.909 deg | Amplitude: 0.94279 | Residual RMS: 0.34877 | Errors: 0/16
+Chunk 7 | Phase:   +3.229 deg | Amplitude: 0.99876 | Residual RMS: 0.32763 | Errors: 0/16
+Chunk 8 | Phase:   -2.076 deg | Amplitude: 1.05264 | Residual RMS: 0.28727 | Errors: 0/16
+Seed 43 | SER=0.00000 | BER=0.00000 | PASS
+Seed 44 | SER=0.00000 | BER=0.00000 | PASS
+Seed 45 | SER=0.00000 | BER=0.00000 | PASS
+Seed 46 | SER=0.00000 | BER=0.00000 | PASS
+Seed 47 | SER=0.00000 | BER=0.00000 | PASS
+Seed 48 | SER=0.00000 | BER=0.00000 | PASS
+Seed 49 | SER=0.00000 | BER=0.00000 | PASS
+PDR=100.0% | Mean SER=0.000000 | Mean BER=0.000000
+
+Noise voltage: 0.200
+Seed 40 | SER=0.00100 | BER=0.00100 | PASS
+Seed 41 | SER=0.00000 | BER=0.00000 | PASS
+Seed 42 | SER=0.00000 | BER=0.00000 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.367 deg | Amplitude: 1.00330 | Residual RMS: 0.38827 | Errors: 0/16
+Chunk 2 | Phase:   -0.544 deg | Amplitude: 0.95741 | Residual RMS: 0.38763 | Errors: 0/16
+Chunk 3 | Phase:   +0.037 deg | Amplitude: 1.04585 | Residual RMS: 0.46351 | Errors: 0/16
+Chunk 4 | Phase:   +0.592 deg | Amplitude: 1.04505 | Residual RMS: 0.42802 | Errors: 0/16
+Chunk 5 | Phase:   +1.035 deg | Amplitude: 0.98017 | Residual RMS: 0.41662 | Errors: 0/16
+Chunk 6 | Phase:   -2.510 deg | Amplitude: 0.92626 | Residual RMS: 0.43792 | Errors: 0/16
+Chunk 7 | Phase:   +4.038 deg | Amplitude: 0.99680 | Residual RMS: 0.40854 | Errors: 0/16
+Chunk 8 | Phase:   -2.467 deg | Amplitude: 1.06075 | Residual RMS: 0.36171 | Errors: 0/16
+Seed 43 | SER=0.00000 | BER=0.00000 | PASS
+Seed 44 | SER=0.00050 | BER=0.00050 | PASS
+Seed 45 | SER=0.00050 | BER=0.00050 | PASS
+Seed 46 | SER=0.00000 | BER=0.00000 | PASS
+Seed 47 | SER=0.00000 | BER=0.00000 | PASS
+Seed 48 | SER=0.00000 | BER=0.00000 | PASS
+Seed 49 | SER=0.00000 | BER=0.00000 | PASS
+PDR=100.0% | Mean SER=0.000200 | Mean BER=0.000200
+
+Noise voltage: 0.250
+Seed 40 | SER=0.00450 | BER=0.00450 | PASS
+Seed 41 | SER=0.00100 | BER=0.00100 | PASS
+Seed 42 | SER=0.00300 | BER=0.00300 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.716 deg | Amplitude: 1.00786 | Residual RMS: 0.47933 | Errors: 0/16
+Chunk 2 | Phase:   -1.131 deg | Amplitude: 0.94425 | Residual RMS: 0.48204 | Errors: 0/16
+Chunk 3 | Phase:   -0.271 deg | Amplitude: 1.05601 | Residual RMS: 0.57931 | Errors: 0/16
+Chunk 4 | Phase:   +0.517 deg | Amplitude: 1.05443 | Residual RMS: 0.53561 | Errors: 0/16
+Chunk 5 | Phase:   +1.601 deg | Amplitude: 0.97129 | Residual RMS: 0.51709 | Errors: 0/16
+Chunk 6 | Phase:   -3.581 deg | Amplitude: 0.90713 | Residual RMS: 0.54535 | Errors: 0/16
+Chunk 7 | Phase:   +5.165 deg | Amplitude: 0.99122 | Residual RMS: 0.51118 | Errors: 0/16
+Chunk 8 | Phase:   -2.929 deg | Amplitude: 1.07243 | Residual RMS: 0.45394 | Errors: 0/16
+Seed 43 | SER=0.00250 | BER=0.00250 | PASS
+Seed 44 | SER=0.00150 | BER=0.00150 | PASS
+Seed 45 | SER=0.00150 | BER=0.00150 | PASS
+Seed 46 | SER=0.00250 | BER=0.00250 | PASS
+Seed 47 | SER=0.00200 | BER=0.00200 | PASS
+Seed 48 | SER=0.00250 | BER=0.00250 | PASS
+Seed 49 | SER=0.00150 | BER=0.00150 | PASS
+PDR=100.0% | Mean SER=0.002250 | Mean BER=0.002250
+
+Noise voltage: 0.300
+Seed 40 | SER=0.01500 | BER=0.01500 | FAIL
+Seed 41 | SER=0.00850 | BER=0.00850 | FAIL
+Seed 42 | SER=0.01200 | BER=0.01200 | FAIL
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.609 deg | Amplitude: 1.01149 | Residual RMS: 0.57251 | Errors: 0/16
+Chunk 2 | Phase:   -0.999 deg | Amplitude: 0.93014 | Residual RMS: 0.57318 | Errors: 0/16
+Chunk 3 | Phase:   +3.019 deg | Amplitude: 1.06725 | Residual RMS: 0.69265 | Errors: 1/16
+Chunk 4 | Phase:   +1.493 deg | Amplitude: 1.06160 | Residual RMS: 0.64586 | Errors: 0/16
+Chunk 5 | Phase:   +1.868 deg | Amplitude: 0.95699 | Residual RMS: 0.61941 | Errors: 0/16
+Chunk 6 | Phase:   -7.547 deg | Amplitude: 0.88892 | Residual RMS: 0.65055 | Errors: 1/16
+Chunk 7 | Phase:   +5.468 deg | Amplitude: 0.98127 | Residual RMS: 0.61596 | Errors: 0/16
+Chunk 8 | Phase:   -3.660 deg | Amplitude: 1.08262 | Residual RMS: 0.54660 | Errors: 0/16
+Seed 43 | SER=0.01050 | BER=0.01050 | FAIL
+Seed 44 | SER=0.00950 | BER=0.00950 | FAIL
+Seed 45 | SER=0.00800 | BER=0.00800 | FAIL
+Seed 46 | SER=0.01100 | BER=0.01100 | FAIL
+Seed 47 | SER=0.01000 | BER=0.01000 | FAIL
+Seed 48 | SER=0.01100 | BER=0.01100 | FAIL
+Seed 49 | SER=0.01050 | BER=0.01050 | FAIL
+PDR=0.0% | Mean SER=0.010600 | Mean BER=0.010600
+
+===========================================================================
+CALIBRATING QPSK
+===========================================================================
+Original symbol power:   4.000000
+Normalized symbol power: 1.000000
+Constellation size:      4
+
+Noise voltage: 0.045
+Seed 40 | SER=0.00000 | BER=0.00000 | PASS
+Seed 41 | SER=0.00000 | BER=0.00000 | PASS
+Seed 42 | SER=0.00000 | BER=0.00000 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.346 deg | Amplitude: 1.01743 | Residual RMS: 0.09184 | Errors: 0/16
+Chunk 2 | Phase:   -0.178 deg | Amplitude: 1.02223 | Residual RMS: 0.08073 | Errors: 0/16
+Chunk 3 | Phase:   -0.102 deg | Amplitude: 1.01179 | Residual RMS: 0.11014 | Errors: 0/16
+Chunk 4 | Phase:   -0.288 deg | Amplitude: 0.97640 | Residual RMS: 0.08705 | Errors: 0/16
+Chunk 5 | Phase:   +0.843 deg | Amplitude: 1.01171 | Residual RMS: 0.09267 | Errors: 0/16
+Chunk 6 | Phase:   -0.677 deg | Amplitude: 0.97721 | Residual RMS: 0.09327 | Errors: 0/16
+Chunk 7 | Phase:   +0.071 deg | Amplitude: 1.00267 | Residual RMS: 0.08870 | Errors: 0/16
+Chunk 8 | Phase:   +0.235 deg | Amplitude: 0.98719 | Residual RMS: 0.08004 | Errors: 0/16
+Seed 43 | SER=0.00000 | BER=0.00000 | PASS
+Seed 44 | SER=0.00000 | BER=0.00000 | PASS
+Seed 45 | SER=0.00000 | BER=0.00000 | PASS
+Seed 46 | SER=0.00000 | BER=0.00000 | PASS
+Seed 47 | SER=0.00000 | BER=0.00000 | PASS
+Seed 48 | SER=0.00000 | BER=0.00000 | PASS
+Seed 49 | SER=0.00000 | BER=0.00000 | PASS
+PDR=100.0% | Mean SER=0.000000 | Mean BER=0.000000
+
+Noise voltage: 0.055
+Seed 40 | SER=0.00000 | BER=0.00000 | PASS
+Seed 41 | SER=0.00000 | BER=0.00000 | PASS
+Seed 42 | SER=0.00000 | BER=0.00000 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.166 deg | Amplitude: 1.02070 | Residual RMS: 0.11172 | Errors: 0/16
+Chunk 2 | Phase:   -0.605 deg | Amplitude: 1.02741 | Residual RMS: 0.09862 | Errors: 0/16
+Chunk 3 | Phase:   +0.077 deg | Amplitude: 1.01386 | Residual RMS: 0.13300 | Errors: 0/16
+Chunk 4 | Phase:   -0.226 deg | Amplitude: 0.96826 | Residual RMS: 0.10606 | Errors: 0/16
+Chunk 5 | Phase:   +1.197 deg | Amplitude: 1.01274 | Residual RMS: 0.11167 | Errors: 0/16
+Chunk 6 | Phase:   -0.305 deg | Amplitude: 0.97244 | Residual RMS: 0.11537 | Errors: 0/16
+Chunk 7 | Phase:   -0.019 deg | Amplitude: 1.00297 | Residual RMS: 0.10940 | Errors: 0/16
+Chunk 8 | Phase:   -0.650 deg | Amplitude: 0.98434 | Residual RMS: 0.09775 | Errors: 0/16
+Seed 43 | SER=0.00000 | BER=0.00000 | PASS
+Seed 44 | SER=0.00000 | BER=0.00000 | PASS
+Seed 45 | SER=0.00000 | BER=0.00000 | PASS
+Seed 46 | SER=0.00000 | BER=0.00000 | PASS
+Seed 47 | SER=0.00000 | BER=0.00000 | PASS
+Seed 48 | SER=0.00000 | BER=0.00000 | PASS
+Seed 49 | SER=0.00000 | BER=0.00000 | PASS
+PDR=100.0% | Mean SER=0.000000 | Mean BER=0.000000
+
+Noise voltage: 0.065
+Seed 40 | SER=0.00000 | BER=0.00000 | PASS
+Seed 41 | SER=0.00000 | BER=0.00000 | PASS
+Seed 42 | SER=0.00000 | BER=0.00000 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.366 deg | Amplitude: 1.02408 | Residual RMS: 0.13269 | Errors: 0/16
+Chunk 2 | Phase:   -0.149 deg | Amplitude: 1.03303 | Residual RMS: 0.11575 | Errors: 0/16
+Chunk 3 | Phase:   +0.570 deg | Amplitude: 1.01659 | Residual RMS: 0.15683 | Errors: 0/16
+Chunk 4 | Phase:   -0.554 deg | Amplitude: 0.96468 | Residual RMS: 0.12505 | Errors: 0/16
+Chunk 5 | Phase:   +0.975 deg | Amplitude: 1.01737 | Residual RMS: 0.12691 | Errors: 0/16
+Chunk 6 | Phase:   -0.357 deg | Amplitude: 0.96674 | Residual RMS: 0.13871 | Errors: 0/16
+Chunk 7 | Phase:   +0.015 deg | Amplitude: 1.00180 | Residual RMS: 0.12954 | Errors: 0/16
+Chunk 8 | Phase:   -0.529 deg | Amplitude: 0.98151 | Residual RMS: 0.11541 | Errors: 0/16
+Seed 43 | SER=0.00000 | BER=0.00000 | PASS
+Seed 44 | SER=0.00000 | BER=0.00000 | PASS
+Seed 45 | SER=0.00000 | BER=0.00000 | PASS
+Seed 46 | SER=0.00000 | BER=0.00000 | PASS
+Seed 47 | SER=0.00000 | BER=0.00000 | PASS
+Seed 48 | SER=0.00000 | BER=0.00000 | PASS
+Seed 49 | SER=0.00000 | BER=0.00000 | PASS
+PDR=100.0% | Mean SER=0.000000 | Mean BER=0.000000
+
+Noise voltage: 0.075
+Seed 40 | SER=0.00000 | BER=0.00000 | PASS
+Seed 41 | SER=0.00000 | BER=0.00000 | PASS
+Seed 42 | SER=0.00000 | BER=0.00000 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.454 deg | Amplitude: 1.02778 | Residual RMS: 0.15363 | Errors: 0/16
+Chunk 2 | Phase:   -0.347 deg | Amplitude: 1.03814 | Residual RMS: 0.13532 | Errors: 0/16
+Chunk 3 | Phase:   +0.444 deg | Amplitude: 1.01913 | Residual RMS: 0.18025 | Errors: 0/16
+Chunk 4 | Phase:   -0.771 deg | Amplitude: 0.95927 | Residual RMS: 0.14407 | Errors: 0/16
+Chunk 5 | Phase:   +1.291 deg | Amplitude: 1.02067 | Residual RMS: 0.14680 | Errors: 0/16
+Chunk 6 | Phase:   -0.482 deg | Amplitude: 0.96191 | Residual RMS: 0.15943 | Errors: 0/16
+Chunk 7 | Phase:   +0.220 deg | Amplitude: 1.00254 | Residual RMS: 0.14996 | Errors: 0/16
+Chunk 8 | Phase:   -0.474 deg | Amplitude: 0.97804 | Residual RMS: 0.13141 | Errors: 0/16
+Seed 43 | SER=0.00000 | BER=0.00000 | PASS
+Seed 44 | SER=0.00000 | BER=0.00000 | PASS
+Seed 45 | SER=0.00000 | BER=0.00000 | PASS
+Seed 46 | SER=0.00000 | BER=0.00000 | PASS
+Seed 47 | SER=0.00000 | BER=0.00000 | PASS
+Seed 48 | SER=0.00000 | BER=0.00000 | PASS
+Seed 49 | SER=0.00000 | BER=0.00000 | PASS
+PDR=100.0% | Mean SER=0.000000 | Mean BER=0.000000
+
+Noise voltage: 0.085
+Seed 40 | SER=0.00000 | BER=0.00000 | PASS
+Seed 41 | SER=0.00000 | BER=0.00000 | PASS
+Seed 42 | SER=0.00000 | BER=0.00000 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.408 deg | Amplitude: 1.03042 | Residual RMS: 0.17291 | Errors: 0/16
+Chunk 2 | Phase:   -0.333 deg | Amplitude: 1.04362 | Residual RMS: 0.15197 | Errors: 0/16
+Chunk 3 | Phase:   +0.291 deg | Amplitude: 1.02129 | Residual RMS: 0.20364 | Errors: 0/16
+Chunk 4 | Phase:   -0.516 deg | Amplitude: 0.95351 | Residual RMS: 0.16322 | Errors: 0/16
+Chunk 5 | Phase:   +1.642 deg | Amplitude: 1.02291 | Residual RMS: 0.16657 | Errors: 0/16
+Chunk 6 | Phase:   -0.632 deg | Amplitude: 0.95705 | Residual RMS: 0.17972 | Errors: 0/16
+Chunk 7 | Phase:   +0.370 deg | Amplitude: 1.00237 | Residual RMS: 0.16923 | Errors: 0/16
+Chunk 8 | Phase:   -0.626 deg | Amplitude: 0.97478 | Residual RMS: 0.14825 | Errors: 0/16
+Seed 43 | SER=0.00000 | BER=0.00000 | PASS
+Seed 44 | SER=0.00000 | BER=0.00000 | PASS
+Seed 45 | SER=0.00000 | BER=0.00000 | PASS
+Seed 46 | SER=0.00000 | BER=0.00000 | PASS
+Seed 47 | SER=0.00000 | BER=0.00000 | PASS
+Seed 48 | SER=0.00000 | BER=0.00000 | PASS
+Seed 49 | SER=0.00000 | BER=0.00000 | PASS
+PDR=100.0% | Mean SER=0.000000 | Mean BER=0.000000
+
+Noise voltage: 0.100
+Seed 40 | SER=0.00000 | BER=0.00000 | PASS
+Seed 41 | SER=0.00000 | BER=0.00000 | PASS
+Seed 42 | SER=0.00000 | BER=0.00000 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.652 deg | Amplitude: 1.03557 | Residual RMS: 0.20329 | Errors: 0/16
+Chunk 2 | Phase:   -0.433 deg | Amplitude: 1.05135 | Residual RMS: 0.17940 | Errors: 0/16
+Chunk 3 | Phase:   +0.427 deg | Amplitude: 1.02452 | Residual RMS: 0.24066 | Errors: 0/16
+Chunk 4 | Phase:   -0.807 deg | Amplitude: 0.94542 | Residual RMS: 0.19171 | Errors: 0/16
+Chunk 5 | Phase:   +1.823 deg | Amplitude: 1.02580 | Residual RMS: 0.19732 | Errors: 0/16
+Chunk 6 | Phase:   -0.724 deg | Amplitude: 0.95012 | Residual RMS: 0.21052 | Errors: 0/16
+Chunk 7 | Phase:   +0.103 deg | Amplitude: 1.00354 | Residual RMS: 0.19690 | Errors: 0/16
+Chunk 8 | Phase:   -0.400 deg | Amplitude: 0.97145 | Residual RMS: 0.17574 | Errors: 0/16
+Seed 43 | SER=0.00000 | BER=0.00000 | PASS
+Seed 44 | SER=0.00000 | BER=0.00000 | PASS
+Seed 45 | SER=0.00000 | BER=0.00000 | PASS
+Seed 46 | SER=0.00000 | BER=0.00000 | PASS
+Seed 47 | SER=0.00000 | BER=0.00000 | PASS
+Seed 48 | SER=0.00000 | BER=0.00000 | PASS
+Seed 49 | SER=0.00000 | BER=0.00000 | PASS
+PDR=100.0% | Mean SER=0.000000 | Mean BER=0.000000
+
+Noise voltage: 0.125
+Seed 40 | SER=0.00000 | BER=0.00000 | PASS
+Seed 41 | SER=0.00050 | BER=0.00025 | PASS
+Seed 42 | SER=0.00000 | BER=0.00000 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.738 deg | Amplitude: 1.04411 | Residual RMS: 0.25437 | Errors: 0/16
+Chunk 2 | Phase:   -0.775 deg | Amplitude: 1.06420 | Residual RMS: 0.22535 | Errors: 0/16
+Chunk 3 | Phase:   +0.450 deg | Amplitude: 1.03152 | Residual RMS: 0.29907 | Errors: 0/16
+Chunk 4 | Phase:   -1.086 deg | Amplitude: 0.93166 | Residual RMS: 0.24022 | Errors: 0/16
+Chunk 5 | Phase:   +2.294 deg | Amplitude: 1.03114 | Residual RMS: 0.24849 | Errors: 0/16
+Chunk 6 | Phase:   -1.327 deg | Amplitude: 0.93975 | Residual RMS: 0.25972 | Errors: 0/16
+Chunk 7 | Phase:   +0.397 deg | Amplitude: 1.00509 | Residual RMS: 0.24525 | Errors: 0/16
+Chunk 8 | Phase:   -0.374 deg | Amplitude: 0.96425 | Residual RMS: 0.21808 | Errors: 0/16
+Seed 43 | SER=0.00000 | BER=0.00000 | PASS
+Seed 44 | SER=0.00000 | BER=0.00000 | PASS
+Seed 45 | SER=0.00050 | BER=0.00025 | PASS
+Seed 46 | SER=0.00000 | BER=0.00000 | PASS
+Seed 47 | SER=0.00000 | BER=0.00000 | PASS
+Seed 48 | SER=0.00000 | BER=0.00000 | PASS
+Seed 49 | SER=0.00100 | BER=0.00050 | PASS
+PDR=100.0% | Mean SER=0.000200 | Mean BER=0.000100
+
+Noise voltage: 0.160
+Seed 40 | SER=0.00350 | BER=0.00175 | PASS
+Seed 41 | SER=0.00300 | BER=0.00150 | PASS
+Seed 42 | SER=0.00400 | BER=0.00200 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.642 deg | Amplitude: 1.05549 | Residual RMS: 0.33035 | Errors: 0/16
+Chunk 2 | Phase:   -0.886 deg | Amplitude: 1.08406 | Residual RMS: 0.28960 | Errors: 0/16
+Chunk 3 | Phase:   +0.899 deg | Amplitude: 1.03903 | Residual RMS: 0.38219 | Errors: 0/16
+Chunk 4 | Phase:   -1.433 deg | Amplitude: 0.91407 | Residual RMS: 0.30684 | Errors: 0/16
+Chunk 5 | Phase:   +2.952 deg | Amplitude: 1.03980 | Residual RMS: 0.31810 | Errors: 0/16
+Chunk 6 | Phase:   -1.647 deg | Amplitude: 0.92313 | Residual RMS: 0.33266 | Errors: 0/16
+Chunk 7 | Phase:   +0.316 deg | Amplitude: 1.00569 | Residual RMS: 0.31255 | Errors: 0/16
+Chunk 8 | Phase:   -0.829 deg | Amplitude: 0.95385 | Residual RMS: 0.27770 | Errors: 0/16
+Seed 43 | SER=0.00100 | BER=0.00050 | PASS
+Seed 44 | SER=0.00250 | BER=0.00125 | PASS
+Seed 45 | SER=0.00300 | BER=0.00150 | PASS
+Seed 46 | SER=0.00000 | BER=0.00000 | PASS
+Seed 47 | SER=0.00150 | BER=0.00075 | PASS
+Seed 48 | SER=0.00400 | BER=0.00200 | PASS
+Seed 49 | SER=0.00350 | BER=0.00175 | PASS
+PDR=100.0% | Mean SER=0.002600 | Mean BER=0.001300
+
+Noise voltage: 0.200
+Seed 40 | SER=0.01100 | BER=0.00550 | FAIL
+Seed 41 | SER=0.01600 | BER=0.00800 | FAIL
+Seed 42 | SER=0.02250 | BER=0.01125 | FAIL
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -1.082 deg | Amplitude: 1.06346 | Residual RMS: 0.41168 | Errors: 0/16
+Chunk 2 | Phase:   -0.781 deg | Amplitude: 1.10091 | Residual RMS: 0.36471 | Errors: 0/16
+Chunk 3 | Phase:   -2.344 deg | Amplitude: 1.04009 | Residual RMS: 0.48469 | Errors: 1/16
+Chunk 4 | Phase:   -4.121 deg | Amplitude: 0.89060 | Residual RMS: 0.38458 | Errors: 1/16
+Chunk 5 | Phase:   +3.039 deg | Amplitude: 1.05049 | Residual RMS: 0.38691 | Errors: 0/16
+Chunk 6 | Phase:   -4.580 deg | Amplitude: 0.90314 | Residual RMS: 0.41043 | Errors: 1/16
+Chunk 7 | Phase:   -2.552 deg | Amplitude: 1.00565 | Residual RMS: 0.39110 | Errors: 1/16
+Chunk 8 | Phase:   -3.164 deg | Amplitude: 0.94380 | Residual RMS: 0.33922 | Errors: 0/16
+Seed 43 | SER=0.01200 | BER=0.00600 | FAIL
+Seed 44 | SER=0.02100 | BER=0.01050 | FAIL
+Seed 45 | SER=0.01500 | BER=0.00750 | FAIL
+Seed 46 | SER=0.01300 | BER=0.00650 | FAIL
+Seed 47 | SER=0.01800 | BER=0.00925 | FAIL
+Seed 48 | SER=0.01950 | BER=0.00975 | FAIL
+Seed 49 | SER=0.02200 | BER=0.01125 | FAIL
+PDR=0.0% | Mean SER=0.017000 | Mean BER=0.008550
+
+Noise voltage: 0.250
+Seed 40 | SER=0.05150 | BER=0.02600 | FAIL
+Seed 41 | SER=0.05700 | BER=0.02875 | FAIL
+Seed 42 | SER=0.06300 | BER=0.03200 | FAIL
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.733 deg | Amplitude: 1.07956 | Residual RMS: 0.51584 | Errors: 1/16
+Chunk 2 | Phase:   -3.188 deg | Amplitude: 1.12612 | Residual RMS: 0.46121 | Errors: 1/16
+Chunk 3 | Phase:   -2.069 deg | Amplitude: 1.05469 | Residual RMS: 0.59201 | Errors: 1/16
+Chunk 4 | Phase:   -2.205 deg | Amplitude: 0.86877 | Residual RMS: 0.47357 | Errors: 2/16
+Chunk 5 | Phase:   +4.959 deg | Amplitude: 1.06183 | Residual RMS: 0.48175 | Errors: 1/16
+Chunk 6 | Phase:   -5.092 deg | Amplitude: 0.87659 | Residual RMS: 0.51241 | Errors: 1/16
+Chunk 7 | Phase:   -2.689 deg | Amplitude: 1.00343 | Residual RMS: 0.48526 | Errors: 1/16
+Chunk 8 | Phase:   -3.872 deg | Amplitude: 0.92852 | Residual RMS: 0.41785 | Errors: 0/16
+Seed 43 | SER=0.05200 | BER=0.02600 | FAIL
+Seed 44 | SER=0.05600 | BER=0.02875 | FAIL
+Seed 45 | SER=0.05800 | BER=0.02925 | FAIL
+Seed 46 | SER=0.05950 | BER=0.02975 | FAIL
+Seed 47 | SER=0.05750 | BER=0.02925 | FAIL
+Seed 48 | SER=0.06750 | BER=0.03400 | FAIL
+Seed 49 | SER=0.07550 | BER=0.03850 | FAIL
+PDR=0.0% | Mean SER=0.059750 | Mean BER=0.030225
+
+Noise voltage: 0.300
+Seed 40 | SER=0.12650 | BER=0.06375 | FAIL
+Seed 41 | SER=0.14000 | BER=0.07100 | FAIL
+Seed 42 | SER=0.13800 | BER=0.07025 | FAIL
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -2.390 deg | Amplitude: 1.08786 | Residual RMS: 0.63058 | Errors: 2/16
+Chunk 2 | Phase:   -4.522 deg | Amplitude: 1.15081 | Residual RMS: 0.55515 | Errors: 1/16
+Chunk 3 | Phase:   -2.137 deg | Amplitude: 1.05980 | Residual RMS: 0.71351 | Errors: 3/16
+Chunk 4 | Phase:   +0.630 deg | Amplitude: 0.84940 | Residual RMS: 0.56162 | Errors: 3/16
+Chunk 5 | Phase:   +8.211 deg | Amplitude: 1.06919 | Residual RMS: 0.58053 | Errors: 1/16
+Chunk 6 | Phase:   +3.808 deg | Amplitude: 0.84365 | Residual RMS: 0.62049 | Errors: 2/16
+Chunk 7 | Phase:   +2.479 deg | Amplitude: 0.99471 | Residual RMS: 0.59523 | Errors: 2/16
+Chunk 8 | Phase:   -5.343 deg | Amplitude: 0.91793 | Residual RMS: 0.49469 | Errors: 0/16
+Seed 43 | SER=0.11850 | BER=0.05975 | FAIL
+Seed 44 | SER=0.13850 | BER=0.07075 | FAIL
+Seed 45 | SER=0.14350 | BER=0.07350 | FAIL
+Seed 46 | SER=0.14050 | BER=0.07150 | FAIL
+Seed 47 | SER=0.12800 | BER=0.06525 | FAIL
+Seed 48 | SER=0.17400 | BER=0.08900 | FAIL
+Seed 49 | SER=0.13550 | BER=0.06950 | FAIL
+PDR=0.0% | Mean SER=0.138300 | Mean BER=0.070425
+
+===========================================================================
+CALIBRATING 16-QAM
+===========================================================================
+Original symbol power:   1.000000
+Normalized symbol power: 1.000000
+Constellation size:      16
+
+Noise voltage: 0.045
+Seed 40 | SER=0.00000 | BER=0.00000 | PASS
+Seed 41 | SER=0.00050 | BER=0.00038 | PASS
+Seed 42 | SER=0.00000 | BER=0.00000 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.726 deg | Amplitude: 1.00779 | Residual RMS: 0.09505 | Errors: 0/16
+Chunk 2 | Phase:   +1.319 deg | Amplitude: 1.00048 | Residual RMS: 0.08891 | Errors: 0/16
+Chunk 3 | Phase:   -2.094 deg | Amplitude: 1.00038 | Residual RMS: 0.11362 | Errors: 0/16
+Chunk 4 | Phase:   +0.612 deg | Amplitude: 0.98761 | Residual RMS: 0.08404 | Errors: 0/16
+Chunk 5 | Phase:   -0.606 deg | Amplitude: 0.98511 | Residual RMS: 0.09680 | Errors: 0/16
+Chunk 6 | Phase:   +1.098 deg | Amplitude: 0.98876 | Residual RMS: 0.09475 | Errors: 0/16
+Chunk 7 | Phase:   -1.743 deg | Amplitude: 0.99914 | Residual RMS: 0.09336 | Errors: 0/16
+Chunk 8 | Phase:   +0.593 deg | Amplitude: 0.98591 | Residual RMS: 0.07851 | Errors: 0/16
+Seed 43 | SER=0.00000 | BER=0.00000 | PASS
+Seed 44 | SER=0.00000 | BER=0.00000 | PASS
+Seed 45 | SER=0.00000 | BER=0.00000 | PASS
+Seed 46 | SER=0.00000 | BER=0.00000 | PASS
+Seed 47 | SER=0.00050 | BER=0.00038 | PASS
+Seed 48 | SER=0.00000 | BER=0.00000 | PASS
+Seed 49 | SER=0.00000 | BER=0.00000 | PASS
+PDR=100.0% | Mean SER=0.000100 | Mean BER=0.000075
+
+Noise voltage: 0.055
+Seed 40 | SER=0.00150 | BER=0.00063 | PASS
+Seed 41 | SER=0.00050 | BER=0.00038 | PASS
+Seed 42 | SER=0.00000 | BER=0.00000 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.835 deg | Amplitude: 1.00864 | Residual RMS: 0.11487 | Errors: 0/16
+Chunk 2 | Phase:   +1.546 deg | Amplitude: 0.99996 | Residual RMS: 0.10618 | Errors: 0/16
+Chunk 3 | Phase:   -2.299 deg | Amplitude: 0.99913 | Residual RMS: 0.13606 | Errors: 0/16
+Chunk 4 | Phase:   +0.531 deg | Amplitude: 0.98475 | Residual RMS: 0.10428 | Errors: 0/16
+Chunk 5 | Phase:   -0.691 deg | Amplitude: 0.97986 | Residual RMS: 0.11521 | Errors: 0/16
+Chunk 6 | Phase:   +1.135 deg | Amplitude: 0.98379 | Residual RMS: 0.11470 | Errors: 0/16
+Chunk 7 | Phase:   -1.970 deg | Amplitude: 0.99652 | Residual RMS: 0.11199 | Errors: 0/16
+Chunk 8 | Phase:   +0.617 deg | Amplitude: 0.98009 | Residual RMS: 0.09541 | Errors: 0/16
+Seed 43 | SER=0.00050 | BER=0.00038 | PASS
+Seed 44 | SER=0.00000 | BER=0.00000 | PASS
+Seed 45 | SER=0.00000 | BER=0.00000 | PASS
+Seed 46 | SER=0.00000 | BER=0.00000 | PASS
+Seed 47 | SER=0.00050 | BER=0.00038 | PASS
+Seed 48 | SER=0.00000 | BER=0.00000 | PASS
+Seed 49 | SER=0.00050 | BER=0.00013 | PASS
+PDR=100.0% | Mean SER=0.000350 | Mean BER=0.000188
+
+Noise voltage: 0.065
+Seed 40 | SER=0.00300 | BER=0.00150 | PASS
+Seed 41 | SER=0.00200 | BER=0.00137 | PASS
+Seed 42 | SER=0.00150 | BER=0.00063 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -0.662 deg | Amplitude: 1.00982 | Residual RMS: 0.13468 | Errors: 0/16
+Chunk 2 | Phase:   +0.756 deg | Amplitude: 1.00063 | Residual RMS: 0.11892 | Errors: 0/16
+Chunk 3 | Phase:   -1.339 deg | Amplitude: 0.99967 | Residual RMS: 0.15369 | Errors: 0/16
+Chunk 4 | Phase:   +0.768 deg | Amplitude: 0.97867 | Residual RMS: 0.14515 | Errors: 0/16
+Chunk 5 | Phase:   +1.092 deg | Amplitude: 0.97578 | Residual RMS: 0.13666 | Errors: 0/16
+Chunk 6 | Phase:   -0.612 deg | Amplitude: 0.98075 | Residual RMS: 0.13671 | Errors: 0/16
+Chunk 7 | Phase:   -0.096 deg | Amplitude: 0.99497 | Residual RMS: 0.13637 | Errors: 0/16
+Chunk 8 | Phase:   +0.333 deg | Amplitude: 0.97632 | Residual RMS: 0.11330 | Errors: 0/16
+Seed 43 | SER=0.00100 | BER=0.00063 | PASS
+Seed 44 | SER=0.00000 | BER=0.00000 | PASS
+Seed 45 | SER=0.00250 | BER=0.00162 | PASS
+Seed 46 | SER=0.00050 | BER=0.00025 | PASS
+Seed 47 | SER=0.00500 | BER=0.00300 | PASS
+Seed 48 | SER=0.00150 | BER=0.00063 | PASS
+Seed 49 | SER=0.00400 | BER=0.00200 | PASS
+PDR=100.0% | Mean SER=0.002100 | Mean BER=0.001163
+
+Noise voltage: 0.075
+Seed 40 | SER=0.01350 | BER=0.00688 | FAIL
+Seed 41 | SER=0.01000 | BER=0.00600 | FAIL
+Seed 42 | SER=0.00650 | BER=0.00400 | PASS
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -1.203 deg | Amplitude: 1.01131 | Residual RMS: 0.15437 | Errors: 0/16
+Chunk 2 | Phase:   +0.769 deg | Amplitude: 1.00151 | Residual RMS: 0.13570 | Errors: 0/16
+Chunk 3 | Phase:   -0.757 deg | Amplitude: 1.00044 | Residual RMS: 0.17593 | Errors: 0/16
+Chunk 4 | Phase:   +0.880 deg | Amplitude: 0.98049 | Residual RMS: 0.14407 | Errors: 0/16
+Chunk 5 | Phase:   -0.967 deg | Amplitude: 0.97370 | Residual RMS: 0.15369 | Errors: 0/16
+Chunk 6 | Phase:   +0.992 deg | Amplitude: 0.97984 | Residual RMS: 0.15609 | Errors: 0/16
+Chunk 7 | Phase:   -1.485 deg | Amplitude: 0.99693 | Residual RMS: 0.14664 | Errors: 0/16
+Chunk 8 | Phase:   -0.708 deg | Amplitude: 0.97311 | Residual RMS: 0.13776 | Errors: 0/16
+Seed 43 | SER=0.00700 | BER=0.00475 | PASS
+Seed 44 | SER=0.00650 | BER=0.00450 | PASS
+Seed 45 | SER=0.00750 | BER=0.00462 | PASS
+Seed 46 | SER=0.00650 | BER=0.00350 | PASS
+Seed 47 | SER=0.00900 | BER=0.00525 | FAIL
+Seed 48 | SER=0.00900 | BER=0.00525 | FAIL
+Seed 49 | SER=0.01000 | BER=0.00562 | FAIL
+PDR=50.0% | Mean SER=0.008550 | Mean BER=0.005038
+
+Noise voltage: 0.085
+Seed 40 | SER=0.01850 | BER=0.01025 | FAIL
+Seed 41 | SER=0.01850 | BER=0.01100 | FAIL
+Seed 42 | SER=0.02200 | BER=0.01225 | FAIL
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -2.342 deg | Amplitude: 1.01292 | Residual RMS: 0.17010 | Errors: 0/16
+Chunk 2 | Phase:   +1.002 deg | Amplitude: 1.00083 | Residual RMS: 0.15449 | Errors: 0/16
+Chunk 3 | Phase:   -1.529 deg | Amplitude: 0.99873 | Residual RMS: 0.19904 | Errors: 1/16
+Chunk 4 | Phase:   +1.453 deg | Amplitude: 0.97470 | Residual RMS: 0.16951 | Errors: 1/16
+Chunk 5 | Phase:   -0.003 deg | Amplitude: 0.96595 | Residual RMS: 0.18028 | Errors: 0/16
+Chunk 6 | Phase:   +2.756 deg | Amplitude: 0.97353 | Residual RMS: 0.17794 | Errors: 1/16
+Chunk 7 | Phase:   -1.891 deg | Amplitude: 0.99087 | Residual RMS: 0.17396 | Errors: 1/16
+Chunk 8 | Phase:   -0.050 deg | Amplitude: 0.96609 | Residual RMS: 0.14559 | Errors: 0/16
+Seed 43 | SER=0.02400 | BER=0.01500 | FAIL
+Seed 44 | SER=0.02250 | BER=0.01362 | FAIL
+Seed 45 | SER=0.01950 | BER=0.01188 | FAIL
+Seed 46 | SER=0.01500 | BER=0.00887 | FAIL
+Seed 47 | SER=0.02400 | BER=0.01425 | FAIL
+Seed 48 | SER=0.02300 | BER=0.01350 | FAIL
+Seed 49 | SER=0.02400 | BER=0.01375 | FAIL
+PDR=0.0% | Mean SER=0.021100 | Mean BER=0.012438
+
+Noise voltage: 0.100
+Seed 40 | SER=0.05750 | BER=0.03288 | FAIL
+Seed 41 | SER=0.06000 | BER=0.03550 | FAIL
+Seed 42 | SER=0.05650 | BER=0.03112 | FAIL
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -2.211 deg | Amplitude: 1.01467 | Residual RMS: 0.20290 | Errors: 1/16
+Chunk 2 | Phase:   +1.343 deg | Amplitude: 1.00143 | Residual RMS: 0.18239 | Errors: 0/16
+Chunk 3 | Phase:   +1.722 deg | Amplitude: 1.00092 | Residual RMS: 0.22531 | Errors: 2/16
+Chunk 4 | Phase:   +4.584 deg | Amplitude: 0.97045 | Residual RMS: 0.20262 | Errors: 2/16
+Chunk 5 | Phase:   +3.040 deg | Amplitude: 0.96182 | Residual RMS: 0.20481 | Errors: 1/16
+Chunk 6 | Phase:   +3.300 deg | Amplitude: 0.97050 | Residual RMS: 0.20768 | Errors: 2/16
+Chunk 7 | Phase:   -0.391 deg | Amplitude: 0.99298 | Residual RMS: 0.19266 | Errors: 1/16
+Chunk 8 | Phase:   +2.927 deg | Amplitude: 0.96081 | Residual RMS: 0.17553 | Errors: 1/16
+Seed 43 | SER=0.04500 | BER=0.02712 | FAIL
+Seed 44 | SER=0.05800 | BER=0.03300 | FAIL
+Seed 45 | SER=0.05200 | BER=0.03075 | FAIL
+Seed 46 | SER=0.04950 | BER=0.02800 | FAIL
+Seed 47 | SER=0.05700 | BER=0.03188 | FAIL
+Seed 48 | SER=0.05900 | BER=0.03413 | FAIL
+Seed 49 | SER=0.06500 | BER=0.03775 | FAIL
+PDR=0.0% | Mean SER=0.055950 | Mean BER=0.032212
+
+Noise voltage: 0.125
+Seed 40 | SER=0.15050 | BER=0.08413 | FAIL
+Seed 41 | SER=0.15750 | BER=0.09237 | FAIL
+Seed 42 | SER=0.18150 | BER=0.10200 | FAIL
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -6.282 deg | Amplitude: 1.01610 | Residual RMS: 0.26256 | Errors: 3/16
+Chunk 2 | Phase:  -17.552 deg | Amplitude: 0.93039 | Residual RMS: 0.44765 | Errors: 6/16
+Chunk 3 | Phase:  -10.951 deg | Amplitude: 0.94062 | Residual RMS: 0.43635 | Errors: 9/16
+Chunk 4 | Phase:   +6.125 deg | Amplitude: 0.96298 | Residual RMS: 0.24969 | Errors: 4/16
+Chunk 5 | Phase:   +1.871 deg | Amplitude: 0.95229 | Residual RMS: 0.25133 | Errors: 1/16
+Chunk 6 | Phase:  -16.584 deg | Amplitude: 0.85372 | Residual RMS: 0.45307 | Errors: 5/16
+Chunk 7 | Phase:  -12.988 deg | Amplitude: 0.90197 | Residual RMS: 0.46783 | Errors: 9/16
+Chunk 8 | Phase:   +3.042 deg | Amplitude: 0.94924 | Residual RMS: 0.21413 | Errors: 1/16
+Seed 43 | SER=0.15700 | BER=0.08825 | FAIL
+Seed 44 | SER=0.18300 | BER=0.10362 | FAIL
+Seed 45 | SER=0.16250 | BER=0.09062 | FAIL
+Seed 46 | SER=0.15700 | BER=0.08850 | FAIL
+Seed 47 | SER=0.16050 | BER=0.09175 | FAIL
+Seed 48 | SER=0.32200 | BER=0.17012 | FAIL
+Seed 49 | SER=0.18850 | BER=0.10525 | FAIL
+PDR=0.0% | Mean SER=0.182000 | Mean BER=0.101662
+
+Noise voltage: 0.160
+Seed 40 | SER=0.37250 | BER=0.20175 | FAIL
+Seed 41 | SER=0.32900 | BER=0.18688 | FAIL
+Seed 42 | SER=0.33750 | BER=0.18937 | FAIL
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:   -7.617 deg | Amplitude: 1.02388 | Residual RMS: 0.33278 | Errors: 4/16
+Chunk 2 | Phase:  -18.380 deg | Amplitude: 0.95064 | Residual RMS: 0.45987 | Errors: 7/16
+Chunk 3 | Phase:   -9.218 deg | Amplitude: 0.95600 | Residual RMS: 0.48171 | Errors: 10/16
+Chunk 4 | Phase:   +5.766 deg | Amplitude: 0.96150 | Residual RMS: 0.32623 | Errors: 4/16
+Chunk 5 | Phase:  +13.387 deg | Amplitude: 0.94573 | Residual RMS: 0.33268 | Errors: 8/16
+Chunk 6 | Phase:  +23.354 deg | Amplitude: 0.96531 | Residual RMS: 0.33493 | Errors: 9/16
+Chunk 7 | Phase:   +8.972 deg | Amplitude: 1.00364 | Residual RMS: 0.30645 | Errors: 5/16
+Chunk 8 | Phase:  +15.347 deg | Amplitude: 0.94757 | Residual RMS: 0.28645 | Errors: 6/16
+Seed 43 | SER=0.34050 | BER=0.19175 | FAIL
+Seed 44 | SER=0.35700 | BER=0.19862 | FAIL
+Seed 45 | SER=0.34750 | BER=0.18937 | FAIL
+Seed 46 | SER=0.32050 | BER=0.17838 | FAIL
+Seed 47 | SER=0.54200 | BER=0.29113 | FAIL
+Seed 48 | SER=0.37400 | BER=0.20225 | FAIL
+Seed 49 | SER=0.33300 | BER=0.18375 | FAIL
+PDR=0.0% | Mean SER=0.365350 | Mean BER=0.201325
+
+Noise voltage: 0.200
+Seed 40 | SER=0.79900 | BER=0.41613 | FAIL
+Seed 41 | SER=0.47800 | BER=0.26450 | FAIL
+Seed 42 | SER=0.55900 | BER=0.31112 | FAIL
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:  -11.289 deg | Amplitude: 1.01986 | Residual RMS: 0.41016 | Errors: 6/16
+Chunk 2 | Phase:   +7.460 deg | Amplitude: 0.97188 | Residual RMS: 0.43448 | Errors: 9/16
+Chunk 3 | Phase:  +20.998 deg | Amplitude: 0.99074 | Residual RMS: 0.45543 | Errors: 9/16
+Chunk 4 | Phase:   +6.668 deg | Amplitude: 0.93029 | Residual RMS: 0.40653 | Errors: 7/16
+Chunk 5 | Phase:  +20.287 deg | Amplitude: 0.91993 | Residual RMS: 0.38206 | Errors: 9/16
+Chunk 6 | Phase:  +23.807 deg | Amplitude: 0.93499 | Residual RMS: 0.40324 | Errors: 11/16
+Chunk 7 | Phase:   +4.212 deg | Amplitude: 0.97154 | Residual RMS: 0.38861 | Errors: 5/16
+Chunk 8 | Phase:   -0.196 deg | Amplitude: 0.88473 | Residual RMS: 0.39645 | Errors: 7/16
+Seed 43 | SER=0.48850 | BER=0.27175 | FAIL
+Seed 44 | SER=0.49300 | BER=0.27313 | FAIL
+Seed 45 | SER=0.53950 | BER=0.29513 | FAIL
+Seed 46 | SER=0.47050 | BER=0.26100 | FAIL
+Seed 47 | SER=0.48750 | BER=0.26787 | FAIL
+Seed 48 | SER=0.88100 | BER=0.47013 | FAIL
+Seed 49 | SER=0.58700 | BER=0.31712 | FAIL
+PDR=0.0% | Mean SER=0.578300 | Mean BER=0.314787
+
+Noise voltage: 0.250
+Seed 40 | SER=0.75500 | BER=0.40250 | FAIL
+Seed 41 | SER=0.58150 | BER=0.31850 | FAIL
+Seed 42 | SER=0.92150 | BER=0.49438 | FAIL
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:  -13.680 deg | Amplitude: 1.03653 | Residual RMS: 0.52355 | Errors: 8/16
+Chunk 2 | Phase:  +12.238 deg | Amplitude: 1.00344 | Residual RMS: 0.48436 | Errors: 12/16
+Chunk 3 | Phase:  +21.528 deg | Amplitude: 1.00962 | Residual RMS: 0.55973 | Errors: 9/16
+Chunk 4 | Phase:  +11.723 deg | Amplitude: 0.91892 | Residual RMS: 0.51973 | Errors: 7/16
+Chunk 5 | Phase:  +18.625 deg | Amplitude: 0.91627 | Residual RMS: 0.47278 | Errors: 10/16
+Chunk 6 | Phase:  +17.476 deg | Amplitude: 0.93011 | Residual RMS: 0.50889 | Errors: 10/16
+Chunk 7 | Phase:  -12.414 deg | Amplitude: 0.97182 | Residual RMS: 0.49819 | Errors: 9/16
+Chunk 8 | Phase:  +12.443 deg | Amplitude: 0.87208 | Residual RMS: 0.47005 | Errors: 8/16
+Seed 43 | SER=0.58350 | BER=0.31450 | FAIL
+Seed 44 | SER=0.60850 | BER=0.33037 | FAIL
+Seed 45 | SER=0.59400 | BER=0.32225 | FAIL
+Seed 46 | SER=0.59100 | BER=0.32400 | FAIL
+Seed 47 | SER=0.60700 | BER=0.32462 | FAIL
+Seed 48 | SER=0.70300 | BER=0.37238 | FAIL
+Seed 49 | SER=0.72500 | BER=0.38200 | FAIL
+PDR=0.0% | Mean SER=0.667000 | Mean BER=0.358550
+
+Noise voltage: 0.300
+Seed 40 | SER=0.68450 | BER=0.36662 | FAIL
+Seed 41 | SER=0.64550 | BER=0.35037 | FAIL
+Seed 42 | SER=0.84250 | BER=0.45487 | FAIL
+
+Block 4: phase tracking in 16-symbol windows
+Chunk 1 | Phase:  -11.184 deg | Amplitude: 1.04109 | Residual RMS: 0.61108 | Errors: 8/16
+Chunk 2 | Phase:   -6.607 deg | Amplitude: 0.97092 | Residual RMS: 0.61392 | Errors: 11/16
+Chunk 3 | Phase:  -28.572 deg | Amplitude: 0.92936 | Residual RMS: 0.75702 | Errors: 14/16
+Chunk 4 | Phase:  +11.595 deg | Amplitude: 0.88467 | Residual RMS: 0.61963 | Errors: 8/16
+Chunk 5 | Phase:  +22.233 deg | Amplitude: 0.88707 | Residual RMS: 0.55903 | Errors: 10/16
+Chunk 6 | Phase:  +24.642 deg | Amplitude: 0.90334 | Residual RMS: 0.59860 | Errors: 13/16
+Chunk 7 | Phase:  -18.651 deg | Amplitude: 0.98307 | Residual RMS: 0.52920 | Errors: 10/16
+Chunk 8 | Phase:  +13.890 deg | Amplitude: 0.86856 | Residual RMS: 0.47335 | Errors: 8/16
+Seed 43 | SER=0.84350 | BER=0.44812 | FAIL
+Seed 44 | SER=0.89150 | BER=0.48938 | FAIL
+Seed 45 | SER=0.70900 | BER=0.37925 | FAIL
+Seed 46 | SER=0.65900 | BER=0.35525 | FAIL
+Seed 47 | SER=0.87700 | BER=0.46463 | FAIL
+Seed 48 | SER=0.66200 | BER=0.34700 | FAIL
+Seed 49 | SER=0.92850 | BER=0.49400 | FAIL
+PDR=0.0% | Mean SER=0.774300 | Mean BER=0.414950
+
+===========================================================================
+EQUAL-POWER CALIBRATION SUMMARY
+===========================================================================
+Modulation      Noise        PDR          SER          BER
+BPSK            0.045    100.0%     0.000000     0.000000
+BPSK            0.055    100.0%     0.000000     0.000000
+BPSK            0.065    100.0%     0.000000     0.000000
+BPSK            0.075    100.0%     0.000000     0.000000
+BPSK            0.085    100.0%     0.000000     0.000000
+BPSK            0.100    100.0%     0.000000     0.000000
+BPSK            0.125    100.0%     0.000000     0.000000
+BPSK            0.160    100.0%     0.000000     0.000000
+BPSK            0.200    100.0%     0.000200     0.000200
+BPSK            0.250    100.0%     0.002250     0.002250
+BPSK            0.300      0.0%     0.010600     0.010600
+QPSK            0.045    100.0%     0.000000     0.000000
+QPSK            0.055    100.0%     0.000000     0.000000
+QPSK            0.065    100.0%     0.000000     0.000000
+QPSK            0.075    100.0%     0.000000     0.000000
+QPSK            0.085    100.0%     0.000000     0.000000
+QPSK            0.100    100.0%     0.000000     0.000000
+QPSK            0.125    100.0%     0.000200     0.000100
+QPSK            0.160    100.0%     0.002600     0.001300
+QPSK            0.200      0.0%     0.017000     0.008550
+QPSK            0.250      0.0%     0.059750     0.030225
+QPSK            0.300      0.0%     0.138300     0.070425
+16-QAM          0.045    100.0%     0.000100     0.000075
+16-QAM          0.055    100.0%     0.000350     0.000188
+16-QAM          0.065    100.0%     0.002100     0.001163
+16-QAM          0.075     50.0%     0.008550     0.005038
+16-QAM          0.085      0.0%     0.021100     0.012438
+16-QAM          0.100      0.0%     0.055950     0.032212
+16-QAM          0.125      0.0%     0.182000     0.101662
+16-QAM          0.160      0.0%     0.365350     0.201325
+16-QAM          0.200      0.0%     0.578300     0.314787
+16-QAM          0.250      0.0%     0.667000     0.358550
+16-QAM          0.300      0.0%     0.774300     0.414950
+
+Saved: results/equal_power_modulation_calibration.csv

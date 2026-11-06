@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments
+.venv/
+venv/
+env/
+ENV/
+.tox/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# GNU Radio generated debug dumps
+rx_*.32f
+rx_*.32fc
+rx_*.8b
+
+# Temporary and backup files
+*.save
+*.tmp
+*.bak
+*~
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

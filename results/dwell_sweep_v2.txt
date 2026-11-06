@@ -1,0 +1,53 @@
+Existing baseline results:
+Low      | dwell= 0
+Low      | dwell= 5
+Low      | dwell=10
+Low      | dwell=20
+
+Medium   | dwell= 0
+Medium   | dwell= 5
+Medium   | dwell=10
+Medium   | dwell=20
+
+High     | dwell= 0
+High     | dwell= 5
+High     | dwell=10
+High     | dwell=20
+
+Environment Dwell Strategy                      PDR  Throughput Availability  Switches
+Low            0 channel_switching           0.970       1.842        0.949     128.0
+Low            0 hybrid                      0.974       0.900        0.949     128.0
+Low            0 reliability_constrained     0.997       0.995        1.000       0.0
+Low            5 channel_switching           0.964       1.848        0.958     104.2
+Low            5 hybrid                      0.963       0.894        0.958     104.2
+Low            5 reliability_constrained     0.997       0.995        1.000       0.0
+Low           10 channel_switching           0.958       1.845        0.963      93.0
+Low           10 hybrid                      0.956       0.886        0.963      93.0
+Low           10 reliability_constrained     0.997       0.995        1.000       0.0
+Low           20 channel_switching           0.951       1.844        0.970      74.6
+Low           20 hybrid                      0.946       0.876        0.970      74.6
+Low           20 reliability_constrained     0.997       0.995        1.000       0.0
+Medium         0 channel_switching           0.934       1.407        0.753     617.0
+Medium         0 hybrid                      0.954       0.689        0.753     617.0
+Medium         0 reliability_constrained     0.991       0.949        0.965      87.4
+Medium         5 channel_switching           0.879       1.496        0.851     372.8
+Medium         5 hybrid                      0.907       0.721        0.851     372.8
+Medium         5 reliability_constrained     0.988       0.948        0.968      79.8
+Medium        10 channel_switching           0.856       1.524        0.890     274.2
+Medium        10 hybrid                      0.885       0.727        0.890     274.2
+Medium        10 reliability_constrained     0.985       0.946        0.971      73.2
+Medium        20 channel_switching           0.825       1.532        0.929     177.2
+Medium        20 hybrid                      0.866       0.732        0.929     177.2
+Medium        20 reliability_constrained     0.975       0.938        0.975      63.6
+High           0 channel_switching           0.844       1.186        0.703     743.8
+High           0 hybrid                      0.889       0.581        0.703     743.8
+High           0 reliability_constrained     0.957       0.804        0.854     364.6
+High           5 channel_switching           0.727       1.190        0.819     453.6
+High           5 hybrid                      0.791       0.586        0.819     453.6
+High           5 reliability_constrained     0.905       0.781        0.883     293.2
+High          10 channel_switching           0.671       1.171        0.873     317.2
+High          10 hybrid                      0.741       0.578        0.873     317.2
+High          10 reliability_constrained     0.855       0.752        0.905     238.6
+High          20 channel_switching           0.611       1.126        0.921     196.8
+High          20 hybrid                      0.692       0.561        0.921     196.8
+High          20 reliability_constrained     0.791       0.713        0.935     163.8

@@ -1,0 +1,16 @@
+Environment Strategy                   PDR mean   PDR SD  Throughput Availability  Switches
+Low        fixed                         1.000    0.000       1.999        1.000       0.0
+Low        adaptive_modulation           0.825    0.006       3.065        1.000       0.0
+Low        channel_switching             0.970    0.002       1.842        0.949     128.0
+Low        hybrid                        0.974    0.003       0.900        0.949     128.0
+Low        reliability_constrained       0.997    0.001       0.995        1.000       0.0
+Medium     fixed                         0.944    0.004       1.888        1.000       0.0
+Medium     adaptive_modulation           0.853    0.007       2.572        1.000       0.0
+Medium     channel_switching             0.934    0.003       1.407        0.753     617.0
+Medium     hybrid                        0.954    0.005       0.689        0.753     617.0
+Medium     reliability_constrained       0.991    0.001       0.949        0.965      87.4
+High       fixed                         0.681    0.016       1.362        1.000       0.0
+High       adaptive_modulation           0.698    0.007       1.857        1.000       0.0
+High       channel_switching             0.844    0.016       1.186        0.703     743.8
+High       hybrid                        0.889    0.011       0.581        0.703     743.8
+High       reliability_constrained       0.957    0.008       0.804        0.854     364.6

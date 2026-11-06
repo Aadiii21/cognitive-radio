@@ -1,0 +1,36 @@
+
+MINIMUM DWELL TIME: 0 steps
+------------------------------------------------------------------------------------------------------------
+Strategy                       PDR   Throughput    Avail.  Switches   Packets  Pred. PDR
+fixed                      94.4%        1.889   100.0%         0      5000          -
+adaptive_modulation        85.0%        2.612   100.0%         0      5000          -
+channel_switching          98.8%        1.834    92.8%       179      4642          -
+hybrid                     86.7%        2.524    92.8%       179      4642          -
+reliability_constrained    99.4%        1.874    92.2%       196      4608      99.4%
+
+MINIMUM DWELL TIME: 5 steps
+------------------------------------------------------------------------------------------------------------
+Strategy                       PDR   Throughput    Avail.  Switches   Packets  Pred. PDR
+fixed                      94.4%        1.889   100.0%         0      5000          -
+adaptive_modulation        85.0%        2.612   100.0%         0      5000          -
+channel_switching          96.9%        1.817    93.8%       156      4688          -
+hybrid                     86.2%        2.502    93.8%       156      4688          -
+reliability_constrained    98.7%        1.848    92.7%       183      4634      98.7%
+
+MINIMUM DWELL TIME: 10 steps
+------------------------------------------------------------------------------------------------------------
+Strategy                       PDR   Throughput    Avail.  Switches   Packets  Pred. PDR
+fixed                      94.4%        1.889   100.0%         0      5000          -
+adaptive_modulation        85.0%        2.612   100.0%         0      5000          -
+channel_switching          95.7%        1.811    94.6%       136      4728          -
+hybrid                     86.3%        2.467    94.6%       136      4728          -
+reliability_constrained    98.3%        1.833    93.8%       154      4692      98.2%
+
+MINIMUM DWELL TIME: 20 steps
+------------------------------------------------------------------------------------------------------------
+Strategy                       PDR   Throughput    Avail.  Switches   Packets  Pred. PDR
+fixed                      94.4%        1.889   100.0%         0      5000          -
+adaptive_modulation        85.0%        2.612   100.0%         0      5000          -
+channel_switching          92.8%        1.774    95.6%       111      4778          -
+hybrid                     85.6%        2.389    95.6%       111      4778          -
+reliability_constrained    97.3%        1.792    95.2%       121      4758      97.3%

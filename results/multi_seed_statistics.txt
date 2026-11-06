@@ -1,0 +1,19 @@
+Seeds per environment: 5
+Steps per run: 5000
+
+Environment Strategy                        PDR mean±SD      Throughput mean±SD     Availability mean±SD    Switches mean±SD
+Low        fixed                     1.000±0.000    1.999±0.001     1.000±0.000     0.0±0.0
+Low        adaptive_modulation       0.825±0.006    3.065±0.045     1.000±0.000     0.0±0.0
+Low        channel_switching         1.000±0.000    1.999±0.001     1.000±0.000     0.4±0.9
+Low        hybrid                    0.825±0.006    3.065±0.045     1.000±0.000     0.4±0.9
+Low        reliability_constrained   0.997±0.001    2.114±0.017     1.000±0.000     0.4±0.9
+Medium     fixed                     0.944±0.004    1.888±0.008     1.000±0.000     0.0±0.0
+Medium     adaptive_modulation       0.853±0.007    2.572±0.020     1.000±0.000     0.0±0.0
+Medium     channel_switching         0.988±0.002    1.828±0.009     0.926±0.004   186.2±10.7
+Medium     hybrid                    0.870±0.006    2.481±0.024     0.926±0.004   186.2±10.7
+Medium     reliability_constrained   0.993±0.001    1.856±0.018     0.918±0.008   204.8±19.9
+High       fixed                     0.681±0.016    1.362±0.033     1.000±0.000     0.0±0.0
+High       adaptive_modulation       0.698±0.007    1.857±0.054     1.000±0.000     0.0±0.0
+High       channel_switching         0.895±0.011    1.426±0.038     0.796±0.014   509.2±35.6
+High       hybrid                    0.859±0.003    1.856±0.065     0.796±0.014   509.2±35.6
+High       reliability_constrained   0.961±0.006    1.445±0.046     0.810±0.012   474.8±28.9
