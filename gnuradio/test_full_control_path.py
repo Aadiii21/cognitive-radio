@@ -11,6 +11,10 @@ class FullControlPathTest(gr.top_block):
 
         self.controller = JointCognitiveController()
 
+        # Test-only interval: 20 SNR samples per scenario.
+        # Production interval remains 3200 samples.
+        self.controller.decision_interval = 20
+
         self.sources = []
         self.modulation_selectors = []
 
@@ -24,7 +28,7 @@ class FullControlPathTest(gr.top_block):
                 value = complex(channel * 100 + modulation + 1, 0)
 
                 source = blocks.vector_source_c(
-                    [value] * 15000, False
+                    [value] * 20000, False
                 )
                 throttle = blocks.throttle(
                     gr.sizeof_gr_complex, 1000, True, 100
@@ -69,12 +73,28 @@ class FullControlPathTest(gr.top_block):
                 (self.controller, port),
                 (block, "store")
             )
-
         scenarios = [
+            # Switch to channel 1
             [3.0, 18.0, 8.0],
+            [3.0, 18.0, 8.0],
+            [3.0, 18.0, 8.0],
+
+            # Switch to channel 0
             [23.0, 11.0, 3.0],
+            [23.0, 11.0, 3.0],
+            [23.0, 11.0, 3.0],
+
+            # Switch to channel 2
             [2.0, 3.0, 22.0],
+            [2.0, 3.0, 22.0],
+            [2.0, 3.0, 22.0],
+
+            # Degrade all channels
             [-3.0, -2.0, -4.0],
+
+            # Return to channel 0
+            [23.0, 11.0, 3.0],
+            [23.0, 11.0, 3.0],
             [23.0, 11.0, 3.0],
         ]
 
@@ -109,7 +129,7 @@ def main():
 
     print("===== CONTROLLER STATE =====")
     print("Channel:", tb.controller.adapter.controller.current_channel)
-    print("Modulation:", tb.controller.adapter.controller.current_modulation)
+    print("Modulation:", {0: "BPSK", 1: "QPSK", 2: "16-QAM"}.get(tb.controller.current_modulation, "Unknown"))
     print("Enabled:", tb.controller.current_enabled)
 
     print("\n===== MESSAGE COUNTS =====")
@@ -133,7 +153,7 @@ def main():
     assert 203.0 in unique
 
     final_channel = tb.controller.adapter.controller.current_channel
-    final_modulation = tb.controller.adapter.controller.current_modulation
+    final_modulation = {0: "BPSK", 1: "QPSK", 2: "16-QAM"}.get(tb.controller.current_modulation, "Unknown")
     final_enabled = tb.controller.current_enabled
 
     print("\n===== FINAL ASSERTION VALUES =====")
