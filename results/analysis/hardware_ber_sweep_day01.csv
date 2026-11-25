@@ -1,0 +1,16 @@
+modulation,pluto_attenuation_db,mean_esn0_db,bit_errors,bits,measured_ber,theory_ber_awgn,rf_path
+BPSK,0,21.8,0,4096,0.000e+00,6.042e-68,ota_antennas_separation_not_recorded
+BPSK,5,17.2,0,4096,0.000e+00,4.478e-25,ota_antennas_separation_not_recorded
+BPSK,10,10.0,0,4096,0.000e+00,4.087e-06,ota_antennas_separation_not_recorded
+BPSK,15,7.7,1,4096,2.441e-04,3.178e-04,ota_antennas_separation_not_recorded
+BPSK,20,4.3,41,4096,1.001e-02,1.012e-02,ota_antennas_separation_not_recorded
+QPSK,0,23.3,0,4096,0.000e+00,9.378e-49,ota_antennas_separation_not_recorded
+QPSK,5,18.5,0,4096,0.000e+00,1.397e-17,ota_antennas_separation_not_recorded
+QPSK,10,12.8,0,4096,0.000e+00,5.996e-06,ota_antennas_separation_not_recorded
+QPSK,15,6.9,70,4096,1.709e-02,1.386e-02,ota_antennas_separation_not_recorded
+QPSK,20,5.1,175,4096,4.272e-02,3.595e-02,ota_antennas_separation_not_recorded
+16QAM,0,23.5,0,4096,0.000e+00,1.047e-11,ota_antennas_separation_not_recorded
+16QAM,5,17.1,5,4096,1.221e-03,4.989e-04,ota_antennas_separation_not_recorded
+16QAM,10,12.3,123,4096,3.003e-02,2.407e-02,ota_antennas_separation_not_recorded
+16QAM,15,7.9,456,4096,1.113e-01,9.954e-02,ota_antennas_separation_not_recorded
+16QAM,20,3.1,957,4096,2.336e-01,1.959e-01,ota_antennas_separation_not_recorded

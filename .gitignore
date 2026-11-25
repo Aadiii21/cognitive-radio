@@ -12,6 +12,7 @@ venv/
 env/
 ENV/
 .tox/
+node_modules/
 
 # Jupyter
 .ipynb_checkpoints/
@@ -21,11 +22,13 @@ rx_*.32f
 rx_*.32fc
 rx_*.8b
 
-# Temporary and backup files
+# Temporary, backup and lock files
 *.save
 *.tmp
 *.bak
 *~
+.~lock.*#
+/main
 
 # OS/editor
 .DS_Store

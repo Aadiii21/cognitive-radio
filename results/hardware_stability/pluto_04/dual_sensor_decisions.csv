@@ -1,0 +1,2 @@
+timestamp_utc,controller_source,input_snr_db,selected_channel,selected_frequency_hz,modulation,data_rate,action,estimated_snr_db,expected_utility
+2026-11-14T07:24:36.696993+00:00,pluto,5.7890;3.8361;6.1037,0,500000000,BPSK,1.0,stay,5.789009989858886,0.833426517823871

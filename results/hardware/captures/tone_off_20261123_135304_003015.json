@@ -1,0 +1,48 @@
+{
+  "data_kind": "rtl_sdr_rx_capture",
+  "content": "RTL-SDR received samples (raw uint8 interleaved I/Q). NOT transmit data.",
+  "rx_center_frequency_hz": 866000000,
+  "rx_sample_rate_hz": 2048000.0,
+  "rx_sample_rate_source": "librtlsdr formula; rate is exact so rtl_sdr prints none",
+  "rx_gain_db": 28.0,
+  "rx_gain_mode": "manual",
+  "samples": 1048576,
+  "clipping_fraction": 0.0,
+  "capture": {
+    "command": [
+      "rtl_sdr",
+      "-d",
+      "0",
+      "-f",
+      "866000000",
+      "-s",
+      "2048000",
+      "-g",
+      "28.0",
+      "-"
+    ],
+    "returncode": 0,
+    "stderr_tail": "Found 1 device(s):\n  0:  Realtek, RTL2838UHIDIR, SN: 00000001\n\nUsing device 0: Generic RTL2832U OEM\nFound Rafael Micro R820T tuner\n[R82XX] PLL not locked!\nSampling at 2048000 S/s.\nTuned to 866000000 Hz.\nTuner gain set to 28.00 dB.\nReading samples in async mode...\nSignal caught, exiting!\n\nUser cancel, exiting...\n",
+    "center_frequency_hz": 866000000,
+    "requested_sample_rate_hz": 2048000,
+    "actual_sample_rate_hz": 2048000.0,
+    "actual_sample_rate_source": "librtlsdr formula; rate is exact so rtl_sdr prints none",
+    "gain_db": 28.0,
+    "device_index": 0,
+    "discarded_samples": 262144,
+    "captured_samples": 1048576
+  },
+  "timestamp": "2026-11-23T13:53:04.005706",
+  "tx_signal": "none (after tone TX stopped)",
+  "tx_active": false,
+  "rf_path": {
+    "type": "conducted",
+    "physical_attenuation_db": 30.0
+  },
+  "rf_path_correction": {
+    "actual_type": "ota",
+    "note": "antennas on Pluto and RTL-SDR; no cable, no attenuator; separation not recorded",
+    "annotated_at": "2026-11-23T17:55:04",
+    "reason": "runner was run with a different --rf-path than the physical setup"
+  }
+}

@@ -1,0 +1,45 @@
+=== Project Validation ===
+Repository root: /home/deamon/projects/cognitive-radio
+
+--- Step 1: Environment Checks ---
+Python: Python 3.14.10
+Checking core imports...
+  NumPy, SciPy, Pandas, Matplotlib, Scikit-learn OK
+--- Step 2: Unit Tests ---
+........................................................................ [ 65%]
+......................................                                   [100%]
+110 passed in 1.48s
+All 0 unit tests passed
+
+--- Step 3: Simulation Validation ---
+Results file: results/calibrated_multi_seed_results.csv (631 lines including header)
+Strategies: adaptive_modulation calibrated_hybrid channel_switching cost_aware_hybrid fixed hybrid reliability_constrained strategy 
+  - calibrated_hybrid present
+
+--- Step 4: Result Audit ---
+Environment counts:
+  {'Low': 210, 'Medium': 210, 'High': 210}
+  Rows: 630
+  Columns: ['environment', 'seed', 'strategy', 'packet_delivery_ratio', 'throughput_bits_per_step', 'service_availability', 'switches', 'attempted_packets']
+  Missing values: 0
+  Duplicates: 0
+Strategy counts:
+{'fixed': 90, 'adaptive_modulation': 90, 'channel_switching': 90, 'hybrid': 90, 'reliability_constrained': 90, 'cost_aware_hybrid': 90, 'calibrated_hybrid': 90}
+
+--- Step 5: Generate Final Plots ---
+  Saved: strategy_comparison.png
+
+--- Step 6: Generate Summary Tables ---
+  Created tables in results/final/tables/
+    - throughput_by_environment.csv
+    - pdr_by_environment.csv
+    - availability_by_environment.csv
+    - switching_overhead_by_environment.csv
+
+--- Step 7: Run Statistical Analysis ---
+
+--- Step 8: Run ML Analysis ---
+
+=== Validation Complete ===
+All steps passed or completed with warnings.
+Final results: results/final/plots/ and results/final/tables/

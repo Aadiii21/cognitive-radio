@@ -47,6 +47,9 @@ def test_two_step_switch_causes_two_unavailable_steps(monkeypatch):
     monkeypatch.setattr(experiment, "SWITCH_DELAY_STEPS", 2)
     monkeypatch.setattr(experiment, "ChannelModel", FakeChannelModel)
     monkeypatch.setattr(experiment, "CognitiveController", FakeController)
+    monkeypatch.setattr(
+        experiment, "FixedQPSKChannelController", FakeController
+    )
 
     results = experiment.run_once(seed=2026, environment="Low")
 

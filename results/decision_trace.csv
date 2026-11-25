@@ -1,0 +1,14 @@
+timestamp,snr_ch0_db,snr_ch1_db,snr_ch2_db,channel,modulation,enabled,action,handoff_remaining
+6656.053225324,3.0,18.0,8.0,1,16-QAM,False,switch_channel,1
+6657.05315911,3.0,18.0,8.0,1,16-QAM,False,stay,0
+6658.052813563,3.0,18.0,8.0,1,16-QAM,True,stay,0
+6659.052998621,23.0,11.0,3.0,0,16-QAM,False,switch_channel,1
+6660.053165585,23.0,11.0,3.0,0,16-QAM,False,stay,0
+6661.053256335,23.0,11.0,3.0,0,16-QAM,True,stay,0
+6662.053033184,2.0,3.0,22.0,2,16-QAM,False,switch_channel,1
+6663.053189805,2.0,3.0,22.0,2,16-QAM,False,stay,0
+6664.053620061,2.0,3.0,22.0,2,16-QAM,True,stay,0
+6665.053126302,-3.0,-2.0,-4.0,2,BPSK,False,stay,0
+6666.052898396,23.0,11.0,3.0,0,16-QAM,False,switch_channel,1
+6667.053295648,23.0,11.0,3.0,0,16-QAM,False,stay,0
+6668.053509755,23.0,11.0,3.0,0,16-QAM,True,stay,0

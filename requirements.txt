@@ -1,0 +1,12 @@
+# Python dependencies (GNU Radio 3.10 + gnuradio-iio come from conda-forge, see README)
+numpy>=1.26
+scipy>=1.11
+pandas>=2.0
+matplotlib>=3.8
+scikit-learn>=1.4
+pytest>=8.0
+# SDR hardware (Pluto); pylibiio must match the system libiio (0.25 for libiio 0.x)
+pyadi-iio==0.0.21
+pylibiio==0.25
+# DL classifier (CPU build: pip install torch --index-url https://download.pytorch.org/whl/cpu)
+torch>=2.2

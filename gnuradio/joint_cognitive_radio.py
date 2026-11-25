@@ -73,9 +73,9 @@ class joint_cognitive_radio(gr.top_block, Qt.QWidget):
         ##################################################
         self.samp_rate_0 = samp_rate_0 = 32000
         self.samp_rate = samp_rate = 32000
-        self.noise_amp_2 = noise_amp_2 = 0.05
-        self.noise_amp_1 = noise_amp_1 = 0.05
-        self.noise_amp = noise_amp = 0.05
+        self.noise_amp_2 = noise_amp_2 = 0.126
+        self.noise_amp_1 = noise_amp_1 = 0.050
+        self.noise_amp = noise_amp = 0.281
         self.const_qpsk = const_qpsk = digital.constellation_qpsk().base()
         self.const_qpsk.set_npwr(1.0)
         self.const_bpsk = const_bpsk = digital.constellation_bpsk().base()
@@ -87,14 +87,14 @@ class joint_cognitive_radio(gr.top_block, Qt.QWidget):
         # Blocks
         ##################################################
 
-        self._noise_amp_2_range = qtgui.Range(0.05, 1.0, 0.05, 0.05, 200)
-        self._noise_amp_2_win = qtgui.RangeWidget(self._noise_amp_2_range, self.set_noise_amp_2, "Channel Noise Amplitude", "counter_slider", float, QtCore.Qt.Horizontal)
+        self._noise_amp_2_range = qtgui.Range(0.05, 1.0, 0.05, 0.126, 200)
+        self._noise_amp_2_win = qtgui.RangeWidget(self._noise_amp_2_range, self.set_noise_amp_2, "Channel 1 Noise Amplitude (15 dB)", "counter_slider", float, QtCore.Qt.Horizontal)
         self.top_layout.addWidget(self._noise_amp_2_win)
-        self._noise_amp_1_range = qtgui.Range(0.05, 1.0, 0.05, 0.05, 200)
-        self._noise_amp_1_win = qtgui.RangeWidget(self._noise_amp_1_range, self.set_noise_amp_1, "Channel Noise Amplitude", "counter_slider", float, QtCore.Qt.Horizontal)
+        self._noise_amp_1_range = qtgui.Range(0.05, 1.0, 0.05, 0.050, 200)
+        self._noise_amp_1_win = qtgui.RangeWidget(self._noise_amp_1_range, self.set_noise_amp_1, "Channel 2 Noise Amplitude (23 dB)", "counter_slider", float, QtCore.Qt.Horizontal)
         self.top_layout.addWidget(self._noise_amp_1_win)
-        self._noise_amp_range = qtgui.Range(0.05, 1.0, 0.05, 0.05, 200)
-        self._noise_amp_win = qtgui.RangeWidget(self._noise_amp_range, self.set_noise_amp, "Channel Noise Amplitude", "counter_slider", float, QtCore.Qt.Horizontal)
+        self._noise_amp_range = qtgui.Range(0.05, 1.0, 0.05, 0.281, 200)
+        self._noise_amp_win = qtgui.RangeWidget(self._noise_amp_range, self.set_noise_amp, "Channel 0 Noise Amplitude (8 dB)", "counter_slider", float, QtCore.Qt.Horizontal)
         self.top_layout.addWidget(self._noise_amp_win)
         self.snr_modulation_controller_0 = SNRModulationController()
         self.qtgui_number_sink_0_0_1_3 = qtgui.number_sink(
@@ -502,8 +502,8 @@ class joint_cognitive_radio(gr.top_block, Qt.QWidget):
         self.connect((self.blocks_nlog10_ff_0, 0), (self.joint_cognitive_controller_0, 0))
         self.connect((self.blocks_nlog10_ff_0, 0), (self.qtgui_number_sink_0_0_1_2_0, 0))
         self.connect((self.blocks_nlog10_ff_0, 0), (self.snr_modulation_controller_0, 0))
-        self.connect((self.blocks_nlog10_ff_0_0, 0), (self.joint_cognitive_controller_0, 2))
-        self.connect((self.blocks_nlog10_ff_0_1, 0), (self.joint_cognitive_controller_0, 1))
+        self.connect((self.blocks_nlog10_ff_0_0, 0), (self.joint_cognitive_controller_0, 1))
+        self.connect((self.blocks_nlog10_ff_0_1, 0), (self.joint_cognitive_controller_0, 2))
         self.connect((self.blocks_rms_xx_0, 0), (self.blocks_divide_xx_0, 0))
         self.connect((self.blocks_rms_xx_0, 0), (self.qtgui_number_sink_0_0_0, 0))
         self.connect((self.blocks_rms_xx_0_0, 0), (self.blocks_divide_xx_0_0, 0))

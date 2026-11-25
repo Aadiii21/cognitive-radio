@@ -1,0 +1,15 @@
+{
+    "modulation": "QPSK",
+    "samples": 262144,
+    "sample_rate_sps": 2400000,
+    "symbol_rate_sps": 600000.0,
+    "samples_per_symbol": 4,
+    "rolloff": 0.35,
+    "amplitude_scale": 0.1,
+    "average_power": 0.009999999776482582,
+    "peak_amplitude": 0.15680794417858124,
+    "papr_db": 3.9073614404265786,
+    "iq_format": "complex64 interleaved float32",
+    "iq_file": "results/baseband/prepared/qpsk_seed42_tx.cf32",
+    "rf_transmission_enabled": false
+}

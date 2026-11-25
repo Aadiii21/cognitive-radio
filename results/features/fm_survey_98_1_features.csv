@@ -1,0 +1,2 @@
+peak_frequency_MHz,peak_PSD_dB_per_Hz,noise_floor_dB_per_Hz,peak_to_floor_dB,occupied_bandwidth_kHz,spectral_flatness,spectral_kurtosis_median
+98.309375,-56.13155689625622,-96.79270761170656,40.66115071545034,160.25,0.024688461822027313,1.1977740462670576

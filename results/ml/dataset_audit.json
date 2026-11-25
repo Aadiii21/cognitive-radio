@@ -1,0 +1,78 @@
+{
+  "shape": [
+    630,
+    8
+  ],
+  "columns": [
+    "environment",
+    "seed",
+    "strategy",
+    "packet_delivery_ratio",
+    "throughput_bits_per_step",
+    "service_availability",
+    "switches",
+    "attempted_packets"
+  ],
+  "dtypes": {
+    "environment": "str",
+    "seed": "int64",
+    "strategy": "str",
+    "packet_delivery_ratio": "float64",
+    "throughput_bits_per_step": "float64",
+    "service_availability": "float64",
+    "switches": "int64",
+    "attempted_packets": "int64"
+  },
+  "missing_values": {
+    "environment": 0,
+    "seed": 0,
+    "strategy": 0,
+    "packet_delivery_ratio": 0,
+    "throughput_bits_per_step": 0,
+    "service_availability": 0,
+    "switches": 0,
+    "attempted_packets": 0
+  },
+  "duplicates": 0,
+  "environment_counts": {
+    "Low": 210,
+    "Medium": 210,
+    "High": 210
+  },
+  "strategy_counts": {
+    "fixed": 90,
+    "adaptive_modulation": 90,
+    "channel_switching": 90,
+    "hybrid": 90,
+    "reliability_constrained": 90,
+    "cost_aware_hybrid": 90,
+    "calibrated_hybrid": 90
+  },
+  "seed_range": [
+    2026,
+    2055
+  ],
+  "n_seeds": 30,
+  "target_stats": {
+    "throughput_bits_per_step": {
+      "count": 630.0,
+      "mean": 2.5953063492063495,
+      "std": 0.7990667531471076,
+      "min": 1.4154,
+      "25%": 1.9788999999999999,
+      "50%": 2.2352,
+      "75%": 3.1132999999999997,
+      "max": 4.0
+    },
+    "packet_delivery_ratio": {
+      "count": 630.0,
+      "mean": 0.9820795569107285,
+      "std": 0.04406720271566191,
+      "min": 0.794,
+      "25%": 0.9890757583737486,
+      "50%": 1.0,
+      "75%": 1.0,
+      "max": 1.0
+    }
+  }
+}

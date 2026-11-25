@@ -1,0 +1,19 @@
+{
+    "capture_id": "rtl_validation_20261121_122104",
+    "status": "captured",
+    "signal_class": "ambient_unknown",
+    "modulation": "unknown",
+    "center_frequency_hz": 98100000,
+    "sample_rate_sps": 2048000,
+    "rx_device": "RTL-SDR R820T",
+    "rx_gain_db": 28.0,
+    "samples": 2048000,
+    "duration_seconds": 1.0,
+    "iq_format": "uint8_interleaved_IQ",
+    "iq_path": "data/raw/receiver_validation/rtl_validation_20261121_122104.bin",
+    "feature_path": "results/features/rtl_validation_20261121_122104_features.csv",
+    "capture_timestamp_utc": "2026-11-21T06:51:05.896471+00:00",
+    "pll_warning": true,
+    "capture_interruption_reported": true,
+    "notes": "Ambient RF validation capture. Not a known modulation label."
+}

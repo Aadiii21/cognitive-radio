@@ -1,0 +1,39 @@
+================================================================
+  BPSK CONDUCTED LOOPBACK RUNNER
+================================================================
+  Waveform : /home/deamon/projects/final/cognitive-radio/results/baseband/prepared/bpsk_frame_v2_seed42.cf32
+  Frame    : BPSK: 64 preamble + 512 payload + 64960 silent symbols, 4 SPS, beta 0.35
+  Payload  : 8826d916cdfb21c6c1ff91a761565a70... (lsb_first)
+  Occupied : 865.6484-866.3516 MHz (inside 865-868 MHz)
+  Pre-flight:
+    pyadi-iio adi.Pluto: True
+    rtl_sdr binary: True
+    iio_attr binary: True
+    192.168.2.1 reachable: True
+
+  ---- RF TRANSMISSION CONFIRMATION ----
+    CW tone at 866.100001 MHz (LO 866.0000 MHz + 100.001 kHz)
+    Pluto ip:192.168.2.1, cyclic TX (pyadi), attenuation 20 dB, amplitude scale 0.1 (peak 0.100)
+    RF path: conducted, 30 dB physical attenuator in line
+    RTL-SDR 2048000 S/s, gain 28.0 dB (manual), 1048576 samples
+    Order: TX start -> readback -> capture (TX on) -> TX stop -> capture (TX off)
+    Confirm ALL of the following before continuing:
+     - Conducted path only: Pluto TX -> 50-ohm attenuation -> RTL-SDR RX
+     - Attenuation chain sized from MEASURED Pluto output, not the estimate
+     - Never a direct Pluto TX -> RTL-SDR connection
+     - Frequency, bandwidth and level permitted for this test
+     - docs/PHYSICAL_EXPERIMENT_CHECKLIST.md reviewed
+  Type TRANSMIT to transmit: 
+RF TRANSMISSION STATUS: ENABLED (operator-controlled)
+  Starting Pluto cyclic tone TX...
+  Capturing with TX ON...
+
+RF TRANSMISSION STATUS: DISABLED (operator-controlled)
+Use --enable-rf flag to enable transmission. See docs/DEMO_GUIDE.md.
+  Pluto TX stopped, RF disabled.
+  Capturing with TX OFF (baseline)...
+  TX-on capture : /home/deamon/projects/final/cognitive-radio/results/hardware/captures/tone_on_20261123_135428_006130.cu8 (clipping 0.000 %)
+  TX-off capture: /home/deamon/projects/final/cognitive-radio/results/hardware/captures/tone_off_20261123_135428_011091.cu8
+  Tone          : DETECTED - bin TX-on vs TX-off 40.4 dB (threshold 15), peak 89.62 kHz, implied CFO -10376 Hz (-12.0 ppm)
+  RMS TX on/off : 1.24 / 0.87 LSB
+  Result: /home/deamon/projects/final/cognitive-radio/results/hardware/experiment_results/experiment_result_20261123_135428_134781.json

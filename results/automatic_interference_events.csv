@@ -1,0 +1,7 @@
+event,phase,snr_ch0_db,snr_ch1_db,snr_ch2_db,selected_channel,modulation,enabled,action,handoff_remaining
+1,Phase 1: Channel 2 strongest,7.88,15.15,23.21,2,16-QAM,False,switch_channel,1
+2,Phase 1: Channel 2 strongest,8.04,14.81,23.04,2,16-QAM,True,stay,0
+3,Phase 2: Channel 0 strongest,17.42,8.56,15.27,0,16-QAM,False,switch_channel,1
+4,Phase 2: Channel 0 strongest,22.86,8.02,14.82,0,16-QAM,True,stay,0
+5,Phase 3: Channel 1 strongest,15.18,18.88,8.18,1,16-QAM,False,switch_channel,1
+6,Phase 3: Channel 1 strongest,14.98,23.09,7.87,1,16-QAM,True,stay,0

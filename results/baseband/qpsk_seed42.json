@@ -1,0 +1,16 @@
+{
+    "modulation": "QPSK",
+    "symbols": 65536,
+    "samples": 262144,
+    "samples_per_symbol": 4,
+    "sample_rate_sps": 2400000,
+    "symbol_rate_sps": 600000.0,
+    "rolloff": 0.35,
+    "filter": "root-raised-cosine",
+    "filter_taps": 41,
+    "seed": 42,
+    "iq_format": "complex64 interleaved float32",
+    "average_power": 1.0,
+    "peak_amplitude": 1.5680794715881348,
+    "iq_file": "results/baseband/qpsk_seed42.cf32"
+}

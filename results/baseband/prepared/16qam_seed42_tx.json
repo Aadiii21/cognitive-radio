@@ -1,0 +1,15 @@
+{
+    "modulation": "16QAM",
+    "samples": 262144,
+    "sample_rate_sps": 2400000,
+    "symbol_rate_sps": 600000.0,
+    "samples_per_symbol": 4,
+    "rolloff": 0.35,
+    "amplitude_scale": 0.1,
+    "average_power": 0.010000000707805157,
+    "peak_amplitude": 0.20584489405155182,
+    "papr_db": 6.270801493046736,
+    "iq_format": "complex64 interleaved float32",
+    "iq_file": "results/baseband/prepared/16qam_seed42_tx.cf32",
+    "rf_transmission_enabled": false
+}

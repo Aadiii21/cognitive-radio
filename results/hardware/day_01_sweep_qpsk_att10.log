@@ -1,0 +1,47 @@
+================================================================
+  BPSK CONDUCTED LOOPBACK RUNNER
+================================================================
+  Waveform : /home/deamon/projects/final/cognitive-radio/results/baseband/multimod_v2/qpsk_framed_seed42.cf32
+  Frame    : QPSK: 64 pilot + 127 sync + 512 payload symbols (1024 bits) + 64833 silent, 4 SPS, beta 0.35
+  Payload  : 8826d916cdfb21c6c1ff91a761565a70... (lsb_first)
+  Occupied : 865.6484-866.3516 MHz (inside 865-868 MHz)
+  Pre-flight:
+    pyadi-iio adi.Pluto: True
+    rtl_sdr binary: True
+    iio_attr binary: True
+    192.168.2.1 reachable: True
+
+  ---- RF TRANSMISSION CONFIRMATION ----
+    Centre 866.0000 MHz, occupied 865.6484-866.3516 MHz (inside 865-868 MHz)
+    TX rate requested 2083333 S/s (will be read back), symbol rate 520833 Bd
+    Pluto ip:192.168.2.1, TX attenuation 10 dB, amplitude scale 0.1 (peak 0.155)
+    RTL-SDR rate 2048000 S/s (exact 2048000.000), gain 28.0 dB, 1048576 samples = 512 ms = 4.1 frames
+    Waveform QPSK: 64 pilot + 127 sync + 512 payload symbols (1024 bits) + 64833 silent, 4 SPS, beta 0.35
+    RF path: conducted, 30 dB physical attenuator in line
+    Order: Pluto cyclic TX (pyadi) start -> readback -> RTL-SDR capture (TX running) -> TX stop
+    Confirm ALL of the following before continuing:
+     - Conducted path only: Pluto TX -> 50-ohm attenuation -> RTL-SDR RX
+     - Attenuation chain sized from MEASURED Pluto output, not the estimate
+     - Never a direct Pluto TX -> RTL-SDR connection
+     - Frequency, bandwidth and level permitted for this test
+     - docs/PHYSICAL_EXPERIMENT_CHECKLIST.md reviewed
+  Type TRANSMIT to transmit: 
+RF TRANSMISSION STATUS: ENABLED (operator-controlled)
+  Starting Pluto cyclic TX...
+  Pluto readback: rate 2083332.0 S/s, LO 865999998 Hz, gain -10.0 dB
+  Capturing with RTL-SDR while TX is running...
+
+RF TRANSMISSION STATUS: DISABLED (operator-controlled)
+Use --enable-rf flag to enable transmission. See docs/DEMO_GUIDE.md.
+  Pluto TX stopped, RF disabled.
+  RX capture saved: /home/deamon/projects/final/cognitive-radio/results/hardware/captures/rx_20261123_135951.cu8 (+ .json)
+    Clipped samples : 0.000 %
+    Status          : frames_detected
+    Max sync metric : 0.979 (threshold 0.6)
+    Frame 0: start 90857+0.01, metric 0.979, CFO -10806 Hz, SNR 13.2 dB, EVM 21.8 %, known-symbol errs 0, payload errs 0/1024
+    Frame 1: start 353004+0.09, metric 0.968, CFO -10805 Hz, SNR 12.9 dB, EVM 22.7 %, known-symbol errs 0, payload errs 0/1024
+    Frame 2: start 615151+0.13, metric 0.971, CFO -10808 Hz, SNR 13.1 dB, EVM 22.2 %, known-symbol errs 0, payload errs 0/1024
+    Frame 3: start 877298+0.26, metric 0.960, CFO -10807 Hz, SNR 12.0 dB, EVM 25.1 %, known-symbol errs 0, payload errs 0/1024
+    Payload BER     : 0.000e+00 (0/4096 bits, 4 frame(s))
+    Note: Candidate at 1022460: CFO -107990 Hz outside +-100000 Hz, skipped.
+  Result: /home/deamon/projects/final/cognitive-radio/results/hardware/experiment_results/experiment_result_20261123_135951_666099.json

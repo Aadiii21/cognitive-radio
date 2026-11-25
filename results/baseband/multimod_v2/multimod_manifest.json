@@ -1,0 +1,32 @@
+{
+  "timestamp": "2026-11-23T13:57:09.264190",
+  "records": [
+    {
+      "modulation": "BPSK",
+      "iq_file": "results/baseband/multimod_v2/bpsk_framed_seed42.cf32",
+      "metadata_file": "results/baseband/multimod_v2/bpsk_framed_seed42.json",
+      "samples": 262144,
+      "payload_bits": 1024,
+      "burst_symbols": 1215,
+      "peak_amplitude": 1.5796910105468593
+    },
+    {
+      "modulation": "QPSK",
+      "iq_file": "results/baseband/multimod_v2/qpsk_framed_seed42.cf32",
+      "metadata_file": "results/baseband/multimod_v2/qpsk_framed_seed42.json",
+      "samples": 262144,
+      "payload_bits": 1024,
+      "burst_symbols": 703,
+      "peak_amplitude": 1.5500004201765911
+    },
+    {
+      "modulation": "16QAM",
+      "iq_file": "results/baseband/multimod_v2/16qam_framed_seed42.cf32",
+      "metadata_file": "results/baseband/multimod_v2/16qam_framed_seed42.json",
+      "samples": 262144,
+      "payload_bits": 1024,
+      "burst_symbols": 447,
+      "peak_amplitude": 1.7447500888197893
+    }
+  ]
+}

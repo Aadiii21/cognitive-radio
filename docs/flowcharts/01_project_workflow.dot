@@ -1,0 +1,59 @@
+digraph W {
+  graph [rankdir=TB, fontname="Helvetica", fontsize=18, labelloc=t, nodesep=0.35, ranksep=0.4, pad=0.3, newrank=true,
+  label="Cognitive radio project: how it works"];
+  node [fontname="Helvetica", fontsize=11, margin="0.15,0.07"];
+  edge [arrowsize=0.7, fontsize=9, fontname="Helvetica"];
+  start [shape=oval, style=filled, fillcolor="#EEEEEE", label="Goal: pick channel + modulation\nthat maximise delivered data"];
+  subgraph cluster_1 { label="Part 1: Simulation, cognitive control and ML analysis"; color="#2F5D8A"; style=rounded;
+  w_chan [shape=box, style="rounded,filled", fillcolor="#DCE8F7", color="#2F5D8A", label="Channel model: 3 channels,\ntime-varying interference"];
+  w_ctrl [shape=box, style="rounded,filled", fillcolor="#DCE8F7", color="#2F5D8A", label="Controllers: fixed, AMC, switching,\nhybrid, cost-aware, calibrated"];
+  w_bench [shape=box, style="rounded,filled", fillcolor="#DCE8F7", color="#2F5D8A", label="Benchmark: 630 runs\n(3 envs x 30 seeds x 7 strategies)"];
+  w_stats [shape=box, style="rounded,filled", fillcolor="#DCE8F7", color="#2F5D8A", label="Paired statistics + figures\nPDR, throughput, availability"];
+  w_ml [shape=box, style="rounded,filled", fillcolor="#DCE8F7", color="#2F5D8A", label="ML analysis: regression +\nrandom forest on benchmark"];
+  w_srad [shape=box, style="rounded,filled", fillcolor="#DCE8F7", color="#2F5D8A", label="Simulated radio + GNU Radio\nlive interference experiment"];
+  }
+  subgraph cluster_2 { label="Part 2: Physical layer, calibration, receivers and DL classifier"; color="#2E7D57"; style=rounded;
+  w_rx [shape=box, style="rounded,filled", fillcolor="#D9EFE4", color="#2E7D57", label="GNU Radio packet receiver\nBPSK / QPSK / 16-QAM"];
+  w_cal [shape=box, style="rounded,filled", fillcolor="#D9EFE4", color="#2E7D57", label="Calibration: packet success vs noise\n(2,070 trials) → logistic model"];
+  w_snr [shape=box, style="rounded,filled", fillcolor="#D9EFE4", color="#2E7D57", label="Noise voltage ↔ SNR mapping\n(1,530 measurements)"];
+  w_sync [shape=box, style="rounded,filled", fillcolor="#D9EFE4", color="#2E7D57", label="Synchronisation: timing, CFO,\nSRO, multipath (validated)"];
+  w_wave [shape=box, style="rounded,filled", fillcolor="#D9EFE4", color="#2E7D57", label="Framed waveforms + receivers\n(pilot, sync word, payload)"];
+  w_ber [shape=box, style="rounded,filled", fillcolor="#D9EFE4", color="#2E7D57", label="Synthetic BER vs Es/N0\n→ thresholds 6.8 / 9.9 / 16.7 dB"];
+  w_dl [shape=box, style="rounded,filled", fillcolor="#D9EFE4", color="#2E7D57", label="DL classifier (CNN)\nIQ → BPSK / QPSK / 16-QAM"];
+  }
+  subgraph cluster_3 { label="Part 3: SDR hardware integration and OTA experiments"; color="#B8621B"; style=rounded;
+  w_tx [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="ADALM-Pluto TX (pyadi-iio)\n866 MHz, readback-verified"];
+  w_air [shape=ellipse, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="Over the air\n(antennas)"];
+  w_rtl [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="RTL-SDR capture\n2.048 MS/s, gain 28 dB"];
+  w_tests [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="Tone test → BPSK frames →\nBPSK/QPSK/16-QAM frames"];
+  w_sweep [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="15-run BER sweep\nmeasured BER vs theory"];
+  }
+  done [shape=oval, style=filled, fillcolor="#EEEEEE", label="Results → part reports → master report"];
+  start -> w_chan;
+  start -> w_rx;
+  start -> w_tx;
+  w_rx -> w_cal;
+  w_cal -> w_ctrl [label="packet-success model"];
+  w_snr -> w_ctrl [label="SNR → noise"];
+  w_chan -> w_ctrl;
+  w_ctrl -> w_bench;
+  w_bench -> w_stats;
+  w_bench -> w_ml;
+  w_ctrl -> w_srad;
+  w_sync -> w_wave;
+  w_wave -> w_ber;
+  w_wave -> w_tx [label="TX files"];
+  w_tx -> w_air;
+  w_air -> w_rtl;
+  w_rtl -> w_tests [label="receivers (Part 2)"];
+  w_tests -> w_sweep;
+  w_ber -> w_sweep [label="compare"];
+  w_wave -> w_dl [label="training data"];
+  w_rtl -> w_dl [label="real test data"];
+  w_rx -> w_snr;
+  w_stats -> done;
+  w_ml -> done;
+  w_sweep -> done;
+  w_dl -> done;
+  w_srad -> done;
+}

@@ -1,0 +1,2 @@
+Device,Estimated SNR (dB),Signal Power (dB),Noise Floor (dB),I RMS,Q RMS,I Peak,Q Peak,I Qual RMS,Q Qual RMS,I Mean,Q Mean
+"['PlutoSDR', 'RTL-SDR']","[3.69, 5.18]","[35.16, 0.47]","[31.47, -4.71]","[105.097, 0.599]","[105.793, 0.599]","[1463.0, 2.5]","[1452.0, 2.5]","[105.793, 0.599]","[105.097, 0.599]","[0.179, -0.132]","[0.091, -0.132]"

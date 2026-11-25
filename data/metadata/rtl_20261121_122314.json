@@ -1,0 +1,21 @@
+{
+    "capture_id": "rtl_20261121_122314",
+    "status": "captured",
+    "signal_class": "ambient_unknown",
+    "modulation": "unknown",
+    "center_frequency_hz": 98100000,
+    "sample_rate_sps": 2048000,
+    "rx_device": "RTL-SDR R820T",
+    "rx_gain_db": 28.0,
+    "samples": 2048000,
+    "duration_seconds": 1.0,
+    "iq_format": "uint8_interleaved_IQ",
+    "iq_path": "data/raw/receiver_validation/rtl_20261121_122314.bin",
+    "feature_path": "results/features/rtl_20261121_122314_features.csv",
+    "capture_start_utc": "2026-11-21T06:53:14.955836+00:00",
+    "capture_end_utc": "2026-11-21T06:53:17.601784+00:00",
+    "rtl_sdr_exit_code": 0,
+    "saturated_bytes": 0,
+    "pll_warning": true,
+    "notes": "Receive-only capture. Modulation label not independently verified."
+}

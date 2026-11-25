@@ -3,6 +3,8 @@
 from gnuradio import gr
 import pmt
 import numpy as np
+import csv
+import time
 
 from src.gnuradio_adapter import GNUradioAdapter
 
@@ -43,6 +45,26 @@ class JointCognitiveController(gr.sync_block):
         self.current_modulation = None
         self.current_enabled = None
 
+        # Per-decision experiment trace
+        self.trace_file = open(
+            "results/decision_trace.csv",
+            "w",
+            newline="",
+            buffering=1,
+        )
+        self.trace_writer = csv.writer(self.trace_file)
+        self.trace_writer.writerow([
+            "timestamp",
+            "snr_ch0_db",
+            "snr_ch1_db",
+            "snr_ch2_db",
+            "channel",
+            "modulation",
+            "enabled",
+            "action",
+            "handoff_remaining",
+        ])
+
     def work(self, input_items, output_items):
 
         snr_channels = input_items
@@ -77,6 +99,17 @@ class JointCognitiveController(gr.sync_block):
             effective_enabled = (
                 effective_enabled and command.enabled
             )
+
+            # Record every controller decision
+            self.trace_writer.writerow([
+                time.monotonic(),
+                *(round(float(x), 3) for x in snr_values),
+                command.channel,
+                command.modulation,
+                effective_enabled,
+                command.action,
+                self.handoff_remaining,
+            ])
 
             state = (
                 command.channel,

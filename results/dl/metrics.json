@@ -1,0 +1,138 @@
+{
+  "model": "1-D CNN (6 conv layers, global average pooling)",
+  "parameters": 85859,
+  "input": "512 IQ samples (128 symbols) on the 2.083 MS/s TX grid, unit RMS, no CFO/phase correction",
+  "train_windows": 24000,
+  "epochs": 14,
+  "final_val_acc": 0.9470833333333334,
+  "synthetic_test": {
+    "windows_per_class_per_snr": 300,
+    "overall_cnn_acc": 0.9355555555555556,
+    "curve": [
+      {
+        "esn0_db": 0,
+        "cnn_acc": 0.6011111111111112,
+        "baseline_acc": 0.3388888888888889,
+        "cnn_acc_BPSK": 0.6666666666666666,
+        "cnn_acc_QPSK": 0.54,
+        "cnn_acc_16QAM": 0.5966666666666667
+      },
+      {
+        "esn0_db": 2,
+        "cnn_acc": 0.7766666666666666,
+        "baseline_acc": 0.35,
+        "cnn_acc_BPSK": 0.9433333333333334,
+        "cnn_acc_QPSK": 0.69,
+        "cnn_acc_16QAM": 0.6966666666666667
+      },
+      {
+        "esn0_db": 4,
+        "cnn_acc": 0.8577777777777778,
+        "baseline_acc": 0.3622222222222222,
+        "cnn_acc_BPSK": 1.0,
+        "cnn_acc_QPSK": 0.8466666666666667,
+        "cnn_acc_16QAM": 0.7266666666666667
+      },
+      {
+        "esn0_db": 6,
+        "cnn_acc": 0.9488888888888889,
+        "baseline_acc": 0.38333333333333336,
+        "cnn_acc_BPSK": 1.0,
+        "cnn_acc_QPSK": 0.9433333333333334,
+        "cnn_acc_16QAM": 0.9033333333333333
+      },
+      {
+        "esn0_db": 8,
+        "cnn_acc": 0.9811111111111112,
+        "baseline_acc": 0.44333333333333336,
+        "cnn_acc_BPSK": 1.0,
+        "cnn_acc_QPSK": 0.9833333333333333,
+        "cnn_acc_16QAM": 0.96
+      },
+      {
+        "esn0_db": 10,
+        "cnn_acc": 0.9966666666666667,
+        "baseline_acc": 0.5588888888888889,
+        "cnn_acc_BPSK": 1.0,
+        "cnn_acc_QPSK": 1.0,
+        "cnn_acc_16QAM": 0.99
+      },
+      {
+        "esn0_db": 12,
+        "cnn_acc": 1.0,
+        "baseline_acc": 0.7144444444444444,
+        "cnn_acc_BPSK": 1.0,
+        "cnn_acc_QPSK": 1.0,
+        "cnn_acc_16QAM": 1.0
+      },
+      {
+        "esn0_db": 14,
+        "cnn_acc": 1.0,
+        "baseline_acc": 0.7855555555555556,
+        "cnn_acc_BPSK": 1.0,
+        "cnn_acc_QPSK": 1.0,
+        "cnn_acc_16QAM": 1.0
+      },
+      {
+        "esn0_db": 16,
+        "cnn_acc": 1.0,
+        "baseline_acc": 0.89,
+        "cnn_acc_BPSK": 1.0,
+        "cnn_acc_QPSK": 1.0,
+        "cnn_acc_16QAM": 1.0
+      },
+      {
+        "esn0_db": 18,
+        "cnn_acc": 1.0,
+        "baseline_acc": 0.9422222222222222,
+        "cnn_acc_BPSK": 1.0,
+        "cnn_acc_QPSK": 1.0,
+        "cnn_acc_16QAM": 1.0
+      },
+      {
+        "esn0_db": 20,
+        "cnn_acc": 1.0,
+        "baseline_acc": 0.9622222222222222,
+        "cnn_acc_BPSK": 1.0,
+        "cnn_acc_QPSK": 1.0,
+        "cnn_acc_16QAM": 1.0
+      },
+      {
+        "esn0_db": 22,
+        "cnn_acc": 1.0,
+        "baseline_acc": 0.9822222222222222,
+        "cnn_acc_BPSK": 1.0,
+        "cnn_acc_QPSK": 1.0,
+        "cnn_acc_16QAM": 1.0
+      },
+      {
+        "esn0_db": 24,
+        "cnn_acc": 1.0,
+        "baseline_acc": 0.9811111111111112,
+        "cnn_acc_BPSK": 1.0,
+        "cnn_acc_QPSK": 1.0,
+        "cnn_acc_16QAM": 1.0
+      }
+    ]
+  },
+  "real_ota": {
+    "windows": 536,
+    "captures": 19,
+    "frames": 76,
+    "cnn_window_acc": 0.9850746268656716,
+    "cnn_window_acc_per_class": {
+      "BPSK": 1.0,
+      "QPSK": 0.9583333333333334,
+      "16QAM": 0.9642857142857143
+    },
+    "cnn_frame_vote_acc": 0.9736842105263158,
+    "cnn_capture_vote_acc": 1.0,
+    "baseline_window_acc": 0.628731343283582,
+    "esn0_range_db": [
+      2.8314335374895148,
+      23.700705527748735
+    ]
+  },
+  "runtime_s": 488.2,
+  "quick": false
+}

@@ -1,0 +1,12 @@
+{
+  "evidence": "synthetic AWGN, not hardware",
+  "target_ber": 0.001,
+  "snr_definition": "multimod_receiver data-aided post-MF Es/N0 (true Es/N0 in simulation)",
+  "thresholds_db": {
+    "BPSK": 6.802432618590308,
+    "QPSK": 9.93080810382402,
+    "16QAM": 16.67225615120796
+  },
+  "csv": "results/analysis/ber_vs_snr_multimod_synthetic.csv",
+  "generated": "2026-11-23T13:04:22.063012"
+}

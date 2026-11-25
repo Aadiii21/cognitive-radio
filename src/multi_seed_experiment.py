@@ -1,17 +1,27 @@
+import csv
+from pathlib import Path
+
 import numpy as np
 
 from src.channel_model import ChannelModel
 from src.controller import CognitiveController
 from src.controller_cost_aware import CognitiveController as CostAwareController
-from src.metrics import packet_success_probability, summarize_run
+from src.calibrated_controller import (
+    CalibratedCognitiveController,
+    calibrated_packet_success,
+)
+from src.noise_calibration import noise_for_snr
+from src.metrics import summarize_run
 from src.switching import SwitchingDelay
 
+
+ROOT = Path(__file__).resolve().parents[1]
 
 STEPS = 5000
 SWITCH_DELAY_STEPS = 2
 TARGET_PDR = 0.95
 
-SEEDS = [2026, 2027, 2028, 2029, 2030]
+SEEDS = list(range(2026, 2056))
 
 ENVIRONMENTS = {
     "Low": {"volatility": 0.5, "burst_probability": 0.03},
@@ -26,7 +36,29 @@ STRATEGIES = (
     "hybrid",
     "reliability_constrained",
     "cost_aware_hybrid",
+    "calibrated_hybrid",
 )
+
+
+def calibrated_probability(snr_db, modulation):
+    """Evaluate all strategies using the same empirical packet model."""
+    noise = noise_for_snr(
+        float(snr_db),
+        modulation,
+        clip=True,
+    )
+    return calibrated_packet_success(noise, modulation)
+
+
+class FixedQPSKChannelController(CognitiveController):
+    """Select channels using calibrated QPSK utility only."""
+
+    def channel_utility(self, snr):
+        modulation = "QPSK"
+        rate = 2.0
+        probability = calibrated_probability(snr, modulation)
+
+        return rate * probability, modulation, rate, probability
 
 
 def run_once(seed, environment, min_dwell_steps=0):
@@ -38,9 +70,12 @@ def run_once(seed, environment, min_dwell_steps=0):
         burst_probability=settings["burst_probability"],
     )
 
-    snr_trace = np.array([model.step() for _ in range(STEPS)])
+    snr_trace = np.array([
+        model.step() for _ in range(STEPS)
+    ])
 
-    # Common random numbers support reproducible comparisons.
+    # Common random numbers: identical channel and packet randomness
+    # across every strategy for this seed and environment.
     packet_rng = np.random.default_rng(seed + 10000)
     random_values = packet_rng.random(STEPS)
 
@@ -60,7 +95,23 @@ def run_once(seed, environment, min_dwell_steps=0):
                 switch_penalty=0.15,
                 min_utility_gain=0.10,
             )
-        else:
+
+        elif strategy == "calibrated_hybrid":
+            controller = CalibratedCognitiveController(
+                initial_channel=0,
+                switch_delay_steps=SWITCH_DELAY_STEPS,
+                switch_penalty=0.15,
+                min_utility_gain=0.10,
+            )
+
+        elif strategy == "channel_switching":
+            controller = FixedQPSKChannelController(
+                initial_channel=0,
+                min_dwell_steps=min_dwell_steps,
+                switch_delay_steps=SWITCH_DELAY_STEPS,
+            )
+
+        elif strategy != "fixed":
             controller = CognitiveController(
                 initial_channel=0,
                 min_dwell_steps=min_dwell_steps,
@@ -68,6 +119,8 @@ def run_once(seed, environment, min_dwell_steps=0):
                 pdr_window=100,
                 switch_delay_steps=SWITCH_DELAY_STEPS,
             )
+        else:
+            controller = None
 
         current_channel = 0
         switching_delay = SwitchingDelay(
@@ -80,6 +133,7 @@ def run_once(seed, environment, min_dwell_steps=0):
         transmission_steps = 0
 
         for t, channel_snrs in enumerate(snr_trace):
+
             if switching_delay.consume_step():
                 continue
 
@@ -108,8 +162,10 @@ def run_once(seed, environment, min_dwell_steps=0):
                     modulation = decision.modulation
                     rate = decision.data_rate
 
-            snr = channel_snrs[current_channel]
-            probability = packet_success_probability(snr, modulation)
+            snr = float(channel_snrs[current_channel])
+
+            # Identical empirical evaluation model for every strategy.
+            probability = calibrated_probability(snr, modulation)
             success = random_values[t] < probability
 
             successes.append(success)
@@ -139,7 +195,28 @@ def mean_sd(values):
     if len(values) < 2:
         return float(values.mean()), 0.0
 
-    return float(values.mean()), float(values.std(ddof=1))
+    return (
+        float(values.mean()),
+        float(values.std(ddof=1)),
+    )
+
+
+def save_results(rows):
+    output = ROOT / "results" / "calibrated_multi_seed_results.csv"
+    output.parent.mkdir(parents=True, exist_ok=True)
+
+    if not rows:
+        raise ValueError("No experiment results to save.")
+
+    with output.open("w", newline="") as file:
+        writer = csv.DictWriter(
+            file,
+            fieldnames=list(rows[0].keys()),
+        )
+        writer.writeheader()
+        writer.writerows(rows)
+
+    print(f"\nSaved results: {output}")
 
 
 def main():
@@ -159,6 +236,8 @@ def main():
 
     print(f"Seeds per environment: {len(SEEDS)}")
     print(f"Steps per run: {STEPS}")
+    print(f"Total strategy runs: {len(rows)}")
+    print("Packet evaluation: calibrated GNU Radio models")
     print()
 
     header = (
@@ -198,6 +277,8 @@ def main():
                 f"{availability_mean:9.3f}±{availability_sd:.3f} "
                 f"{switches_mean:7.1f}±{switches_sd:.1f}"
             )
+
+    save_results(rows)
 
 
 if __name__ == "__main__":

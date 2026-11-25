@@ -228,13 +228,10 @@ def main():
 
     controller = tb.controller
 
-    print(
-        "Channel:",
-        controller.adapter.controller.current_channel
-    )
+    print("Channel:", controller.adapter.controller.current_channel)
     print(
         "Modulation:",
-        controller.adapter.controller.current_modulation
+        {0: "BPSK", 1: "QPSK", 2: "16-QAM"}.get(controller.current_modulation, "Unknown")
     )
     print("Enabled:", controller.current_enabled)
 
@@ -272,7 +269,7 @@ def main():
         print(f"  {marker}: {count}")
 
     assert controller.adapter.controller.current_channel == 1
-    assert controller.adapter.controller.current_modulation == "16-QAM"
+    assert {0: "BPSK", 1: "QPSK", 2: "16-QAM"}.get(controller.current_modulation, "Unknown") == "16-QAM"
     assert bool(controller.current_enabled) is True
 
     assert tb.debug["channel"].num_messages() >= 2

@@ -1,0 +1,2 @@
+timestamp_utc,controller_source,input_snr_db,selected_channel,selected_frequency_hz,modulation,data_rate,action,estimated_snr_db,expected_utility
+2026-11-14T07:24:44.655953+00:00,pluto,6.0179;9.6928;5.9991,1,501000000,QPSK,2.0,switch_channel,9.69281194300667,1.6421156259906582

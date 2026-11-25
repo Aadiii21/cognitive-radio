@@ -1,7 +1,7 @@
 import csv
 import numpy as np
 
-INPUT = "results/refined_equal_power_calibration.csv"
+INPUT = "results/expanded_equal_power_calibration.csv"
 
 def sigmoid(z):
     return 1.0 / (1.0 + np.exp(-np.clip(z, -500, 500)))

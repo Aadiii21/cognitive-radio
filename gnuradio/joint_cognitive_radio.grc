@@ -98,14 +98,14 @@ blocks:
   parameters:
     comment: ''
     gui_hint: ''
-    label: Channel Noise Amplitude
+    label: Channel 0 Noise Amplitude (8 dB)
     min_len: '200'
     orient: QtCore.Qt.Horizontal
     rangeType: float
     start: '0.05'
     step: '0.05'
     stop: '1.0'
-    value: '0.05'
+    value: '0.281'
     widget: counter_slider
   states:
     bus_sink: false
@@ -119,14 +119,14 @@ blocks:
   parameters:
     comment: ''
     gui_hint: ''
-    label: Channel Noise Amplitude
+    label: Channel 2 Noise Amplitude (23 dB)
     min_len: '200'
     orient: QtCore.Qt.Horizontal
     rangeType: float
     start: '0.05'
     step: '0.05'
     stop: '1.0'
-    value: '0.05'
+    value: '0.050'
     widget: counter_slider
   states:
     bus_sink: false
@@ -140,14 +140,14 @@ blocks:
   parameters:
     comment: ''
     gui_hint: ''
-    label: Channel Noise Amplitude
+    label: Channel 1 Noise Amplitude (15 dB)
     min_len: '200'
     orient: QtCore.Qt.Horizontal
     rangeType: float
     start: '0.05'
     step: '0.05'
     stop: '1.0'
-    value: '0.05'
+    value: '0.126'
     widget: counter_slider
   states:
     bus_sink: false
@@ -556,7 +556,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1112, 1512.0]
+    coordinate: [1120, 1480.0]
     rotation: 0
     state: enabled
 - name: blocks_divide_xx_0
@@ -1072,7 +1072,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1128, 1288.0]
+    coordinate: [1072, 1312.0]
     rotation: 0
     state: enabled
 - name: blocks_throttle2_1
@@ -1371,7 +1371,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1392, 1440.0]
+    coordinate: [1440, 1584.0]
     rotation: 0
     state: enabled
 - name: qtgui_number_sink_0_0_0
@@ -1805,8 +1805,8 @@ connections:
 - [blocks_nlog10_ff_0, '0', joint_cognitive_controller_0, '0']
 - [blocks_nlog10_ff_0, '0', qtgui_number_sink_0_0_1_2_0, '0']
 - [blocks_nlog10_ff_0, '0', snr_modulation_controller_0, '0']
-- [blocks_nlog10_ff_0_0, '0', joint_cognitive_controller_0, '2']
-- [blocks_nlog10_ff_0_1, '0', joint_cognitive_controller_0, '1']
+- [blocks_nlog10_ff_0_0, '0', joint_cognitive_controller_0, '1']
+- [blocks_nlog10_ff_0_1, '0', joint_cognitive_controller_0, '2']
 - [blocks_rms_xx_0, '0', blocks_divide_xx_0, '0']
 - [blocks_rms_xx_0, '0', qtgui_number_sink_0_0_0, '0']
 - [blocks_rms_xx_0_0, '0', blocks_divide_xx_0_0, '0']

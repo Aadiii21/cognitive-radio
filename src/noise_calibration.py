@@ -8,6 +8,7 @@ FILES = [
     ROOT / "results/channel_snr_calibration.csv",
     ROOT / "results/channel_snr_extension.csv",
     ROOT / "results/channel_snr_extension_low_snr.csv",
+    ROOT / "results/channel_snr_extension_modulations.csv",
 ]
 
 def load_calibration():
@@ -41,21 +42,34 @@ def load_calibration():
 CALIBRATION = load_calibration()
 
 
-def noise_for_snr(target_snr_db, modulation="BPSK"):
+def noise_for_snr(target_snr_db, modulation="BPSK", *, clip=False):
+    if modulation not in CALIBRATION:
+        raise ValueError(f"Unknown modulation: {modulation}")
+
     measurements = CALIBRATION[modulation]
 
     noise_values = np.array([x[0] for x in measurements])
     snr_values = np.array([x[1] for x in measurements])
 
-    # Explicit boundary saturation, not extrapolation.
-    bounded_snr = np.clip(
-        float(target_snr_db),
-        snr_values.min(),
-        snr_values.max()
-    )
+    target = float(target_snr_db)
+
+    if not np.isfinite(target):
+        raise ValueError("SNR must be finite.")
+
+    minimum = snr_values.min()
+    maximum = snr_values.max()
+
+    if not minimum <= target <= maximum:
+        if not clip:
+            raise ValueError(
+                f"{modulation} SNR {target:.3f} dB outside "
+                f"calibration range [{minimum:.3f}, {maximum:.3f}] dB"
+            )
+
+        target = np.clip(target, minimum, maximum)
 
     return float(np.interp(
-        bounded_snr,
+        target,
         snr_values[::-1],
         noise_values[::-1]
     ))

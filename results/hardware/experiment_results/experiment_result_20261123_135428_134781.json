@@ -1,0 +1,72 @@
+{
+  "timestamp": "2026-11-23T13:54:25.605333",
+  "mode": "physical_conducted_tone_test",
+  "rf_path": {
+    "type": "conducted",
+    "physical_attenuation_db": 30.0
+  },
+  "tx_backend": "pyadi",
+  "tx_mode": "cyclic",
+  "tx": {
+    "status": "transmitting",
+    "backend": "pyadi-iio",
+    "samples": 262144,
+    "frequency_hz": 866000000,
+    "sample_rate_hz": 2083333,
+    "bandwidth_hz": 1000000,
+    "attenuation_db": 20.0,
+    "uri": "ip:192.168.2.1",
+    "tx_mode": "cyclic",
+    "buffer_samples": 262144,
+    "dac_full_scale": 32768,
+    "timestamp": "2026-11-23T13:54:23.178848",
+    "amplitude_scale": 0.1,
+    "requested_frequency_hz": 866000000,
+    "requested_attenuation_db": 20,
+    "tone_offset_hz": 100000.68336105347,
+    "readback": {
+      "uri": "ip:192.168.2.1",
+      "method": "iio_attr -o -c ad9361-phy",
+      "tx_sample_rate_hz": 2083332.0,
+      "tx_sample_rate_hz_raw": "2083332",
+      "tx_rf_bandwidth_hz": 1000000.0,
+      "tx_rf_bandwidth_hz_raw": "1000000",
+      "tx_hardwaregain_db": -20.0,
+      "tx_hardwaregain_db_raw": "-20.000000 dB",
+      "tx_lo_hz": 865999998.0,
+      "tx_lo_hz_raw": "865999998"
+    }
+  },
+  "derived_configuration": {
+    "tx_rate_requested_hz": 2083333,
+    "rx_rate_expected_exact_hz": 2048000.0,
+    "tone_offset_exact_hz": 100000.68336105347,
+    "tone_frequency_hz": 866100000.683361
+  },
+  "error": null,
+  "stop_error": null,
+  "tx_on_capture": "/home/deamon/projects/final/cognitive-radio/results/hardware/captures/tone_on_20261123_135428_006130.cu8",
+  "clipping_fraction_tx_on": 0.0,
+  "tx_off_capture": "/home/deamon/projects/final/cognitive-radio/results/hardware/captures/tone_off_20261123_135428_011091.cu8",
+  "clipping_fraction_tx_off": 0.0,
+  "tone_analysis": {
+    "detected": true,
+    "peak_frequency_hz": 89625.0,
+    "expected_frequency_hz": 100000.68336105347,
+    "implied_cfo_hz": -10375.683361053467,
+    "implied_cfo_ppm_at_rf": -11.979775260208932,
+    "tone_bin_tx_on_vs_off_db": 40.41225866454282,
+    "tone_peak_over_median_floor_db": 40.45839402243578,
+    "detect_threshold_db": 15.0,
+    "resolution_hz": 125.0,
+    "rms_tx_on": 1.2409229278564453,
+    "rms_tx_off": 0.8733131885528564
+  },
+  "status": "tone_detected",
+  "rf_path_correction": {
+    "actual_type": "ota",
+    "note": "antennas on Pluto and RTL-SDR; no cable, no attenuator; separation not recorded",
+    "annotated_at": "2026-11-23T17:55:04",
+    "reason": "runner was run with a different --rf-path than the physical setup"
+  }
+}

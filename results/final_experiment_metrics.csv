@@ -1,0 +1,13 @@
+metric,value
+Decision records,312
+Controller transition events,6
+Observation duration (s),30.9772
+Enabled duration (s),30.2196
+Disabled duration (s),0.7576
+Transmission availability (%),97.554
+Channel switches,3
+Successful handoffs,3
+Handoff completion (%),100.0
+Channel selection accuracy (%),100.0
+16-QAM event count,6
+16-QAM event share (%),100.0

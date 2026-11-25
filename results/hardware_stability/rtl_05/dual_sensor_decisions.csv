@@ -1,0 +1,2 @@
+timestamp_utc,controller_source,input_snr_db,selected_channel,selected_frequency_hz,modulation,data_rate,action,estimated_snr_db,expected_utility
+2026-11-14T07:24:05.642858+00:00,rtl,4.9901;4.9098;4.9434,0,500000000,BPSK,1.0,stay,4.990080157262667,0.7091113753808336

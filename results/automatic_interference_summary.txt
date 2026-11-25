@@ -1,0 +1,23 @@
+AUTOMATIC INTERFERENCE EXPERIMENT SUMMARY
+================================================
+
+Controller events: 6
+Phase changes: 3
+Channel switches: 3
+Transmission-enabled events: 3
+Transmission-disabled events: 3
+
+PHASE DETAILS
+------------------------------------------------
+
+Phase 1: Channel 2 strongest
+  Event 1: SNR=(7.88, 15.15, 23.21) dB | Channel=2 | 16-QAM | Enabled=False | Action=switch_channel | Handoff=1
+  Event 2: SNR=(8.04, 14.81, 23.04) dB | Channel=2 | 16-QAM | Enabled=True | Action=stay | Handoff=0
+
+Phase 2: Channel 0 strongest
+  Event 3: SNR=(17.42, 8.56, 15.27) dB | Channel=0 | 16-QAM | Enabled=False | Action=switch_channel | Handoff=1
+  Event 4: SNR=(22.86, 8.02, 14.82) dB | Channel=0 | 16-QAM | Enabled=True | Action=stay | Handoff=0
+
+Phase 3: Channel 1 strongest
+  Event 5: SNR=(15.18, 18.88, 8.18) dB | Channel=1 | 16-QAM | Enabled=False | Action=switch_channel | Handoff=1
+  Event 6: SNR=(14.98, 23.09, 7.87) dB | Channel=1 | 16-QAM | Enabled=True | Action=stay | Handoff=0
