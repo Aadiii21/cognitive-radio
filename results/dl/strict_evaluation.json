@@ -1,0 +1,92 @@
+{
+  "multimod_real_ota": {
+    "windows": 536,
+    "captures": 19,
+    "frames": 76,
+    "window_accuracy": 0.9851,
+    "window_accuracy_capture_bootstrap_ci95": [
+      0.9623,
+      0.9983
+    ],
+    "frame_vote_accuracy": 0.9737,
+    "errors": 8,
+    "errors_esn0_db_max": 7.22,
+    "confidence_when_correct_median": 0.9999,
+    "confidence_when_wrong_median": 0.6288,
+    "wrong_with_confidence_over_0.9": 0,
+    "windows_with_confidence_over_0.9": 506,
+    "accuracy_when_confidence_over_0.9": 1.0
+  },
+  "bpsk_frame_v2_unseen_format": {
+    "windows": 42,
+    "frames": 7,
+    "accuracy_all": 0.8571,
+    "accuracy_decodable_frames": 1.0,
+    "accuracy_damaged_frames": 0.0,
+    "per_frame": [
+      {
+        "capture": "rx_20261123_135557.cu8",
+        "rx_gain_db": 28.0,
+        "frame": 0,
+        "esn0_db": 13.73,
+        "frame_ber": 0.0,
+        "windows": 6,
+        "bpsk_windows": 6
+      },
+      {
+        "capture": "rx_20261123_135557.cu8",
+        "rx_gain_db": 28.0,
+        "frame": 1,
+        "esn0_db": 15.04,
+        "frame_ber": 0.0,
+        "windows": 6,
+        "bpsk_windows": 6
+      },
+      {
+        "capture": "rx_20261123_135557.cu8",
+        "rx_gain_db": 28.0,
+        "frame": 2,
+        "esn0_db": 15.03,
+        "frame_ber": 0.0,
+        "windows": 6,
+        "bpsk_windows": 6
+      },
+      {
+        "capture": "rx_20261123_135557.cu8",
+        "rx_gain_db": 28.0,
+        "frame": 3,
+        "esn0_db": 15.26,
+        "frame_ber": 0.0,
+        "windows": 6,
+        "bpsk_windows": 6
+      },
+      {
+        "capture": "rx_20261123_135609.cu8",
+        "rx_gain_db": 40.0,
+        "frame": 0,
+        "esn0_db": 10.3,
+        "frame_ber": 0.0,
+        "windows": 6,
+        "bpsk_windows": 6
+      },
+      {
+        "capture": "rx_20261123_135609.cu8",
+        "rx_gain_db": 40.0,
+        "frame": 1,
+        "esn0_db": 9.1,
+        "frame_ber": 0.0,
+        "windows": 6,
+        "bpsk_windows": 6
+      },
+      {
+        "capture": "rx_20261123_135609.cu8",
+        "rx_gain_db": 40.0,
+        "frame": 2,
+        "esn0_db": -1.38,
+        "frame_ber": 0.087890625,
+        "windows": 6,
+        "bpsk_windows": 0
+      }
+    ]
+  }
+}

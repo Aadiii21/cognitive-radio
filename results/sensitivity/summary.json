@@ -1,0 +1,63 @@
+{
+  "penalties": [
+    0.0,
+    0.05,
+    0.1,
+    0.15,
+    0.25,
+    0.4,
+    0.6
+  ],
+  "losses_db": [
+    0.0,
+    1.0,
+    2.0
+  ],
+  "calibrated_vs_best_other": {
+    "Low_0dB": {
+      "best_other": "adaptive_modulation",
+      "delta": 0.2388,
+      "ci95": 0.0091
+    },
+    "Low_1dB": {
+      "best_other": "adaptive_modulation",
+      "delta": 0.2372,
+      "ci95": 0.0094
+    },
+    "Low_2dB": {
+      "best_other": "adaptive_modulation",
+      "delta": 0.2307,
+      "ci95": 0.0101
+    },
+    "Medium_0dB": {
+      "best_other": "adaptive_modulation",
+      "delta": 0.598,
+      "ci95": 0.0117
+    },
+    "Medium_1dB": {
+      "best_other": "adaptive_modulation",
+      "delta": 0.4907,
+      "ci95": 0.0128
+    },
+    "Medium_2dB": {
+      "best_other": "adaptive_modulation",
+      "delta": 0.2728,
+      "ci95": 0.0155
+    },
+    "High_0dB": {
+      "best_other": "adaptive_modulation",
+      "delta": 0.6899,
+      "ci95": 0.0177
+    },
+    "High_1dB": {
+      "best_other": "adaptive_modulation",
+      "delta": 0.5299,
+      "ci95": 0.0176
+    },
+    "High_2dB": {
+      "best_other": "adaptive_modulation",
+      "delta": 0.2652,
+      "ci95": 0.0131
+    }
+  }
+}

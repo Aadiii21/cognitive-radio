@@ -58,6 +58,10 @@ PART_1 = [
     ("ml", "src/ml_analysis.py",
      "Linear regression + random forest (seed-grouped split)",
      [("results/ml/", "how well conditions predict throughput / PDR")]),
+    ("sens", "scripts/sensitivity_analysis.py",
+     "Switching-penalty sweep; 1-2 dB implementation loss; safety margin",
+     [("results/sensitivity/ (penalty_sweep, implementation_loss,\nsafety_margin .csv/.png)",
+       "result holds for any penalty; 0.25 better; 1 dB margin restores PDR")]),
     ("srad", "src/radio/base.py · simulated_radio.py\nsrc/run_radio_controller.py",
      "Controller driving a simulated radio",
      [("console metrics (500 / 5,000 steps)", "control loop works end to end in software")]),
@@ -70,7 +74,7 @@ PART_1 = [
       ("results/final_experiment_metrics.csv\ncognitive_radio_experiment_final.png", "channel picked correctly? availability")]),
 ]
 PART_1_EDGES = [("chan", "ctrl"), ("metr", "ctrl"), ("ctrl", "cal"), ("ctrl", "sims"), ("cal", "bench"),
-                ("chan", "bench"), ("bench", "pair"), ("bench", "anal"), ("bench", "ml"), ("cal", "srad"),
+                ("chan", "bench"), ("bench", "pair"), ("bench", "anal"), ("bench", "ml"), ("cal", "srad"), ("bench", "sens"),
                 ("ctrl", "grctl"), ("grctl", "exp")]
 
 PART_2 = [
@@ -106,9 +110,9 @@ PART_2 = [
      "Synthetic BER vs Es/N0, switching thresholds",
      [("results/analysis/ber_vs_snr_multimod_synthetic.csv\ncontroller_thresholds_synthetic.json\nresults/figures/ber_vs_esn0_synthetic.png",
        "BER<=1e-3 at 6.8 / 9.9 / 16.7 dB")]),
-    ("dl", "src/dl/modulation_classifier.py\nscripts/train_modulation_classifier.py",
+    ("dl", "src/dl/modulation_classifier.py\nscripts/train_modulation_classifier.py\nscripts/evaluate_dl_strict.py",
      "CNN: recognise modulation from IQ",
-     [("results/dl/ (model, metrics.json, plots)", "98.5 % on real OTA windows")]),
+     [("results/dl/ (model, metrics.json, strict_evaluation.json, plots)", "98.5 % on real OTA (CI 96.2-99.8 %)")]),
 ]
 PART_2_EDGES = [("dev", "prx"), ("prx", "calib"), ("calib", "logit"), ("snr", "ncal"), ("logit", "fac"),
                 ("snr", "fac"), ("sync", "rx"), ("wave", "rx"), ("rx", "ber"), ("wave", "dl")]
@@ -138,7 +142,7 @@ PART_3 = [
      "Records the real RF path (OTA)",
      [("rf_path_correction in run JSONs", "honest labelling of 23 Nov runs")]),
     ("sweep", "scripts/summarize_hardware_sweep.py",
-     "Hardware BER sweep table and figure",
+     "Hardware BER table, 95 % CIs, implied loss, figure",
      [("results/analysis/hardware_ber_runs.csv (19 runs)\nresults/figures/hardware_ber_vs_theory.png",
        "measured BER ~ AWGN theory; thresholds hold")]),
     ("pipe", "pipelines/integrated_pipeline.py\n(scripts/pluto_to_rtl_sdr_demo.py, test_pluto_tx_adapter.py: legacy)",

@@ -30,8 +30,8 @@ digraph G {
   ber [shape=box, style="rounded,filled", fillcolor="#D9EFE4", color="#2E7D57", label="scripts/ber_curves.py · plot_ber_synthetic.py\nsrc/radio/cognitive_controller.py\n— Synthetic BER vs Es/N0, switching thresholds"];
   ber_o0 [shape=note, style=filled, fillcolor="#F1F9F5", color="#2E7D57", fontsize=9, label="results/analysis/ber_vs_snr_multimod_synthetic.csv\ncontroller_thresholds_synthetic.json\nresults/figures/ber_vs_esn0_synthetic.png\n→ BER<=1e-3 at 6.8 / 9.9 / 16.7 dB"];
   ber -> ber_o0 [color="#2E7D57"];
-  dl [shape=box, style="rounded,filled", fillcolor="#D9EFE4", color="#2E7D57", label="src/dl/modulation_classifier.py\nscripts/train_modulation_classifier.py\n— CNN: recognise modulation from IQ"];
-  dl_o0 [shape=note, style=filled, fillcolor="#F1F9F5", color="#2E7D57", fontsize=9, label="results/dl/ (model, metrics.json, plots)\n→ 98.5 % on real OTA windows"];
+  dl [shape=box, style="rounded,filled", fillcolor="#D9EFE4", color="#2E7D57", label="src/dl/modulation_classifier.py\nscripts/train_modulation_classifier.py\nscripts/evaluate_dl_strict.py\n— CNN: recognise modulation from IQ"];
+  dl_o0 [shape=note, style=filled, fillcolor="#F1F9F5", color="#2E7D57", fontsize=9, label="results/dl/ (model, metrics.json, strict_evaluation.json, plots)\n→ 98.5 % on real OTA (CI 96.2-99.8 %)"];
   dl -> dl_o0 [color="#2E7D57"];
   { rank=same; prx; dev; calib; logit; snr; ncal; fac; sync; wave; rx; ber; dl; }
   prx -> dev [style=invis];

@@ -97,3 +97,10 @@ Then follow `docs/TRANSMISSION_DAY_RUNBOOK.md`.
 - `docs/LIMITATIONS.md` rewritten for the final state, with a table of corrections to the 22 Nov version (kept in `docs/archive/`).
 - Historical docs (status, hand-off, audits, checklists) kept unchanged, each with a dated status note at the top; `docs/README.md` indexes all documents.
 - Analysis commands in the docs simplified: `multi_seed_experiment.py`, `paired_seed_analysis.py` and `ml_analysis.py` take no command-line arguments (they use fixed default paths).
+
+## v9 changes (26 Nov): confidence intervals, sensitivity, robustness, stricter DL checks
+
+- `scripts/summarize_hardware_sweep.py`: exact 95 % Clopper–Pearson interval and implied implementation loss per run; error bars in `results/figures/hardware_ber_vs_theory.png`. 4 of 9 runs with errors contain theory; implied loss −0.2 to +0.75 dB above 4 dB Es/N0.
+- `scripts/sensitivity_analysis.py` (reproduces all 630 benchmark runs exactly with `--check`): switching-penalty sweep 0–0.6, 1–2 dB implementation loss, safety margin. Outputs in `results/sensitivity/`. The calibrated hybrid leads at every penalty; 0.25 beats the benchmark's 0.15; under 1 dB loss it still leads, and a 1 dB margin keeps PDR at 0.997 / 0.988. The benchmark itself is unchanged.
+- `scripts/evaluate_dl_strict.py`: capture-level bootstrap CI 96.2–99.8 %; all errors below 0.9 confidence; 36/36 on the unseen BPSK v2 format; one damaged frame confidently misclassified. Outputs `results/dl/strict_evaluation.json`, `bpsk_v2_predictions.csv`.
+- Reports, flowcharts, README and docs updated. Tests: `tests/test_sensitivity_and_stats.py` (6); total 355.

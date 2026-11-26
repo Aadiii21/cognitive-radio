@@ -23,7 +23,7 @@ digraph G {
   annot [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="scripts/annotate_rf_path.py\n— Records the real RF path (OTA)"];
   annot_o0 [shape=note, style=filled, fillcolor="#FDF4EA", color="#B8621B", fontsize=9, label="rf_path_correction in run JSONs\n→ honest labelling of 23 Nov runs"];
   annot -> annot_o0 [color="#B8621B"];
-  sweep [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="scripts/summarize_hardware_sweep.py\n— Hardware BER sweep table and figure"];
+  sweep [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="scripts/summarize_hardware_sweep.py\n— Hardware BER table, 95 % CIs, implied loss, figure"];
   sweep_o0 [shape=note, style=filled, fillcolor="#FDF4EA", color="#B8621B", fontsize=9, label="results/analysis/hardware_ber_runs.csv (19 runs)\nresults/figures/hardware_ber_vs_theory.png\n→ measured BER ~ AWGN theory; thresholds hold"];
   sweep -> sweep_o0 [color="#B8621B"];
   pipe [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="pipelines/integrated_pipeline.py\n(scripts/pluto_to_rtl_sdr_demo.py, test_pluto_tx_adapter.py: legacy)\n— Software-mode pipeline; RF path disabled"];

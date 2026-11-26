@@ -7,8 +7,9 @@ Reads every results/hardware/experiment_results/*.json made with a
 multimod_frame_v1 waveform and writes:
   results/analysis/hardware_ber_runs.csv          one row per run
   results/figures/hardware_ber_vs_theory.png      measured BER vs AWGN theory
-Es/N0 per run is the linear mean of the per-frame data-aided SNR. Runs with
-zero errors are drawn at the 95 % upper bound (3 / bits) with a down arrow.
+Es/N0 per run is the linear mean of the per-frame data-aided SNR. Each BER has
+an exact two-sided 95 % Clopper-Pearson interval (drawn as error bars). Runs
+with zero errors are drawn at their one-sided 95 % upper bound (3 / bits).
 """
 import csv
 import json
@@ -29,6 +30,15 @@ def q(x):
     return 0.5 * erfc(x / np.sqrt(2))
 
 
+def clopper_pearson(errors, bits, level=0.95):
+    """Exact two-sided binomial confidence interval for errors / bits."""
+    from scipy.stats import beta
+    a = (1 - level) / 2
+    lo = 0.0 if errors == 0 else float(beta.ppf(a, errors, bits - errors + 1))
+    hi = 1.0 if errors == bits else float(beta.ppf(1 - a, errors + 1, bits - errors))
+    return lo, hi
+
+
 def theory_ber(mod, esn0_db):
     g = 10 ** (np.asarray(esn0_db, dtype=float) / 10)
     if mod == "BPSK":
@@ -36,6 +46,15 @@ def theory_ber(mod, esn0_db):
     if mod == "QPSK":
         return q(np.sqrt(g))
     return 0.75 * q(np.sqrt(g / 5))      # Gray 16-QAM, nearest-neighbour approximation
+
+
+def implied_loss_db(mod, esn0_db, ber):
+    """Es/N0 shortfall vs theory: measured_EsN0 - EsN0_theory(BER). Positive = worse than theory."""
+    from scipy.optimize import brentq
+    if not ber or ber <= 0 or ber >= float(theory_ber(mod, -10)):
+        return None
+    need = brentq(lambda x: float(theory_ber(mod, x)) - ber, -10, 40)
+    return round(esn0_db - need, 2)
 
 
 def collect(runs_dir=RUNS):
@@ -58,8 +77,11 @@ def collect(runs_dir=RUNS):
             "mean_esn0_db": round(float(esn0), 2),
             "bit_errors": errs, "bits": bits,
             "measured_ber": errs / bits if bits else None,
+            "ber_ci95_low": "%.3e" % clopper_pearson(errs, bits)[0] if bits else "",
+            "ber_ci95_high": "%.3e" % clopper_pearson(errs, bits)[1] if bits else "",
             "ber_95_upper_if_zero": round(3 / bits, 6) if bits and errs == 0 else "",
             "theory_ber_awgn": float(theory_ber(rx["modulation"], esn0)),
+            "implied_loss_db": implied_loss_db(rx["modulation"], float(esn0), errs / bits if bits else None),
             "rf_path": corr.get("actual_type") or (r.get("rf_path") or {}).get("type"),
         })
     return rows
@@ -70,15 +92,20 @@ def plot(rows, path=FIG_OUT):
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     colors = {"BPSK": "#2F5D8A", "QPSK": "#2E7D57", "16QAM": "#B8621B"}
-    fig, ax = plt.subplots(figsize=(6.6, 4.4))
+    fig, ax = plt.subplots(figsize=(6.6, 5.2))
     s = np.linspace(0, 26, 200)
     for m in MODS:
         ax.semilogy(s, theory_ber(m, s), color=colors[m], lw=1.2, label=f"{m} theory (AWGN)")
         pts = [r for r in rows if r["modulation"] == m]
-        hit = [(r["mean_esn0_db"], r["measured_ber"]) for r in pts if r["bit_errors"] > 0]
+        hit = [r for r in pts if r["bit_errors"] > 0]
         zero = [(r["mean_esn0_db"], 3 / r["bits"]) for r in pts if r["bit_errors"] == 0]
         if hit:
-            ax.scatter(*zip(*hit), color=colors[m], edgecolor="black", s=40, zorder=3, label=f"{m} measured")
+            x = [r["mean_esn0_db"] for r in hit]
+            y = [r["measured_ber"] for r in hit]
+            ci = [clopper_pearson(r["bit_errors"], r["bits"]) for r in hit]
+            yerr = [[v - lo for v, (lo, hi) in zip(y, ci)], [hi - v for v, (lo, hi) in zip(y, ci)]]
+            ax.errorbar(x, y, yerr=yerr, fmt="o", color=colors[m], mec="black", ms=6, capsize=3, lw=1,
+                        zorder=3, label=f"{m} measured (95 % CI)")
         if zero:
             ax.scatter(*zip(*zero), color=colors[m], marker="v", s=40, alpha=0.6, zorder=3,
                        label=f"{m} 0 errors (95 % bound)")
@@ -89,7 +116,7 @@ def plot(rows, path=FIG_OUT):
     ax.set_ylabel("Bit error rate")
     ax.set_title("OTA hardware BER vs AWGN theory (Pluto -> RTL-SDR, 866 MHz)", fontsize=10)
     ax.grid(alpha=0.3, which="both")
-    ax.legend(fontsize=7, ncol=2, loc="upper right")
+    ax.legend(fontsize=7, ncol=3, loc="upper center", bbox_to_anchor=(0.5, -0.14), frameon=False)
     fig.tight_layout()
     path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(path, dpi=200)
@@ -108,7 +135,8 @@ def main():
     plot(rows)
     for r in rows:
         print(f"  {r['run']}  {r['modulation']:5s} att {r['pluto_attenuation_db']:>2}  Es/N0 {r['mean_esn0_db']:5.1f} dB  "
-              f"{r['bit_errors']:4d}/{r['bits']}  theory {r['theory_ber_awgn']:.1e}")
+              f"{r['bit_errors']:4d}/{r['bits']}  95% CI [{r['ber_ci95_low']}, {r['ber_ci95_high']}]  "
+              f"theory {r['theory_ber_awgn']:.1e}")
     print(f"{len(rows)} runs -> {CSV_OUT.relative_to(ROOT)}, {FIG_OUT.relative_to(ROOT)}")
 
 

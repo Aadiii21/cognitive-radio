@@ -19,6 +19,7 @@
 - **Single frequency.** Channel switching was not exercised on hardware.
 - **No conducted comparison.** The runs were started with `--rf-path conducted --attenuator-db 30` but used antennas; the records carry an `rf_path_correction` block (actual: OTA).
 - Indoor link; no fading or multipath measurement on air.
+- Measured BER is slightly worse than AWGN theory in 5 of 9 runs with errors (implied loss up to 0.75 dB above 4 dB Es/N0).
 
 ## 2. Simulation assumptions
 
@@ -31,7 +32,7 @@
 Low, Medium and High set the **interference level** (mean, variation and burst probability), not the channel SNR. Higher interference lowers the SNR of the affected channel.
 
 ### 2.3 Packet outcomes
-In the benchmark, packet success is drawn from the calibrated logistic curves; packets are not decoded one by one.
+In the benchmark, packet success is drawn from the calibrated logistic curves; packets are not decoded one by one. The calibrated hybrid uses the same curves for its decisions, so it is scored with the model it knows. The robustness study (`results/sensitivity/`) shows that with reality 1 dB worse it still leads in throughput, but its PDR drops to 0.969 / 0.933 (medium / high) unless it keeps a 1 dB safety margin.
 
 ## 3. Calibration
 - Packet-success curves and the SNR ↔ noise-voltage map come from GNU Radio's synthetic AWGN channel, not from radio hardware.
@@ -46,15 +47,16 @@ In the benchmark, packet success is drawn from the calibrated logistic curves; p
 
 ## 5. Machine learning and deep learning
 - **Random forest / linear regression** (`src/ml_analysis.py`): describe the 630-run benchmark from environment and strategy; seed-grouped split (train 18 seeds, test 12). They show association, not causation, and do not predict new radios or channel models. Offline only.
-- **CNN modulation classifier** (`src/dl/modulation_classifier.py`): trained on synthetic data only. The real test set (536 windows from 19 captures) shares one payload, one session and one antenna setup; windows from the same frame are not independent, so the per-capture vote (19/19) is the most conservative figure. Three classes only, with no "no signal" class, applied to the payload of frames the receiver had already found. Not used by the controller.
+- **CNN modulation classifier** (`src/dl/modulation_classifier.py`): trained on synthetic data only. The real test set (536 windows from 19 captures) shares one payload, one session and one antenna setup; windows from the same frame are not independent, so the per-capture vote (19/19) is the most conservative figure. Three classes only, with no "no signal" class, applied to the payload of frames the receiver had already found. On a damaged frame (8.8 % BER) it answered 16-QAM with 0.99 confidence, so its confidence is only reliable on normal signals. Not used by the controller.
 - The cumulant baseline gets no CFO correction; with correction it would do better at high SNR.
 
 ## 6. Experimental design
 - The 630-run benchmark is one pass over the full grid (3 environments × 30 seeds × 7 strategies); there are no repeated batches.
 - `channel_switching` uses fixed QPSK, not fixed BPSK as in the 6 Nov plan.
+- The switching penalty (0.15) and minimum utility gain (0.10) were chosen by hand. The sensitivity sweep shows 0.25 is better; the benchmark keeps 0.15 for consistency.
 
 ## 7. Software environment
-- Three tests need `gnuradio.iio` (legacy GNU Radio TX backend) and one needs `torch`; with both installed, all 349 tests pass.
+- Three tests need `gnuradio.iio` (legacy GNU Radio TX backend) and one needs `torch`; with both installed, all 355 tests pass.
 - The GNU Radio scripts need GNU Radio 3.10.
 
 ## 8. Corrections to the 22 Nov version
@@ -74,5 +76,7 @@ python src/paired_seed_analysis.py > results/paired_seed_analysis_current.txt
 python src/ml_analysis.py                                   # -> results/ml/
 python scripts/summarize_hardware_sweep.py
 python scripts/train_modulation_classifier.py
+python scripts/evaluate_dl_strict.py
+python scripts/sensitivity_analysis.py
 python -m pytest -q tests
 ```

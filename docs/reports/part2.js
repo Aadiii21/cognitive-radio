@@ -45,7 +45,7 @@ module.exports = function part2() {
     ["results/synchronization/** and *_sync_validation_*.csv", "validate_* scripts", "Timing, CFO, SRO and SNR errors per trial", "Where synchronisation works and where it breaks"],
     ["results/baseband/prepared/bpsk_frame_v2_seed42.*, results/baseband/multimod_v2/*", "frame builders", "complex64 IQ + JSON metadata (payload, layout)", "The exact signals transmitted in Part 3"],
     ["results/analysis/ber_vs_snr_multimod_synthetic.csv, controller_thresholds_synthetic.json, results/figures/ber_vs_esn0_synthetic.png", "ber_curves.py, plot_ber_synthetic.py", "BER per Es/N0 with theory; thresholds", "The receiver matches theory; switching points 6.8 / 9.9 / 16.7 dB"],
-    ["results/dl/ (modulation_cnn.pt, metrics.json, accuracy_vs_esn0.*, confusion_*.png, real_predictions.csv, real_by_capture.csv, training_history.csv)", "train_modulation_classifier.py", "Trained model, accuracy curves, confusion matrices, per-window and per-capture predictions", "Deep learning can identify the modulation from raw over-the-air IQ"],
+    ["results/dl/ (modulation_cnn.pt, metrics.json, accuracy_vs_esn0.*, confusion_*.png, real_predictions.csv, real_by_capture.csv, training_history.csv, strict_evaluation.json, bpsk_v2_predictions.csv)", "train_modulation_classifier.py, evaluate_dl_strict.py", "Trained model, accuracy curves, confusion matrices, per-window and per-capture predictions", "Deep learning can identify the modulation from raw over-the-air IQ"],
   ], [0.3, 0.2, 0.26, 0.24], 2));
 
   c.push(H1("5. Results"));
@@ -93,6 +93,15 @@ module.exports = function part2() {
   c.push(...FIG("results/dl/accuracy_vs_esn0.png", "Classification accuracy vs Es/N0: CNN and baseline on synthetic data (lines), CNN on each real OTA capture (orange markers)."));
   c.push(...FIG("results/dl/confusion_real.png", "CNN confusion matrix on the 536 real OTA windows.", 3.6));
   c.push(P("**What it shows.** BPSK is recognised perfectly; the only errors are QPSK ↔ 16-QAM confusions, all in captures at or below about 8 dB Es/N0, exactly where the synthetic curve also drops. The real points sit on the synthetic curve, so the simulated RTL-SDR chain is realistic: **a model trained only on simulation transfers to real hardware**. The cumulant baseline fails mainly because the residual frequency offset (about −10.6 kHz on air) rotates the constellation within a window and destroys the phase-dependent features that separate BPSK from QPSK; the CNN learns local structure that survives the rotation."));
+  c.push(P("**Stricter checks** (`scripts/evaluate_dl_strict.py`, no retraining):"));
+  c.push(...T(["Check", "Result", "What it means"], [
+    ["95 % interval resampling whole captures (the 536 windows are not independent)", "96.2 % – 99.8 %", "The accuracy holds even counting only 19 independent captures"],
+    ["Confidence of the 8 wrong windows", "median 0.63; none above 0.9; all at Es/N0 ≤ 7.2 dB", "The network knows when it is unsure"],
+    ["Windows predicted with confidence > 0.9 (506 of 536)", "100 % correct", "A confidence threshold gives error-free decisions on normal signals"],
+    ["BPSK frame v2: a frame format never seen in training (6 decodable frames, 36 windows)", "36 / 36 correct", "It recognises the modulation, not the frame layout"],
+    ["One damaged frame (Es/N0 −1.4 dB, 8.8 % BER, likely dropped samples)", "called 16-QAM with confidence 0.99", "On corrupted, out-of-distribution data it can be confidently wrong"],
+  ], [0.4, 0.27, 0.33], 2));
+  c.push(P("The last row is an honest weakness: a high confidence is only trustworthy for signals like those it was trained on. A 'no signal / unknown' class trained on damaged and empty captures would address it."));
   c.push(P("**Why it matters for a cognitive radio.** A receiver that can identify the modulation blindly does not need the transmitter to announce its modulation change in advance, and the same approach can recognise other users' signals when sensing a channel."));
 
   c.push(H1("6. How to reproduce"));
@@ -110,6 +119,7 @@ module.exports = function part2() {
     "python scripts/plot_ber_synthetic.py",
     "pip install torch",
     "python scripts/train_modulation_classifier.py",
+    "python scripts/evaluate_dl_strict.py",
     "python -m pytest -q tests/test_multimod_receiver.py tests/test_bpsk_receiver.py \\",
     "    tests/test_dl_and_summary.py",
   ]));
@@ -119,7 +129,8 @@ module.exports = function part2() {
   c.push(...B([
     "Packet-success and SNR calibrations come from GNU Radio's synthetic AWGN channel, not from radio hardware.",
     "No equaliser: short, strong multipath echoes break timing (Section 5.4).",
-    "DL test set: 536 windows, but all share the same seed-42 payload and come from one session and one antenna setup; windows from the same frame are not independent. The per-capture vote (19 / 19) is the most conservative figure.",
+    "DL test set: 536 windows, but all share the same seed-42 payload and come from one session and one antenna setup; windows from the same frame are not independent. The capture-level interval (96.2–99.8 %) accounts for this.",
+    "The classifier can be confidently wrong on damaged data (Section 5.6); its confidence is only reliable on normal signals.",
     "The classifier only knows three classes. It has no 'no signal' or 'unknown' class, and is applied to the payload part of frames that the receiver had already found.",
     "The cumulant baseline is not given CFO correction; a baseline with CFO correction would do better at high SNR.",
   ]));
@@ -132,7 +143,7 @@ module.exports = function part2() {
     "the noise-voltage ↔ SNR calibration and the three-channel estimator;",
     "the synchronisation pipeline and its validation under CFO, SRO and multipath;",
     "the on-air frame formats, the BPSK and multi-modulation receivers and the synthetic BER thresholds;",
-    "the deep-learning modulation classifier, its classical baseline and its evaluation on real OTA captures.",
+    "the deep-learning modulation classifier, its classical baseline, its evaluation on real OTA captures and the stricter capture-level, confidence and unseen-format checks.",
   ]));
   return build(2, "Part2_PHY_Calibration_Receivers_DL_Report.docx", c);
 };

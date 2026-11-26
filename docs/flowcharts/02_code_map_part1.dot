@@ -26,6 +26,9 @@ digraph G {
   ml [shape=box, style="rounded,filled", fillcolor="#DCE8F7", color="#2F5D8A", label="src/ml_analysis.py\n— Linear regression + random forest (seed-grouped split)"];
   ml_o0 [shape=note, style=filled, fillcolor="#F2F7FC", color="#2F5D8A", fontsize=9, label="results/ml/\n→ how well conditions predict throughput / PDR"];
   ml -> ml_o0 [color="#2F5D8A"];
+  sens [shape=box, style="rounded,filled", fillcolor="#DCE8F7", color="#2F5D8A", label="scripts/sensitivity_analysis.py\n— Switching-penalty sweep; 1-2 dB implementation loss; safety margin"];
+  sens_o0 [shape=note, style=filled, fillcolor="#F2F7FC", color="#2F5D8A", fontsize=9, label="results/sensitivity/ (penalty_sweep, implementation_loss,\nsafety_margin .csv/.png)\n→ result holds for any penalty; 0.25 better; 1 dB margin restores PDR"];
+  sens -> sens_o0 [color="#2F5D8A"];
   srad [shape=box, style="rounded,filled", fillcolor="#DCE8F7", color="#2F5D8A", label="src/radio/base.py · simulated_radio.py\nsrc/run_radio_controller.py\n— Controller driving a simulated radio"];
   srad_o0 [shape=note, style=filled, fillcolor="#F2F7FC", color="#2F5D8A", fontsize=9, label="console metrics (500 / 5,000 steps)\n→ control loop works end to end in software"];
   srad -> srad_o0 [color="#2F5D8A"];
@@ -35,7 +38,7 @@ digraph G {
   exp -> exp_o0 [color="#2F5D8A"];
   exp_o1 [shape=note, style=filled, fillcolor="#F2F7FC", color="#2F5D8A", fontsize=9, label="results/final_experiment_metrics.csv\ncognitive_radio_experiment_final.png\n→ channel picked correctly? availability"];
   exp -> exp_o1 [color="#2F5D8A"];
-  { rank=same; chan; metr; ctrl; cal; sims; bench; pair; anal; ml; srad; grctl; exp; }
+  { rank=same; chan; metr; ctrl; cal; sims; bench; pair; anal; ml; sens; srad; grctl; exp; }
   chan -> metr [style=invis];
   metr -> ctrl [style=invis];
   ctrl -> cal [style=invis];
@@ -44,7 +47,8 @@ digraph G {
   bench -> pair [style=invis];
   pair -> anal [style=invis];
   anal -> ml [style=invis];
-  ml -> srad [style=invis];
+  ml -> sens [style=invis];
+  sens -> srad [style=invis];
   srad -> grctl [style=invis];
   grctl -> exp [style=invis];
   chan -> ctrl [style=dashed, color="#777777", constraint=false];
@@ -57,6 +61,7 @@ digraph G {
   bench -> anal [style=dashed, color="#777777", constraint=false];
   bench -> ml [style=dashed, color="#777777", constraint=false];
   cal -> srad [style=dashed, color="#777777", constraint=false];
+  bench -> sens [style=dashed, color="#777777", constraint=false];
   ctrl -> grctl [style=dashed, color="#777777", constraint=false];
   grctl -> exp [style=dashed, color="#777777", constraint=false];
   legend [shape=plaintext, fontsize=9, label="Box = code (— what it does)   Note = output (→ what it shows)   Dashed = code dependency"];

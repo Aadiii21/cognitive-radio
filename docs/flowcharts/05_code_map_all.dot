@@ -28,6 +28,9 @@ digraph G {
   p1_ml [shape=box, style="rounded,filled", fillcolor="#DCE8F7", color="#2F5D8A", label="src/ml_analysis.py\n— Linear regression + random forest (seed-grouped split)"];
   p1_ml_o0 [shape=note, style=filled, fillcolor="#F2F7FC", color="#2F5D8A", fontsize=9, label="results/ml/\n→ how well conditions predict throughput / PDR"];
   p1_ml -> p1_ml_o0 [color="#2F5D8A"];
+  p1_sens [shape=box, style="rounded,filled", fillcolor="#DCE8F7", color="#2F5D8A", label="scripts/sensitivity_analysis.py\n— Switching-penalty sweep; 1-2 dB implementation loss; safety margin"];
+  p1_sens_o0 [shape=note, style=filled, fillcolor="#F2F7FC", color="#2F5D8A", fontsize=9, label="results/sensitivity/ (penalty_sweep, implementation_loss,\nsafety_margin .csv/.png)\n→ result holds for any penalty; 0.25 better; 1 dB margin restores PDR"];
+  p1_sens -> p1_sens_o0 [color="#2F5D8A"];
   p1_srad [shape=box, style="rounded,filled", fillcolor="#DCE8F7", color="#2F5D8A", label="src/radio/base.py · simulated_radio.py\nsrc/run_radio_controller.py\n— Controller driving a simulated radio"];
   p1_srad_o0 [shape=note, style=filled, fillcolor="#F2F7FC", color="#2F5D8A", fontsize=9, label="console metrics (500 / 5,000 steps)\n→ control loop works end to end in software"];
   p1_srad -> p1_srad_o0 [color="#2F5D8A"];
@@ -37,7 +40,7 @@ digraph G {
   p1_exp -> p1_exp_o0 [color="#2F5D8A"];
   p1_exp_o1 [shape=note, style=filled, fillcolor="#F2F7FC", color="#2F5D8A", fontsize=9, label="results/final_experiment_metrics.csv\ncognitive_radio_experiment_final.png\n→ channel picked correctly? availability"];
   p1_exp -> p1_exp_o1 [color="#2F5D8A"];
-  { rank=same; p1_chan; p1_metr; p1_ctrl; p1_cal; p1_sims; p1_bench; p1_pair; p1_anal; p1_ml; p1_srad; p1_grctl; p1_exp; }
+  { rank=same; p1_chan; p1_metr; p1_ctrl; p1_cal; p1_sims; p1_bench; p1_pair; p1_anal; p1_ml; p1_sens; p1_srad; p1_grctl; p1_exp; }
   p1_chan -> p1_metr [style=invis];
   p1_metr -> p1_ctrl [style=invis];
   p1_ctrl -> p1_cal [style=invis];
@@ -46,7 +49,8 @@ digraph G {
   p1_bench -> p1_pair [style=invis];
   p1_pair -> p1_anal [style=invis];
   p1_anal -> p1_ml [style=invis];
-  p1_ml -> p1_srad [style=invis];
+  p1_ml -> p1_sens [style=invis];
+  p1_sens -> p1_srad [style=invis];
   p1_srad -> p1_grctl [style=invis];
   p1_grctl -> p1_exp [style=invis];
   p1_chan -> p1_ctrl [style=dashed, color="#777777", constraint=false];
@@ -59,6 +63,7 @@ digraph G {
   p1_bench -> p1_anal [style=dashed, color="#777777", constraint=false];
   p1_bench -> p1_ml [style=dashed, color="#777777", constraint=false];
   p1_cal -> p1_srad [style=dashed, color="#777777", constraint=false];
+  p1_bench -> p1_sens [style=dashed, color="#777777", constraint=false];
   p1_ctrl -> p1_grctl [style=dashed, color="#777777", constraint=false];
   p1_grctl -> p1_exp [style=dashed, color="#777777", constraint=false];
   }
@@ -91,8 +96,8 @@ digraph G {
   p2_ber [shape=box, style="rounded,filled", fillcolor="#D9EFE4", color="#2E7D57", label="scripts/ber_curves.py · plot_ber_synthetic.py\nsrc/radio/cognitive_controller.py\n— Synthetic BER vs Es/N0, switching thresholds"];
   p2_ber_o0 [shape=note, style=filled, fillcolor="#F1F9F5", color="#2E7D57", fontsize=9, label="results/analysis/ber_vs_snr_multimod_synthetic.csv\ncontroller_thresholds_synthetic.json\nresults/figures/ber_vs_esn0_synthetic.png\n→ BER<=1e-3 at 6.8 / 9.9 / 16.7 dB"];
   p2_ber -> p2_ber_o0 [color="#2E7D57"];
-  p2_dl [shape=box, style="rounded,filled", fillcolor="#D9EFE4", color="#2E7D57", label="src/dl/modulation_classifier.py\nscripts/train_modulation_classifier.py\n— CNN: recognise modulation from IQ"];
-  p2_dl_o0 [shape=note, style=filled, fillcolor="#F1F9F5", color="#2E7D57", fontsize=9, label="results/dl/ (model, metrics.json, plots)\n→ 98.5 % on real OTA windows"];
+  p2_dl [shape=box, style="rounded,filled", fillcolor="#D9EFE4", color="#2E7D57", label="src/dl/modulation_classifier.py\nscripts/train_modulation_classifier.py\nscripts/evaluate_dl_strict.py\n— CNN: recognise modulation from IQ"];
+  p2_dl_o0 [shape=note, style=filled, fillcolor="#F1F9F5", color="#2E7D57", fontsize=9, label="results/dl/ (model, metrics.json, strict_evaluation.json, plots)\n→ 98.5 % on real OTA (CI 96.2-99.8 %)"];
   p2_dl -> p2_dl_o0 [color="#2E7D57"];
   { rank=same; p2_prx; p2_dev; p2_calib; p2_logit; p2_snr; p2_ncal; p2_fac; p2_sync; p2_wave; p2_rx; p2_ber; p2_dl; }
   p2_prx -> p2_dev [style=invis];
@@ -139,7 +144,7 @@ digraph G {
   p3_annot [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="scripts/annotate_rf_path.py\n— Records the real RF path (OTA)"];
   p3_annot_o0 [shape=note, style=filled, fillcolor="#FDF4EA", color="#B8621B", fontsize=9, label="rf_path_correction in run JSONs\n→ honest labelling of 23 Nov runs"];
   p3_annot -> p3_annot_o0 [color="#B8621B"];
-  p3_sweep [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="scripts/summarize_hardware_sweep.py\n— Hardware BER sweep table and figure"];
+  p3_sweep [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="scripts/summarize_hardware_sweep.py\n— Hardware BER table, 95 % CIs, implied loss, figure"];
   p3_sweep_o0 [shape=note, style=filled, fillcolor="#FDF4EA", color="#B8621B", fontsize=9, label="results/analysis/hardware_ber_runs.csv (19 runs)\nresults/figures/hardware_ber_vs_theory.png\n→ measured BER ~ AWGN theory; thresholds hold"];
   p3_sweep -> p3_sweep_o0 [color="#B8621B"];
   p3_pipe [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="pipelines/integrated_pipeline.py\n(scripts/pluto_to_rtl_sdr_demo.py, test_pluto_tx_adapter.py: legacy)\n— Software-mode pipeline; RF path disabled"];

@@ -184,3 +184,4 @@ Physical BER: NOT validated. Status of the hardware milestone is unchanged.
 - Paired analysis re-run on current CSV: results/paired_seed_analysis_current.txt (v3 file and guide channel_switching rows are from an older run).
 - Three part reports (.docx) in docs/reports/. Tests: 346 passed here + 3 gnuradio.iio-only.
 - 2026-11-25 (later): master report, front-page README, requirements.txt, docs corrected (RESULTS tables regenerated from CSV, LIMITATIONS rewritten, status notes on historical docs). Prepared for GitHub.
+- 2026-11-26: BER confidence intervals and implied loss; penalty sensitivity, implementation-loss and safety-margin studies (results/sensitivity/); stricter DL evaluation; reports updated. Tests 355.

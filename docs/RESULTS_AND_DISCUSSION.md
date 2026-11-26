@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-The cognitive radio system was implemented, validated in simulation and GNU Radio, and its physical layer was tested over the air with an ADALM-Pluto transmitter and an RTL-SDR receiver at 866 MHz. A 630-run multi-seed experiment (30 seeds × 3 environments × 7 strategies) shows the calibrated hybrid strategy has the highest throughput in all interference environments while keeping PDR ≥ 0.99. Over the air, measured BER for BPSK, QPSK and 16-QAM follows AWGN theory within about 1 dB, confirming the controller's modulation thresholds. A CNN modulation classifier trained only on simulated data recognised the modulation in 98.5 % of real OTA windows. 349 tests pass.
+The cognitive radio system was implemented, validated in simulation and GNU Radio, and its physical layer was tested over the air with an ADALM-Pluto transmitter and an RTL-SDR receiver at 866 MHz. A 630-run multi-seed experiment (30 seeds × 3 environments × 7 strategies) shows the calibrated hybrid strategy has the highest throughput in all interference environments while keeping PDR ≥ 0.99. Over the air, measured BER for BPSK, QPSK and 16-QAM follows AWGN theory within about 1 dB, confirming the controller's modulation thresholds. A CNN modulation classifier trained only on simulated data recognised the modulation in 98.5 % of real OTA windows. The controller's lead holds across switching penalties and under a realistic 1 dB hardware loss. 355 tests pass.
 
 The part reports in `docs/reports/` give the full detail; this document is the summary.
 
@@ -137,12 +137,26 @@ Pluto TX (pyadi-iio, cyclic buffer, 2.083 MS/s) → antennas → RTL-SDR RX (2.0
 |------|--------|
 | Tone (TX on vs off) | Detected at all levels (25.0 / 40.4 / 49.5 dB bin ratio at Pluto attenuation 30 / 20 / 10 dB); RTL frequency offset −10.4 kHz (−12 ppm) |
 | BPSK frame v2, att 10 dB | 4/4 frames, 0/2,048 bit errors, Es/N0 13.7–15.3 dB |
-| BPSK/QPSK/16-QAM sweep, att 0–20 dB (15 runs) + 4 runs | All 76 frames detected; BER within about 1–2.5× of AWGN theory; 16-QAM 1.2e-3 at 17.1 dB, QPSK error-free at 11–23 dB, BPSK 2.4e-4 at 7.7 dB |
+| BPSK/QPSK/16-QAM sweep, att 0–20 dB (15 runs) + 4 runs | All 76 frames detected; exact 95 % CIs contain theory in 4 of 9 runs with errors, the rest slightly worse; implied loss −0.2 to +0.75 dB above 4 dB Es/N0; 16-QAM 1.2e-3 (CI 4.0e-4–2.8e-3) at 17.1 dB, QPSK error-free at 11–23 dB, BPSK 2.4e-4 at 7.7 dB |
 
 Table and figure: `results/analysis/hardware_ber_runs.csv`, `results/figures/hardware_ber_vs_theory.png` (`scripts/summarize_hardware_sweep.py`). The runs were started with `--rf-path conducted`; the records carry an `rf_path_correction` (actual: OTA).
 
 ### 4.3 Deep-learning modulation classifier
-A 1-D CNN (85,859 parameters) trained on 24,000 synthetic windows passed through a simulated RTL-SDR chain, tested on the 536 payload windows of the 19 real OTA captures: **98.5 % per window, 97.4 % per frame, 19/19 captures**; a cumulant + random-forest baseline reaches 62.9 %. Errors occur only at Es/N0 ≤ 8 dB. Outputs: `results/dl/`.
+A 1-D CNN (85,859 parameters) trained on 24,000 synthetic windows passed through a simulated RTL-SDR chain, tested on the 536 payload windows of the 19 real OTA captures: **98.5 % per window (capture-level bootstrap 95 % CI 96.2–99.8 %), 97.4 % per frame, 19/19 captures**; a cumulant + random-forest baseline reaches 62.9 %. Errors occur only at Es/N0 ≤ 7.2 dB, all with confidence < 0.9; every window above 0.9 confidence is correct. An unseen frame format (BPSK v2) gives 36/36; one damaged frame (8.8 % BER) is called 16-QAM with 0.99 confidence. Outputs: `results/dl/`.
+
+---
+
+### 4.4 Sensitivity and robustness (simulation)
+`scripts/sensitivity_analysis.py` reproduces all 630 benchmark runs exactly, then:
+
+| Study | Result |
+|-------|--------|
+| Switching penalty 0–0.6 | Calibrated hybrid's worst setting beats the cost-aware hybrid's best in every environment. 0.25 beats the benchmark's 0.15 (High: throughput 3.028 vs 2.986, availability 0.903 vs 0.825, switches 242 vs 437, PDR 0.990 vs 0.991). At 0.6 it never switches and High PDR drops to 0.876 |
+| 1 dB implementation loss (controllers unaware) | Calibrated hybrid still highest throughput (Medium 3.575, High 2.812 vs AMC 3.085, 2.282) but PDR 0.969 / 0.933 |
+| 1 dB loss + 1 dB safety margin | Throughput 3.600 / 2.877, PDR 0.997 / 0.988 |
+| 2 dB loss + 2 dB margin | Throughput 3.477 / 2.702, PDR 0.996 / 0.981 |
+
+Outputs: `results/sensitivity/`.
 
 ---
 
@@ -219,4 +233,5 @@ The project demonstrates:
 - ✅ An over-the-air Pluto → RTL-SDR link at 866 MHz with BPSK, QPSK and 16-QAM BER matching theory and confirming the switching thresholds
 - ✅ A random forest that explains the benchmark (R² 0.997 throughput, 0.985 PDR)
 - ✅ A CNN that recognises the modulation of real OTA signals (98.5 %) after training only on simulation
-- ✅ 349 tests pass
+- ✅ The controller's lead holds across switching penalties and under a realistic 1 dB hardware loss (with a matching safety margin)
+- ✅ 355 tests pass
