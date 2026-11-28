@@ -43,3 +43,6 @@ results/hardware/closed_loop_simulated/**/*.cu8
 
 # local transfer zips
 /closed_loop_*.zip
+
+# local transfer zips
+/closed_loop_*.zip
