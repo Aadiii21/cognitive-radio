@@ -20,7 +20,7 @@
 - **Safety margin not sized on hardware.** The link drifted by about 3 dB between sessions (mean best-channel Es/N0 17.5–20.6 dB at the same setting), so the lower BER with a 2 dB margin cannot be attributed to the margin; its throughput cost (about 20 %) is clear.
 - **One room, one antenna spacing, about 35 minutes** of closed-loop operation. Raw closed-loop captures (330 MB) are kept outside the repository.
 - **BER sweep: one session, one antenna arrangement.** Antenna separation was not recorded. Es/N0 varied by about ±1.5 dB between runs at the same setting.
-- **Small samples.** Each BER point is one 512 ms capture of 4,096 bits. A zero-error run only shows BER < 7.3 × 10⁻⁴ (95 %); the 16-QAM 17.1 dB point rests on 5 errors.
+- **Small samples.** Each BER point is one 512 ms capture of 4,096 bits. A zero-error run only shows BER < 7.3 × 10⁻⁴ (one-sided 95 % upper bound; < 9.0 × 10⁻⁴ two-sided, as in the report tables); the 16-QAM 17.1 dB point rests on 5 errors.
 - **BER sweep at a single frequency** (866 MHz); channel switching was exercised in the closed-loop sessions only.
 - **No conducted comparison.** The runs were started with `--rf-path conducted --attenuator-db 30` but used antennas; the records carry an `rf_path_correction` block (actual: OTA).
 - Indoor link; no fading or multipath measurement on air.

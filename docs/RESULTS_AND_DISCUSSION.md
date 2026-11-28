@@ -153,7 +153,7 @@ Each round: BPSK probe on 865.7 / 866.5 / 867.3 MHz → RTL-SDR Es/N0 per channe
 | 07:51 | 2 dB | 3 / 3 / 0 | 15 / 15 | 10 / 30,720 |
 | **All** | | **15 / 15 / 0** | **72 / 72** (95 % CI 0.95–1.00) | 242 / 146,432 |
 
-| Modulation | Margin | Bit errors | BER (95 % CI) | Mean data Es/N0 | AWGN theory |
+| Modulation | Margin | Bit errors | BER, exact two-sided 95 % CI | Mean data Es/N0 | AWGN theory at burst-average Es/N0 |
 |------|------|------|------|------|------|
 | BPSK | 0 dB | 101 / 12,288 | 8.2e-3 (6.7e-3–1.0e-2) | 5.5 dB | 5.6e-3 |
 | QPSK | 0 dB | 10 / 18,432 | 5.4e-4 (2.6e-4–1.0e-3) | 11.0 dB | 3.0e-4 |
@@ -163,7 +163,7 @@ Each round: BPSK probe on 865.7 / 866.5 / 867.3 MHz → RTL-SDR Es/N0 per channe
 | 16-QAM | 2 dB | 5 / 28,672 | 1.7e-4 (5.7e-5–4.1e-4) | 19.4 dB | 2.7e-5 |
 
 - **Switching:** the highest-probe-Es/N0 channel selected every round; every needed switch in the first round after the change; none unnecessary despite 1–3 dB round-to-round probe variation.
-- **16-QAM errors come from short dips:** 15 of 143 data frames were more than 3 dB (up to 8.5 dB) below the other frame of their burst; they hold 68 of the 78 16-QAM errors. The decision is made on the probe, a few seconds earlier.
+- **16-QAM errors come from short dips:** 15 of 143 data frames were more than 3 dB (up to 8.5 dB) below the other frame of their burst; they hold 68 of the 78 16-QAM errors. The decision is made on the probe, a few seconds earlier. The theory column uses each burst's average Es/N0, which cannot see these dips, so it is not a like-for-like comparison and the gap is not solely implementation loss.
 - **Safety margin (2 dB):** more robust modulations near the cut-offs, about 20 % lower throughput (2.5 vs 3.1 bits/symbol). The lower BER cannot be attributed to the margin: the link drifted by about 3 dB between sessions, and the two later no-margin sessions had no 16-QAM errors.
 - **Audit** (`scripts/verify_closed_loop_captures.py`): all 288 raw captures re-decode to exactly the logged values; every Pluto readback matches its burst; replaying the logged probes reproduces all 72 decisions.
 - **Band scan** (`scripts/scan_band.py`, receive only): all three channels within 0.6 dB of the band floor, no wideband activity in 90 sweeps. Without the scripted TX power the channels would have looked the same.
@@ -265,5 +265,5 @@ The project demonstrates:
 - ✅ Closed-loop channel switching on the radios: highest-probe-Es/N0 channel selected in 72 / 72 rounds over 5 sessions, every switch when needed and none without reason, modulation adapted 16-QAM → BPSK (channel quality scripted by TX power)
 - ✅ A random forest that explains the benchmark (R² 0.997 throughput, 0.985 PDR)
 - ✅ A CNN that recognises the modulation of real OTA signals (98.5 %) after training only on simulation
-- ✅ The controller's lead holds across switching penalties and under a realistic 1 dB hardware loss (with a matching safety margin)
+- ✅ In simulation, the calibrated hybrid stays ahead at every tested switching penalty (the chosen 0.15 is not the best tested; 0.25 is better) and under a realistic 1 dB hardware loss (with a matching safety margin)
 - ✅ 382 tests pass

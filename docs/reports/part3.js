@@ -100,8 +100,8 @@ module.exports = function part3() {
     ["QPSK", "0", "23.3", "0 / 4096", "< 9.0e-4", "≈ 0", "—"], ["QPSK", "5", "18.6", "0 / 4096", "< 9.0e-4", "≈ 0", "—"], ["QPSK", "10", "12.8", "0 / 4096", "< 9.0e-4", "5.9e-6", "—"], ["QPSK", "15", "6.8", "70 / 4096", "1.3e-2 – 2.2e-2", "1.4e-2", "0.33"], ["QPSK", "20", "5.1", "175 / 4096", "3.7e-2 – 4.9e-2", "3.6e-2", "0.38"],
     ["16-QAM", "0", "23.4", "0 / 4096", "< 9.0e-4", "≈ 0", "—"], ["16-QAM", "5", "17.1", "5 / 4096", "4.0e-4 – 2.8e-3", "5.0e-4", "0.75"], ["16-QAM", "10", "12.3", "123 / 4096", "2.5e-2 – 3.6e-2", "2.4e-2", "0.50"], ["16-QAM", "15", "8.0", "456 / 4096", "1.0e-1 – 1.2e-1", "9.9e-2", "0.59"], ["16-QAM", "20", "3.1", "957 / 4096", "2.2e-1 – 2.5e-1", "2.0e-1", "2.33"],
   ];
-  c.push(...T(["Modulation", "Pluto att. (dB)", "Es/N0 (dB)", "Bit errors", "Measured BER, 95 % CI", "AWGN theory", "Implied loss (dB)"], rows, [0.12, 0.11, 0.11, 0.14, 0.22, 0.13, 0.17], 3));
-  c.push(P("Es/N0 values are taken from the run records (`scripts/summarize_hardware_sweep.py`). The interval is the exact two-sided 95 % Clopper–Pearson interval; for zero errors the one-sided 95 % bound is 7.3 × 10⁻⁴. **Implied loss** is how much higher Es/N0 theory would need to reach the measured BER: 0 means exactly on theory, positive means the hardware is worse."));
+  c.push(...T(["Modulation", "Pluto att. (dB)", "Es/N0 (dB)", "Bit errors", "Measured BER, exact two-sided 95 % CI", "AWGN theory", "Implied loss (dB)"], rows, [0.12, 0.11, 0.11, 0.14, 0.22, 0.13, 0.17], 3));
+  c.push(P("Es/N0 values are taken from the run records (`scripts/summarize_hardware_sweep.py`). The interval is the exact two-sided 95 % Clopper–Pearson interval, so a zero-error run appears as < 9.0 × 10⁻⁴ (its upper limit). Where the text quotes 7.3 × 10⁻⁴ for zero errors, that is the one-sided 95 % upper bound; both say the BER is small, not zero. **Implied loss** is how much higher Es/N0 theory would need to reach the measured BER: 0 means exactly on theory, positive means the hardware is worse."));
   c.push(...FIG("results/figures/hardware_ber_vs_theory.png", "All 19 OTA multimod runs: measured BER with exact 95 % intervals (circles and bars), zero-error runs at their 95 % bound (triangles), AWGN theory (lines)."));
   c.push(P("**What it shows.**"));
   c.push(...B([
@@ -142,7 +142,7 @@ module.exports = function part3() {
     "**The scripted levels are reproducible but not exact:** Es/N0 at a given attenuation varied with a standard deviation of 1–2 dB, and the session mean at 0 dB drifted from 17.5 to 20.6 dB over 35 minutes. 9 of 216 probes at 20 dB found no frame; the controller treats such a channel as unusable.",
   ]));
   c.push(H2("5.9.2 Data bit errors"));
-  c.push(...T(["Modulation", "Margin", "Rounds", "Bit errors", "BER (95 % CI)", "Mean data Es/N0", "AWGN theory"], [
+  c.push(...T(["Modulation", "Margin", "Rounds", "Bit errors", "BER, exact two-sided 95 % CI", "Mean data Es/N0", "AWGN theory at burst-average Es/N0"], [
     ["BPSK", "0 dB", "6", "101 / 12,288", "8.2e-3 (6.7e-3 – 1.0e-2)", "5.5 dB", "5.6e-3"],
     ["QPSK", "0 dB", "9", "10 / 18,432", "5.4e-4 (2.6e-4 – 1.0e-3)", "11.0 dB", "3.0e-4"],
     ["16-QAM", "0 dB", "27", "73 / 55,296", "1.3e-3 (1.0e-3 – 1.7e-3)", "19.5 dB", "1.0e-4"],
@@ -150,10 +150,10 @@ module.exports = function part3() {
     ["QPSK", "2 dB", "4", "0 / 8,192", "< 4.5e-4", "18.1 dB", "≈ 0"],
     ["16-QAM", "2 dB", "14", "5 / 28,672", "1.7e-4 (5.7e-5 – 4.1e-4)", "19.4 dB", "2.7e-5"],
   ], [0.12, 0.09, 0.09, 0.15, 0.25, 0.15, 0.15], 3));
-  c.push(...FIG("results/figures/closed_loop_repeatability.png", "Data BER per chosen modulation over all real sessions, with exact 95 % intervals; crosses: AWGN theory averaged over the rounds' measured Es/N0.", 5.8));
+  c.push(...FIG("results/figures/closed_loop_repeatability.png", "Data BER per chosen modulation over all real sessions, with exact 95 % intervals; crosses: AWGN theory evaluated at each burst's average Es/N0, then averaged over rounds; it does not see the Es/N0 variation inside a burst.", 5.8));
   c.push(...B([
     "**BPSK and QPSK are close to theory** (within a factor of about 2, i.e. well under 1 dB), as in the 23 Nov sweep.",
-    "**16-QAM is worse than its average Es/N0 suggests, and the reason is visible in the raw data.** Each data burst holds two frames. Re-decoding every capture frame by frame shows that 15 of 143 frames had an Es/N0 more than 3 dB below the other frame of the same burst (up to 8.5 dB lower). Those short dips carry **68 of the 78 16-QAM errors** (and 160 of all 242): for example, the 37 errors of the first round of 07:17 all sit in a frame at 11.4 dB, while the other frame of that burst was at 19.9 dB with no errors. The controller decides on the probe, a few seconds earlier, and 16-QAM has the least room for such a dip. Their cause (multipath change, movement near the antennas, a receiver transient) was not identified.",
+    "**16-QAM is worse than its average Es/N0 suggests, and the reason is visible in the raw data.** Each data burst holds two frames. Re-decoding every capture frame by frame shows that 15 of 143 frames had an Es/N0 more than 3 dB below the other frame of the same burst (up to 8.5 dB lower). Those short dips carry **68 of the 78 16-QAM errors** (and 160 of all 242): for example, the 37 errors of the first round of 07:17 all sit in a frame at 11.4 dB, while the other frame of that burst was at 19.9 dB with no errors. The controller decides on the probe, a few seconds earlier, and 16-QAM has the least room for such a dip. Their cause (multipath change, movement near the antennas, a receiver transient) was not identified. The theory column uses each burst's average Es/N0, which cannot see these dips, so this is not a like-for-like comparison: the gap is not solely receiver implementation loss.",
     "**The safety margin works as intended, but this data cannot size its benefit.** With 2 dB the controller chose QPSK instead of 16-QAM near the cut-off and BPSK instead of QPSK in phase D, and BER was lower (9.6 × 10⁻⁴ against 2.1 × 10⁻³ overall); the cost was about 20 % of the throughput (mean 2.5 against 3.1 bits per symbol). However, the link itself drifted by 3 dB between sessions, the two later no-margin sessions had no 16-QAM errors at all (18 rounds), and in phase E both settings use BPSK, so most of the BER difference is link variation, not the margin. The simulation study (Part 1) remains the better estimate of the margin's effect; the hardware shows why a margin is needed: short dips of several dB are real.",
     "**At 3.6–5.5 dB even BPSK lost up to 3 % of bits** (phase E). The controller has no 'do not transmit' option, so it sends BPSK however poor the best channel is.",
   ]));
@@ -209,7 +209,7 @@ module.exports = function part3() {
   c.push(H1("7. Limitations"));
   c.push(...B([
     "BER sweep: one OTA session, one antenna arrangement; the antenna separation was not recorded.",
-    "Each point is one 512 ms capture of 4,096 bits. A zero-error run only shows BER < 7.3 × 10⁻⁴ (95 %); the 16-QAM 17.1 dB point rests on 5 errors.",
+    "Each point is one 512 ms capture of 4,096 bits. A zero-error run only shows BER < 7.3 × 10⁻⁴ (one-sided 95 % upper bound; < 9.0 × 10⁻⁴ two-sided, as in the table); the 16-QAM 17.1 dB point rests on 5 errors.",
     "Indoor OTA link with no fading measurement; no conducted (cable + attenuator) comparison.",
     "Closed-loop demo: channel quality is scripted by TX power; no real interference, fading or second user was tested (Section 5.10). One room, one 1.5 m antenna spacing, 35 minutes.",
     "The controller decides on a probe sent seconds before the data; short Es/N0 dips of several dB in between caused most 16-QAM errors. It also has no 'do not transmit' option.",

@@ -147,7 +147,7 @@ def plot(pooled, path):
                 ax.plot(x, max(d["theory_ber_at_mean_esn0"], 1e-6), "x", color="k", ms=8)
             ax.annotate(f"{d['errors']}/{d['bits']}\n@{d['mean_data_esn0_db']} dB", (x, hi), fontsize=7,
                         ha="center", va="bottom", xytext=(0, 3), textcoords="offset points")
-    ax.plot([], [], "x", color="k", label="AWGN theory (mean over rounds' data Es/N0)")
+    ax.plot([], [], "x", color="k", label="AWGN theory at each burst's average Es/N0 (mean over rounds)")
     h, lab = ax.get_legend_handles_labels()
     seen = {}
     for hh, ll in zip(h, lab):
