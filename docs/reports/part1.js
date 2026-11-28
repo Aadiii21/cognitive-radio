@@ -93,6 +93,7 @@ module.exports = function part1() {
   c.push(H2("5.4 Software-in-the-loop GNU Radio experiment"));
   c.push(P("The controller ran inside the GNU Radio flowgraph while a scripted schedule made a different channel strongest in each of three phases. `results/final_experiment_metrics.csv` records 312 decisions over 31.0 s: **3 channel switches, all to the strongest channel (100 % selection accuracy)**, transmission available 97.6 % of the time (0.76 s disabled during handoffs), and every controller event selected 16-QAM because the strongest channel stayed near 23 dB."));
   c.push(...FIG("results/cognitive_radio_experiment_final.png", "Measured SNR, selected channel and transmission state during the three-phase interference experiment.", 6.27, 5.2));
+  c.push(NOTE("**What the three channels are here.** In this flowgraph each of the three 'channels' is the same 1 kHz test tone with its own Gaussian noise source and a scaled interference term at the same frequency; the noise levels are set for about 8, 15 and 23 dB, and the scripted schedule changes the levels. There is no difference in frequency. As a faculty review pointed out, they are effectively the same channel with different noise. The experiment therefore tests the controller's decision logic on a running flowgraph; it does not model RF channels. Real channel switching on three separate RF frequencies is shown in Part 3, Section 5.9."));
   c.push(P("The simulated-radio run (`run_radio_controller.py`, recorded in the 20 Nov project guide) exercises the same controller through the RadioInterface: over 5,000 steps at high interference, PDR 0.991, availability 0.832 and 420 switches; the unavailable steps equal exactly two per switch, confirming the handoff accounting."));
 
   c.push(H2("5.5 Machine-learning analysis of the benchmark"));
@@ -152,7 +153,8 @@ module.exports = function part1() {
 
   c.push(H1("7. Limitations"));
   c.push(...B([
-    "The benchmark is a calibrated **simulation**: packet outcomes are drawn from the fitted success curves, not decoded packet by packet. A hardware closed loop (controller driving the radios) was removed from the project scope on 23 Nov.",
+    "The benchmark is a calibrated **simulation**: packet outcomes are drawn from the fitted success curves, not decoded packet by packet. On real radios the controller was run closed-loop over three RF channels (Part 3, Section 5.9: correct channel in 72 of 72 rounds), but with channel quality set by TX power, not by the interference model used here.",
+    "In the GNU Radio software-in-the-loop experiment the three channels differ only in noise level (Section 5.4); it tests decision logic, not RF channel behaviour.",
     "The logistic models are only valid inside the calibrated noise range; outside it the controller clips to the nearest calibrated value.",
     "`channel_switching` uses fixed QPSK, not fixed BPSK as described in the 6 Nov plan.",
     "**Data note:** the 20 Nov guide's channel_switching rows (e.g. Medium: throughput 1.855, availability 0.928, 181 switches) and the older `paired_seed_analysis_v3.txt` do not match the current 630-row CSV; they come from an earlier run. This report uses the CSV and a fresh re-run of the unchanged paired-analysis script (`paired_seed_analysis_current.txt`). The calibrated-hybrid comparisons are identical in both.",

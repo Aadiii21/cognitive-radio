@@ -104,3 +104,21 @@ Then follow `docs/TRANSMISSION_DAY_RUNBOOK.md`.
 - `scripts/sensitivity_analysis.py` (reproduces all 630 benchmark runs exactly with `--check`): switching-penalty sweep 0–0.6, 1–2 dB implementation loss, safety margin. Outputs in `results/sensitivity/`. The calibrated hybrid leads at every penalty; 0.25 beats the benchmark's 0.15; under 1 dB loss it still leads, and a 1 dB margin keeps PDR at 0.997 / 0.988. The benchmark itself is unchanged.
 - `scripts/evaluate_dl_strict.py`: capture-level bootstrap CI 96.2–99.8 %; all errors below 0.9 confidence; 36/36 on the unseen BPSK v2 format; one damaged frame confidently misclassified. Outputs `results/dl/strict_evaluation.json`, `bpsk_v2_predictions.csv`.
 - Reports, flowcharts, README and docs updated. Tests: `tests/test_sensitivity_and_stats.py` (6); total 355.
+
+## v10 changes (26 Nov): closed-loop channel-switching demo
+
+- `scripts/run_channel_switching_demo.py`: every round the Pluto probes three channels (865.7 / 866.5 / 867.3 MHz), the RTL-SDR measures Es/N0, the unchanged `CalibratedCognitiveController` picks channel and modulation, and the Pluto transmits a data frame there. Channel quality is scripted by Pluto TX attenuation (no second transmitter). Same safety gates as the experiment runner, plus a TX-LO powerdown check. Modes: `--simulate` (no hardware), `--dry-run` (checks only), `--enable-rf --rf-path ota --antenna-separation-m D`.
+- Simulated session: 3 switches, best channel 12/12 rounds, 0 data bit errors (`results/hardware/closed_loop_simulated/`, figure `results/figures/channel_switching_simulated.png`). **Real-radio run pending** (runbook: `docs/TRANSMISSION_DAY_RUNBOOK.md`, first section).
+- This reverses the 23 Nov decision to leave the closed loop out of scope (owner request, 26 Nov). Tests: `tests/test_channel_switching_demo.py` (14); total 369.
+
+## v10.1–v11 changes (28 Nov): closed loop run on the radios
+
+- v10.1 / v10.2 fixes found during the first attempts: the Pluto TX bandwidth is now passed explicitly (`--tx-bandwidth`, default 1 MHz; `bandwidth=None` had stopped the first attempt before anything was transmitted); a clear message when the Pluto does not answer; line-buffered output with one progress line per burst and a realistic time estimate.
+- v10.3: phase E (all poor) added to the default schedule; `--margin-db` safety margin; `scripts/scan_band.py` (passive rtl_power scan, refuses while the TX LO is on); `scripts/summarize_closed_loop.py` (pooled results with exact 95 % intervals).
+- v11: `scripts/verify_closed_loop_captures.py` (offline re-decode of every capture, readback check, decision replay).
+- **Real-radio results (5 sessions, 72 rounds, 288 bursts, antennas 1.5 m):** best channel in 72 / 72 rounds; 15 / 15 needed switches made in the first round, 0 unnecessary; 16-QAM / QPSK / BPSK used as conditions worsened; data BER per modulation and safety-margin comparison in Part 3, Section 5.9. Audit: all 288 captures re-decode to the logged values, all readbacks match, all 72 decisions replay.
+- Band scan: the three channels within 0.6 dB of the band floor, no wideband activity. Channel quality differences in the demo come from scripted TX power only (stated in every output and report).
+- Faculty review point recorded: the GNU Radio software-in-the-loop "channels" are one test tone with different noise levels; described as such in Part 1 §5.4, Part 3 §5.10, the master report and `docs/LIMITATIONS.md`. The calibration data are unaffected.
+- Raw closed-loop captures (about 330 MB) excluded from git via `.gitignore`; sidecars, rounds, session records and plots are committed. Two aborted attempts (07:11, 07:13) are kept and excluded from the summary with their reason.
+- Tests: demo 19, scan 4, summary 2, audit 2; total 382.
+

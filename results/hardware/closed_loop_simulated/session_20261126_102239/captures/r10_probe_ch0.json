@@ -1,0 +1,31 @@
+{
+  "data_kind": "simulated_rx_capture",
+  "content": "SIMULATED received samples",
+  "experiment": "closed_loop_channel_switching",
+  "tag": "r10_probe_ch0",
+  "rx_center_frequency_hz": 865700000,
+  "rx_sample_rate_hz": 2048000.0,
+  "rx_gain_db": 28.0,
+  "rf_path": {
+    "type": "simulated"
+  },
+  "tx_attenuation_db": 10,
+  "tx_readback": {
+    "tx_lo_hz": 865700000.0,
+    "tx_hardwaregain_db": -10.0,
+    "tx_sample_rate_hz": 2083333.0,
+    "uri": "simulated"
+  },
+  "tx_sample_rate_hz": 2083333.0,
+  "waveform_metadata": "/home/deamon/projects/final/cognitive-radio/results/baseband/multimod_v2/bpsk_framed_seed42.json",
+  "waveform_payload_hex": "8826d916cdfb21c6c1ff91a761565a702416da6ec212cddb8d8800160eb686b2eb819333b5011c188c53c786ed62c2f971445abc2f0ddac24097acb7a3823bc913d16283160ecc206ebdf9d6297e4c73291017808b9eec5eaf92bb2e667840ed06ce14c83158d4a4b6a004674d81a0d2233ea18bca9783713a5151731e512c3a",
+  "samples": 524288,
+  "clipping_fraction": 0.0,
+  "capture": {
+    "actual_sample_rate_hz": 2048000.0,
+    "actual_sample_rate_source": "simulated",
+    "requested_sample_rate_hz": 2048000,
+    "returncode": 0
+  },
+  "timestamp": "2026-11-26T10:22:46.504547"
+}

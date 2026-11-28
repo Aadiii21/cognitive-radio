@@ -145,12 +145,23 @@ PART_3 = [
      "Hardware BER table, 95 % CIs, implied loss, figure",
      [("results/analysis/hardware_ber_runs.csv (19 runs)\nresults/figures/hardware_ber_vs_theory.png",
        "measured BER ~ AWGN theory; thresholds hold")]),
+    ("cl", "scripts/run_channel_switching_demo.py",
+     "Closed loop: probe 3 channels -> calibrated controller -> TX on chosen channel",
+     [("results/hardware/closed_loop/session_*/\n(rounds.csv, session.json, session.png)", "channel switching on real radios: 5 sessions")]),
+    ("clsum", "scripts/summarize_closed_loop.py · verify_closed_loop_captures.py",
+     "Pool sessions with 95 % CIs; re-decode every capture, replay every decision",
+     [("results/analysis/closed_loop_summary.json · closed_loop_verification.json\nresults/figures/closed_loop_repeatability.png",
+       "best channel 72/72; 15/15 switches; audit OK")]),
+    ("scan", "scripts/scan_band.py",
+     "Passive scan of 865-868 MHz (receive only)",
+     [("results/hardware/band_scan/scan_*/ (scan.png, summary.json)", "real channels quiet: within 0.6 dB of floor")]),
     ("pipe", "pipelines/integrated_pipeline.py\n(scripts/pluto_to_rtl_sdr_demo.py, test_pluto_tx_adapter.py: legacy)",
      "Software-mode pipeline; RF path disabled",
      [("results/pipeline/", "software-only run")]),
 ]
 PART_3_EDGES = [("hcfg", "tx"), ("hcfg", "rxh"), ("rxh", "sense"), ("rxh", "dset"), ("rxh", "rplot"),
-                ("tx", "run"), ("rxh", "run"), ("run", "annot"), ("run", "sweep")]
+                ("tx", "run"), ("rxh", "run"), ("run", "annot"), ("run", "sweep"), ("tx", "cl"), ("rxh", "cl"),
+                ("cl", "clsum"), ("rxh", "scan")]
 
 PARTS = {1: (PART_1, PART_1_EDGES), 2: (PART_2, PART_2_EDGES), 3: (PART_3, PART_3_EDGES)}
 CROSS_EDGES = [  # (part, node) -> (part, node), label
@@ -160,6 +171,7 @@ CROSS_EDGES = [  # (part, node) -> (part, node), label
     ((2, "rx"), (3, "run"), "receivers"),
     ((2, "ber"), (3, "sweep"), "theory / thresholds"),
     ((3, "run"), (2, "dl"), "real captures (test set)"),
+    ((1, "cal"), (3, "cl"), "controller"),
 ]
 
 
@@ -239,11 +251,12 @@ def workflow():
     s += box("w_dl", "DL classifier (CNN)\nIQ → BPSK / QPSK / 16-QAM", 2)
     s += "  }\n"
     s += f'  subgraph cluster_3 {{ label="{TITLES[3]}"; color="{c[3][2]}"; style=rounded;\n'
-    s += box("w_tx", "ADALM-Pluto TX (pyadi-iio)\n866 MHz, readback-verified", 3)
+    s += box("w_tx", "ADALM-Pluto TX (pyadi-iio)\n865–868 MHz band, readback-verified", 3)
     s += box("w_air", "Over the air\n(antennas)", 3, shape="ellipse")
     s += box("w_rtl", "RTL-SDR capture\n2.048 MS/s, gain 28 dB", 3)
     s += box("w_tests", "Tone test → BPSK frames →\nBPSK/QPSK/16-QAM frames", 3)
     s += box("w_sweep", "15-run BER sweep\nmeasured BER vs theory", 3)
+    s += box("w_cl", "Closed loop on the radios: probe 3 channels\n→ controller → TX on chosen channel (72 rounds)", 3)
     s += "  }\n"
     s += '  done [shape=oval, style=filled, fillcolor="#EEEEEE", label="Results → part reports → master report"];\n'
     edges = [
@@ -255,7 +268,8 @@ def workflow():
         ("w_tests", "w_sweep", ""), ("w_ber", "w_sweep", "compare"), ("w_wave", "w_dl", "training data"),
         ("w_rtl", "w_dl", "real test data"), ("w_rx", "w_snr", ""),
         ("w_stats", "done", ""), ("w_ml", "done", ""), ("w_sweep", "done", ""), ("w_dl", "done", ""),
-        ("w_srad", "done", ""),
+        ("w_srad", "done", ""), ("w_ctrl", "w_cl", "controller (Part 1)"), ("w_rtl", "w_cl", ""),
+        ("w_cl", "done", ""),
     ]
     for a, b, lab in edges:
         s += f'  {a} -> {b}' + (f' [label="{lab}"]' if lab else "") + ";\n"

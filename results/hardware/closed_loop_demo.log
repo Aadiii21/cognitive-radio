@@ -1,0 +1,490 @@
+    pyadi-iio adi.Pluto: True
+    rtl_sdr binary: True
+    iio_attr binary: True
+
+  ---- RF TRANSMISSION CONFIRMATION ----
+    Channels: 865.700 MHz (865.348-866.052), 866.500 MHz (866.148-866.852), 867.300 MHz (866.948-867.652) - all inside 865-868 MHz
+    4 phases x 3 rounds = 12 rounds; each round = 3 probes + 1 data burst = 48 bursts, about 6 min on real radios (~8 s per burst)
+    Schedule (Pluto TX attenuation per channel, dB): A: channel 0 best [0, 10, 20]; B: channel 1 best [20, 0, 10]; C: channel 2 best [10, 20, 0]; D: all mediocre [10, 15, 20]
+    Pluto ip:192.168.2.1, amplitude scale 0.1, cyclic TX (pyadi), stopped after every burst
+    RTL-SDR 2048000 S/s, gain 28.0 dB, 524288 samples per capture
+    Controller: CalibratedCognitiveController, switch penalty 0.15, min utility gain 0.1
+    RF path: OTA, antennas 1.5 m apart (no cable)
+    Confirm ALL of the following before continuing:
+     - OTA: an antenna on the Pluto TX port and on the RTL-SDR, at the stated separation
+     - No cable between Pluto TX and RTL-SDR
+     - Frequency, bandwidth and level permitted for this test
+     - docs/PHYSICAL_EXPERIMENT_CHECKLIST.md reviewed
+  Type TRANSMIT to transmit: 
+  RF TRANSMISSION: ENABLED for this session (each burst is started, verified and stopped)
+    r01_probe_ch0            865.7 MHz, att    0 dB: Es/N0 18.2 dB  (2.4 s)
+    r01_probe_ch1            866.5 MHz, att   10 dB: Es/N0 5.6 dB  (2.3 s)
+    r01_probe_ch2            867.3 MHz, att   20 dB: Es/N0 -0.3 dB  (2.3 s)
+    r01_data_ch0_16-QAM      865.7 MHz, att    0 dB: Es/N0 17.4 dB  (2.3 s)
+  round  1 [A: channel 0 best] Es/N0 per channel:  18.16   5.64  -0.26 dB -> stay           ch0 16-QAM data Es/N0 17.45 dB, errors 37/2048
+    r02_probe_ch0            865.7 MHz, att    0 dB: Es/N0 17.2 dB  (2.3 s)
+    r02_probe_ch1            866.5 MHz, att   10 dB: Es/N0 7.0 dB  (2.3 s)
+    r02_probe_ch2            867.3 MHz, att   20 dB: no frame  (2.3 s)
+    r02_data_ch0_16-QAM      865.7 MHz, att    0 dB: Es/N0 17.4 dB  (2.6 s)
+  round  2 [A: channel 0 best] Es/N0 per channel:  17.22   7.03     -- dB -> stay           ch0 16-QAM data Es/N0 17.37 dB, errors 0/2048
+    r03_probe_ch0            865.7 MHz, att    0 dB: Es/N0 17.7 dB  (2.7 s)
+    r03_probe_ch1            866.5 MHz, att   10 dB: Es/N0 7.7 dB  (2.3 s)
+    r03_probe_ch2            867.3 MHz, att   20 dB: Es/N0 0.8 dB  (2.3 s)
+    r03_data_ch0_16-QAM      865.7 MHz, att    0 dB: Es/N0 17.8 dB  (2.3 s)
+  round  3 [A: channel 0 best] Es/N0 per channel:  17.67   7.67   0.78 dB -> stay           ch0 16-QAM data Es/N0 17.83 dB, errors 17/2048
+    r04_probe_ch0            865.7 MHz, att   20 dB: Es/N0 1.1 dB  (2.3 s)
+    r04_probe_ch1            866.5 MHz, att    0 dB: Es/N0 16.3 dB  (2.3 s)
+    r04_probe_ch2            867.3 MHz, att   10 dB: Es/N0 3.5 dB  (2.3 s)
+    r04_data_ch1_16-QAM      866.5 MHz, att    0 dB: Es/N0 17.1 dB  (2.3 s)
+  round  4 [B: channel 1 best] Es/N0 per channel:   1.14  16.31   3.49 dB -> switch_channel ch1 16-QAM data Es/N0 17.1 dB, errors 4/2048
+    r05_probe_ch0            865.7 MHz, att   20 dB: Es/N0 1.0 dB  (2.3 s)
+    r05_probe_ch1            866.5 MHz, att    0 dB: Es/N0 17.2 dB  (2.3 s)
+    r05_probe_ch2            867.3 MHz, att   10 dB: Es/N0 8.3 dB  (2.3 s)
+    r05_data_ch1_16-QAM      866.5 MHz, att    0 dB: Es/N0 17.6 dB  (2.3 s)
+  round  5 [B: channel 1 best] Es/N0 per channel:   0.97  17.17   8.32 dB -> stay           ch1 16-QAM data Es/N0 17.62 dB, errors 0/2048
+    r06_probe_ch0            865.7 MHz, att   20 dB: Es/N0 0.6 dB  (2.3 s)
+    r06_probe_ch1            866.5 MHz, att    0 dB: Es/N0 17.0 dB  (2.3 s)
+    r06_probe_ch2            867.3 MHz, att   10 dB: Es/N0 8.2 dB  (2.3 s)
+    r06_data_ch1_16-QAM      866.5 MHz, att    0 dB: Es/N0 17.9 dB  (2.3 s)
+  round  6 [B: channel 1 best] Es/N0 per channel:   0.61  17.01   8.15 dB -> stay           ch1 16-QAM data Es/N0 17.95 dB, errors 4/2048
+    r07_probe_ch0            865.7 MHz, att   10 dB: Es/N0 8.9 dB  (2.3 s)
+    r07_probe_ch1            866.5 MHz, att   20 dB: Es/N0 0.6 dB  (2.3 s)
+    r07_probe_ch2            867.3 MHz, att    0 dB: Es/N0 17.6 dB  (2.6 s)
+    r07_data_ch2_16-QAM      867.3 MHz, att    0 dB: Es/N0 18.0 dB  (2.3 s)
+  round  7 [C: channel 2 best] Es/N0 per channel:   8.88   0.57  17.57 dB -> switch_channel ch2 16-QAM data Es/N0 18.0 dB, errors 9/2048
+    r08_probe_ch0            865.7 MHz, att   10 dB: Es/N0 7.9 dB  (2.3 s)
+    r08_probe_ch1            866.5 MHz, att   20 dB: Es/N0 -0.8 dB  (2.3 s)
+    r08_probe_ch2            867.3 MHz, att    0 dB: Es/N0 18.0 dB  (2.3 s)
+    r08_data_ch2_16-QAM      867.3 MHz, att    0 dB: Es/N0 18.7 dB  (2.3 s)
+  round  8 [C: channel 2 best] Es/N0 per channel:   7.92  -0.84   18.0 dB -> stay           ch2 16-QAM data Es/N0 18.66 dB, errors 1/2048
+    r09_probe_ch0            865.7 MHz, att   10 dB: Es/N0 9.3 dB  (2.3 s)
+    r09_probe_ch1            866.5 MHz, att   20 dB: no frame  (2.3 s)
+    r09_probe_ch2            867.3 MHz, att    0 dB: Es/N0 18.2 dB  (2.3 s)
+    r09_data_ch2_16-QAM      867.3 MHz, att    0 dB: Es/N0 17.0 dB  (2.3 s)
+  round  9 [C: channel 2 best] Es/N0 per channel:   9.28     --   18.2 dB -> stay           ch2 16-QAM data Es/N0 17.04 dB, errors 1/2048
+    r10_probe_ch0            865.7 MHz, att   10 dB: Es/N0 13.8 dB  (2.3 s)
+    r10_probe_ch1            866.5 MHz, att   15 dB: Es/N0 8.2 dB  (2.3 s)
+    r10_probe_ch2            867.3 MHz, att   20 dB: Es/N0 3.1 dB  (2.3 s)
+    r10_data_ch0_QPSK        865.7 MHz, att   10 dB: Es/N0 13.3 dB  (2.3 s)
+  round 10 [D: all mediocre] Es/N0 per channel:  13.78   8.22   3.09 dB -> switch_channel ch0 QPSK   data Es/N0 13.3 dB, errors 0/2048
+    r11_probe_ch0            865.7 MHz, att   10 dB: Es/N0 13.0 dB  (2.3 s)
+    r11_probe_ch1            866.5 MHz, att   15 dB: Es/N0 8.3 dB  (2.3 s)
+    r11_probe_ch2            867.3 MHz, att   20 dB: Es/N0 2.3 dB  (2.3 s)
+    r11_data_ch0_QPSK        865.7 MHz, att   10 dB: Es/N0 10.4 dB  (2.3 s)
+  round 11 [D: all mediocre] Es/N0 per channel:  13.01   8.32   2.29 dB -> stay           ch0 QPSK   data Es/N0 10.42 dB, errors 1/2048
+    r12_probe_ch0            865.7 MHz, att   10 dB: Es/N0 10.8 dB  (2.3 s)
+    r12_probe_ch1            866.5 MHz, att   15 dB: Es/N0 5.9 dB  (2.3 s)
+    r12_probe_ch2            867.3 MHz, att   20 dB: Es/N0 0.6 dB  (2.3 s)
+    r12_data_ch0_QPSK        865.7 MHz, att   10 dB: Es/N0 11.1 dB  (2.3 s)
+  round 12 [D: all mediocre] Es/N0 per channel:  10.82    5.9   0.64 dB -> stay           ch0 QPSK   data Es/N0 11.05 dB, errors 1/2048
+
+RF TRANSMISSION STATUS: DISABLED (operator-controlled)
+Use --enable-rf flag to enable transmission. See docs/DEMO_GUIDE.md.
+
+  12 of 12 rounds done in 113 s
+  Switches: 3, picked the best channel in 12/12 rounds, data BER 0.0030517578125
+  Results: results/hardware/closed_loop/session_20261128_071738/ (rounds.csv, session.json, session.png, captures/)
+    pyadi-iio adi.Pluto: True
+    rtl_sdr binary: True
+    iio_attr binary: True
+
+  ---- RF TRANSMISSION CONFIRMATION ----
+    Channels: 865.700 MHz (865.348-866.052), 866.500 MHz (866.148-866.852), 867.300 MHz (866.948-867.652) - all inside 865-868 MHz
+    5 phases x 3 rounds = 15 rounds; each round = 3 probes + 1 data burst = 60 bursts, about 2.5 min on real radios (~2.4 s per burst on 28 Nov)
+    Schedule (Pluto TX attenuation per channel, dB): A: channel 0 best [0, 10, 20]; B: channel 1 best [20, 0, 10]; C: channel 2 best [10, 20, 0]; D: all mediocre [10, 15, 20]; E: all poor [15, 20, 20]
+    Pluto ip:192.168.2.1, amplitude scale 0.1, cyclic TX (pyadi), stopped after every burst
+    RTL-SDR 2048000 S/s, gain 28.0 dB, 524288 samples per capture
+    Controller: CalibratedCognitiveController, switch penalty 0.15, min utility gain 0.1, safety margin 0.0 dB
+    RF path: OTA, antennas 1.5 m apart (no cable)
+    Confirm ALL of the following before continuing:
+     - OTA: an antenna on the Pluto TX port and on the RTL-SDR, at the stated separation
+     - No cable between Pluto TX and RTL-SDR
+     - Frequency, bandwidth and level permitted for this test
+     - docs/PHYSICAL_EXPERIMENT_CHECKLIST.md reviewed
+  Type TRANSMIT to transmit: 
+  RF TRANSMISSION: ENABLED for this session (each burst is started, verified and stopped)
+    r01_probe_ch0            865.7 MHz, att    0 dB: Es/N0 18.9 dB  (2.3 s)
+    r01_probe_ch1            866.5 MHz, att   10 dB: Es/N0 9.1 dB  (2.3 s)
+    r01_probe_ch2            867.3 MHz, att   20 dB: no frame  (2.3 s)
+    r01_data_ch0_16-QAM      865.7 MHz, att    0 dB: Es/N0 21.1 dB  (2.3 s)
+  round  1 [A: channel 0 best] Es/N0 per channel:  18.94   9.08     -- dB -> stay           ch0 16-QAM data Es/N0 21.14 dB, errors 0/2048
+    r02_probe_ch0            865.7 MHz, att    0 dB: Es/N0 20.5 dB  (2.3 s)
+    r02_probe_ch1            866.5 MHz, att   10 dB: Es/N0 11.0 dB  (2.3 s)
+    r02_probe_ch2            867.3 MHz, att   20 dB: Es/N0 0.3 dB  (2.3 s)
+    r02_data_ch0_16-QAM      865.7 MHz, att    0 dB: Es/N0 20.2 dB  (2.3 s)
+  round  2 [A: channel 0 best] Es/N0 per channel:  20.53  11.01    0.3 dB -> stay           ch0 16-QAM data Es/N0 20.18 dB, errors 0/2048
+    r03_probe_ch0            865.7 MHz, att    0 dB: Es/N0 21.2 dB  (2.3 s)
+    r03_probe_ch1            866.5 MHz, att   10 dB: Es/N0 9.7 dB  (2.3 s)
+    r03_probe_ch2            867.3 MHz, att   20 dB: Es/N0 1.4 dB  (2.3 s)
+    r03_data_ch0_16-QAM      865.7 MHz, att    0 dB: Es/N0 21.2 dB  (2.3 s)
+  round  3 [A: channel 0 best] Es/N0 per channel:  21.19   9.66   1.36 dB -> stay           ch0 16-QAM data Es/N0 21.25 dB, errors 0/2048
+    r04_probe_ch0            865.7 MHz, att   20 dB: Es/N0 3.1 dB  (2.3 s)
+    r04_probe_ch1            866.5 MHz, att    0 dB: Es/N0 19.8 dB  (2.3 s)
+    r04_probe_ch2            867.3 MHz, att   10 dB: Es/N0 10.1 dB  (2.3 s)
+    r04_data_ch1_16-QAM      866.5 MHz, att    0 dB: Es/N0 19.4 dB  (2.3 s)
+  round  4 [B: channel 1 best] Es/N0 per channel:   3.14  19.79  10.13 dB -> switch_channel ch1 16-QAM data Es/N0 19.44 dB, errors 0/2048
+    r05_probe_ch0            865.7 MHz, att   20 dB: Es/N0 2.2 dB  (2.7 s)
+    r05_probe_ch1            866.5 MHz, att    0 dB: Es/N0 20.4 dB  (2.3 s)
+    r05_probe_ch2            867.3 MHz, att   10 dB: Es/N0 10.6 dB  (2.3 s)
+    r05_data_ch1_16-QAM      866.5 MHz, att    0 dB: Es/N0 21.1 dB  (2.3 s)
+  round  5 [B: channel 1 best] Es/N0 per channel:   2.22  20.42  10.61 dB -> stay           ch1 16-QAM data Es/N0 21.11 dB, errors 0/2048
+    r06_probe_ch0            865.7 MHz, att   20 dB: Es/N0 2.2 dB  (2.6 s)
+    r06_probe_ch1            866.5 MHz, att    0 dB: Es/N0 19.8 dB  (2.3 s)
+    r06_probe_ch2            867.3 MHz, att   10 dB: Es/N0 11.1 dB  (2.3 s)
+    r06_data_ch1_16-QAM      866.5 MHz, att    0 dB: Es/N0 19.5 dB  (2.3 s)
+  round  6 [B: channel 1 best] Es/N0 per channel:   2.17  19.84  11.05 dB -> stay           ch1 16-QAM data Es/N0 19.5 dB, errors 0/2048
+    r07_probe_ch0            865.7 MHz, att   10 dB: Es/N0 11.6 dB  (2.3 s)
+    r07_probe_ch1            866.5 MHz, att   20 dB: Es/N0 2.2 dB  (2.3 s)
+    r07_probe_ch2            867.3 MHz, att    0 dB: Es/N0 18.4 dB  (2.3 s)
+    r07_data_ch2_16-QAM      867.3 MHz, att    0 dB: Es/N0 19.1 dB  (2.3 s)
+  round  7 [C: channel 2 best] Es/N0 per channel:  11.63   2.18  18.39 dB -> switch_channel ch2 16-QAM data Es/N0 19.12 dB, errors 0/2048
+    r08_probe_ch0            865.7 MHz, att   10 dB: Es/N0 10.0 dB  (2.6 s)
+    r08_probe_ch1            866.5 MHz, att   20 dB: Es/N0 0.6 dB  (2.6 s)
+    r08_probe_ch2            867.3 MHz, att    0 dB: Es/N0 19.1 dB  (2.3 s)
+    r08_data_ch2_16-QAM      867.3 MHz, att    0 dB: Es/N0 18.1 dB  (2.3 s)
+  round  8 [C: channel 2 best] Es/N0 per channel:   9.99   0.61  19.14 dB -> stay           ch2 16-QAM data Es/N0 18.1 dB, errors 0/2048
+    r09_probe_ch0            865.7 MHz, att   10 dB: Es/N0 10.6 dB  (2.3 s)
+    r09_probe_ch1            866.5 MHz, att   20 dB: Es/N0 1.0 dB  (2.3 s)
+    r09_probe_ch2            867.3 MHz, att    0 dB: Es/N0 18.7 dB  (2.3 s)
+    r09_data_ch2_16-QAM      867.3 MHz, att    0 dB: Es/N0 20.7 dB  (2.3 s)
+  round  9 [C: channel 2 best] Es/N0 per channel:  10.63   0.96  18.69 dB -> stay           ch2 16-QAM data Es/N0 20.67 dB, errors 0/2048
+    r10_probe_ch0            865.7 MHz, att   10 dB: Es/N0 10.7 dB  (2.3 s)
+    r10_probe_ch1            866.5 MHz, att   15 dB: Es/N0 3.6 dB  (2.8 s)
+    r10_probe_ch2            867.3 MHz, att   20 dB: no frame  (2.3 s)
+    r10_data_ch0_QPSK        865.7 MHz, att   10 dB: Es/N0 10.5 dB  (2.3 s)
+  round 10 [D: all mediocre] Es/N0 per channel:  10.69   3.65     -- dB -> switch_channel ch0 QPSK   data Es/N0 10.52 dB, errors 2/2048
+    r11_probe_ch0            865.7 MHz, att   10 dB: Es/N0 9.9 dB  (2.3 s)
+    r11_probe_ch1            866.5 MHz, att   15 dB: Es/N0 4.3 dB  (2.3 s)
+    r11_probe_ch2            867.3 MHz, att   20 dB: Es/N0 -0.4 dB  (2.3 s)
+    r11_data_ch0_QPSK        865.7 MHz, att   10 dB: Es/N0 10.7 dB  (2.3 s)
+  round 11 [D: all mediocre] Es/N0 per channel:   9.95   4.33  -0.38 dB -> stay           ch0 QPSK   data Es/N0 10.74 dB, errors 0/2048
+    r12_probe_ch0            865.7 MHz, att   10 dB: Es/N0 9.6 dB  (2.3 s)
+    r12_probe_ch1            866.5 MHz, att   15 dB: Es/N0 4.0 dB  (2.3 s)
+    r12_probe_ch2            867.3 MHz, att   20 dB: Es/N0 -0.1 dB  (2.3 s)
+    r12_data_ch0_QPSK        865.7 MHz, att   10 dB: Es/N0 9.9 dB  (2.3 s)
+  round 12 [D: all mediocre] Es/N0 per channel:    9.6   3.96   -0.1 dB -> stay           ch0 QPSK   data Es/N0 9.91 dB, errors 3/2048
+    r13_probe_ch0            865.7 MHz, att   15 dB: Es/N0 4.8 dB  (2.3 s)
+    r13_probe_ch1            866.5 MHz, att   20 dB: Es/N0 -0.4 dB  (2.7 s)
+    r13_probe_ch2            867.3 MHz, att   20 dB: no frame  (2.3 s)
+    r13_data_ch0_BPSK        865.7 MHz, att   15 dB: Es/N0 4.6 dB  (2.3 s)
+  round 13 [E: all poor] Es/N0 per channel:   4.75  -0.44     -- dB -> stay           ch0 BPSK   data Es/N0 4.57 dB, errors 13/2048
+    r14_probe_ch0            865.7 MHz, att   15 dB: Es/N0 4.3 dB  (2.3 s)
+    r14_probe_ch1            866.5 MHz, att   20 dB: Es/N0 0.3 dB  (2.3 s)
+    r14_probe_ch2            867.3 MHz, att   20 dB: Es/N0 0.6 dB  (2.3 s)
+    r14_data_ch0_BPSK        865.7 MHz, att   15 dB: Es/N0 3.6 dB  (2.3 s)
+  round 14 [E: all poor] Es/N0 per channel:   4.31   0.27   0.56 dB -> stay           ch0 BPSK   data Es/N0 3.56 dB, errors 63/2048
+    r15_probe_ch0            865.7 MHz, att   15 dB: Es/N0 3.2 dB  (2.3 s)
+    r15_probe_ch1            866.5 MHz, att   20 dB: Es/N0 0.5 dB  (2.3 s)
+    r15_probe_ch2            867.3 MHz, att   20 dB: Es/N0 0.3 dB  (2.3 s)
+    r15_data_ch0_BPSK        865.7 MHz, att   15 dB: Es/N0 6.9 dB  (2.3 s)
+  round 15 [E: all poor] Es/N0 per channel:   3.25   0.51   0.27 dB -> stay           ch0 BPSK   data Es/N0 6.88 dB, errors 2/2048
+
+RF TRANSMISSION STATUS: DISABLED (operator-controlled)
+Use --enable-rf flag to enable transmission. See docs/DEMO_GUIDE.md.
+
+  15 of 15 rounds done in 141 s
+  Switches: 3, picked the best channel in 15/15 rounds, data BER 0.0027018229166666666
+  Results: results/hardware/closed_loop/session_20261128_074114/ (rounds.csv, session.json, session.png, captures/)
+    pyadi-iio adi.Pluto: True
+    rtl_sdr binary: True
+    iio_attr binary: True
+
+  ---- RF TRANSMISSION CONFIRMATION ----
+    Channels: 865.700 MHz (865.348-866.052), 866.500 MHz (866.148-866.852), 867.300 MHz (866.948-867.652) - all inside 865-868 MHz
+    5 phases x 3 rounds = 15 rounds; each round = 3 probes + 1 data burst = 60 bursts, about 2.5 min on real radios (~2.4 s per burst on 28 Nov)
+    Schedule (Pluto TX attenuation per channel, dB): A: channel 0 best [0, 10, 20]; B: channel 1 best [20, 0, 10]; C: channel 2 best [10, 20, 0]; D: all mediocre [10, 15, 20]; E: all poor [15, 20, 20]
+    Pluto ip:192.168.2.1, amplitude scale 0.1, cyclic TX (pyadi), stopped after every burst
+    RTL-SDR 2048000 S/s, gain 28.0 dB, 524288 samples per capture
+    Controller: CalibratedCognitiveController, switch penalty 0.15, min utility gain 0.1, safety margin 2.0 dB
+    RF path: OTA, antennas 1.5 m apart (no cable)
+    Confirm ALL of the following before continuing:
+     - OTA: an antenna on the Pluto TX port and on the RTL-SDR, at the stated separation
+     - No cable between Pluto TX and RTL-SDR
+     - Frequency, bandwidth and level permitted for this test
+     - docs/PHYSICAL_EXPERIMENT_CHECKLIST.md reviewed
+  Type TRANSMIT to transmit: 
+  RF TRANSMISSION: ENABLED for this session (each burst is started, verified and stopped)
+    r01_probe_ch0            865.7 MHz, att    0 dB: Es/N0 20.9 dB  (2.3 s)
+    r01_probe_ch1            866.5 MHz, att   10 dB: Es/N0 9.4 dB  (2.3 s)
+    r01_probe_ch2            867.3 MHz, att   20 dB: Es/N0 0.8 dB  (2.3 s)
+    r01_data_ch0_16-QAM      865.7 MHz, att    0 dB: Es/N0 18.9 dB  (2.3 s)
+  round  1 [A: channel 0 best] Es/N0 per channel:  20.89   9.38   0.82 dB -> stay           ch0 16-QAM data Es/N0 18.86 dB, errors 1/2048
+    r02_probe_ch0            865.7 MHz, att    0 dB: Es/N0 17.8 dB  (2.7 s)
+    r02_probe_ch1            866.5 MHz, att   10 dB: Es/N0 9.4 dB  (2.3 s)
+    r02_probe_ch2            867.3 MHz, att   20 dB: Es/N0 0.1 dB  (2.3 s)
+    r02_data_ch0_QPSK        865.7 MHz, att    0 dB: Es/N0 17.8 dB  (2.3 s)
+  round  2 [A: channel 0 best] Es/N0 per channel:  17.78   9.36   0.11 dB -> stay           ch0 QPSK   data Es/N0 17.82 dB, errors 0/2048
+    r03_probe_ch0            865.7 MHz, att    0 dB: Es/N0 18.2 dB  (2.3 s)
+    r03_probe_ch1            866.5 MHz, att   10 dB: Es/N0 8.1 dB  (2.3 s)
+    r03_probe_ch2            867.3 MHz, att   20 dB: no frame  (2.3 s)
+    r03_data_ch0_16-QAM      865.7 MHz, att    0 dB: Es/N0 18.1 dB  (2.3 s)
+  round  3 [A: channel 0 best] Es/N0 per channel:   18.2   8.07     -- dB -> stay           ch0 16-QAM data Es/N0 18.11 dB, errors 2/2048
+    r04_probe_ch0            865.7 MHz, att   20 dB: Es/N0 2.2 dB  (2.3 s)
+    r04_probe_ch1            866.5 MHz, att    0 dB: Es/N0 18.2 dB  (2.3 s)
+    r04_probe_ch2            867.3 MHz, att   10 dB: Es/N0 8.0 dB  (2.3 s)
+    r04_data_ch1_16-QAM      866.5 MHz, att    0 dB: Es/N0 18.6 dB  (2.3 s)
+  round  4 [B: channel 1 best] Es/N0 per channel:   2.22  18.19   7.97 dB -> switch_channel ch1 16-QAM data Es/N0 18.6 dB, errors 0/2048
+    r05_probe_ch0            865.7 MHz, att   20 dB: Es/N0 -1.1 dB  (2.3 s)
+    r05_probe_ch1            866.5 MHz, att    0 dB: Es/N0 19.1 dB  (2.3 s)
+    r05_probe_ch2            867.3 MHz, att   10 dB: Es/N0 8.8 dB  (2.3 s)
+    r05_data_ch1_16-QAM      866.5 MHz, att    0 dB: Es/N0 19.3 dB  (2.3 s)
+  round  5 [B: channel 1 best] Es/N0 per channel:  -1.07  19.08   8.79 dB -> stay           ch1 16-QAM data Es/N0 19.34 dB, errors 0/2048
+    r06_probe_ch0            865.7 MHz, att   20 dB: Es/N0 0.2 dB  (2.3 s)
+    r06_probe_ch1            866.5 MHz, att    0 dB: Es/N0 18.3 dB  (2.3 s)
+    r06_probe_ch2            867.3 MHz, att   10 dB: Es/N0 9.8 dB  (2.3 s)
+    r06_data_ch1_16-QAM      866.5 MHz, att    0 dB: Es/N0 19.6 dB  (2.3 s)
+  round  6 [B: channel 1 best] Es/N0 per channel:    0.2  18.31   9.75 dB -> stay           ch1 16-QAM data Es/N0 19.58 dB, errors 0/2048
+    r07_probe_ch0            865.7 MHz, att   10 dB: Es/N0 10.2 dB  (2.3 s)
+    r07_probe_ch1            866.5 MHz, att   20 dB: Es/N0 0.9 dB  (2.3 s)
+    r07_probe_ch2            867.3 MHz, att    0 dB: Es/N0 18.0 dB  (2.3 s)
+    r07_data_ch2_QPSK        867.3 MHz, att    0 dB: Es/N0 19.1 dB  (2.3 s)
+  round  7 [C: channel 2 best] Es/N0 per channel:  10.16   0.91  18.01 dB -> switch_channel ch2 QPSK   data Es/N0 19.15 dB, errors 0/2048
+    r08_probe_ch0            865.7 MHz, att   10 dB: Es/N0 9.6 dB  (2.3 s)
+    r08_probe_ch1            866.5 MHz, att   20 dB: Es/N0 1.6 dB  (2.3 s)
+    r08_probe_ch2            867.3 MHz, att    0 dB: Es/N0 17.2 dB  (2.3 s)
+    r08_data_ch2_QPSK        867.3 MHz, att    0 dB: Es/N0 16.4 dB  (2.3 s)
+  round  8 [C: channel 2 best] Es/N0 per channel:   9.61   1.56  17.16 dB -> stay           ch2 QPSK   data Es/N0 16.37 dB, errors 0/2048
+    r09_probe_ch0            865.7 MHz, att   10 dB: Es/N0 10.6 dB  (2.3 s)
+    r09_probe_ch1            866.5 MHz, att   20 dB: Es/N0 0.1 dB  (2.3 s)
+    r09_probe_ch2            867.3 MHz, att    0 dB: Es/N0 18.8 dB  (2.3 s)
+    r09_data_ch2_16-QAM      867.3 MHz, att    0 dB: Es/N0 19.5 dB  (2.3 s)
+  round  9 [C: channel 2 best] Es/N0 per channel:  10.61    0.1  18.81 dB -> stay           ch2 16-QAM data Es/N0 19.53 dB, errors 0/2048
+    r10_probe_ch0            865.7 MHz, att   10 dB: Es/N0 10.8 dB  (2.3 s)
+    r10_probe_ch1            866.5 MHz, att   15 dB: Es/N0 4.1 dB  (2.3 s)
+    r10_probe_ch2            867.3 MHz, att   20 dB: Es/N0 1.6 dB  (2.3 s)
+    r10_data_ch0_BPSK        865.7 MHz, att   10 dB: Es/N0 8.4 dB  (2.3 s)
+  round 10 [D: all mediocre] Es/N0 per channel:  10.75   4.07   1.55 dB -> switch_channel ch0 BPSK   data Es/N0 8.41 dB, errors 0/2048
+    r11_probe_ch0            865.7 MHz, att   10 dB: Es/N0 8.9 dB  (2.3 s)
+    r11_probe_ch1            866.5 MHz, att   15 dB: Es/N0 3.4 dB  (2.3 s)
+    r11_probe_ch2            867.3 MHz, att   20 dB: Es/N0 0.5 dB  (2.6 s)
+    r11_data_ch0_BPSK        865.7 MHz, att   10 dB: Es/N0 10.7 dB  (2.6 s)
+  round 11 [D: all mediocre] Es/N0 per channel:   8.95   3.39   0.45 dB -> stay           ch0 BPSK   data Es/N0 10.66 dB, errors 0/2048
+    r12_probe_ch0            865.7 MHz, att   10 dB: Es/N0 10.2 dB  (2.3 s)
+    r12_probe_ch1            866.5 MHz, att   15 dB: Es/N0 4.4 dB  (2.3 s)
+    r12_probe_ch2            867.3 MHz, att   20 dB: Es/N0 1.6 dB  (2.3 s)
+    r12_data_ch0_BPSK        865.7 MHz, att   10 dB: Es/N0 10.6 dB  (2.6 s)
+  round 12 [D: all mediocre] Es/N0 per channel:  10.25   4.43   1.62 dB -> stay           ch0 BPSK   data Es/N0 10.57 dB, errors 1/2048
+    r13_probe_ch0            865.7 MHz, att   15 dB: Es/N0 5.3 dB  (2.3 s)
+    r13_probe_ch1            866.5 MHz, att   20 dB: Es/N0 0.7 dB  (2.3 s)
+    r13_probe_ch2            867.3 MHz, att   20 dB: no frame  (2.3 s)
+    r13_data_ch0_BPSK        865.7 MHz, att   15 dB: Es/N0 5.5 dB  (2.3 s)
+  round 13 [E: all poor] Es/N0 per channel:   5.32   0.73     -- dB -> stay           ch0 BPSK   data Es/N0 5.52 dB, errors 9/2048
+    r14_probe_ch0            865.7 MHz, att   15 dB: Es/N0 4.4 dB  (2.3 s)
+    r14_probe_ch1            866.5 MHz, att   20 dB: no frame  (2.3 s)
+    r14_probe_ch2            867.3 MHz, att   20 dB: Es/N0 -0.1 dB  (2.3 s)
+    r14_data_ch0_BPSK        865.7 MHz, att   15 dB: Es/N0 5.7 dB  (2.3 s)
+  round 14 [E: all poor] Es/N0 per channel:   4.38     --  -0.15 dB -> stay           ch0 BPSK   data Es/N0 5.74 dB, errors 35/2048
+    r15_probe_ch0            865.7 MHz, att   15 dB: Es/N0 5.3 dB  (2.3 s)
+    r15_probe_ch1            866.5 MHz, att   20 dB: Es/N0 0.3 dB  (2.3 s)
+    r15_probe_ch2            867.3 MHz, att   20 dB: Es/N0 1.4 dB  (2.3 s)
+    r15_data_ch0_BPSK        865.7 MHz, att   15 dB: Es/N0 6.5 dB  (2.3 s)
+  round 15 [E: all poor] Es/N0 per channel:   5.29   0.31   1.41 dB -> stay           ch0 BPSK   data Es/N0 6.53 dB, errors 0/1024
+
+RF TRANSMISSION STATUS: DISABLED (operator-controlled)
+Use --enable-rf flag to enable transmission. See docs/DEMO_GUIDE.md.
+
+  15 of 15 rounds done in 141 s
+  Switches: 3, picked the best channel in 15/15 rounds, data BER 0.0016163793103448276
+  Results: results/hardware/closed_loop/session_20261128_074355/ (rounds.csv, session.json, session.png, captures/)
+    pyadi-iio adi.Pluto: True
+    rtl_sdr binary: True
+    iio_attr binary: True
+
+  ---- RF TRANSMISSION CONFIRMATION ----
+    Channels: 865.700 MHz (865.348-866.052), 866.500 MHz (866.148-866.852), 867.300 MHz (866.948-867.652) - all inside 865-868 MHz
+    5 phases x 3 rounds = 15 rounds; each round = 3 probes + 1 data burst = 60 bursts, about 2.5 min on real radios (~2.4 s per burst on 28 Nov)
+    Schedule (Pluto TX attenuation per channel, dB): A: channel 0 best [0, 10, 20]; B: channel 1 best [20, 0, 10]; C: channel 2 best [10, 20, 0]; D: all mediocre [10, 15, 20]; E: all poor [15, 20, 20]
+    Pluto ip:192.168.2.1, amplitude scale 0.1, cyclic TX (pyadi), stopped after every burst
+    RTL-SDR 2048000 S/s, gain 28.0 dB, 524288 samples per capture
+    Controller: CalibratedCognitiveController, switch penalty 0.15, min utility gain 0.1, safety margin 0.0 dB
+    RF path: OTA, antennas 1.5 m apart (no cable)
+    Confirm ALL of the following before continuing:
+     - OTA: an antenna on the Pluto TX port and on the RTL-SDR, at the stated separation
+     - No cable between Pluto TX and RTL-SDR
+     - Frequency, bandwidth and level permitted for this test
+     - docs/PHYSICAL_EXPERIMENT_CHECKLIST.md reviewed
+  Type TRANSMIT to transmit: 
+  RF TRANSMISSION: ENABLED for this session (each burst is started, verified and stopped)
+    r01_probe_ch0            865.7 MHz, att    0 dB: Es/N0 21.8 dB  (2.3 s)
+    r01_probe_ch1            866.5 MHz, att   10 dB: Es/N0 10.2 dB  (2.3 s)
+    r01_probe_ch2            867.3 MHz, att   20 dB: Es/N0 0.5 dB  (2.3 s)
+    r01_data_ch0_16-QAM      865.7 MHz, att    0 dB: Es/N0 21.5 dB  (2.3 s)
+  round  1 [A: channel 0 best] Es/N0 per channel:  21.77  10.17   0.48 dB -> stay           ch0 16-QAM data Es/N0 21.54 dB, errors 0/2048
+    r02_probe_ch0            865.7 MHz, att    0 dB: Es/N0 20.6 dB  (2.3 s)
+    r02_probe_ch1            866.5 MHz, att   10 dB: Es/N0 10.4 dB  (2.3 s)
+    r02_probe_ch2            867.3 MHz, att   20 dB: Es/N0 2.8 dB  (2.3 s)
+    r02_data_ch0_16-QAM      865.7 MHz, att    0 dB: Es/N0 20.6 dB  (2.3 s)
+  round  2 [A: channel 0 best] Es/N0 per channel:  20.63  10.42   2.75 dB -> stay           ch0 16-QAM data Es/N0 20.56 dB, errors 0/2048
+    r03_probe_ch0            865.7 MHz, att    0 dB: Es/N0 20.9 dB  (2.3 s)
+    r03_probe_ch1            866.5 MHz, att   10 dB: Es/N0 10.4 dB  (2.3 s)
+    r03_probe_ch2            867.3 MHz, att   20 dB: Es/N0 1.5 dB  (2.4 s)
+    r03_data_ch0_16-QAM      865.7 MHz, att    0 dB: Es/N0 21.4 dB  (2.6 s)
+  round  3 [A: channel 0 best] Es/N0 per channel:  20.95  10.45   1.47 dB -> stay           ch0 16-QAM data Es/N0 21.45 dB, errors 0/2048
+    r04_probe_ch0            865.7 MHz, att   20 dB: Es/N0 2.5 dB  (2.3 s)
+    r04_probe_ch1            866.5 MHz, att    0 dB: Es/N0 20.1 dB  (2.3 s)
+    r04_probe_ch2            867.3 MHz, att   10 dB: Es/N0 11.3 dB  (2.3 s)
+    r04_data_ch1_16-QAM      866.5 MHz, att    0 dB: Es/N0 21.3 dB  (2.3 s)
+  round  4 [B: channel 1 best] Es/N0 per channel:   2.48  20.12  11.34 dB -> switch_channel ch1 16-QAM data Es/N0 21.33 dB, errors 0/2048
+    r05_probe_ch0            865.7 MHz, att   20 dB: Es/N0 2.4 dB  (2.3 s)
+    r05_probe_ch1            866.5 MHz, att    0 dB: Es/N0 20.9 dB  (2.3 s)
+    r05_probe_ch2            867.3 MHz, att   10 dB: Es/N0 11.0 dB  (2.3 s)
+    r05_data_ch1_16-QAM      866.5 MHz, att    0 dB: Es/N0 20.4 dB  (2.3 s)
+  round  5 [B: channel 1 best] Es/N0 per channel:   2.38  20.88  11.04 dB -> stay           ch1 16-QAM data Es/N0 20.37 dB, errors 0/2048
+    r06_probe_ch0            865.7 MHz, att   20 dB: Es/N0 3.7 dB  (2.3 s)
+    r06_probe_ch1            866.5 MHz, att    0 dB: Es/N0 20.7 dB  (2.3 s)
+    r06_probe_ch2            867.3 MHz, att   10 dB: Es/N0 10.9 dB  (2.3 s)
+    r06_data_ch1_16-QAM      866.5 MHz, att    0 dB: Es/N0 20.4 dB  (2.3 s)
+  round  6 [B: channel 1 best] Es/N0 per channel:   3.69  20.67  10.92 dB -> stay           ch1 16-QAM data Es/N0 20.45 dB, errors 0/2048
+    r07_probe_ch0            865.7 MHz, att   10 dB: Es/N0 12.1 dB  (2.3 s)
+    r07_probe_ch1            866.5 MHz, att   20 dB: Es/N0 1.3 dB  (2.3 s)
+    r07_probe_ch2            867.3 MHz, att    0 dB: Es/N0 20.5 dB  (2.3 s)
+    r07_data_ch2_16-QAM      867.3 MHz, att    0 dB: Es/N0 20.2 dB  (2.7 s)
+  round  7 [C: channel 2 best] Es/N0 per channel:   12.1   1.33  20.46 dB -> switch_channel ch2 16-QAM data Es/N0 20.23 dB, errors 0/2048
+    r08_probe_ch0            865.7 MHz, att   10 dB: Es/N0 11.2 dB  (2.3 s)
+    r08_probe_ch1            866.5 MHz, att   20 dB: Es/N0 2.0 dB  (2.3 s)
+    r08_probe_ch2            867.3 MHz, att    0 dB: Es/N0 20.1 dB  (2.3 s)
+    r08_data_ch2_16-QAM      867.3 MHz, att    0 dB: Es/N0 20.2 dB  (2.3 s)
+  round  8 [C: channel 2 best] Es/N0 per channel:   11.2   2.02  20.13 dB -> stay           ch2 16-QAM data Es/N0 20.16 dB, errors 0/2048
+    r09_probe_ch0            865.7 MHz, att   10 dB: Es/N0 11.3 dB  (2.3 s)
+    r09_probe_ch1            866.5 MHz, att   20 dB: Es/N0 1.6 dB  (2.3 s)
+    r09_probe_ch2            867.3 MHz, att    0 dB: Es/N0 20.1 dB  (2.3 s)
+    r09_data_ch2_16-QAM      867.3 MHz, att    0 dB: Es/N0 21.6 dB  (2.3 s)
+  round  9 [C: channel 2 best] Es/N0 per channel:   11.3   1.58   20.1 dB -> stay           ch2 16-QAM data Es/N0 21.55 dB, errors 0/2048
+    r10_probe_ch0            865.7 MHz, att   10 dB: Es/N0 10.9 dB  (2.3 s)
+    r10_probe_ch1            866.5 MHz, att   15 dB: Es/N0 6.2 dB  (2.3 s)
+    r10_probe_ch2            867.3 MHz, att   20 dB: Es/N0 2.2 dB  (2.3 s)
+    r10_data_ch0_QPSK        865.7 MHz, att   10 dB: Es/N0 11.6 dB  (2.3 s)
+  round 10 [D: all mediocre] Es/N0 per channel:  10.93   6.19   2.21 dB -> switch_channel ch0 QPSK   data Es/N0 11.56 dB, errors 0/2048
+    r11_probe_ch0            865.7 MHz, att   10 dB: Es/N0 11.2 dB  (2.3 s)
+    r11_probe_ch1            866.5 MHz, att   15 dB: Es/N0 4.8 dB  (2.3 s)
+    r11_probe_ch2            867.3 MHz, att   20 dB: Es/N0 0.2 dB  (2.3 s)
+    r11_data_ch0_QPSK        865.7 MHz, att   10 dB: Es/N0 11.1 dB  (2.3 s)
+  round 11 [D: all mediocre] Es/N0 per channel:  11.21   4.79   0.18 dB -> stay           ch0 QPSK   data Es/N0 11.11 dB, errors 1/2048
+    r12_probe_ch0            865.7 MHz, att   10 dB: Es/N0 10.7 dB  (2.3 s)
+    r12_probe_ch1            866.5 MHz, att   15 dB: Es/N0 5.8 dB  (2.3 s)
+    r12_probe_ch2            867.3 MHz, att   20 dB: Es/N0 2.5 dB  (2.3 s)
+    r12_data_ch0_QPSK        865.7 MHz, att   10 dB: Es/N0 10.7 dB  (2.3 s)
+  round 12 [D: all mediocre] Es/N0 per channel:  10.69   5.75   2.45 dB -> stay           ch0 QPSK   data Es/N0 10.72 dB, errors 2/2048
+    r13_probe_ch0            865.7 MHz, att   15 dB: Es/N0 6.8 dB  (2.3 s)
+    r13_probe_ch1            866.5 MHz, att   20 dB: Es/N0 2.7 dB  (2.3 s)
+    r13_probe_ch2            867.3 MHz, att   20 dB: Es/N0 1.0 dB  (2.3 s)
+    r13_data_ch0_BPSK        865.7 MHz, att   15 dB: Es/N0 5.8 dB  (2.3 s)
+  round 13 [E: all poor] Es/N0 per channel:   6.79   2.72   1.01 dB -> stay           ch0 BPSK   data Es/N0 5.77 dB, errors 9/2048
+    r14_probe_ch0            865.7 MHz, att   15 dB: Es/N0 5.0 dB  (2.3 s)
+    r14_probe_ch1            866.5 MHz, att   20 dB: Es/N0 0.9 dB  (2.3 s)
+    r14_probe_ch2            867.3 MHz, att   20 dB: Es/N0 1.1 dB  (2.3 s)
+    r14_data_ch0_BPSK        865.7 MHz, att   15 dB: Es/N0 5.6 dB  (2.3 s)
+  round 14 [E: all poor] Es/N0 per channel:   5.02   0.92   1.14 dB -> stay           ch0 BPSK   data Es/N0 5.56 dB, errors 8/2048
+    r15_probe_ch0            865.7 MHz, att   15 dB: Es/N0 6.6 dB  (2.3 s)
+    r15_probe_ch1            866.5 MHz, att   20 dB: Es/N0 0.5 dB  (2.3 s)
+    r15_probe_ch2            867.3 MHz, att   20 dB: Es/N0 1.1 dB  (2.3 s)
+    r15_data_ch0_BPSK        865.7 MHz, att   15 dB: Es/N0 6.7 dB  (2.3 s)
+  round 15 [E: all poor] Es/N0 per channel:   6.57   0.45   1.15 dB -> stay           ch0 BPSK   data Es/N0 6.71 dB, errors 6/2048
+
+RF TRANSMISSION STATUS: DISABLED (operator-controlled)
+Use --enable-rf flag to enable transmission. See docs/DEMO_GUIDE.md.
+
+  15 of 15 rounds done in 140 s
+  Switches: 3, picked the best channel in 15/15 rounds, data BER 0.0008463541666666667
+  Results: results/hardware/closed_loop/session_20261128_074825/ (rounds.csv, session.json, session.png, captures/)
+    pyadi-iio adi.Pluto: True
+    rtl_sdr binary: True
+    iio_attr binary: True
+
+  ---- RF TRANSMISSION CONFIRMATION ----
+    Channels: 865.700 MHz (865.348-866.052), 866.500 MHz (866.148-866.852), 867.300 MHz (866.948-867.652) - all inside 865-868 MHz
+    5 phases x 3 rounds = 15 rounds; each round = 3 probes + 1 data burst = 60 bursts, about 2.5 min on real radios (~2.4 s per burst on 28 Nov)
+    Schedule (Pluto TX attenuation per channel, dB): A: channel 0 best [0, 10, 20]; B: channel 1 best [20, 0, 10]; C: channel 2 best [10, 20, 0]; D: all mediocre [10, 15, 20]; E: all poor [15, 20, 20]
+    Pluto ip:192.168.2.1, amplitude scale 0.1, cyclic TX (pyadi), stopped after every burst
+    RTL-SDR 2048000 S/s, gain 28.0 dB, 524288 samples per capture
+    Controller: CalibratedCognitiveController, switch penalty 0.15, min utility gain 0.1, safety margin 2.0 dB
+    RF path: OTA, antennas 1.5 m apart (no cable)
+    Confirm ALL of the following before continuing:
+     - OTA: an antenna on the Pluto TX port and on the RTL-SDR, at the stated separation
+     - No cable between Pluto TX and RTL-SDR
+     - Frequency, bandwidth and level permitted for this test
+     - docs/PHYSICAL_EXPERIMENT_CHECKLIST.md reviewed
+  Type TRANSMIT to transmit: 
+  RF TRANSMISSION: ENABLED for this session (each burst is started, verified and stopped)
+    r01_probe_ch0            865.7 MHz, att    0 dB: Es/N0 21.1 dB  (2.3 s)
+    r01_probe_ch1            866.5 MHz, att   10 dB: Es/N0 10.8 dB  (2.3 s)
+    r01_probe_ch2            867.3 MHz, att   20 dB: Es/N0 2.0 dB  (2.3 s)
+    r01_data_ch0_16-QAM      865.7 MHz, att    0 dB: Es/N0 20.5 dB  (2.3 s)
+  round  1 [A: channel 0 best] Es/N0 per channel:   21.1  10.84    2.0 dB -> stay           ch0 16-QAM data Es/N0 20.5 dB, errors 0/2048
+    r02_probe_ch0            865.7 MHz, att    0 dB: Es/N0 21.9 dB  (2.3 s)
+    r02_probe_ch1            866.5 MHz, att   10 dB: Es/N0 10.9 dB  (2.3 s)
+    r02_probe_ch2            867.3 MHz, att   20 dB: Es/N0 0.7 dB  (2.3 s)
+    r02_data_ch0_16-QAM      865.7 MHz, att    0 dB: Es/N0 20.8 dB  (2.3 s)
+  round  2 [A: channel 0 best] Es/N0 per channel:  21.85   10.9   0.66 dB -> stay           ch0 16-QAM data Es/N0 20.75 dB, errors 0/2048
+    r03_probe_ch0            865.7 MHz, att    0 dB: Es/N0 20.3 dB  (2.3 s)
+    r03_probe_ch1            866.5 MHz, att   10 dB: Es/N0 10.1 dB  (2.3 s)
+    r03_probe_ch2            867.3 MHz, att   20 dB: Es/N0 1.6 dB  (2.3 s)
+    r03_data_ch0_16-QAM      865.7 MHz, att    0 dB: Es/N0 19.4 dB  (2.3 s)
+  round  3 [A: channel 0 best] Es/N0 per channel:  20.31  10.06    1.6 dB -> stay           ch0 16-QAM data Es/N0 19.35 dB, errors 0/2048
+    r04_probe_ch0            865.7 MHz, att   20 dB: Es/N0 1.7 dB  (2.3 s)
+    r04_probe_ch1            866.5 MHz, att    0 dB: Es/N0 17.8 dB  (2.3 s)
+    r04_probe_ch2            867.3 MHz, att   10 dB: Es/N0 8.6 dB  (2.3 s)
+    r04_data_ch1_QPSK        866.5 MHz, att    0 dB: Es/N0 19.2 dB  (2.3 s)
+  round  4 [B: channel 1 best] Es/N0 per channel:   1.68  17.75    8.6 dB -> switch_channel ch1 QPSK   data Es/N0 19.18 dB, errors 0/2048
+    r05_probe_ch0            865.7 MHz, att   20 dB: Es/N0 0.9 dB  (2.3 s)
+    r05_probe_ch1            866.5 MHz, att    0 dB: Es/N0 19.3 dB  (2.3 s)
+    r05_probe_ch2            867.3 MHz, att   10 dB: Es/N0 8.9 dB  (2.3 s)
+    r05_data_ch1_16-QAM      866.5 MHz, att    0 dB: Es/N0 19.9 dB  (2.3 s)
+  round  5 [B: channel 1 best] Es/N0 per channel:   0.94  19.28   8.94 dB -> stay           ch1 16-QAM data Es/N0 19.94 dB, errors 0/2048
+    r06_probe_ch0            865.7 MHz, att   20 dB: Es/N0 1.2 dB  (2.3 s)
+    r06_probe_ch1            866.5 MHz, att    0 dB: Es/N0 18.5 dB  (2.3 s)
+    r06_probe_ch2            867.3 MHz, att   10 dB: Es/N0 6.4 dB  (2.3 s)
+    r06_data_ch1_16-QAM      866.5 MHz, att    0 dB: Es/N0 19.8 dB  (2.3 s)
+  round  6 [B: channel 1 best] Es/N0 per channel:   1.19   18.5   6.44 dB -> stay           ch1 16-QAM data Es/N0 19.77 dB, errors 0/2048
+    r07_probe_ch0            865.7 MHz, att   10 dB: Es/N0 9.0 dB  (2.3 s)
+    r07_probe_ch1            866.5 MHz, att   20 dB: Es/N0 -0.7 dB  (2.3 s)
+    r07_probe_ch2            867.3 MHz, att    0 dB: Es/N0 18.6 dB  (2.3 s)
+    r07_data_ch2_16-QAM      867.3 MHz, att    0 dB: Es/N0 18.3 dB  (2.3 s)
+  round  7 [C: channel 2 best] Es/N0 per channel:   8.96  -0.67  18.58 dB -> switch_channel ch2 16-QAM data Es/N0 18.27 dB, errors 1/2048
+    r08_probe_ch0            865.7 MHz, att   10 dB: Es/N0 11.1 dB  (2.3 s)
+    r08_probe_ch1            866.5 MHz, att   20 dB: no frame  (2.3 s)
+    r08_probe_ch2            867.3 MHz, att    0 dB: Es/N0 18.6 dB  (2.6 s)
+    r08_data_ch2_16-QAM      867.3 MHz, att    0 dB: Es/N0 19.3 dB  (2.3 s)
+  round  8 [C: channel 2 best] Es/N0 per channel:  11.08     --  18.59 dB -> stay           ch2 16-QAM data Es/N0 19.26 dB, errors 0/2048
+    r09_probe_ch0            865.7 MHz, att   10 dB: Es/N0 9.4 dB  (2.3 s)
+    r09_probe_ch1            866.5 MHz, att   20 dB: Es/N0 0.8 dB  (2.3 s)
+    r09_probe_ch2            867.3 MHz, att    0 dB: Es/N0 19.4 dB  (2.3 s)
+    r09_data_ch2_16-QAM      867.3 MHz, att    0 dB: Es/N0 19.2 dB  (2.3 s)
+  round  9 [C: channel 2 best] Es/N0 per channel:   9.36   0.79  19.41 dB -> stay           ch2 16-QAM data Es/N0 19.19 dB, errors 1/2048
+    r10_probe_ch0            865.7 MHz, att   10 dB: Es/N0 9.5 dB  (2.3 s)
+    r10_probe_ch1            866.5 MHz, att   15 dB: Es/N0 4.7 dB  (2.3 s)
+    r10_probe_ch2            867.3 MHz, att   20 dB: Es/N0 1.2 dB  (2.3 s)
+    r10_data_ch0_BPSK        865.7 MHz, att   10 dB: Es/N0 10.3 dB  (2.3 s)
+  round 10 [D: all mediocre] Es/N0 per channel:   9.54   4.67   1.19 dB -> switch_channel ch0 BPSK   data Es/N0 10.32 dB, errors 0/2048
+    r11_probe_ch0            865.7 MHz, att   10 dB: Es/N0 9.3 dB  (2.3 s)
+    r11_probe_ch1            866.5 MHz, att   15 dB: Es/N0 5.5 dB  (2.3 s)
+    r11_probe_ch2            867.3 MHz, att   20 dB: Es/N0 1.0 dB  (2.3 s)
+    r11_data_ch0_BPSK        865.7 MHz, att   10 dB: Es/N0 9.8 dB  (2.3 s)
+  round 11 [D: all mediocre] Es/N0 per channel:   9.33   5.45   1.01 dB -> stay           ch0 BPSK   data Es/N0 9.84 dB, errors 1/2048
+    r12_probe_ch0            865.7 MHz, att   10 dB: Es/N0 8.9 dB  (2.3 s)
+    r12_probe_ch1            866.5 MHz, att   15 dB: Es/N0 5.7 dB  (2.3 s)
+    r12_probe_ch2            867.3 MHz, att   20 dB: Es/N0 2.8 dB  (2.3 s)
+    r12_data_ch0_BPSK        865.7 MHz, att   10 dB: Es/N0 11.2 dB  (2.3 s)
+  round 12 [D: all mediocre] Es/N0 per channel:   8.93   5.71   2.78 dB -> stay           ch0 BPSK   data Es/N0 11.21 dB, errors 0/2048
+    r13_probe_ch0            865.7 MHz, att   15 dB: Es/N0 6.8 dB  (2.3 s)
+    r13_probe_ch1            866.5 MHz, att   20 dB: Es/N0 1.6 dB  (2.3 s)
+    r13_probe_ch2            867.3 MHz, att   20 dB: Es/N0 0.8 dB  (2.3 s)
+    r13_data_ch0_BPSK        865.7 MHz, att   15 dB: Es/N0 7.6 dB  (2.3 s)
+  round 13 [E: all poor] Es/N0 per channel:   6.85   1.59   0.84 dB -> stay           ch0 BPSK   data Es/N0 7.57 dB, errors 1/2048
+    r14_probe_ch0            865.7 MHz, att   15 dB: Es/N0 7.3 dB  (2.3 s)
+    r14_probe_ch1            866.5 MHz, att   20 dB: Es/N0 1.9 dB  (2.3 s)
+    r14_probe_ch2            867.3 MHz, att   20 dB: Es/N0 2.3 dB  (2.3 s)
+    r14_data_ch0_BPSK        865.7 MHz, att   15 dB: Es/N0 8.0 dB  (2.3 s)
+  round 14 [E: all poor] Es/N0 per channel:   7.32   1.93   2.33 dB -> stay           ch0 BPSK   data Es/N0 7.95 dB, errors 4/2048
+    r15_probe_ch0            865.7 MHz, att   15 dB: Es/N0 7.6 dB  (2.3 s)
+    r15_probe_ch1            866.5 MHz, att   20 dB: Es/N0 2.7 dB  (2.3 s)
+    r15_probe_ch2            867.3 MHz, att   20 dB: Es/N0 1.9 dB  (2.3 s)
+    r15_data_ch0_BPSK        865.7 MHz, att   15 dB: Es/N0 7.3 dB  (2.3 s)
+  round 15 [E: all poor] Es/N0 per channel:   7.61   2.71   1.88 dB -> stay           ch0 BPSK   data Es/N0 7.29 dB, errors 2/2048
+
+RF TRANSMISSION STATUS: DISABLED (operator-controlled)
+Use --enable-rf flag to enable transmission. See docs/DEMO_GUIDE.md.
+
+  15 of 15 rounds done in 140 s
+  Switches: 3, picked the best channel in 15/15 rounds, data BER 0.0003255208333333333
+  Results: results/hardware/closed_loop/session_20261128_075106/ (rounds.csv, session.json, session.png, captures/)

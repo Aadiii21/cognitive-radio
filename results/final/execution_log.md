@@ -185,3 +185,6 @@ Physical BER: NOT validated. Status of the hardware milestone is unchanged.
 - Three part reports (.docx) in docs/reports/. Tests: 346 passed here + 3 gnuradio.iio-only.
 - 2026-11-25 (later): master report, front-page README, requirements.txt, docs corrected (RESULTS tables regenerated from CSV, LIMITATIONS rewritten, status notes on historical docs). Prepared for GitHub.
 - 2026-11-26: BER confidence intervals and implied loss; penalty sensitivity, implementation-loss and safety-margin studies (results/sensitivity/); stricter DL evaluation; reports updated. Tests 355.
+- 2026-11-26: closed-loop channel-switching demo added (scripts/run_channel_switching_demo.py); simulated session OK; real-radio run pending. Tests 369.
+- 2026-11-28: closed-loop demo on the radios (OTA, 1.5 m). 07:11 attempt stopped before transmitting (bandwidth=None bug, fixed v10.1); 07:13 attempt interrupted by operator (no progress output through tee, fixed v10.2). Band scan 07:38 (3 min, Pluto LO off): channels within 0.6 dB of floor. Sessions 07:17 (A–D), 07:41, 07:43 (margin 2 dB), 07:48, 07:51 (margin 2 dB): best channel 72/72, switches 15/15 needed, 0 unnecessary; data bit errors 242/146,432. Offline audit: 288/288 captures re-decode identically, readbacks OK, 72/72 decisions replay. Reports and docs updated. Tests 382.
+

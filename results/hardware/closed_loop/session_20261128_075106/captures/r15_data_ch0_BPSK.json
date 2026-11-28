@@ -1,0 +1,56 @@
+{
+  "data_kind": "rtl_sdr_rx_capture",
+  "content": "RTL-SDR received samples (raw uint8 interleaved I/Q). NOT transmit data.",
+  "experiment": "closed_loop_channel_switching",
+  "tag": "r15_data_ch0_BPSK",
+  "rx_center_frequency_hz": 865700000,
+  "rx_sample_rate_hz": 2048000.0,
+  "rx_gain_db": 28.0,
+  "rf_path": {
+    "type": "ota",
+    "antenna_separation_m": 1.5
+  },
+  "tx_attenuation_db": 15,
+  "tx_readback": {
+    "uri": "ip:192.168.2.1",
+    "method": "iio_attr -o -c ad9361-phy",
+    "tx_sample_rate_hz": 2083332.0,
+    "tx_sample_rate_hz_raw": "2083332",
+    "tx_rf_bandwidth_hz": 1000000.0,
+    "tx_rf_bandwidth_hz_raw": "1000000",
+    "tx_hardwaregain_db": -15.0,
+    "tx_hardwaregain_db_raw": "-15.000000 dB",
+    "tx_lo_hz": 865700000.0,
+    "tx_lo_hz_raw": "865700000"
+  },
+  "tx_sample_rate_hz": 2083332.0,
+  "waveform_metadata": "/home/deamon/projects/final/cognitive-radio/results/baseband/multimod_v2/bpsk_framed_seed42.json",
+  "waveform_payload_hex": "8826d916cdfb21c6c1ff91a761565a702416da6ec212cddb8d8800160eb686b2eb819333b5011c188c53c786ed62c2f971445abc2f0ddac24097acb7a3823bc913d16283160ecc206ebdf9d6297e4c73291017808b9eec5eaf92bb2e667840ed06ce14c83158d4a4b6a004674d81a0d2233ea18bca9783713a5151731e512c3a",
+  "samples": 524288,
+  "clipping_fraction": 0.0,
+  "capture": {
+    "command": [
+      "rtl_sdr",
+      "-d",
+      "0",
+      "-f",
+      "865700000",
+      "-s",
+      "2048000",
+      "-g",
+      "28.0",
+      "-"
+    ],
+    "returncode": 0,
+    "stderr_tail": "Found 1 device(s):\n  0:  Realtek, RTL2838UHIDIR, SN: 00000001\n\nUsing device 0: Generic RTL2832U OEM\nFound Rafael Micro R820T tuner\n[R82XX] PLL not locked!\nSampling at 2048000 S/s.\nTuned to 865700000 Hz.\nTuner gain set to 28.00 dB.\nReading samples in async mode...\nSignal caught, exiting!\n\nUser cancel, exiting...\n",
+    "center_frequency_hz": 865700000,
+    "requested_sample_rate_hz": 2048000,
+    "actual_sample_rate_hz": 2048000.0,
+    "actual_sample_rate_source": "librtlsdr formula; rate is exact so rtl_sdr prints none",
+    "gain_db": 28.0,
+    "device_index": 0,
+    "discarded_samples": 262144,
+    "captured_samples": 524288
+  },
+  "timestamp": "2026-11-28T07:53:25.552452"
+}

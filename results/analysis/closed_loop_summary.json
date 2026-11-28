@@ -1,0 +1,134 @@
+{
+  "sessions_counted": 5,
+  "skipped": [
+    "session_20261128_071101: error: RuntimeError: r01_probe_ch0 at 865.700 MHz, att 0 dB: TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'",
+    "session_20261128_071314: error: interrupted by operator"
+  ],
+  "by_margin": {
+    "margin_0_db": {
+      "sessions": [
+        "20261128_071738",
+        "20261128_074114",
+        "20261128_074825"
+      ],
+      "rounds": 42,
+      "best_channel_rounds": 42,
+      "best_channel_rate": 1.0,
+      "best_channel_ci95": [
+        0.9159161450596449,
+        1.0
+      ],
+      "switches": 9,
+      "switches_needed": 9,
+      "switches_made_when_needed": 9,
+      "unnecessary_switches": 0,
+      "data_bit_errors": 184,
+      "data_bits": 86016,
+      "data_ber": 0.002139136904761905,
+      "data_ber_ci95": [
+        0.0018414700352782371,
+        0.002471135589025514
+      ],
+      "per_modulation": {
+        "BPSK": {
+          "rounds": 6,
+          "errors": 101,
+          "bits": 12288,
+          "ber": 0.008219401041666666,
+          "ber_ci95": [
+            0.006699680655880952,
+            0.00997847655209437
+          ],
+          "mean_data_esn0_db": 5.51,
+          "theory_ber_at_mean_esn0": 0.005592306389612067
+        },
+        "QPSK": {
+          "rounds": 9,
+          "errors": 10,
+          "bits": 18432,
+          "ber": 0.0005425347222222222,
+          "ber_ci95": [
+            0.00026019616778346337,
+            0.0009975135880386744
+          ],
+          "mean_data_esn0_db": 11.04,
+          "theory_ber_at_mean_esn0": 0.0003027269389891676
+        },
+        "16-QAM": {
+          "rounds": 27,
+          "errors": 73,
+          "bits": 55296,
+          "ber": 0.001320167824074074,
+          "ber_ci95": [
+            0.0010349391855870834,
+            0.0016596308046409297
+          ],
+          "mean_data_esn0_db": 19.52,
+          "theory_ber_at_mean_esn0": 9.978877526169604e-05
+        }
+      }
+    },
+    "margin_2_db": {
+      "sessions": [
+        "20261128_074355",
+        "20261128_075106"
+      ],
+      "rounds": 30,
+      "best_channel_rounds": 30,
+      "best_channel_rate": 1.0,
+      "best_channel_ci95": [
+        0.8842966917779722,
+        1.0
+      ],
+      "switches": 6,
+      "switches_needed": 6,
+      "switches_made_when_needed": 6,
+      "unnecessary_switches": 0,
+      "data_bit_errors": 58,
+      "data_bits": 60416,
+      "data_ber": 0.000960010593220339,
+      "data_ber_ci95": [
+        0.0007290544936563254,
+        0.0012408619052113592
+      ],
+      "per_modulation": {
+        "BPSK": {
+          "rounds": 12,
+          "errors": 53,
+          "bits": 23552,
+          "ber": 0.0022503396739130435,
+          "ber_ci95": [
+            0.0016860993139839737,
+            0.0029424792264259284
+          ],
+          "mean_data_esn0_db": 8.47,
+          "theory_ber_at_mean_esn0": 0.0007864371279113542
+        },
+        "QPSK": {
+          "rounds": 4,
+          "errors": 0,
+          "bits": 8192,
+          "ber": 0.0,
+          "ber_ci95": [
+            0.0,
+            0.000450201296708684
+          ],
+          "mean_data_esn0_db": 18.13,
+          "theory_ber_at_mean_esn0": 5.719426904394252e-12
+        },
+        "16-QAM": {
+          "rounds": 14,
+          "errors": 5,
+          "bits": 28672,
+          "ber": 0.00017438616071428572,
+          "ber_ci95": [
+            5.662505849976227e-05,
+            0.0004069118046166876
+          ],
+          "mean_data_esn0_db": 19.36,
+          "theory_ber_at_mean_esn0": 2.7318682499825544e-05
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "input": "rtl_power.csv",
+  "sweeps": 90,
+  "first_sweep": "2026-11-28 07:37:58",
+  "last_sweep": "2026-11-28 07:40:56",
+  "freq_range_mhz": [
+    864.5017,
+    868.5039
+  ],
+  "bin_hz": 1860.1,
+  "gain_db": 28.0,
+  "band_floor_db": -46.26,
+  "busy_threshold_db": 6.0,
+  "channel_half_bandwidth_hz": 352000,
+  "channels": [
+    {
+      "channel": 0,
+      "centre_mhz": 865.7,
+      "mean_power_db": -46.15,
+      "above_floor_db": 0.11,
+      "peak_bin_db": -32.7,
+      "sweep_std_db": 0.13,
+      "busy_fraction": 0.0
+    },
+    {
+      "channel": 1,
+      "centre_mhz": 866.5,
+      "mean_power_db": -45.62,
+      "above_floor_db": 0.64,
+      "peak_bin_db": -33.15,
+      "sweep_std_db": 0.05,
+      "busy_fraction": 0.0
+    },
+    {
+      "channel": 2,
+      "centre_mhz": 867.3,
+      "mean_power_db": -45.65,
+      "above_floor_db": 0.61,
+      "peak_bin_db": -30.46,
+      "sweep_std_db": 0.19,
+      "busy_fraction": 0.0
+    }
+  ],
+  "note": "Receive only; rtl_power dB scale is relative (uncalibrated)."
+}

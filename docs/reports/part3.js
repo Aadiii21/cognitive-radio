@@ -4,16 +4,16 @@ module.exports = function part3() {
   resetFig();
   const c = [];
   c.push(...cover(3, "SDR Hardware Integration and Over-the-Air Experiments",
-    "The real-radio side of the project: driving an ADALM-Pluto transmitter and an RTL-SDR receiver from Python, the safety and verification gates, receive-only sensing work, and the over-the-air (OTA) experiments at 866 MHz: tone test, BPSK frames and a 15-point BER sweep for BPSK, QPSK and 16-QAM compared with theory."));
+    "The real-radio side of the project: driving an ADALM-Pluto transmitter and an RTL-SDR receiver from Python, the safety and verification gates, receive-only sensing work, the over-the-air (OTA) experiments at 866 MHz (tone test, BPSK frames and a 15-point BER sweep for BPSK, QPSK and 16-QAM compared with theory), and closed-loop channel switching on the radios: 5 sessions, 72 rounds."));
 
   c.push(H1("1. Purpose of this part"));
   c.push(P("Parts 1 and 2 are simulation and signal processing on a computer. Part 3 shows that the signals and receivers work on **real radios**: a waveform from Part 2 is transmitted by the Pluto, travels over the air, is captured by the RTL-SDR, and is decoded by Part 2's receivers. The measured bit error rate is then compared with theory and with the modulation-switching thresholds that the controller uses."));
   c.push(...B([
     "**Uses from Part 2:** the framed TX waveforms, the BPSK and multimod receivers, and the synthetic BER thresholds.",
     "**Gives to Part 2:** 19 real OTA captures, the test set for the DL classifier.",
-    "**Gives to the project:** evidence that the modulation thresholds behind the controller hold on a real link.",
+    "**Gives to the project:** evidence that the modulation thresholds behind the controller hold on a real link, and that the controller switches channel and modulation correctly when it drives the real radios.",
   ]));
-  c.push(NOTE("**Scope.** On 23 Nov the team removed the hardware closed loop (controller driving the radios in real time) from the project scope. Part 3 is open-loop: transmit known frames, receive them, measure BER and Es/N0."));
+  c.push(NOTE("**Scope.** The 23 Nov OTA session is open-loop: transmit known frames, receive them, measure BER and Es/N0. On 28 Nov the loop was closed on the radios (Section 5.9): the controller sensed three real channels, chose one and a modulation, and the Pluto transmitted accordingly, in 5 sessions. Channel quality in that demo is set by scripted TX power, not by real interference (Section 5.10)."));
 
   c.push(H1("2. Where this part fits"));
   c.push(...FIG("docs/flowcharts/01_project_workflow.png", "Project workflow. Orange: Part 3 (this report). Blue: Part 1. Green: Part 2."));
@@ -30,6 +30,10 @@ module.exports = function part3() {
     ["src/radio/capture_rtl_dataset.py, src/extract_features.py", "Labelled RTL-SDR capture dataset with metadata and spectral features."],
     ["src/plot_rtlsdr_scan.py, plot_rtlsdr_peaks.py, plot_iq_comparison.py", "FM-band spectrum scan and IQ plots: first proof the RTL-SDR works."],
     ["scripts/run_hardware_experiment.py", "The OTA experiment runner: dry run, tone test, frame tests, receive-only and offline re-processing. Enforces all safety gates, overlaps TX and RX, saves raw captures with metadata, runs the receiver and writes one result record per run."],
+    ["scripts/run_channel_switching_demo.py", "Closed-loop demo: probe three channels, run the calibrated controller, transmit on the chosen channel; scripted channel quality (5 phases); optional --margin-db safety margin; --simulate and --dry-run modes."],
+    ["scripts/summarize_closed_loop.py", "Pools all real closed-loop sessions: switches needed / made / unnecessary, best-channel rounds and BER per modulation with exact 95 % intervals."],
+    ["scripts/verify_closed_loop_captures.py", "Offline audit: re-decodes every saved capture, checks every Pluto readback and replays every controller decision from the logged measurements."],
+    ["scripts/scan_band.py", "Passive (receive-only) rtl_power scan of 865–868 MHz; refuses to run while the Pluto TX LO is on."],
     ["scripts/annotate_rf_path.py", "Adds an rf_path_correction block to run records whose declared RF path differs from the real setup (used for the 23 Nov runs)."],
     ["scripts/summarize_hardware_sweep.py", "Builds the BER table and figure from the run records (no hardware needed)."],
     ["pipelines/integrated_pipeline.py; scripts/pluto_to_rtl_sdr_demo.py, test_pluto_tx_adapter.py", "Software-mode pipeline and two legacy demos; their RF paths are disabled."],
@@ -43,6 +47,10 @@ module.exports = function part3() {
     ["rf_path_correction blocks in 26 records", "annotate_rf_path.py", "Actual path = OTA, note, date", "Honest labelling: the runs were declared as conducted but used antennas"],
     ["results/analysis/hardware_ber_runs.csv, results/figures/hardware_ber_vs_theory.png", "summarize_hardware_sweep.py", "One row per multimod run: Es/N0, errors, BER, theory", "Measured BER follows AWGN theory; the switching thresholds hold"],
     ["results/analysis/hardware_ber_sweep_day01.csv", "derived from the logs (23 Nov)", "The 15 sweep runs", "Same data as above, sweep only"],
+    ["results/hardware/closed_loop/session_*/ (rounds.csv, session.json, session.png, captures/*.json)", "run_channel_switching_demo.py", "Per round: Es/N0 on every channel, decision, data BER; per-burst Pluto readback. Raw IQ (288 captures, 330 MB) kept outside git", "Channel switching and modulation adaptation on real radios"],
+    ["results/analysis/closed_loop_sessions.csv, closed_loop_summary.json, results/figures/closed_loop_repeatability.png", "summarize_closed_loop.py", "Per-session and pooled results with 95 % intervals", "The demo is repeatable; BER per modulation vs theory"],
+    ["results/analysis/closed_loop_verification.json", "verify_closed_loop_captures.py", "Re-decode, readback and decision-replay results", "Every logged number can be reproduced from the raw data"],
+    ["results/hardware/band_scan/scan_*/ (rtl_power.csv, scan.png, summary.json)", "scan_band.py", "90 sweeps of 865–868 MHz, per-channel power vs floor", "What the real channels look like without our transmitter"],
     ["results/hardware_corrected/, hardware_stability/, dual_sensor_*.csv", "hardware_dual_sensor.py", "Per-channel SNR from RTL-SDR and Pluto sensing, repeated 5 times each", "Receive-only sensing works and is repeatable"],
     ["results/figures/rtl_sdr_fm_spectrum.png, rtl_sdr_fm_scan.csv, results/features/, data/raw/", "plot / capture scripts", "FM-band scan; feature tables; raw captures", "The receiver sees real signals"],
   ], [0.29, 0.19, 0.28, 0.24], 3));
@@ -108,6 +116,61 @@ module.exports = function part3() {
   c.push(H2("5.8 Record correction"));
   c.push(P("The 23 Nov runs were started with `--rf-path conducted --attenuator-db 30`, but the real setup used antennas with no cable or attenuator. Rather than edit the measurements, `annotate_rf_path.py` added an `rf_path_correction` block (actual path: OTA) to the 26 affected records, keeping the original field so both what the runner was told and what was wired are visible. The runner now supports `--rf-path ota` directly."));
 
+  c.push(H2("5.9 Closed-loop channel switching on real radios (28 Nov)"));
+  c.push(P("`scripts/run_channel_switching_demo.py` closes the loop between sensing, the original controller and the transmitter. Every round:"));
+  c.push(...NUM([
+    "**Sense:** the Pluto sends a BPSK probe frame on each of three channels (865.7, 866.5 and 867.3 MHz, all inside 865–868 MHz); the RTL-SDR retunes to each and the receiver measures Es/N0.",
+    "**Decide:** the unchanged `CalibratedCognitiveController` receives the three values (Es/N0 − 6.02 dB, its SNR scale) and returns a channel, a modulation and whether to switch.",
+    "**Send:** the Pluto transmits a data burst (two frames, 2,048 payload bits) in that modulation on that channel; the RTL-SDR captures it and the receiver counts bit errors.",
+  ]));
+  c.push(P("Each channel's quality follows a scripted schedule of Pluto TX attenuation, three rounds per phase: **A, B, C** – a different channel is best (0 / 10 / 20 dB); **D** – all mediocre (10 / 15 / 20 dB); **E** – all poor (15 / 20 / 20 dB). Antennas were 1.5 m apart. All safety gates of the experiment runner applied; every one of the 288 bursts was started, read back (LO, gain, rate), captured and stopped. A burst took about 2.3 s, a 15-round session 140 s."));
+  c.push(...FIG("results/figures/closed_loop_real_session.png", "Real-radio session 07:48 (no margin). Top: probe Es/N0 per channel and the controller's BER ≤ 10⁻³ thresholds. Middle: chosen channel (red: switch). Bottom: chosen modulation and data bit errors.", 4.7));
+  c.push(H2("5.9.1 Sessions"));
+  c.push(...T(["Session (28 Nov)", "Phases", "Safety margin", "Switches needed / made / unnecessary", "Best channel", "Data bit errors", "Mean Es/N0, best channel at 0 dB"], [
+    ["07:17", "A–D", "0 dB", "3 / 3 / 0", "12 / 12", "75 / 24,576", "17.5 dB"],
+    ["07:41", "A–E", "0 dB", "3 / 3 / 0", "15 / 15", "83 / 30,720", "19.7 dB"],
+    ["07:43", "A–E", "2 dB", "3 / 3 / 0", "15 / 15", "48 / 29,696", "18.5 dB"],
+    ["07:48", "A–E", "0 dB", "3 / 3 / 0", "15 / 15", "26 / 30,720", "20.6 dB"],
+    ["07:51", "A–E", "2 dB", "3 / 3 / 0", "15 / 15", "10 / 30,720", "19.5 dB"],
+    ["**All**", "", "", "**15 / 15 / 0**", "**72 / 72**", "242 / 146,432", ""],
+  ], [0.13, 0.08, 0.1, 0.2, 0.12, 0.17, 0.2], 3));
+  c.push(P("Phase E was added after the first session, whose best channel never fell into the BPSK range. Two earlier attempts that morning are kept but excluded: one stopped before transmitting (a software bug, fixed and covered by a test) and one was interrupted by the operator."));
+  c.push(P("**What it shows.**"));
+  c.push(...B([
+    "**The controller switches correctly on real radios.** In all 72 rounds it was on the channel with the highest measured Es/N0 (95 % interval 0.95–1.00). Every phase change that moved the best channel was followed by a switch in the very first round (15 / 15), and it never switched without reason (0 unnecessary switches), although probe Es/N0 moved by 1–3 dB from round to round. That is the switching cost doing its job.",
+    "**It adapts the modulation as well as the channel.** 16-QAM on the 18–22 dB channels of phases A–C, QPSK at about 11 dB (phase D), BPSK at 3.6–8 dB (phase E). With the switch in phase D (from channel 2 at about 1 dB to channel 0 at about 11 dB) it changed both at once.",
+    "**The scripted levels are reproducible but not exact:** Es/N0 at a given attenuation varied with a standard deviation of 1–2 dB, and the session mean at 0 dB drifted from 17.5 to 20.6 dB over 35 minutes. 9 of 216 probes at 20 dB found no frame; the controller treats such a channel as unusable.",
+  ]));
+  c.push(H2("5.9.2 Data bit errors"));
+  c.push(...T(["Modulation", "Margin", "Rounds", "Bit errors", "BER (95 % CI)", "Mean data Es/N0", "AWGN theory"], [
+    ["BPSK", "0 dB", "6", "101 / 12,288", "8.2e-3 (6.7e-3 – 1.0e-2)", "5.5 dB", "5.6e-3"],
+    ["QPSK", "0 dB", "9", "10 / 18,432", "5.4e-4 (2.6e-4 – 1.0e-3)", "11.0 dB", "3.0e-4"],
+    ["16-QAM", "0 dB", "27", "73 / 55,296", "1.3e-3 (1.0e-3 – 1.7e-3)", "19.5 dB", "1.0e-4"],
+    ["BPSK", "2 dB", "12", "53 / 23,552", "2.3e-3 (1.7e-3 – 2.9e-3)", "8.5 dB", "7.9e-4"],
+    ["QPSK", "2 dB", "4", "0 / 8,192", "< 4.5e-4", "18.1 dB", "≈ 0"],
+    ["16-QAM", "2 dB", "14", "5 / 28,672", "1.7e-4 (5.7e-5 – 4.1e-4)", "19.4 dB", "2.7e-5"],
+  ], [0.12, 0.09, 0.09, 0.15, 0.25, 0.15, 0.15], 3));
+  c.push(...FIG("results/figures/closed_loop_repeatability.png", "Data BER per chosen modulation over all real sessions, with exact 95 % intervals; crosses: AWGN theory averaged over the rounds' measured Es/N0.", 5.8));
+  c.push(...B([
+    "**BPSK and QPSK are close to theory** (within a factor of about 2, i.e. well under 1 dB), as in the 23 Nov sweep.",
+    "**16-QAM is worse than its average Es/N0 suggests, and the reason is visible in the raw data.** Each data burst holds two frames. Re-decoding every capture frame by frame shows that 15 of 143 frames had an Es/N0 more than 3 dB below the other frame of the same burst (up to 8.5 dB lower). Those short dips carry **68 of the 78 16-QAM errors** (and 160 of all 242): for example, the 37 errors of the first round of 07:17 all sit in a frame at 11.4 dB, while the other frame of that burst was at 19.9 dB with no errors. The controller decides on the probe, a few seconds earlier, and 16-QAM has the least room for such a dip. Their cause (multipath change, movement near the antennas, a receiver transient) was not identified.",
+    "**The safety margin works as intended, but this data cannot size its benefit.** With 2 dB the controller chose QPSK instead of 16-QAM near the cut-off and BPSK instead of QPSK in phase D, and BER was lower (9.6 × 10⁻⁴ against 2.1 × 10⁻³ overall); the cost was about 20 % of the throughput (mean 2.5 against 3.1 bits per symbol). However, the link itself drifted by 3 dB between sessions, the two later no-margin sessions had no 16-QAM errors at all (18 rounds), and in phase E both settings use BPSK, so most of the BER difference is link variation, not the margin. The simulation study (Part 1) remains the better estimate of the margin's effect; the hardware shows why a margin is needed: short dips of several dB are real.",
+    "**At 3.6–5.5 dB even BPSK lost up to 3 % of bits** (phase E). The controller has no 'do not transmit' option, so it sends BPSK however poor the best channel is.",
+  ]));
+  c.push(H2("5.9.3 Verification"));
+  c.push(P("`scripts/verify_closed_loop_captures.py` re-processed the raw data offline. All **288 captures re-decode to exactly the logged Es/N0, frame count and bit errors** (largest difference 0.000 dB); every burst's Pluto readback matches its frequency (within 1 Hz) and attenuation; and feeding the logged probe values to a fresh controller reproduces **every one of the 72 decisions** (channel, modulation and action). The demo software is covered by 19 tests with fake radios, the scan by 4, the summary by 2 and the audit by 2 (including one that checks it catches a tampered log)."));
+
+  c.push(H2("5.10 What the channels are, and what they are not"));
+  c.push(P("A faculty review pointed out that in the GNU Radio software-in-the-loop experiment (Part 1, Section 5.4) each of the three 'channels' is the same 1 kHz test tone with its own Gaussian noise source and an interference term at the same frequency, with no difference in frequency: in effect the same channel with different noise. That description is correct, and it matters for how each experiment is described:"));
+  c.push(...B([
+    "**GNU Radio experiment:** three logical channels that differ only in SNR. It tests the controller's decision logic on a running flowgraph, not RF channel behaviour.",
+    "**Real-radio demo (this section):** three separate RF channels 0.8 MHz apart; the transmitter and receiver really retune, and every measurement is a real over-the-air capture. But the *difference in quality* between the channels is still produced by our own TX power, not by interference, fading or other users.",
+    "**The real band was quiet.** A 3-minute passive scan (Figure 7) found each channel's mean power within 0.6 dB of the band floor and no wideband activity in any of the 90 sweeps. The narrow spikes are constant in every sweep and present outside the channels as well, which points to fixed tones from the receiver or the computer rather than other users; they were not identified. Left alone, the three channels would have looked the same to the controller.",
+    "**The calibration data remain valid.** The GNU Radio calibration measures how packet success depends on SNR for each modulation; it does not depend on which channel the SNR occurs on. The 23 Nov sweep and this demo both found BPSK / QPSK error rates within about 1 dB of the AWGN behaviour the calibration assumes. What the calibration does not cover is interference that is not noise-like (narrowband, bursty or another modulated signal); the short dips of Section 5.9.2 are one example of real behaviour it does not model.",
+  ]));
+  c.push(...FIG("results/figures/band_scan_865_868.png", "Passive RTL-SDR scan of 864.5–868.5 MHz, 90 sweeps over 3 minutes, Pluto TX off. Shaded: the demo's channel bands.", 6.0));
+  c.push(P("Channel quality differences caused by real interference (for example a second transmitter, or band-limited noise sent during the data burst on one channel) were not tested; this is the main open point of the hardware work."));
+
   c.push(H1("6. How to reproduce"));
   c.push(P("With hardware (Pluto TX antenna, RTL-SDR antenna, separation D metres):"));
   c.push(...CODE([
@@ -121,6 +184,16 @@ module.exports = function part3() {
     "# TX LO off",
     "iio_attr -u ip:192.168.2.1 -o -c ad9361-phy altvoltage1 powerdown 1",
   ]));
+  c.push(P("Closed-loop channel switching (same setup; type TRANSMIT once per session):"));
+  c.push(...CODE([
+    "python scripts/scan_band.py --minutes 3          # receive only, TX LO off",
+    "iio_attr -u ip:192.168.2.1 -o -c ad9361-phy altvoltage1 powerdown 0",
+    "python scripts/run_channel_switching_demo.py --enable-rf --rf-path ota \\",
+    "    --antenna-separation-m 1.5 [--margin-db 2]",
+    "iio_attr -u ip:192.168.2.1 -o -c ad9361-phy altvoltage1 powerdown 1",
+    "python scripts/summarize_closed_loop.py",
+    "python scripts/verify_closed_loop_captures.py    # needs the raw captures",
+  ]));
   c.push(P("Without hardware (from the saved captures and records):"));
   c.push(...CODE([
     "python scripts/run_hardware_experiment.py \\",
@@ -128,16 +201,20 @@ module.exports = function part3() {
     "    --waveform results/baseband/multimod_v2/qpsk_framed_seed42.json --no-save",
     "python scripts/summarize_hardware_sweep.py",
     "python -m pytest -q tests/test_run_hardware_experiment.py \\",
-    "    tests/test_transmission_day.py tests/test_pluto_pyadi_tx.py",
+    "    tests/test_transmission_day.py tests/test_pluto_pyadi_tx.py \\",
+    "    tests/test_channel_switching_demo.py tests/test_scan_band.py \\",
+    "    tests/test_summarize_closed_loop.py tests/test_verify_closed_loop.py",
   ]));
 
   c.push(H1("7. Limitations"));
   c.push(...B([
-    "One OTA session, one antenna arrangement; the antenna separation was not recorded.",
+    "BER sweep: one OTA session, one antenna arrangement; the antenna separation was not recorded.",
     "Each point is one 512 ms capture of 4,096 bits. A zero-error run only shows BER < 7.3 × 10⁻⁴ (95 %); the 16-QAM 17.1 dB point rests on 5 errors.",
     "Indoor OTA link with no fading measurement; no conducted (cable + attenuator) comparison.",
-    "Open loop only: the controller did not drive the radios (closed loop removed from scope).",
-    "Single frequency (866 MHz); the controller's channel switching was not exercised on hardware.",
+    "Closed-loop demo: channel quality is scripted by TX power; no real interference, fading or second user was tested (Section 5.10). One room, one 1.5 m antenna spacing, 35 minutes.",
+    "The controller decides on a probe sent seconds before the data; short Es/N0 dips of several dB in between caused most 16-QAM errors. It also has no 'do not transmit' option.",
+    "Session-to-session drift (about 3 dB) prevents a precise hardware estimate of the safety margin's benefit.",
+    "Raw closed-loop captures (330 MB) are not in the repository; they are kept as a separate backup, and the offline audit needs them.",
   ]));
 
   c.push(H1("8. Contribution summary"));
@@ -147,7 +224,8 @@ module.exports = function part3() {
     "the experiment runner with its safety and verification gates, and the record-correction tool;",
     "the receive-only sensing, FM scan and capture dataset;",
     "the OTA session: gain selection, tone test, BPSK frames and the 15-point BER sweep;",
-    "the hardware BER analysis against theory, and the real captures used to test the DL classifier.",
+    "the hardware BER analysis against theory, and the real captures used to test the DL classifier;",
+    "the closed-loop channel-switching demo on the radios (5 sessions), the passive band scan, the multi-session summary and the offline audit of every capture and decision.",
   ]));
   return build(3, "Part3_SDR_Hardware_OTA_Report.docx", c);
 };

@@ -1,0 +1,6 @@
+session,margin_db,switch_penalty,phases,rounds,switches,switches_needed,switches_made_when_needed,max_switch_latency_rounds,unnecessary_switches,best_channel_rounds,data_bit_errors,data_bits,data_ber,modulations
+20261128_071738,0.0,0.15,4,12,3,3,3,0,0,12,75,24576,0.0030517578125,QPSK:3;16-QAM:9
+20261128_074114,0.0,0.15,5,15,3,3,3,0,0,15,83,30720,0.0027018229166666666,BPSK:3;QPSK:3;16-QAM:9
+20261128_074355,2.0,0.15,5,15,3,3,3,0,0,15,48,29696,0.0016163793103448276,BPSK:6;QPSK:3;16-QAM:6
+20261128_074825,0.0,0.15,5,15,3,3,3,0,0,15,26,30720,0.0008463541666666667,BPSK:3;QPSK:3;16-QAM:9
+20261128_075106,2.0,0.15,5,15,3,3,3,0,0,15,10,30720,0.0003255208333333333,BPSK:6;QPSK:1;16-QAM:8

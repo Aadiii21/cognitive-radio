@@ -22,11 +22,12 @@ digraph W {
   w_dl [shape=box, style="rounded,filled", fillcolor="#D9EFE4", color="#2E7D57", label="DL classifier (CNN)\nIQ → BPSK / QPSK / 16-QAM"];
   }
   subgraph cluster_3 { label="Part 3: SDR hardware integration and OTA experiments"; color="#B8621B"; style=rounded;
-  w_tx [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="ADALM-Pluto TX (pyadi-iio)\n866 MHz, readback-verified"];
+  w_tx [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="ADALM-Pluto TX (pyadi-iio)\n865–868 MHz band, readback-verified"];
   w_air [shape=ellipse, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="Over the air\n(antennas)"];
   w_rtl [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="RTL-SDR capture\n2.048 MS/s, gain 28 dB"];
   w_tests [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="Tone test → BPSK frames →\nBPSK/QPSK/16-QAM frames"];
   w_sweep [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="15-run BER sweep\nmeasured BER vs theory"];
+  w_cl [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="Closed loop on the radios: probe 3 channels\n→ controller → TX on chosen channel (72 rounds)"];
   }
   done [shape=oval, style=filled, fillcolor="#EEEEEE", label="Results → part reports → master report"];
   start -> w_chan;
@@ -56,4 +57,7 @@ digraph W {
   w_sweep -> done;
   w_dl -> done;
   w_srad -> done;
+  w_ctrl -> w_cl [label="controller (Part 1)"];
+  w_rtl -> w_cl;
+  w_cl -> done;
 }

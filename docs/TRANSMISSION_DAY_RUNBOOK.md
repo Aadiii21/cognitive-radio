@@ -1,5 +1,58 @@
 # Transmission runbook: Pluto → RTL-SDR (OTA, or conducted through an attenuator)
 
+## Closed-loop channel-switching demo (added 26 Nov, run 28 Nov)
+
+Shows channel switching on real radios: every round the Pluto sends a probe on each of three channels (865.7, 866.5, 867.3 MHz), the RTL-SDR measures Es/N0 on each, the unchanged `CalibratedCognitiveController` picks the channel and modulation, and the Pluto sends a data burst there. Channel quality follows a scripted schedule of Pluto TX attenuation in five phases (A–C: a different channel best; D: all mediocre; E: all poor). Sensing, decisions, retuning, transmission and reception are real; the "interference" is emulated by TX power.
+
+**Done on 28 Nov:** 5 sessions at 1.5 m (two with `--margin-db 2`) and a 3-minute band scan. Results: Part 3 report, Section 5.9; `results/analysis/closed_loop_summary.json`.
+
+**You need:** Pluto with antenna on TX, RTL-SDR with antenna, laptop, tape measure. A 15-round session takes about 2.5 minutes (about 2.3 s per burst, one progress line per burst).
+
+```bash
+source ~/miniforge3/bin/activate cognitive-radio
+cd ~/projects/final/cognitive-radio
+
+# 0. software check, no hardware (optional): see what a session looks like
+python scripts/run_channel_switching_demo.py --simulate
+
+# 1. passive band scan, receive only (Pluto TX LO must be OFF): 3 minutes
+iio_attr -u ip:192.168.2.1 -o -c ad9361-phy altvoltage1 powerdown 1
+python scripts/scan_band.py --minutes 3 2>&1 | tee results/hardware/band_scan.log
+
+# 2. antennas on, measure the separation D (metres), TX LO on
+iio_attr -u ip:192.168.2.1 -o -c ad9361-phy altvoltage1 powerdown 0
+
+# 3. dry run: every check, nothing transmitted
+python scripts/run_channel_switching_demo.py --dry-run --rf-path ota --antenna-separation-m D
+
+# 4. one session (type TRANSMIT exactly, once); repeat this line for more sessions,
+#    and add --margin-db 2 for a session with a safety margin
+python scripts/run_channel_switching_demo.py --enable-rf --rf-path ota --antenna-separation-m D \
+    2>&1 | tee -a results/hardware/closed_loop_demo.log
+
+# 5. TX LO off, then summarise (and audit, while the raw captures are present)
+iio_attr -u ip:192.168.2.1 -o -c ad9361-phy altvoltage1 powerdown 1
+python scripts/summarize_closed_loop.py
+python scripts/verify_closed_loop_captures.py
+```
+
+Run each block separately and wait for it to finish; pasting everything at once runs step 4 only once. Do not press Ctrl-C while bursts are still printing. Keep the antennas and people still during a session. Expected: three switches (start of phases B, C and D), 16-QAM on the good channel, QPSK in phase D, BPSK in phase E.
+
+**If the levels don't separate the channels** (for example every channel above 20 dB, or no frames found), adjust the schedule. Save as `my_schedule.json` and add `--schedule my_schedule.json`:
+
+```json
+[
+  {"name": "A: channel 0 best", "attenuation_db": [0, 10, 20]},
+  {"name": "B: channel 1 best", "attenuation_db": [20, 0, 10]},
+  {"name": "C: channel 2 best", "attenuation_db": [10, 20, 0]},
+  {"name": "D: all mediocre",   "attenuation_db": [10, 15, 20]},
+  {"name": "E: all poor",       "attenuation_db": [15, 20, 20]}
+]
+```
+Raise all numbers by 5–10 dB if every channel is very strong; lower them if probes at 20 dB find no frame.
+
+**Raw captures:** each session's `captures/` folder holds about 60 MB of `.cu8` files. They are not committed to git (`.gitignore`); keep a separate backup (the 28 Nov sessions are in `closed_loop_full_backup_20261128.zip`).
+
 ## OTA (the project's RF path from 23 Nov)
 
 Antenna on the Pluto **TX** port and on the RTL-SDR; no cable between them. Measure the antenna separation and pass it every run; it is saved in each result.

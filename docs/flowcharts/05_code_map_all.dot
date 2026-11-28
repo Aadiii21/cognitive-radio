@@ -147,10 +147,19 @@ digraph G {
   p3_sweep [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="scripts/summarize_hardware_sweep.py\n— Hardware BER table, 95 % CIs, implied loss, figure"];
   p3_sweep_o0 [shape=note, style=filled, fillcolor="#FDF4EA", color="#B8621B", fontsize=9, label="results/analysis/hardware_ber_runs.csv (19 runs)\nresults/figures/hardware_ber_vs_theory.png\n→ measured BER ~ AWGN theory; thresholds hold"];
   p3_sweep -> p3_sweep_o0 [color="#B8621B"];
+  p3_cl [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="scripts/run_channel_switching_demo.py\n— Closed loop: probe 3 channels -> calibrated controller -> TX on chosen channel"];
+  p3_cl_o0 [shape=note, style=filled, fillcolor="#FDF4EA", color="#B8621B", fontsize=9, label="results/hardware/closed_loop/session_*/\n(rounds.csv, session.json, session.png)\n→ channel switching on real radios: 5 sessions"];
+  p3_cl -> p3_cl_o0 [color="#B8621B"];
+  p3_clsum [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="scripts/summarize_closed_loop.py · verify_closed_loop_captures.py\n— Pool sessions with 95 % CIs; re-decode every capture, replay every decision"];
+  p3_clsum_o0 [shape=note, style=filled, fillcolor="#FDF4EA", color="#B8621B", fontsize=9, label="results/analysis/closed_loop_summary.json · closed_loop_verification.json\nresults/figures/closed_loop_repeatability.png\n→ best channel 72/72; 15/15 switches; audit OK"];
+  p3_clsum -> p3_clsum_o0 [color="#B8621B"];
+  p3_scan [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="scripts/scan_band.py\n— Passive scan of 865-868 MHz (receive only)"];
+  p3_scan_o0 [shape=note, style=filled, fillcolor="#FDF4EA", color="#B8621B", fontsize=9, label="results/hardware/band_scan/scan_*/ (scan.png, summary.json)\n→ real channels quiet: within 0.6 dB of floor"];
+  p3_scan -> p3_scan_o0 [color="#B8621B"];
   p3_pipe [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="pipelines/integrated_pipeline.py\n(scripts/pluto_to_rtl_sdr_demo.py, test_pluto_tx_adapter.py: legacy)\n— Software-mode pipeline; RF path disabled"];
   p3_pipe_o0 [shape=note, style=filled, fillcolor="#FDF4EA", color="#B8621B", fontsize=9, label="results/pipeline/\n→ software-only run"];
   p3_pipe -> p3_pipe_o0 [color="#B8621B"];
-  { rank=same; p3_hcfg; p3_tx; p3_rxh; p3_sense; p3_dset; p3_rplot; p3_run; p3_annot; p3_sweep; p3_pipe; }
+  { rank=same; p3_hcfg; p3_tx; p3_rxh; p3_sense; p3_dset; p3_rplot; p3_run; p3_annot; p3_sweep; p3_cl; p3_clsum; p3_scan; p3_pipe; }
   p3_hcfg -> p3_tx [style=invis];
   p3_tx -> p3_rxh [style=invis];
   p3_rxh -> p3_sense [style=invis];
@@ -159,7 +168,10 @@ digraph G {
   p3_rplot -> p3_run [style=invis];
   p3_run -> p3_annot [style=invis];
   p3_annot -> p3_sweep [style=invis];
-  p3_sweep -> p3_pipe [style=invis];
+  p3_sweep -> p3_cl [style=invis];
+  p3_cl -> p3_clsum [style=invis];
+  p3_clsum -> p3_scan [style=invis];
+  p3_scan -> p3_pipe [style=invis];
   p3_hcfg -> p3_tx [style=dashed, color="#777777", constraint=false];
   p3_hcfg -> p3_rxh [style=dashed, color="#777777", constraint=false];
   p3_rxh -> p3_sense [style=dashed, color="#777777", constraint=false];
@@ -169,6 +181,10 @@ digraph G {
   p3_rxh -> p3_run [style=dashed, color="#777777", constraint=false];
   p3_run -> p3_annot [style=dashed, color="#777777", constraint=false];
   p3_run -> p3_sweep [style=dashed, color="#777777", constraint=false];
+  p3_tx -> p3_cl [style=dashed, color="#777777", constraint=false];
+  p3_rxh -> p3_cl [style=dashed, color="#777777", constraint=false];
+  p3_cl -> p3_clsum [style=dashed, color="#777777", constraint=false];
+  p3_rxh -> p3_scan [style=dashed, color="#777777", constraint=false];
   }
   p2_logit -> p1_cal [color="#C0392B", penwidth=1.4, fontsize=9, fontcolor="#C0392B", label="packet-success model"];
   p2_ncal -> p1_cal [color="#C0392B", penwidth=1.4, fontsize=9, fontcolor="#C0392B", label="SNR -> noise voltage"];
@@ -176,5 +192,6 @@ digraph G {
   p2_rx -> p3_run [color="#C0392B", penwidth=1.4, fontsize=9, fontcolor="#C0392B", label="receivers"];
   p2_ber -> p3_sweep [color="#C0392B", penwidth=1.4, fontsize=9, fontcolor="#C0392B", label="theory / thresholds"];
   p3_run -> p2_dl [color="#C0392B", penwidth=1.4, fontsize=9, fontcolor="#C0392B", label="real captures (test set)"];
+  p1_cal -> p3_cl [color="#C0392B", penwidth=1.4, fontsize=9, fontcolor="#C0392B", label="controller"];
   legend [shape=plaintext, fontsize=9, label="Box = code (— what it does)   Note = output (→ what it shows)   Dashed = code dependency"];
 }

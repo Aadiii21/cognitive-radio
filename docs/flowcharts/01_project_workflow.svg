@@ -61,15 +61,15 @@
 <!-- w_tx -->
 <g id="node15" class="node">
 <title>w_tx</title>
-<path fill="#fbe5d0" stroke="#b8621b" d="M1273.5,-528.08C1273.5,-528.08 1124.5,-528.08 1124.5,-528.08 1118.5,-528.08 1112.5,-522.08 1112.5,-516.08 1112.5,-516.08 1112.5,-504.08 1112.5,-504.08 1112.5,-498.08 1118.5,-492.08 1124.5,-492.08 1124.5,-492.08 1273.5,-492.08 1273.5,-492.08 1279.5,-492.08 1285.5,-498.08 1285.5,-504.08 1285.5,-504.08 1285.5,-516.08 1285.5,-516.08 1285.5,-522.08 1279.5,-528.08 1273.5,-528.08"/>
-<text text-anchor="middle" x="1199" y="-513.28" font-family="Helvetica,sans-Serif" font-size="11.00">ADALM&#45;Pluto TX (pyadi&#45;iio)</text>
-<text text-anchor="middle" x="1199" y="-501.28" font-family="Helvetica,sans-Serif" font-size="11.00">866 MHz, readback&#45;verified</text>
+<path fill="#fbe5d0" stroke="#b8621b" d="M1329,-528.08C1329,-528.08 1123,-528.08 1123,-528.08 1117,-528.08 1111,-522.08 1111,-516.08 1111,-516.08 1111,-504.08 1111,-504.08 1111,-498.08 1117,-492.08 1123,-492.08 1123,-492.08 1329,-492.08 1329,-492.08 1335,-492.08 1341,-498.08 1341,-504.08 1341,-504.08 1341,-516.08 1341,-516.08 1341,-522.08 1335,-528.08 1329,-528.08"/>
+<text text-anchor="middle" x="1226" y="-513.28" font-family="Helvetica,sans-Serif" font-size="11.00">ADALM&#45;Pluto TX (pyadi&#45;iio)</text>
+<text text-anchor="middle" x="1226" y="-501.28" font-family="Helvetica,sans-Serif" font-size="11.00">865–868 MHz band, readback&#45;verified</text>
 </g>
 <!-- start&#45;&gt;w_tx -->
 <g id="edge3" class="edge">
 <title>start&#45;&gt;w_tx</title>
-<path fill="none" stroke="black" d="M453.81,-603.44C470.19,-601.02 487.05,-598.78 503,-597.08 635.35,-583.02 972.93,-600.28 1101,-564.08 1125.08,-557.28 1149.85,-543.81 1168.46,-532.16"/>
-<polygon fill="black" stroke="black" points="1169.95,-534.12 1174.53,-528.29 1167.31,-529.99 1169.95,-534.12"/>
+<path fill="none" stroke="black" d="M408.33,-598.7C435.39,-588.52 469.43,-577.43 501,-572.08 566.74,-560.96 1035.75,-577.8 1101,-564.08 1131.92,-557.58 1164.72,-543.36 1188.96,-531.29"/>
+<polygon fill="black" stroke="black" points="1190.11,-533.45 1195.25,-528.11 1187.9,-529.08 1190.11,-533.45"/>
 </g>
 <!-- w_ctrl -->
 <g id="node3" class="node">
@@ -87,78 +87,92 @@
 <!-- w_bench -->
 <g id="node4" class="node">
 <title>w_bench</title>
-<path fill="#dce8f7" stroke="#2f5d8a" d="M361,-207C361,-207 173,-207 173,-207 167,-207 161,-201 161,-195 161,-195 161,-183 161,-183 161,-177 167,-171 173,-171 173,-171 361,-171 361,-171 367,-171 373,-177 373,-183 373,-183 373,-195 373,-195 373,-201 367,-207 361,-207"/>
-<text text-anchor="middle" x="267" y="-192.2" font-family="Helvetica,sans-Serif" font-size="11.00">Benchmark: 630 runs</text>
-<text text-anchor="middle" x="267" y="-180.2" font-family="Helvetica,sans-Serif" font-size="11.00">(3 envs x 30 seeds x 7 strategies)</text>
+<path fill="#dce8f7" stroke="#2f5d8a" d="M479,-207C479,-207 291,-207 291,-207 285,-207 279,-201 279,-195 279,-195 279,-183 279,-183 279,-177 285,-171 291,-171 291,-171 479,-171 479,-171 485,-171 491,-177 491,-183 491,-183 491,-195 491,-195 491,-201 485,-207 479,-207"/>
+<text text-anchor="middle" x="385" y="-192.2" font-family="Helvetica,sans-Serif" font-size="11.00">Benchmark: 630 runs</text>
+<text text-anchor="middle" x="385" y="-180.2" font-family="Helvetica,sans-Serif" font-size="11.00">(3 envs x 30 seeds x 7 strategies)</text>
 </g>
 <!-- w_ctrl&#45;&gt;w_bench -->
 <g id="edge8" class="edge">
 <title>w_ctrl&#45;&gt;w_bench</title>
-<path fill="none" stroke="black" d="M357.63,-246.84C340.5,-236.1 318.33,-222.19 300.2,-210.82"/>
-<polygon fill="black" stroke="black" points="301.45,-208.71 294.22,-207.07 298.85,-212.86 301.45,-208.71"/>
+<path fill="none" stroke="black" d="M385,-246.84C385,-237.12 385,-224.82 385,-214.15"/>
+<polygon fill="black" stroke="black" points="387.45,-214.07 385,-207.07 382.55,-214.07 387.45,-214.07"/>
 </g>
 <!-- w_srad -->
 <g id="node7" class="node">
 <title>w_srad</title>
-<path fill="#dce8f7" stroke="#2f5d8a" d="M479.5,-155C479.5,-155 318.5,-155 318.5,-155 312.5,-155 306.5,-149 306.5,-143 306.5,-143 306.5,-131 306.5,-131 306.5,-125 312.5,-119 318.5,-119 318.5,-119 479.5,-119 479.5,-119 485.5,-119 491.5,-125 491.5,-131 491.5,-131 491.5,-143 491.5,-143 491.5,-149 485.5,-155 479.5,-155"/>
-<text text-anchor="middle" x="399" y="-140.2" font-family="Helvetica,sans-Serif" font-size="11.00">Simulated radio + GNU Radio</text>
-<text text-anchor="middle" x="399" y="-128.2" font-family="Helvetica,sans-Serif" font-size="11.00">live interference experiment</text>
+<path fill="#dce8f7" stroke="#2f5d8a" d="M224.5,-155C224.5,-155 63.5,-155 63.5,-155 57.5,-155 51.5,-149 51.5,-143 51.5,-143 51.5,-131 51.5,-131 51.5,-125 57.5,-119 63.5,-119 63.5,-119 224.5,-119 224.5,-119 230.5,-119 236.5,-125 236.5,-131 236.5,-131 236.5,-143 236.5,-143 236.5,-149 230.5,-155 224.5,-155"/>
+<text text-anchor="middle" x="144" y="-140.2" font-family="Helvetica,sans-Serif" font-size="11.00">Simulated radio + GNU Radio</text>
+<text text-anchor="middle" x="144" y="-128.2" font-family="Helvetica,sans-Serif" font-size="11.00">live interference experiment</text>
 </g>
 <!-- w_ctrl&#45;&gt;w_srad -->
 <g id="edge11" class="edge">
 <title>w_ctrl&#45;&gt;w_srad</title>
-<path fill="none" stroke="black" d="M386.92,-246.74C389.35,-224.88 393.55,-187.06 396.3,-162.28"/>
-<polygon fill="black" stroke="black" points="398.77,-162.27 397.11,-155.05 393.9,-161.73 398.77,-162.27"/>
+<path fill="none" stroke="black" d="M348.3,-246.98C324.86,-235.94 293.93,-221.04 267,-207 237.3,-191.52 204.23,-172.88 179.86,-158.88"/>
+<polygon fill="black" stroke="black" points="180.84,-156.62 173.55,-155.25 178.39,-160.86 180.84,-156.62"/>
+</g>
+<!-- w_cl -->
+<g id="node20" class="node">
+<title>w_cl</title>
+<path fill="#fbe5d0" stroke="#b8621b" d="M1593.5,-207C1593.5,-207 1324.5,-207 1324.5,-207 1318.5,-207 1312.5,-201 1312.5,-195 1312.5,-195 1312.5,-183 1312.5,-183 1312.5,-177 1318.5,-171 1324.5,-171 1324.5,-171 1593.5,-171 1593.5,-171 1599.5,-171 1605.5,-177 1605.5,-183 1605.5,-183 1605.5,-195 1605.5,-195 1605.5,-201 1599.5,-207 1593.5,-207"/>
+<text text-anchor="middle" x="1459" y="-192.2" font-family="Helvetica,sans-Serif" font-size="11.00">Closed loop on the radios: probe 3 channels</text>
+<text text-anchor="middle" x="1459" y="-180.2" font-family="Helvetica,sans-Serif" font-size="11.00">→ controller → TX on chosen channel (72 rounds)</text>
+</g>
+<!-- w_ctrl&#45;&gt;w_cl -->
+<g id="edge28" class="edge">
+<title>w_ctrl&#45;&gt;w_cl</title>
+<path fill="none" stroke="black" d="M394.28,-246.94C400.29,-237.75 409.04,-227.25 420,-222 464.1,-200.88 1251.2,-210.02 1300,-207 1301.63,-206.9 1303.27,-206.79 1304.92,-206.68"/>
+<polygon fill="black" stroke="black" points="1305.39,-209.11 1312.2,-206.18 1305.05,-204.22 1305.39,-209.11"/>
+<text text-anchor="middle" x="460.5" y="-224.8" font-family="Helvetica,sans-Serif" font-size="9.00">controller (Part 1)</text>
 </g>
 <!-- w_stats -->
 <g id="node5" class="node">
 <title>w_stats</title>
-<path fill="#dce8f7" stroke="#2f5d8a" d="M478.5,-104C478.5,-104 321.5,-104 321.5,-104 315.5,-104 309.5,-98 309.5,-92 309.5,-92 309.5,-80 309.5,-80 309.5,-74 315.5,-68 321.5,-68 321.5,-68 478.5,-68 478.5,-68 484.5,-68 490.5,-74 490.5,-80 490.5,-80 490.5,-92 490.5,-92 490.5,-98 484.5,-104 478.5,-104"/>
-<text text-anchor="middle" x="400" y="-89.2" font-family="Helvetica,sans-Serif" font-size="11.00">Paired statistics + figures</text>
-<text text-anchor="middle" x="400" y="-77.2" font-family="Helvetica,sans-Serif" font-size="11.00">PDR, throughput, availability</text>
+<path fill="#dce8f7" stroke="#2f5d8a" d="M271.5,-104C271.5,-104 114.5,-104 114.5,-104 108.5,-104 102.5,-98 102.5,-92 102.5,-92 102.5,-80 102.5,-80 102.5,-74 108.5,-68 114.5,-68 114.5,-68 271.5,-68 271.5,-68 277.5,-68 283.5,-74 283.5,-80 283.5,-80 283.5,-92 283.5,-92 283.5,-98 277.5,-104 271.5,-104"/>
+<text text-anchor="middle" x="193" y="-89.2" font-family="Helvetica,sans-Serif" font-size="11.00">Paired statistics + figures</text>
+<text text-anchor="middle" x="193" y="-77.2" font-family="Helvetica,sans-Serif" font-size="11.00">PDR, throughput, availability</text>
 </g>
 <!-- w_bench&#45;&gt;w_stats -->
 <g id="edge9" class="edge">
 <title>w_bench&#45;&gt;w_stats</title>
-<path fill="none" stroke="black" d="M269.39,-170.87C272.45,-155.26 279.26,-132.61 294,-119 298.82,-114.55 304.25,-110.71 310.02,-107.41"/>
-<polygon fill="black" stroke="black" points="311.37,-109.47 316.42,-104.03 309.08,-105.14 311.37,-109.47"/>
+<path fill="none" stroke="black" d="M352.43,-170.87C319.09,-153.33 267.28,-126.07 231.83,-107.43"/>
+<polygon fill="black" stroke="black" points="232.74,-105.14 225.41,-104.05 230.46,-109.48 232.74,-105.14"/>
 </g>
 <!-- w_ml -->
 <g id="node6" class="node">
 <title>w_ml</title>
-<path fill="#dce8f7" stroke="#2f5d8a" d="M272,-104C272,-104 114,-104 114,-104 108,-104 102,-98 102,-92 102,-92 102,-80 102,-80 102,-74 108,-68 114,-68 114,-68 272,-68 272,-68 278,-68 284,-74 284,-80 284,-80 284,-92 284,-92 284,-98 278,-104 272,-104"/>
-<text text-anchor="middle" x="193" y="-89.2" font-family="Helvetica,sans-Serif" font-size="11.00">ML analysis: regression +</text>
-<text text-anchor="middle" x="193" y="-77.2" font-family="Helvetica,sans-Serif" font-size="11.00">random forest on benchmark</text>
+<path fill="#dce8f7" stroke="#2f5d8a" d="M479,-104C479,-104 321,-104 321,-104 315,-104 309,-98 309,-92 309,-92 309,-80 309,-80 309,-74 315,-68 321,-68 321,-68 479,-68 479,-68 485,-68 491,-74 491,-80 491,-80 491,-92 491,-92 491,-98 485,-104 479,-104"/>
+<text text-anchor="middle" x="400" y="-89.2" font-family="Helvetica,sans-Serif" font-size="11.00">ML analysis: regression +</text>
+<text text-anchor="middle" x="400" y="-77.2" font-family="Helvetica,sans-Serif" font-size="11.00">random forest on benchmark</text>
 </g>
 <!-- w_bench&#45;&gt;w_ml -->
 <g id="edge10" class="edge">
 <title>w_bench&#45;&gt;w_ml</title>
-<path fill="none" stroke="black" d="M254.45,-170.87C242.22,-154.18 223.55,-128.7 210,-110.2"/>
-<polygon fill="black" stroke="black" points="211.73,-108.42 205.61,-104.22 207.78,-111.31 211.73,-108.42"/>
+<path fill="none" stroke="black" d="M387.54,-170.87C389.98,-154.47 393.68,-129.58 396.41,-111.17"/>
+<polygon fill="black" stroke="black" points="398.84,-111.5 397.44,-104.22 393.99,-110.78 398.84,-111.5"/>
 </g>
 <!-- done -->
-<g id="node20" class="node">
+<g id="node21" class="node">
 <title>done</title>
-<ellipse fill="#eeeeee" stroke="black" cx="529" cy="-18" rx="150.94" ry="18"/>
-<text text-anchor="middle" x="529" y="-15.2" font-family="Helvetica,sans-Serif" font-size="11.00">Results → part reports → master report</text>
+<ellipse fill="#eeeeee" stroke="black" cx="814" cy="-18" rx="150.94" ry="18"/>
+<text text-anchor="middle" x="814" y="-15.2" font-family="Helvetica,sans-Serif" font-size="11.00">Results → part reports → master report</text>
 </g>
 <!-- w_stats&#45;&gt;done -->
 <g id="edge23" class="edge">
 <title>w_stats&#45;&gt;done</title>
-<path fill="none" stroke="black" d="M433.56,-67.83C450.84,-58.99 472.02,-48.15 490.02,-38.94"/>
-<polygon fill="black" stroke="black" points="491.39,-41 496.5,-35.63 489.15,-36.63 491.39,-41"/>
+<path fill="none" stroke="black" d="M257.04,-67.94C270.18,-64.91 283.98,-62.07 297,-60 420.22,-40.43 561.52,-30.03 665.22,-24.61"/>
+<polygon fill="black" stroke="black" points="665.45,-27.05 672.31,-24.25 665.19,-22.16 665.45,-27.05"/>
 </g>
 <!-- w_ml&#45;&gt;done -->
 <g id="edge24" class="edge">
 <title>w_ml&#45;&gt;done</title>
-<path fill="none" stroke="black" d="M261.12,-68C273.05,-65.2 285.37,-62.42 297,-60 342.71,-50.48 393.78,-41.3 436.34,-34.04"/>
-<polygon fill="black" stroke="black" points="436.88,-36.44 443.37,-32.85 436.06,-31.61 436.88,-36.44"/>
+<path fill="none" stroke="black" d="M491.11,-70.48C559.12,-59.63 651.77,-44.86 720.38,-33.93"/>
+<polygon fill="black" stroke="black" points="720.83,-36.33 727.36,-32.81 720.06,-31.49 720.83,-36.33"/>
 </g>
 <!-- w_srad&#45;&gt;done -->
 <g id="edge27" class="edge">
 <title>w_srad&#45;&gt;done</title>
-<path fill="none" stroke="black" d="M482.25,-118.88C489.89,-114.91 496.99,-110.02 503,-104 519.07,-87.9 525.26,-62.15 527.61,-43.21"/>
-<polygon fill="black" stroke="black" points="530.07,-43.28 528.36,-36.06 525.19,-42.77 530.07,-43.28"/>
+<path fill="none" stroke="black" d="M103.73,-118.84C98.24,-114.77 93.34,-109.87 90,-104 80.32,-87.01 76.57,-74.21 90,-60 109.27,-39.61 452.75,-27.74 659.59,-22.41"/>
+<polygon fill="black" stroke="black" points="659.95,-24.85 666.89,-22.22 659.83,-19.95 659.95,-24.85"/>
 </g>
 <!-- w_cal -->
 <g id="node9" class="node">
@@ -196,9 +210,9 @@
 <!-- w_snr&#45;&gt;w_ctrl -->
 <g id="edge6" class="edge">
 <title>w_snr&#45;&gt;w_ctrl</title>
-<path fill="none" stroke="black" d="M815.78,-354.91C772.7,-337.74 702.76,-311.91 640,-298 579.34,-284.55 562.64,-290.84 501,-283 500.09,-282.88 499.18,-282.77 498.26,-282.65"/>
+<path fill="none" stroke="black" d="M797.56,-354.98C776.72,-348.72 753.21,-341.37 732,-334 690.52,-319.6 682.65,-308.45 640,-298 579.65,-283.22 562.64,-290.84 501,-283 500.09,-282.88 499.18,-282.77 498.26,-282.65"/>
 <polygon fill="black" stroke="black" points="498.44,-280.2 491.18,-281.73 497.8,-285.06 498.44,-280.2"/>
-<text text-anchor="middle" x="787" y="-313.8" font-family="Helvetica,sans-Serif" font-size="9.00">SNR → noise</text>
+<text text-anchor="middle" x="760" y="-313.8" font-family="Helvetica,sans-Serif" font-size="9.00">SNR → noise</text>
 </g>
 <!-- w_sync -->
 <g id="node11" class="node">
@@ -223,36 +237,36 @@
 <!-- w_ber -->
 <g id="node13" class="node">
 <title>w_ber</title>
-<path fill="#d9efe4" stroke="#2e7d57" d="M1075,-334C1075,-334 903,-334 903,-334 897,-334 891,-328 891,-322 891,-322 891,-310 891,-310 891,-304 897,-298 903,-298 903,-298 1075,-298 1075,-298 1081,-298 1087,-304 1087,-310 1087,-310 1087,-322 1087,-322 1087,-328 1081,-334 1075,-334"/>
-<text text-anchor="middle" x="989" y="-319.2" font-family="Helvetica,sans-Serif" font-size="11.00">Synthetic BER vs Es/N0</text>
-<text text-anchor="middle" x="989" y="-307.2" font-family="Helvetica,sans-Serif" font-size="11.00">→ thresholds 6.8 / 9.9 / 16.7 dB</text>
+<path fill="#d9efe4" stroke="#2e7d57" d="M984,-334C984,-334 812,-334 812,-334 806,-334 800,-328 800,-322 800,-322 800,-310 800,-310 800,-304 806,-298 812,-298 812,-298 984,-298 984,-298 990,-298 996,-304 996,-310 996,-310 996,-322 996,-322 996,-328 990,-334 984,-334"/>
+<text text-anchor="middle" x="898" y="-319.2" font-family="Helvetica,sans-Serif" font-size="11.00">Synthetic BER vs Es/N0</text>
+<text text-anchor="middle" x="898" y="-307.2" font-family="Helvetica,sans-Serif" font-size="11.00">→ thresholds 6.8 / 9.9 / 16.7 dB</text>
 </g>
 <!-- w_wave&#45;&gt;w_ber -->
 <g id="edge13" class="edge">
 <title>w_wave&#45;&gt;w_ber</title>
-<path fill="none" stroke="black" d="M1003.71,-603.05C1038.22,-557.88 1122.03,-432.97 1066,-349 1063.3,-344.95 1059.98,-341.42 1056.26,-338.33"/>
-<polygon fill="black" stroke="black" points="1057.62,-336.29 1050.53,-334.12 1054.72,-340.24 1057.62,-336.29"/>
+<path fill="none" stroke="black" d="M993.65,-602.96C1002.39,-557.03 1019.87,-429.37 964,-349 961.22,-345 957.79,-341.47 953.97,-338.38"/>
+<polygon fill="black" stroke="black" points="955.24,-336.27 948.13,-334.14 952.36,-340.24 955.24,-336.27"/>
 </g>
 <!-- w_dl -->
 <g id="node14" class="node">
 <title>w_dl</title>
-<path fill="#d9efe4" stroke="#2e7d57" d="M961,-207C961,-207 809,-207 809,-207 803,-207 797,-201 797,-195 797,-195 797,-183 797,-183 797,-177 803,-171 809,-171 809,-171 961,-171 961,-171 967,-171 973,-177 973,-183 973,-183 973,-195 973,-195 973,-201 967,-207 961,-207"/>
-<text text-anchor="middle" x="885" y="-192.2" font-family="Helvetica,sans-Serif" font-size="11.00">DL classifier (CNN)</text>
-<text text-anchor="middle" x="885" y="-180.2" font-family="Helvetica,sans-Serif" font-size="11.00">IQ → BPSK / QPSK / 16&#45;QAM</text>
+<path fill="#d9efe4" stroke="#2e7d57" d="M1075,-207C1075,-207 923,-207 923,-207 917,-207 911,-201 911,-195 911,-195 911,-183 911,-183 911,-177 917,-171 923,-171 923,-171 1075,-171 1075,-171 1081,-171 1087,-177 1087,-183 1087,-183 1087,-195 1087,-195 1087,-201 1081,-207 1075,-207"/>
+<text text-anchor="middle" x="999" y="-192.2" font-family="Helvetica,sans-Serif" font-size="11.00">DL classifier (CNN)</text>
+<text text-anchor="middle" x="999" y="-180.2" font-family="Helvetica,sans-Serif" font-size="11.00">IQ → BPSK / QPSK / 16&#45;QAM</text>
 </g>
 <!-- w_wave&#45;&gt;w_dl -->
 <g id="edge20" class="edge">
 <title>w_wave&#45;&gt;w_dl</title>
-<path fill="none" stroke="black" d="M994.54,-602.81C1005.85,-555.39 1029.82,-422.08 964,-349 941.54,-324.07 911.69,-359.61 890,-334 861.71,-300.6 869.76,-245.59 877.68,-214.11"/>
-<polygon fill="black" stroke="black" points="880.14,-214.41 879.57,-207.01 875.4,-213.15 880.14,-214.41"/>
-<text text-anchor="middle" x="1021.5" y="-370.84" font-family="Helvetica,sans-Serif" font-size="9.00">training data</text>
+<path fill="none" stroke="black" d="M999.98,-603.01C1011.24,-582.07 1028,-545.16 1028,-511.08 1028,-511.08 1028,-511.08 1028,-264 1028,-246.33 1020.74,-227.82 1013.49,-213.74"/>
+<polygon fill="black" stroke="black" points="1015.44,-212.2 1009.96,-207.2 1011.13,-214.52 1015.44,-212.2"/>
+<text text-anchor="middle" x="1057.5" y="-370.84" font-family="Helvetica,sans-Serif" font-size="9.00">training data</text>
 </g>
 <!-- w_wave&#45;&gt;w_tx -->
 <g id="edge14" class="edge">
 <title>w_wave&#45;&gt;w_tx</title>
-<path fill="none" stroke="black" d="M1043.42,-603.11C1059.68,-597.21 1077.38,-590.06 1093,-582.08 1120.83,-567.88 1150.18,-547.77 1170.92,-532.57"/>
-<polygon fill="black" stroke="black" points="1172.63,-534.36 1176.8,-528.23 1169.71,-530.42 1172.63,-534.36"/>
-<text text-anchor="middle" x="1124.5" y="-574.88" font-family="Helvetica,sans-Serif" font-size="9.00">TX files</text>
+<path fill="none" stroke="black" d="M1026.88,-603.09C1069.01,-583.62 1137.89,-551.79 1182.58,-531.14"/>
+<polygon fill="black" stroke="black" points="1183.67,-533.34 1189,-528.18 1181.61,-528.89 1183.67,-533.34"/>
+<text text-anchor="middle" x="1109.5" y="-574.88" font-family="Helvetica,sans-Serif" font-size="9.00">TX files</text>
 </g>
 <!-- w_sweep -->
 <g id="node19" class="node">
@@ -264,74 +278,86 @@
 <!-- w_ber&#45;&gt;w_sweep -->
 <g id="edge19" class="edge">
 <title>w_ber&#45;&gt;w_sweep</title>
-<path fill="none" stroke="black" d="M991.21,-297.88C994.42,-278.13 1001.87,-245.39 1018,-222 1052.98,-171.28 1112.75,-130.6 1151.81,-107.63"/>
-<polygon fill="black" stroke="black" points="1153.07,-109.73 1157.9,-104.09 1150.61,-105.49 1153.07,-109.73"/>
-<text text-anchor="middle" x="1038" y="-224.8" font-family="Helvetica,sans-Serif" font-size="9.00">compare</text>
+<path fill="none" stroke="black" d="M892.03,-297.79C882.58,-267.14 868.22,-202.58 899,-163 924,-130.86 1026.55,-109.67 1102.88,-98.02"/>
+<polygon fill="black" stroke="black" points="1103.62,-100.39 1110.18,-96.92 1102.89,-95.54 1103.62,-100.39"/>
+<text text-anchor="middle" x="900" y="-224.8" font-family="Helvetica,sans-Serif" font-size="9.00">compare</text>
 </g>
 <!-- w_dl&#45;&gt;done -->
 <g id="edge26" class="edge">
 <title>w_dl&#45;&gt;done</title>
-<path fill="none" stroke="black" d="M848.91,-170.87C782.38,-139.28 640.8,-72.07 570.45,-38.68"/>
-<polygon fill="black" stroke="black" points="571.25,-36.34 563.87,-35.55 569.15,-40.77 571.25,-36.34"/>
+<path fill="none" stroke="black" d="M980.24,-170.87C946.36,-139.91 875.01,-74.74 837.77,-40.71"/>
+<polygon fill="black" stroke="black" points="839.35,-38.84 832.53,-35.93 836.05,-42.46 839.35,-38.84"/>
 </g>
 <!-- w_air -->
 <g id="node16" class="node">
 <title>w_air</title>
-<ellipse fill="#fbe5d0" stroke="#b8621b" cx="1199" cy="-373.04" rx="62.87" ry="24.08"/>
-<text text-anchor="middle" x="1199" y="-376.24" font-family="Helvetica,sans-Serif" font-size="11.00">Over the air</text>
-<text text-anchor="middle" x="1199" y="-364.24" font-family="Helvetica,sans-Serif" font-size="11.00">(antennas)</text>
+<ellipse fill="#fbe5d0" stroke="#b8621b" cx="1224" cy="-373.04" rx="62.87" ry="24.08"/>
+<text text-anchor="middle" x="1224" y="-376.24" font-family="Helvetica,sans-Serif" font-size="11.00">Over the air</text>
+<text text-anchor="middle" x="1224" y="-364.24" font-family="Helvetica,sans-Serif" font-size="11.00">(antennas)</text>
 </g>
 <!-- w_tx&#45;&gt;w_air -->
 <g id="edge15" class="edge">
 <title>w_tx&#45;&gt;w_air</title>
-<path fill="none" stroke="black" d="M1199,-491.98C1199,-470.05 1199,-431.64 1199,-404.63"/>
-<polygon fill="black" stroke="black" points="1201.45,-404.34 1199,-397.34 1196.55,-404.34 1201.45,-404.34"/>
+<path fill="none" stroke="black" d="M1225.75,-491.98C1225.42,-470.05 1224.85,-431.64 1224.45,-404.63"/>
+<polygon fill="black" stroke="black" points="1226.9,-404.3 1224.34,-397.34 1222,-404.37 1226.9,-404.3"/>
 </g>
 <!-- w_rtl -->
 <g id="node17" class="node">
 <title>w_rtl</title>
-<path fill="#fbe5d0" stroke="#b8621b" d="M1261.5,-283C1261.5,-283 1136.5,-283 1136.5,-283 1130.5,-283 1124.5,-277 1124.5,-271 1124.5,-271 1124.5,-259 1124.5,-259 1124.5,-253 1130.5,-247 1136.5,-247 1136.5,-247 1261.5,-247 1261.5,-247 1267.5,-247 1273.5,-253 1273.5,-259 1273.5,-259 1273.5,-271 1273.5,-271 1273.5,-277 1267.5,-283 1261.5,-283"/>
-<text text-anchor="middle" x="1199" y="-268.2" font-family="Helvetica,sans-Serif" font-size="11.00">RTL&#45;SDR capture</text>
-<text text-anchor="middle" x="1199" y="-256.2" font-family="Helvetica,sans-Serif" font-size="11.00">2.048 MS/s, gain 28 dB</text>
+<path fill="#fbe5d0" stroke="#b8621b" d="M1278.5,-283C1278.5,-283 1153.5,-283 1153.5,-283 1147.5,-283 1141.5,-277 1141.5,-271 1141.5,-271 1141.5,-259 1141.5,-259 1141.5,-253 1147.5,-247 1153.5,-247 1153.5,-247 1278.5,-247 1278.5,-247 1284.5,-247 1290.5,-253 1290.5,-259 1290.5,-259 1290.5,-271 1290.5,-271 1290.5,-277 1284.5,-283 1278.5,-283"/>
+<text text-anchor="middle" x="1216" y="-268.2" font-family="Helvetica,sans-Serif" font-size="11.00">RTL&#45;SDR capture</text>
+<text text-anchor="middle" x="1216" y="-256.2" font-family="Helvetica,sans-Serif" font-size="11.00">2.048 MS/s, gain 28 dB</text>
 </g>
 <!-- w_air&#45;&gt;w_rtl -->
 <g id="edge16" class="edge">
 <title>w_air&#45;&gt;w_rtl</title>
-<path fill="none" stroke="black" d="M1199,-348.77C1199,-331.49 1199,-307.97 1199,-290.41"/>
-<polygon fill="black" stroke="black" points="1201.45,-290.29 1199,-283.29 1196.55,-290.29 1201.45,-290.29"/>
+<path fill="none" stroke="black" d="M1222.24,-348.77C1220.94,-331.49 1219.17,-307.97 1217.84,-290.41"/>
+<polygon fill="black" stroke="black" points="1220.27,-290.09 1217.3,-283.29 1215.39,-290.46 1220.27,-290.09"/>
 </g>
 <!-- w_rtl&#45;&gt;w_dl -->
 <g id="edge21" class="edge">
 <title>w_rtl&#45;&gt;w_dl</title>
-<path fill="none" stroke="black" d="M1149.41,-246.94C1124.07,-238.65 1092.62,-228.98 1064,-222 1037.11,-215.44 1007.65,-209.62 980.53,-204.8"/>
-<polygon fill="black" stroke="black" points="980.63,-202.34 973.32,-203.54 979.79,-207.16 980.63,-202.34"/>
-<text text-anchor="middle" x="1127.5" y="-224.8" font-family="Helvetica,sans-Serif" font-size="9.00">real test data</text>
+<path fill="none" stroke="black" d="M1165.94,-246.93C1133.09,-235.73 1090.04,-221.05 1055.89,-209.4"/>
+<polygon fill="black" stroke="black" points="1056.6,-207.05 1049.18,-207.11 1055.01,-211.69 1056.6,-207.05"/>
+<text text-anchor="middle" x="1150.5" y="-224.8" font-family="Helvetica,sans-Serif" font-size="9.00">real test data</text>
 </g>
 <!-- w_tests -->
 <g id="node18" class="node">
 <title>w_tests</title>
-<path fill="#fbe5d0" stroke="#b8621b" d="M1274.5,-207C1274.5,-207 1123.5,-207 1123.5,-207 1117.5,-207 1111.5,-201 1111.5,-195 1111.5,-195 1111.5,-183 1111.5,-183 1111.5,-177 1117.5,-171 1123.5,-171 1123.5,-171 1274.5,-171 1274.5,-171 1280.5,-171 1286.5,-177 1286.5,-183 1286.5,-183 1286.5,-195 1286.5,-195 1286.5,-201 1280.5,-207 1274.5,-207"/>
-<text text-anchor="middle" x="1199" y="-192.2" font-family="Helvetica,sans-Serif" font-size="11.00">Tone test → BPSK frames →</text>
-<text text-anchor="middle" x="1199" y="-180.2" font-family="Helvetica,sans-Serif" font-size="11.00">BPSK/QPSK/16&#45;QAM frames</text>
+<path fill="#fbe5d0" stroke="#b8621b" d="M1275.5,-207C1275.5,-207 1124.5,-207 1124.5,-207 1118.5,-207 1112.5,-201 1112.5,-195 1112.5,-195 1112.5,-183 1112.5,-183 1112.5,-177 1118.5,-171 1124.5,-171 1124.5,-171 1275.5,-171 1275.5,-171 1281.5,-171 1287.5,-177 1287.5,-183 1287.5,-183 1287.5,-195 1287.5,-195 1287.5,-201 1281.5,-207 1275.5,-207"/>
+<text text-anchor="middle" x="1200" y="-192.2" font-family="Helvetica,sans-Serif" font-size="11.00">Tone test → BPSK frames →</text>
+<text text-anchor="middle" x="1200" y="-180.2" font-family="Helvetica,sans-Serif" font-size="11.00">BPSK/QPSK/16&#45;QAM frames</text>
 </g>
 <!-- w_rtl&#45;&gt;w_tests -->
 <g id="edge17" class="edge">
 <title>w_rtl&#45;&gt;w_tests</title>
-<path fill="none" stroke="black" d="M1199,-246.84C1199,-237.12 1199,-224.82 1199,-214.15"/>
-<polygon fill="black" stroke="black" points="1201.45,-214.07 1199,-207.07 1196.55,-214.07 1201.45,-214.07"/>
-<text text-anchor="middle" x="1238.5" y="-224.8" font-family="Helvetica,sans-Serif" font-size="9.00">receivers (Part 2)</text>
+<path fill="none" stroke="black" d="M1212.29,-246.84C1210.19,-237.12 1207.53,-224.82 1205.22,-214.15"/>
+<polygon fill="black" stroke="black" points="1207.56,-213.39 1203.69,-207.07 1202.78,-214.43 1207.56,-213.39"/>
+<text text-anchor="middle" x="1247.5" y="-224.8" font-family="Helvetica,sans-Serif" font-size="9.00">receivers (Part 2)</text>
+</g>
+<!-- w_rtl&#45;&gt;w_cl -->
+<g id="edge29" class="edge">
+<title>w_rtl&#45;&gt;w_cl</title>
+<path fill="none" stroke="black" d="M1272.05,-246.93C1309,-235.68 1357.45,-220.92 1395.78,-209.25"/>
+<polygon fill="black" stroke="black" points="1396.82,-211.5 1402.81,-207.11 1395.4,-206.81 1396.82,-211.5"/>
 </g>
 <!-- w_tests&#45;&gt;w_sweep -->
 <g id="edge18" class="edge">
 <title>w_tests&#45;&gt;w_sweep</title>
-<path fill="none" stroke="black" d="M1197.47,-170.87C1196.03,-154.62 1193.83,-130.02 1192.2,-111.66"/>
-<polygon fill="black" stroke="black" points="1194.6,-110.97 1191.53,-104.22 1189.72,-111.41 1194.6,-110.97"/>
+<path fill="none" stroke="black" d="M1198.3,-170.87C1196.69,-154.62 1194.26,-130.02 1192.44,-111.66"/>
+<polygon fill="black" stroke="black" points="1194.83,-110.94 1191.7,-104.22 1189.96,-111.42 1194.83,-110.94"/>
 </g>
 <!-- w_sweep&#45;&gt;done -->
 <g id="edge25" class="edge">
 <title>w_sweep&#45;&gt;done</title>
-<path fill="none" stroke="black" d="M1110.27,-77.04C995.15,-65.54 781.57,-44.22 647.83,-30.87"/>
-<polygon fill="black" stroke="black" points="647.94,-28.41 640.73,-30.16 647.45,-33.29 647.94,-28.41"/>
+<path fill="none" stroke="black" d="M1110.26,-71C1049.23,-60.29 965.12,-45.53 902.11,-34.47"/>
+<polygon fill="black" stroke="black" points="902.24,-32 894.92,-33.2 901.39,-36.83 902.24,-32"/>
+</g>
+<!-- w_cl&#45;&gt;done -->
+<g id="edge30" class="edge">
+<title>w_cl&#45;&gt;done</title>
+<path fill="none" stroke="black" d="M1442.31,-170.97C1412.95,-142.26 1348.81,-84.9 1282,-60 1225.81,-39.06 1079.76,-28.65 965.62,-23.58"/>
+<polygon fill="black" stroke="black" points="965.6,-21.12 958.5,-23.27 965.38,-26.02 965.6,-21.12"/>
 </g>
 </g>
 </svg>

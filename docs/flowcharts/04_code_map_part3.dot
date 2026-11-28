@@ -26,10 +26,19 @@ digraph G {
   sweep [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="scripts/summarize_hardware_sweep.py\n— Hardware BER table, 95 % CIs, implied loss, figure"];
   sweep_o0 [shape=note, style=filled, fillcolor="#FDF4EA", color="#B8621B", fontsize=9, label="results/analysis/hardware_ber_runs.csv (19 runs)\nresults/figures/hardware_ber_vs_theory.png\n→ measured BER ~ AWGN theory; thresholds hold"];
   sweep -> sweep_o0 [color="#B8621B"];
+  cl [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="scripts/run_channel_switching_demo.py\n— Closed loop: probe 3 channels -> calibrated controller -> TX on chosen channel"];
+  cl_o0 [shape=note, style=filled, fillcolor="#FDF4EA", color="#B8621B", fontsize=9, label="results/hardware/closed_loop/session_*/\n(rounds.csv, session.json, session.png)\n→ channel switching on real radios: 5 sessions"];
+  cl -> cl_o0 [color="#B8621B"];
+  clsum [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="scripts/summarize_closed_loop.py · verify_closed_loop_captures.py\n— Pool sessions with 95 % CIs; re-decode every capture, replay every decision"];
+  clsum_o0 [shape=note, style=filled, fillcolor="#FDF4EA", color="#B8621B", fontsize=9, label="results/analysis/closed_loop_summary.json · closed_loop_verification.json\nresults/figures/closed_loop_repeatability.png\n→ best channel 72/72; 15/15 switches; audit OK"];
+  clsum -> clsum_o0 [color="#B8621B"];
+  scan [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="scripts/scan_band.py\n— Passive scan of 865-868 MHz (receive only)"];
+  scan_o0 [shape=note, style=filled, fillcolor="#FDF4EA", color="#B8621B", fontsize=9, label="results/hardware/band_scan/scan_*/ (scan.png, summary.json)\n→ real channels quiet: within 0.6 dB of floor"];
+  scan -> scan_o0 [color="#B8621B"];
   pipe [shape=box, style="rounded,filled", fillcolor="#FBE5D0", color="#B8621B", label="pipelines/integrated_pipeline.py\n(scripts/pluto_to_rtl_sdr_demo.py, test_pluto_tx_adapter.py: legacy)\n— Software-mode pipeline; RF path disabled"];
   pipe_o0 [shape=note, style=filled, fillcolor="#FDF4EA", color="#B8621B", fontsize=9, label="results/pipeline/\n→ software-only run"];
   pipe -> pipe_o0 [color="#B8621B"];
-  { rank=same; hcfg; tx; rxh; sense; dset; rplot; run; annot; sweep; pipe; }
+  { rank=same; hcfg; tx; rxh; sense; dset; rplot; run; annot; sweep; cl; clsum; scan; pipe; }
   hcfg -> tx [style=invis];
   tx -> rxh [style=invis];
   rxh -> sense [style=invis];
@@ -38,7 +47,10 @@ digraph G {
   rplot -> run [style=invis];
   run -> annot [style=invis];
   annot -> sweep [style=invis];
-  sweep -> pipe [style=invis];
+  sweep -> cl [style=invis];
+  cl -> clsum [style=invis];
+  clsum -> scan [style=invis];
+  scan -> pipe [style=invis];
   hcfg -> tx [style=dashed, color="#777777", constraint=false];
   hcfg -> rxh [style=dashed, color="#777777", constraint=false];
   rxh -> sense [style=dashed, color="#777777", constraint=false];
@@ -48,5 +60,9 @@ digraph G {
   rxh -> run [style=dashed, color="#777777", constraint=false];
   run -> annot [style=dashed, color="#777777", constraint=false];
   run -> sweep [style=dashed, color="#777777", constraint=false];
+  tx -> cl [style=dashed, color="#777777", constraint=false];
+  rxh -> cl [style=dashed, color="#777777", constraint=false];
+  cl -> clsum [style=dashed, color="#777777", constraint=false];
+  rxh -> scan [style=dashed, color="#777777", constraint=false];
   legend [shape=plaintext, fontsize=9, label="Box = code (— what it does)   Note = output (→ what it shows)   Dashed = code dependency"];
 }

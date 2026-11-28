@@ -32,7 +32,12 @@ const P = (text, opts = {}) => new Paragraph({ children: runs(text), spacing: { 
 const H1 = (text) => new Paragraph({ heading: HeadingLevel.HEADING_1, children: [new TextRun(text)] });
 const H2 = (text) => new Paragraph({ heading: HeadingLevel.HEADING_2, children: [new TextRun(text)] });
 const B = (items) => items.map((t) => new Paragraph({ numbering: { reference: "bullets", level: 0 }, children: runs(t), spacing: { after: 60 } }));
-const NUM = (items) => items.map((t) => new Paragraph({ numbering: { reference: "numbers", level: 0 }, children: runs(t), spacing: { after: 60 } }));
+let numInstance = 0;
+const NUM = (items) => {
+  numInstance += 1; // each list restarts at 1
+  const inst = numInstance;
+  return items.map((t) => new Paragraph({ numbering: { reference: "numbers", level: 0, instance: inst }, children: runs(t), spacing: { after: 60 } }));
+};
 
 function CODE(lines) {
   return lines.map((l, i) => new Paragraph({
@@ -107,7 +112,7 @@ function cover(part, title, subtitle) {
       new TextRun("Design and Implementation of a Cost-Aware Cognitive Radio Framework for Joint Channel Switching and Adaptive Modulation")] }),
     new Paragraph({ spacing: { before: 160 }, children: [new TextRun({ text: "Team member responsible: ", bold: true }), new TextRun("______________________________")] }),
     new Paragraph({ spacing: { before: 160 }, children: [new TextRun({ text: "Roll number: ", bold: true }), new TextRun("______________________________")] }),
-    new Paragraph({ spacing: { before: 160 }, children: [new TextRun({ text: "Date: ", bold: true }), new TextRun("25 November 2026")] }),
+    new Paragraph({ spacing: { before: 160 }, children: [new TextRun({ text: "Date: ", bold: true }), new TextRun("28 November 2026")] }),
     new Paragraph({ spacing: { before: 600 }, children: runs("The project is divided into three equal parts: **Part 1** simulation, cognitive control and ML analysis; **Part 2** physical layer, calibration, receivers and the DL classifier; **Part 3** SDR hardware integration and over-the-air experiments. This report covers Part " + part + ": the code it contains, the outputs it produces and what each output means.", { size: 20, color: "444444" }) }),
     new Paragraph({ children: [new PageBreak()] }),
   ];

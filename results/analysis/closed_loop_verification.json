@@ -1,0 +1,65 @@
+{
+  "sessions": [
+    {
+      "session": "20261128_071738",
+      "margin_db": 0.0,
+      "rounds": 12,
+      "captures_checked": 48,
+      "captures_missing": 0,
+      "decode_mismatches": [],
+      "readback_problems": [],
+      "replay_mismatches": [],
+      "max_esn0_diff_db": 0.0,
+      "ok": true
+    },
+    {
+      "session": "20261128_074114",
+      "margin_db": 0.0,
+      "rounds": 15,
+      "captures_checked": 60,
+      "captures_missing": 0,
+      "decode_mismatches": [],
+      "readback_problems": [],
+      "replay_mismatches": [],
+      "max_esn0_diff_db": 0.0,
+      "ok": true
+    },
+    {
+      "session": "20261128_074355",
+      "margin_db": 2.0,
+      "rounds": 15,
+      "captures_checked": 60,
+      "captures_missing": 0,
+      "decode_mismatches": [],
+      "readback_problems": [],
+      "replay_mismatches": [],
+      "max_esn0_diff_db": 0.0,
+      "ok": true
+    },
+    {
+      "session": "20261128_074825",
+      "margin_db": 0.0,
+      "rounds": 15,
+      "captures_checked": 60,
+      "captures_missing": 0,
+      "decode_mismatches": [],
+      "readback_problems": [],
+      "replay_mismatches": [],
+      "max_esn0_diff_db": 0.0,
+      "ok": true
+    },
+    {
+      "session": "20261128_075106",
+      "margin_db": 2.0,
+      "rounds": 15,
+      "captures_checked": 60,
+      "captures_missing": 0,
+      "decode_mismatches": [],
+      "readback_problems": [],
+      "replay_mismatches": [],
+      "max_esn0_diff_db": 0.0,
+      "ok": true
+    }
+  ],
+  "all_ok": true
+}

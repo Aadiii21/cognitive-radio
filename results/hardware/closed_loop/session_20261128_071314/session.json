@@ -1,0 +1,89 @@
+{
+  "timestamp": "20261128_071314",
+  "mode": "real_radios",
+  "channel_quality": "scripted by Pluto TX attenuation per channel (emulated interference)",
+  "rf_path": {
+    "type": "ota",
+    "antenna_separation_m": 1.5
+  },
+  "channels_hz": [
+    865700000,
+    866500000,
+    867300000
+  ],
+  "occupied_bands_hz": [
+    [
+      865348437.55625,
+      866051562.44375
+    ],
+    [
+      866148437.55625,
+      866851562.44375
+    ],
+    [
+      866948437.55625,
+      867651562.44375
+    ]
+  ],
+  "schedule": [
+    {
+      "name": "A: channel 0 best",
+      "attenuation_db": [
+        0,
+        10,
+        20
+      ]
+    },
+    {
+      "name": "B: channel 1 best",
+      "attenuation_db": [
+        20,
+        0,
+        10
+      ]
+    },
+    {
+      "name": "C: channel 2 best",
+      "attenuation_db": [
+        10,
+        20,
+        0
+      ]
+    },
+    {
+      "name": "D: all mediocre",
+      "attenuation_db": [
+        10,
+        15,
+        20
+      ]
+    }
+  ],
+  "rounds_per_phase": 3,
+  "controller": {
+    "class": "CalibratedCognitiveController",
+    "switch_penalty": 0.15,
+    "min_utility_gain": 0.1,
+    "switch_delay_steps": 2,
+    "input": "receiver Es/N0 - 6.02 dB, clipped to [-5, 30] dB"
+  },
+  "pluto_uri": "ip:192.168.2.1",
+  "amplitude_scale": 0.1,
+  "rx_rate": 2048000,
+  "rx_gain_db": 28.0,
+  "capture_samples": 524288,
+  "error": "interrupted by operator",
+  "summary": {
+    "rounds": 9,
+    "switches": 2,
+    "best_channel_rounds": 9,
+    "data_bit_errors": 130,
+    "data_bits": 18432,
+    "data_ber": 0.007052951388888889,
+    "modulation_rounds": {
+      "16-QAM": 4,
+      "QPSK": 5
+    },
+    "rounds_without_data_frame": 0
+  }
+}

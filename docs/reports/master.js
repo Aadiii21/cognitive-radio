@@ -16,7 +16,7 @@ function masterCover() {
       ["2", "Physical layer, calibration, receivers and DL classifier", "", ""],
       ["3", "SDR hardware integration and OTA experiments", "", ""],
     ], [0.08, 0.5, 0.24, 0.18], 0),
-    new Paragraph({ spacing: { before: 360 }, children: [new TextRun({ text: "Date: ", bold: true }), new TextRun("25 November 2026")] }),
+    new Paragraph({ spacing: { before: 360 }, children: [new TextRun({ text: "Date: ", bold: true }), new TextRun("28 November 2026")] }),
     new Paragraph({ spacing: { before: 120 }, children: [new TextRun({ text: "Code and data: ", bold: true }), new TextRun("https://github.com/Aadiii21/cognitive-radio")] }),
     new Paragraph({ children: [new PageBreak()] }),
   ];
@@ -27,7 +27,7 @@ module.exports = function master() {
   const c = [...masterCover()];
 
   c.push(H1("Abstract"));
-  c.push(P("A cognitive radio must decide which channel to use and how fast to transmit on it. Faster modulation carries more data but fails at lower signal quality, and moving to a better channel costs time. This project builds a controller that chooses the channel and the modulation (BPSK, QPSK or 16-QAM) by maximising expected delivered data, using packet-success curves measured with a GNU Radio receiver and an explicit switching cost. In a 630-run benchmark across three interference levels, the calibrated, cost-aware controller delivers the most data of seven strategies in every environment while keeping packet delivery at or above 99 %. The physical layer was then taken onto real radios: an ADALM-Pluto transmitter and an RTL-SDR receiver at 866 MHz. Over the air, the measured bit error rate of all three modulations followed theory within about 1 dB, confirming the controller's switching thresholds. Finally, machine learning was used to analyse the benchmark (random forest, R² 0.997), and a convolutional neural network trained only on simulated signals identified the modulation of 98.5 % of real over-the-air signal windows. Sensitivity and robustness studies show that the controller's lead does not depend on its switching-cost setting and survives a realistic 1 dB hardware loss, provided the controller keeps a matching safety margin."));
+  c.push(P("A cognitive radio must decide which channel to use and how fast to transmit on it. Faster modulation carries more data but fails at lower signal quality, and moving to a better channel costs time. This project builds a controller that chooses the channel and the modulation (BPSK, QPSK or 16-QAM) by maximising expected delivered data, using packet-success curves measured with a GNU Radio receiver and an explicit switching cost. In a 630-run benchmark across three interference levels, the calibrated, cost-aware controller delivers the most data of seven strategies in every environment while keeping packet delivery at or above 99 %. The physical layer was then taken onto real radios: an ADALM-Pluto transmitter and an RTL-SDR receiver at 866 MHz. Over the air, the measured bit error rate of all three modulations followed theory within about 1 dB, confirming the controller's switching thresholds. With the loop closed on the radios, the controller sensed three real channels and chose the channel with the highest measured quality in 72 of 72 rounds over five sessions, switching in the first round after every change and never without reason, while adapting the modulation from 16-QAM down to BPSK; channel quality in this demo was set by transmit power rather than real interference. Finally, machine learning was used to analyse the benchmark (random forest, R² 0.997), and a convolutional neural network trained only on simulated signals identified the modulation of 98.5 % of real over-the-air signal windows. Sensitivity and robustness studies show that the controller's lead does not depend on its switching-cost setting and survives a realistic 1 dB hardware loss, provided the controller keeps a matching safety margin."));
 
   c.push(H1("1. Introduction"));
   c.push(P("Wireless channels change over time: interference comes and goes, and one channel may be clean while another is congested. A fixed radio either wastes capacity (by sending slowly on a good channel) or loses packets (by sending fast on a bad one). A **cognitive radio** senses its environment and adapts."));
@@ -44,9 +44,9 @@ module.exports = function master() {
   c.push(...T(["Part", "Scope", "Main outputs"], [
     ["1. Simulation, cognitive control and ML", "Channel model, 7 controller strategies, 630-run benchmark, paired statistics, simulated radio, GNU Radio software-in-the-loop experiment, ML analysis", "Benchmark CSV and figures, paired CIs, random-forest models"],
     ["2. Physical layer, calibration, receivers and DL", "GNU Radio packet receiver, packet-success and SNR calibration, synchronisation, on-air frames and receivers, BER thresholds, CNN classifier", "Logistic models, SNR map, BER curves and thresholds, trained CNN"],
-    ["3. SDR hardware and OTA experiments", "Pluto / RTL-SDR drivers, safety gates, experiment runner, tone test, BPSK frames, BER sweep", "30 raw OTA captures, 27 run records, measured BER vs theory"],
+    ["3. SDR hardware and OTA experiments", "Pluto / RTL-SDR drivers, safety gates, experiment runner, tone test, BPSK frames, BER sweep, closed-loop channel switching on the radios, band scan", "30 raw OTA captures, 27 run records, measured BER vs theory; 5 closed-loop sessions (288 bursts), audit of every capture and decision"],
   ], [0.26, 0.46, 0.28], 0));
-  c.push(P("The parts depend on each other: Part 2's measured packet-success curves and SNR map are the inputs to Part 1's calibrated controller; Part 2's waveforms and receivers are what Part 3 transmits and decodes; Part 3's real captures are the test set for Part 2's DL classifier; and Part 3's measured BER checks the thresholds that Part 1's controller relies on. Each part has its own detailed report; Appendix A maps every code file to its outputs."));
+  c.push(P("The parts depend on each other: Part 2's measured packet-success curves and SNR map are the inputs to Part 1's calibrated controller; Part 2's waveforms and receivers are what Part 3 transmits and decodes; Part 3's real captures are the test set for Part 2's DL classifier; Part 3's measured BER checks the thresholds that Part 1's controller relies on; and Part 3 runs Part 1's controller, unchanged, on the real radios. Each part has its own detailed report; Appendix A maps every code file to its outputs."));
 
   c.push(H1("3. Methodology"));
   c.push(H2("3.1 Channel model and strategies (Part 1)"));
@@ -74,7 +74,7 @@ module.exports = function master() {
   c.push(P("Throughput in bits per step, means over 30 seeds. The calibrated hybrid is best in every environment. Against the plain hybrid its gain is +0.24, +0.73 and +0.80 bits/step at low, medium and high interference, and every 95 % paired confidence interval excludes zero; at high interference it also makes 73 fewer switches. Strategies that stay on one channel keep full availability but lose packets as interference grows (fixed: PDR 0.822), while switching strategies keep PDR near 0.99 at the cost of handoff downtime."));
   c.push(...FIG("results/figures/throughput_comparison.png", "Mean throughput per strategy and interference level.", 5.8));
   c.push(P("**Sensitivity and robustness** (`scripts/sensitivity_analysis.py`, which first reproduces all 630 benchmark runs exactly). Sweeping the switching penalty from 0 to 0.6, the calibrated hybrid's worst setting still beats the cost-aware hybrid's best in every environment, so the result does not hinge on the chosen 0.15. A penalty of 0.25 would be better (high interference: throughput 3.03, availability 0.90, 242 switches, against 2.99, 0.83 and 437 at 0.15), while a penalty so high that the controller never switches drops PDR to 0.88. When the true packet success is made 1 dB worse than the controller's model (the loss measured on air), the calibrated hybrid still has the highest throughput, but its PDR falls to 0.97 / 0.93 (medium / high). A 1 dB safety margin restores it to 0.997 / 0.988 with no throughput cost."));
-  c.push(P("In the GNU Radio software-in-the-loop experiment, a scripted three-phase interference schedule made a different channel strongest in each phase; the controller switched three times, each time to the strongest channel (100 % selection accuracy), with transmission available 97.6 % of the time."));
+  c.push(P("In the GNU Radio software-in-the-loop experiment, a scripted three-phase interference schedule made a different channel strongest in each phase; the controller switched three times, each time to the strongest channel (100 % selection accuracy), with transmission available 97.6 % of the time. In that flowgraph the three channels are the same test tone with different noise and interference levels, not separate frequencies, so it tests the decision logic only; Section 4.4 shows switching between real RF channels."));
 
   c.push(H2("4.2 Calibration and synchronisation"));
   c.push(...FIG("results/figures/01_packet_success_calibration.png", "Measured packet success and logistic fits vs noise voltage.", 5.6));
@@ -86,10 +86,22 @@ module.exports = function master() {
   c.push(...FIG("results/figures/hardware_ber_vs_theory.png", "Over-the-air BER (19 runs) with exact 95 % intervals vs AWGN theory. Triangles: zero-error runs at their 95 % bound."));
   c.push(P("**The thresholds hold on air:** 16-QAM gives 1.2 × 10⁻³ at 17.1 dB, right at its 16.7 dB threshold; QPSK is error-free from 11 to 23 dB and fails at 6.8 dB; BPSK gives 2.4 × 10⁻⁴ at 7.7 dB. The physical-layer behaviour the controller assumes is therefore what real radios deliver."));
 
-  c.push(H2("4.4 Machine learning on the benchmark"));
+  c.push(H2("4.4 Closed-loop channel switching on real radios"));
+  c.push(P("The loop was then closed on the hardware. Each round the Pluto sent a BPSK probe on three channels (865.7, 866.5 and 867.3 MHz), the RTL-SDR measured Es/N0 on each, the unchanged calibrated controller chose a channel and modulation, and the Pluto sent a data burst accordingly. Channel quality followed a scripted schedule of TX attenuation: a different channel best in phases A–C, all mediocre in D, all poor in E. Five sessions were run on 28 Nov (antennas 1.5 m apart), two of them with a 2 dB safety margin."));
+  c.push(...B([
+    "**Correct channel in 72 of 72 rounds** (95 % interval 0.95–1.00); all 15 needed switches made in the first round after the change, none unnecessary, despite 1–3 dB round-to-round variation in the probes.",
+    "**Modulation adapted with the channel:** 16-QAM at 18–22 dB, QPSK at about 11 dB (phase D), BPSK at about 4–8 dB (phase E).",
+    "**Data BER** was close to theory for BPSK and QPSK; 16-QAM was worse (1.3 × 10⁻³ against 1.0 × 10⁻⁴ expected) because of short Es/N0 dips of several dB within a burst, which carry 68 of its 78 errors.",
+    "**Safety margin:** with 2 dB the controller chose more robust modulations near the cut-offs, at about 20 % less throughput; the BER difference cannot be attributed to the margin because the link drifted by about 3 dB between sessions.",
+    "**Audit:** all 288 raw captures re-decode to exactly the logged values, every Pluto readback matches its burst, and replaying the logged probe values reproduces all 72 decisions.",
+  ]));
+  c.push(...FIG("results/figures/closed_loop_real_session.png", "One real-radio session: probe Es/N0 per channel, chosen channel (red: switch) and chosen modulation with bit errors.", 4.5));
+  c.push(P("A passive scan of 865–868 MHz found all three channels within 0.6 dB of the noise floor: left alone, the real channels would have looked identical. The differences the controller reacted to were created by the scripted TX power, not by interference."));
+
+  c.push(H2("4.5 Machine learning on the benchmark"));
   c.push(P("The random forest explains 99.7 % of the variance in throughput and 98.5 % in PDR on held-out seeds (linear regression: 92.4 % and 54.3 %). Performance is thus almost entirely determined by environment and strategy; seed-to-seed randomness is small, so the benchmark differences are systematic. PDR needs a non-linear model because it only drops for some strategies under heavy interference."));
 
-  c.push(H2("4.5 Deep-learning modulation classifier"));
+  c.push(H2("4.6 Deep-learning modulation classifier"));
   c.push(...T(["Test", "CNN", "Cumulant baseline"], [
     ["Synthetic, 6 dB / 10 dB / ≥ 12 dB", "94.9 % / 99.7 % / 100 %", "38.3 % / 55.9 % / 71–98 %"],
     ["**Real OTA, 536 windows**", "**98.5 %**", "62.9 %"],
@@ -104,13 +116,16 @@ module.exports = function master() {
     "**Measured models beat formulas.** The only difference between the hybrid and the calibrated hybrid is where the packet-success estimate comes from; using measured curves raises throughput by 6 % (low), 25 % (medium) and 36 % (high interference) and reduces switching at high interference.",
     "**Switching is a trade-off, not a free win.** Against adaptive modulation alone at high interference, the calibrated hybrid gains reliability (PDR +0.11) and throughput (+0.69) but loses availability (−0.18) to handoffs. The cost-aware rule exists to keep that loss in check.",
     "**A calibrated controller needs a safety margin.** Running close to the thresholds is what earns its throughput, and also what makes it the most sensitive to a model that is slightly optimistic. Subtracting the measured implementation loss (about 1 dB) keeps both its throughput lead and its reliability.",
-    "**Simulation and hardware agree.** The thresholds derived in simulation were confirmed on real radios, and a classifier trained in simulation transferred to real signals. Each part's results support the others'.",
+    "**Simulation and hardware agree.** The thresholds derived in simulation were confirmed on real radios, the controller made the same kind of decisions on the radios as in simulation, and a classifier trained in simulation transferred to real signals. Each part's results support the others'.",
+    "**What the experiments do and do not show about channels.** The GNU Radio experiment's channels differ only in noise level; the hardware demo uses separate RF channels but sets their quality by transmit power. Both show that the controller reacts correctly to measured channel quality. Neither shows behaviour under real interference, fading or other users. The calibration itself is unaffected: it describes how packet success depends on SNR for each modulation, whichever channel the SNR occurs on, and the hardware BER followed it within about 1 dB.",
   ]));
 
   c.push(H1("6. Limitations"));
   c.push(...B([
-    "The controller is evaluated in simulation and GNU Radio; on hardware the work is open-loop. The hardware closed loop was removed from scope on 23 Nov.",
-    "The over-the-air evidence is one session at one frequency, with the antenna separation not recorded and 4,096 bits per point. A zero-error run only shows BER < 7.3 × 10⁻⁴.",
+    "On the radios, channel quality was scripted by TX power: real interference, fading and other users were not tested. One room, one 1.5 m antenna spacing, about 35 minutes of closed-loop operation.",
+    "In the GNU Radio software-in-the-loop experiment the three channels are one test tone with different noise levels, not separate frequencies.",
+    "The controller decides on a probe sent seconds before the data; short dips in between caused most 16-QAM errors on air. It has no 'do not transmit' option.",
+    "The OTA BER sweep is one session at one frequency, with the antenna separation not recorded and 4,096 bits per point. A zero-error run only shows BER < 7.3 × 10⁻⁴.",
     "Calibration comes from GNU Radio's synthetic AWGN channel and is valid only inside the measured noise range.",
     "No equaliser for short multipath echoes; SRO correction validated to 20 ppm.",
     "The benchmark scores every strategy with the calibrated packet model that the calibrated hybrid itself uses; the robustness study shows what happens when reality is 1–2 dB worse.",
@@ -119,14 +134,14 @@ module.exports = function master() {
   ]));
 
   c.push(H1("7. Conclusion and future work"));
-  c.push(P("The project delivers a cost-aware cognitive radio controller grounded in measured receiver behaviour, shows that it outperforms six alternatives across interference levels, and validates its physical-layer assumptions on real SDR hardware. Machine learning confirms that the benchmark differences are systematic, and deep learning recognises real over-the-air modulations after training only in simulation."));
-  c.push(P("Natural next steps are: adopting a switching penalty of about 0.25 and a safety margin equal to the measured implementation loss; closing the loop on hardware so the controller drives the Pluto in real time; repeating the OTA sweep with recorded geometry, more bits per point and a conducted (cable and attenuator) reference; adding an equaliser; adding a 'no signal / unknown' class to the CNN; and using it for blind modulation detection or for sensing other users' signals."));
+  c.push(P("The project delivers a cost-aware cognitive radio controller grounded in measured receiver behaviour, shows that it outperforms six alternatives across interference levels, and validates its physical-layer assumptions on real SDR hardware, where it also switched channel and modulation correctly in closed loop. Machine learning confirms that the benchmark differences are systematic, and deep learning recognises real over-the-air modulations after training only in simulation."));
+  c.push(P("Natural next steps are: adopting a switching penalty of about 0.25 and a safety margin equal to the measured implementation loss; testing the closed loop against real interference (a second transmitter or noise sent on one channel) and over longer periods and distances; deciding on the data frame's own quality as well as the probe, and adding a 'do not transmit' option; repeating the OTA sweep with recorded geometry, more bits per point and a conducted (cable and attenuator) reference; adding an equaliser; adding a 'no signal / unknown' class to the CNN; and using it for blind modulation detection or for sensing other users' signals."));
 
   c.push(H1("8. Team contributions"));
   c.push(...T(["Part", "Member", "Contribution"], [
     ["1", "", "Channel and handoff model; seven controller strategies including the cost-aware and calibrated controllers; 630-run benchmark, paired statistics and figures; simulated-radio and GNU Radio software-in-the-loop experiment; ML analysis of the benchmark; switching-penalty sensitivity and implementation-loss robustness studies."],
     ["2", "", "GNU Radio packet receiver and validation; packet-success and SNR calibration; synchronisation and multipath validation; on-air frame formats and receivers; synthetic BER thresholds; DL modulation classifier, baseline and stricter evaluation."],
-    ["3", "", "Pluto and RTL-SDR drivers and pure-Python transmitter; experiment runner with safety and verification gates; receive-only sensing and dataset; OTA session (gain selection, tone test, BPSK frames, BER sweep); hardware BER analysis with confidence intervals and implied loss, and the captures used to test the CNN."],
+    ["3", "", "Pluto and RTL-SDR drivers and pure-Python transmitter; experiment runner with safety and verification gates; receive-only sensing and dataset; OTA session (gain selection, tone test, BPSK frames, BER sweep); hardware BER analysis with confidence intervals and implied loss, and the captures used to test the CNN; closed-loop channel switching on the radios, band scan, multi-session summary and offline audit."],
   ], [0.08, 0.2, 0.72], 0));
 
   c.push(H1("Appendix A. Code-to-output map"));
@@ -145,9 +160,10 @@ module.exports = function master() {
     "python scripts/train_modulation_classifier.py",
     "python scripts/evaluate_dl_strict.py",
     "python scripts/sensitivity_analysis.py",
+    "python scripts/summarize_closed_loop.py",
     "python -m pytest -q tests",
   ]));
-  c.push(P("Any saved OTA capture can be re-decoded without hardware with `scripts/run_hardware_experiment.py --rx-file …`. Transmission requires the steps in `docs/TRANSMISSION_DAY_RUNBOOK.md`."));
+  c.push(P("Any saved OTA capture can be re-decoded without hardware with `scripts/run_hardware_experiment.py --rx-file …`. Transmission requires the steps in `docs/TRANSMISSION_DAY_RUNBOOK.md`. The closed-loop raw captures (330 MB) are kept outside the repository; with them, `scripts/verify_closed_loop_captures.py` re-checks every capture and decision."));
 
   c.push(H1("Appendix C. Data notes"));
   c.push(...B([

@@ -1,0 +1,28 @@
+  Pluto: TX LO powered down (good)
+  Receive only. Scanning 864.5-868.5 MHz for 3 min:
+    rtl_power -f 864500000:868500000:2000 -g 28 -i 2 -e 180 -c 0.3 -d 0 /home/deamon/projects/final/cognitive-radio/results/hardware/band_scan/scan_20261128_073755/rtl_power.csv
+Found 1 device(s):
+  0:  Realtek, RTL2838UHIDIR, SN: 00000001
+
+Using device 0: Generic RTL2832U OEM
+Number of frequency hops: 3
+Dongle bandwidth: 1904761Hz
+Downsampling by: 1x
+Cropping by: 30.00%
+Total FFT bins: 3072
+Logged FFT bins: 2150
+FFT bin size: 1860.12Hz
+Buffer size: 16384 bytes (4.30ms)
+Reporting every 2 seconds
+Found Rafael Micro R820T tuner
+Tuner gain set to 28.00 dB.
+Exact sample rate is: 1904761.078196 Hz
+[R82XX] PLL not locked!
+
+User cancel, exiting...
+
+  90 sweeps, band floor -46.3 dB (relative)
+    ch0 865.7 MHz: +0.11 dB vs floor, sweep-to-sweep std 0.13 dB, busy 0.0 % of sweeps
+    ch1 866.5 MHz: +0.64 dB vs floor, sweep-to-sweep std 0.05 dB, busy 0.0 % of sweeps
+    ch2 867.3 MHz: +0.61 dB vs floor, sweep-to-sweep std 0.19 dB, busy 0.0 % of sweeps
+  Results: results/hardware/band_scan/scan_20261128_073755/ (rtl_power.csv, scan.png, summary.json)

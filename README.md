@@ -11,10 +11,11 @@ A cognitive radio that chooses, at every step, **which channel** to use and **wh
 | Controller benchmark (630 runs: 3 environments × 30 seeds × 7 strategies) | The calibrated hybrid gives the highest throughput in every interference environment (3.999 / 3.684 / 2.986 bits per step at low / medium / high) with PDR ≥ 0.99; every paired 95 % CI against the plain hybrid excludes zero |
 | Packet-success calibration (GNU Radio, 2,070 trials) | Logistic models per modulation, leave-one-seed-out accuracy 98–99.9 % |
 | Over-the-air link, 866 MHz (19 runs) | BPSK, QPSK and 16-QAM BER with exact 95 % CIs; implied implementation loss −0.2 to +0.75 dB vs AWGN theory above 4 dB Es/N0; the switching thresholds (6.8 / 9.9 / 16.7 dB) hold on air |
+| Closed-loop channel switching on the radios (5 sessions, 72 rounds, 28 Nov) | The controller sensed three real channels (865.7 / 866.5 / 867.3 MHz) and was on the best one in **72 / 72 rounds**; 15 / 15 needed switches made in the first round, 0 unnecessary; modulation adapted 16-QAM → QPSK → BPSK. Channel quality scripted by TX power. All 288 captures re-decode to the logged values and all 72 decisions replay exactly |
 | Sensitivity and robustness | The calibrated hybrid leads at every switching penalty 0–0.6 (0.25 is better than the 0.15 used); with a 1 dB implementation loss it still leads, and a 1 dB safety margin keeps PDR at 0.997 / 0.988 (medium / high) |
 | DL modulation classifier (CNN) | Trained only on simulation; **98.5 %** of 536 real OTA windows (capture-level 95 % CI 96.2–99.8 %), 19/19 captures, 36/36 windows of an unseen frame format (classical baseline: 62.9 %) |
 | ML on the benchmark (random forest) | R² 0.997 (throughput), 0.985 (PDR) on held-out seeds |
-| Tests | 355 |
+| Tests | 382 |
 
 ## The three parts
 
@@ -22,7 +23,7 @@ A cognitive radio that chooses, at every step, **which channel** to use and **wh
 |---|---|---|
 | 1. Simulation, cognitive control and ML | Channel model, 7 controller strategies, 630-run benchmark, paired statistics, simulated radio, GNU Radio software-in-the-loop experiment, ML analysis | `docs/reports/Part1_Simulation_Control_ML_Report.docx` |
 | 2. Physical layer, calibration, receivers and DL | GNU Radio packet receiver, packet-success and SNR calibration, synchronisation, on-air frames and receivers, BER thresholds, CNN classifier | `docs/reports/Part2_PHY_Calibration_Receivers_DL_Report.docx` |
-| 3. SDR hardware and OTA experiments | Pluto / RTL-SDR drivers, safety gates, experiment runner, tone test, BPSK frames, BER sweep | `docs/reports/Part3_SDR_Hardware_OTA_Report.docx` |
+| 3. SDR hardware and OTA experiments | Pluto / RTL-SDR drivers, safety gates, experiment runner, tone test, BPSK frames, BER sweep, closed-loop channel switching, band scan | `docs/reports/Part3_SDR_Hardware_OTA_Report.docx` |
 
 The whole project is summarised in `docs/reports/Master_Report.docx`. Code-to-output flowcharts are in `docs/flowcharts/`; the documentation index is `docs/README.md`.
 
@@ -36,7 +37,7 @@ gnuradio/            GNU Radio packet receiver, calibration and control-path exp
 experiments/         GNU Radio software-in-the-loop interference experiment
 scripts/             OTA experiment runner, BER curves, DL training, flowcharts, summaries
 pipelines/           integrated software pipeline (RF path disabled)
-tests/               355 tests
+tests/               382 tests
 results/             datasets, figures, analysis tables, OTA captures (results/hardware/), DL results (results/dl/)
 data/                RTL-SDR capture dataset
 docs/                reports, flowcharts, reference documents
@@ -50,7 +51,7 @@ Developed on Arch Linux with Python 3.12 (miniforge3 conda environment) and GNU 
 conda create -n cognitive-radio -c conda-forge python=3.12 gnuradio gnuradio-iio
 conda activate cognitive-radio
 pip install -r requirements.txt
-python -m pytest -q tests              # 355 passed
+python -m pytest -q tests              # 382 passed
 ```
 
 pyadi-iio needs a Python libiio binding that matches the system libiio: with libiio 0.x (e.g. 0.26) use `pylibiio==0.25`. Hardware runs also need the `rtl_sdr` and `iio_attr` command-line tools.
@@ -67,6 +68,7 @@ python scripts/summarize_hardware_sweep.py                  # OTA BER table + fi
 python scripts/train_modulation_classifier.py               # CNN, about 8 min on a laptop CPU
 python scripts/evaluate_dl_strict.py                        # capture-level CI, confidence, unseen format
 python scripts/sensitivity_analysis.py                      # penalty sweep, implementation loss, margin (~30 min)
+python scripts/summarize_closed_loop.py                     # closed-loop sessions: switches, best channel, BER with CIs
 python scripts/make_flowcharts.py                           # needs graphviz
 node docs/reports/build_reports.js                          # part reports (needs: npm install docx)
 ```
@@ -83,6 +85,10 @@ python scripts/run_hardware_experiment.py \
 
 RF transmission is off by default. `scripts/run_hardware_experiment.py` transmits only with `--enable-rf`, a declared RF path (`--rf-path ota --antenna-separation-m D`, or `conducted` with ≥ 30 dB of attenuation), an occupied band inside 865–868 MHz, the operator typing `TRANSMIT`, and a successful Pluto readback. See `docs/TRANSMISSION_DAY_RUNBOOK.md`. Check the regulations that apply where you transmit.
 
+**Channel-switching demo on the radios:** `scripts/run_channel_switching_demo.py` (try `--simulate` first, then `--dry-run`, then `--enable-rf --rf-path ota --antenna-separation-m D`, optionally `--margin-db 2`). `scripts/scan_band.py` scans the band receive-only. Steps are in the first section of the runbook.
+
+The closed-loop raw captures (288 files, about 330 MB) are not in the repository; their `.json` sidecars, `rounds.csv`, `session.json` and plots are. With the raw files restored, `python scripts/verify_closed_loop_captures.py` re-decodes every capture and replays every decision.
+
 ## Limitations
 
-The controller is evaluated in simulation; the hardware work is open-loop (closed loop removed from scope). The OTA evidence comes from one session at one frequency with 4,096 bits per point. Details: `docs/LIMITATIONS.md`.
+On the radios, the controller ran closed-loop over three real RF channels, but the channels' quality was set by our own TX power: real interference, fading and other users were not tested, and a passive scan found the band otherwise quiet. In the GNU Radio software-in-the-loop experiment the three "channels" are one test tone with different noise levels. The OTA BER sweep is one session at one frequency with 4,096 bits per point. Details: `docs/LIMITATIONS.md`.
