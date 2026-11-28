@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-The cognitive radio system was implemented, validated in simulation and GNU Radio, and its physical layer was tested over the air with an ADALM-Pluto transmitter and an RTL-SDR receiver at 866 MHz. A 630-run multi-seed experiment (30 seeds × 3 environments × 7 strategies) shows the calibrated hybrid strategy has the highest throughput in all interference environments while keeping PDR ≥ 0.99. Over the air, measured BER for BPSK, QPSK and 16-QAM follows AWGN theory within about 1 dB, confirming the controller's modulation thresholds. With the loop closed on the radios (28 Nov, 5 sessions), the controller was on the best of three real channels in 72 of 72 rounds, switching exactly when needed and adapting the modulation; channel quality in that demo was set by TX power, not real interference. A CNN modulation classifier trained only on simulated data recognised the modulation in 98.5 % of real OTA windows. The controller's lead holds across switching penalties and under a realistic 1 dB hardware loss. 382 tests pass.
+The cognitive radio system was implemented, validated in simulation and GNU Radio, and its physical layer was tested over the air with an ADALM-Pluto transmitter and an RTL-SDR receiver at 866 MHz. A 630-run multi-seed experiment (30 seeds × 3 environments × 7 strategies) shows the calibrated hybrid strategy has the highest throughput in all interference environments while keeping PDR ≥ 0.99. In the over-the-air BER sweep, measured BER for BPSK, QPSK and 16-QAM stayed within about 1 dB of AWGN theory above 4 dB Es/N0, supporting the controller's modulation thresholds. With the loop closed on the radios (28 Nov, 5 sessions), the controller selected the channel with the highest measured probe Es/N0 in 72 of 72 rounds, under a scripted channel-quality schedule set by TX power, not real interference; short Es/N0 dips within data bursts added errors there, mainly for 16-QAM. A CNN trained only on simulated data recognised the modulation in 98.5 % of the tested OTA windows (one session, 19 captures). The controller's lead holds across switching penalties and under a realistic 1 dB hardware loss. 382 tests pass.
 
 The part reports in `docs/reports/` give the full detail; this document is the summary.
 
@@ -144,7 +144,7 @@ Table and figure: `results/analysis/hardware_ber_runs.csv`, `results/figures/har
 ### 4.3 Closed-loop channel switching on the radios (28 Nov)
 Each round: BPSK probe on 865.7 / 866.5 / 867.3 MHz → RTL-SDR Es/N0 per channel → unchanged `CalibratedCognitiveController` → data burst (2 frames, 2,048 bits) on the chosen channel and modulation. Channel quality scripted by Pluto TX attenuation in five phases (A–C: a different channel best; D: all mediocre; E: all poor), three rounds each; antennas 1.5 m apart (`scripts/run_channel_switching_demo.py`).
 
-| Session | Margin | Switches needed / made / unnecessary | Best channel | Data bit errors |
+| Session | Margin | Switches needed / made / unnecessary | Highest-Es/N0 channel chosen | Data bit errors |
 |------|------|------|------|------|
 | 07:17 (A–D) | 0 dB | 3 / 3 / 0 | 12 / 12 | 75 / 24,576 |
 | 07:41 | 0 dB | 3 / 3 / 0 | 15 / 15 | 83 / 30,720 |
@@ -162,7 +162,7 @@ Each round: BPSK probe on 865.7 / 866.5 / 867.3 MHz → RTL-SDR Es/N0 per channe
 | QPSK | 2 dB | 0 / 8,192 | < 4.5e-4 | 18.1 dB | ≈ 0 |
 | 16-QAM | 2 dB | 5 / 28,672 | 1.7e-4 (5.7e-5–4.1e-4) | 19.4 dB | 2.7e-5 |
 
-- **Switching:** correct channel every round; every needed switch in the first round after the change; none unnecessary despite 1–3 dB round-to-round probe variation.
+- **Switching:** the highest-probe-Es/N0 channel selected every round; every needed switch in the first round after the change; none unnecessary despite 1–3 dB round-to-round probe variation.
 - **16-QAM errors come from short dips:** 15 of 143 data frames were more than 3 dB (up to 8.5 dB) below the other frame of their burst; they hold 68 of the 78 16-QAM errors. The decision is made on the probe, a few seconds earlier.
 - **Safety margin (2 dB):** more robust modulations near the cut-offs, about 20 % lower throughput (2.5 vs 3.1 bits/symbol). The lower BER cannot be attributed to the margin: the link drifted by about 3 dB between sessions, and the two later no-margin sessions had no 16-QAM errors.
 - **Audit** (`scripts/verify_closed_loop_captures.py`): all 288 raw captures re-decode to exactly the logged values; every Pluto readback matches its burst; replaying the logged probes reproduces all 72 decisions.
@@ -262,7 +262,7 @@ The project demonstrates:
 - ✅ Packet-success and SNR calibrations measured with a GNU Radio receiver (2,070 + 1,530 trials)
 - ✅ Validated synchronisation (CFO, SRO) and characterised multipath limits
 - ✅ An over-the-air Pluto → RTL-SDR link at 866 MHz with BPSK, QPSK and 16-QAM BER matching theory and confirming the switching thresholds
-- ✅ Closed-loop channel switching on the radios: best of three real channels in 72 / 72 rounds over 5 sessions, every switch when needed and none without reason, modulation adapted 16-QAM → BPSK (channel quality scripted by TX power)
+- ✅ Closed-loop channel switching on the radios: highest-probe-Es/N0 channel selected in 72 / 72 rounds over 5 sessions, every switch when needed and none without reason, modulation adapted 16-QAM → BPSK (channel quality scripted by TX power)
 - ✅ A random forest that explains the benchmark (R² 0.997 throughput, 0.985 PDR)
 - ✅ A CNN that recognises the modulation of real OTA signals (98.5 %) after training only on simulation
 - ✅ The controller's lead holds across switching penalties and under a realistic 1 dB hardware loss (with a matching safety margin)

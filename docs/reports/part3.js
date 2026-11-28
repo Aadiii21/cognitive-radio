@@ -126,7 +126,7 @@ module.exports = function part3() {
   c.push(P("Each channel's quality follows a scripted schedule of Pluto TX attenuation, three rounds per phase: **A, B, C** – a different channel is best (0 / 10 / 20 dB); **D** – all mediocre (10 / 15 / 20 dB); **E** – all poor (15 / 20 / 20 dB). Antennas were 1.5 m apart. All safety gates of the experiment runner applied; every one of the 288 bursts was started, read back (LO, gain, rate), captured and stopped. A burst took about 2.3 s, a 15-round session 140 s."));
   c.push(...FIG("results/figures/closed_loop_real_session.png", "Real-radio session 07:48 (no margin). Top: probe Es/N0 per channel and the controller's BER ≤ 10⁻³ thresholds. Middle: chosen channel (red: switch). Bottom: chosen modulation and data bit errors.", 4.7));
   c.push(H2("5.9.1 Sessions"));
-  c.push(...T(["Session (28 Nov)", "Phases", "Safety margin", "Switches needed / made / unnecessary", "Best channel", "Data bit errors", "Mean Es/N0, best channel at 0 dB"], [
+  c.push(...T(["Session (28 Nov)", "Phases", "Safety margin", "Switches needed / made / unnecessary", "Highest-Es/N0 channel chosen", "Data bit errors", "Mean Es/N0, best channel at 0 dB"], [
     ["07:17", "A–D", "0 dB", "3 / 3 / 0", "12 / 12", "75 / 24,576", "17.5 dB"],
     ["07:41", "A–E", "0 dB", "3 / 3 / 0", "15 / 15", "83 / 30,720", "19.7 dB"],
     ["07:43", "A–E", "2 dB", "3 / 3 / 0", "15 / 15", "48 / 29,696", "18.5 dB"],
@@ -137,7 +137,7 @@ module.exports = function part3() {
   c.push(P("Phase E was added after the first session, whose best channel never fell into the BPSK range. Two earlier attempts that morning are kept but excluded: one stopped before transmitting (a software bug, fixed and covered by a test) and one was interrupted by the operator."));
   c.push(P("**What it shows.**"));
   c.push(...B([
-    "**The controller switches correctly on real radios.** In all 72 rounds it was on the channel with the highest measured Es/N0 (95 % interval 0.95–1.00). Every phase change that moved the best channel was followed by a switch in the very first round (15 / 15), and it never switched without reason (0 unnecessary switches), although probe Es/N0 moved by 1–3 dB from round to round. That is the switching cost doing its job.",
+    "**The controller switches as designed on real radios.** In all 72 rounds it selected the channel with the highest measured probe Es/N0 (95 % interval 0.95–1.00), under the scripted channel-quality schedule. This is the criterion used throughout: best of the three probed channels, not an independently established optimum under natural interference. Every phase change that moved the best channel was followed by a switch in the very first round (15 / 15), and it never switched without reason (0 unnecessary switches), although probe Es/N0 moved by 1–3 dB from round to round. That is the switching cost doing its job.",
     "**It adapts the modulation as well as the channel.** 16-QAM on the 18–22 dB channels of phases A–C, QPSK at about 11 dB (phase D), BPSK at 3.6–8 dB (phase E). With the switch in phase D (from channel 2 at about 1 dB to channel 0 at about 11 dB) it changed both at once.",
     "**The scripted levels are reproducible but not exact:** Es/N0 at a given attenuation varied with a standard deviation of 1–2 dB, and the session mean at 0 dB drifted from 17.5 to 20.6 dB over 35 minutes. 9 of 216 probes at 20 dB found no frame; the controller treats such a channel as unusable.",
   ]));

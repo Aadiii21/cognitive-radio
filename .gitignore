@@ -40,9 +40,3 @@ Thumbs.db
 # The .json sidecars, rounds.csv, session.json and session.png are committed.
 results/hardware/closed_loop/**/*.cu8
 results/hardware/closed_loop_simulated/**/*.cu8
-
-# local transfer zips
-/closed_loop_*.zip
-
-# local transfer zips
-/closed_loop_*.zip

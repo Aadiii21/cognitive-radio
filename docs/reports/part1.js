@@ -106,7 +106,7 @@ module.exports = function part1() {
     ["PDR", "Linear regression", "0.024", "0.030", "0.543"],
     ["PDR", "Random forest", "0.002", "0.006", "**0.985**"],
   ], [0.2, 0.32, 0.16, 0.16, 0.16], 1));
-  c.push(P("**What it shows.** The random forest explains 99.7 % of the throughput variance and 98.5 % of the PDR variance, so performance is almost fully determined by the environment and strategy, and seed-to-seed randomness is small: the benchmark differences are systematic. The linear model does much worse on PDR (R² 0.543) because PDR interacts non-linearly: it only drops for some strategies in high interference. Permutation importance puts **environment_Low** first for throughput (0.36), followed by the choice of strategy."));
+  c.push(P("**What it shows.** The random forest explains 99.7 % of the throughput variance and 98.5 % of the PDR variance, so, within the evaluated simulation benchmark, performance is almost fully determined by the environment and strategy, and seed-to-seed randomness is small: the benchmark differences are systematic. The linear model does much worse on PDR (R² 0.543) because PDR interacts non-linearly: it only drops for some strategies in high interference. Permutation importance puts **environment_Low** first for throughput (0.36), followed by the choice of strategy."));
   c.push(...FIG("results/ml/plots/throughput_bits_per_step_actual_vs_predicted.png", "Random forest: predicted vs actual throughput on held-out seeds.", 5.0));
 
   c.push(H2("5.6 Sensitivity and robustness"));
@@ -153,7 +153,7 @@ module.exports = function part1() {
 
   c.push(H1("7. Limitations"));
   c.push(...B([
-    "The benchmark is a calibrated **simulation**: packet outcomes are drawn from the fitted success curves, not decoded packet by packet. On real radios the controller was run closed-loop over three RF channels (Part 3, Section 5.9: correct channel in 72 of 72 rounds), but with channel quality set by TX power, not by the interference model used here.",
+    "The benchmark is a calibrated **simulation**: packet outcomes are drawn from the fitted success curves, not decoded packet by packet. On real radios the controller was run closed-loop over three RF channels (Part 3, Section 5.9: the channel with the highest measured probe Es/N0 was selected in 72 of 72 rounds), but with channel quality set by TX power, not by the interference model used here.",
     "In the GNU Radio software-in-the-loop experiment the three channels differ only in noise level (Section 5.4); it tests decision logic, not RF channel behaviour.",
     "The logistic models are only valid inside the calibrated noise range; outside it the controller clips to the nearest calibrated value.",
     "`channel_switching` uses fixed QPSK, not fixed BPSK as described in the 6 Nov plan.",
